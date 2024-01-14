@@ -40,9 +40,7 @@ do
     find ./var -type d -name state -delete
     find ./ -type d -name var -delete
     rm -rf ./tmp/liblock-0
-    find ./ -type d -name tmp -delete
     rm -rf ./etc/sorcery
-    find ./ -type d -name etc -delete
 
     # remove jhalfs stuff
     rm -rf ./sources
