@@ -1,0 +1,14 @@
+# jsw remove files so installwatch can track them
+[ -d /usr/lib/perl5/ ] && rm -rf /usr/lib/perl5/
+
+/usr/bin/make -j1 install
+unset BUILD_ZLIB BUILD_BZIP2
+echo -e "\n\nTotalseconds: $SECONDS\n"
+
+# End of LFS book script
+
+echo "KB: $(du -skx --exclude=lost+found --exclude=var/lib --exclude=$SCRIPT_ROOT $ROOT)"
+cd $SRC_DIR
+rm -rf $PKGDIR
+if [ -d "${PKGDIR%-*}-build" ]; then  rm -rf ${PKGDIR%-*}-build; fi
+exit

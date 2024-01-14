@@ -1,0 +1,59 @@
+#!/bin/bash
+
+mkdir -pv ../slakpack
+
+for FILE in *;
+do
+    echo $FILE
+
+    # get package info
+    trimname=${FILE%-x86_64-pc-linux-gnu.tar.bz2}
+    appname=${trimname%-*}
+    version=${trimname##*-}
+    pkgname=$appname-$version-x86_64-jsw01.txz
+    echo $appname
+    echo $version
+    echo $pkgname
+
+    # extract sorcery cache
+    mkdir extract
+    cd extract
+    tar -xf ../$FILE
+
+    # strip
+    strip --strip-unneeded ./usr/lib/* ./usr/bin/*
+
+    # remove *.la
+    find ./usr/lib ./usr/libexec -name \*.la -delete
+
+    # remove sorcery stuff
+    rm -rf ./etc/sorcery
+    rm -rf ./var/log
+    rm -rf ./var/state
+
+    # remove jhalfs stuff
+    rm -rf ./sources
+
+    # package description file
+    #|-----handy-ruler------------------------------------------------------|
+    mkdir install
+    echo "$appname: $appname version $version" >> install/slack-desc
+    echo "$appname:" >> install/slack-desc
+    echo "$appname: Package created using Linux From Scratch jhalfs build" >> install/slack-desc
+    echo "$appname: scripts, Sourcemage sorcery build tool" >> isntall/slack-desc
+    echo "$appname: and Slackware pkgtools" >> install/slack-desc
+    echo "$appname:" >> install/slack-desc
+    echo "$appname: slackwiig-lfs assembled in the US by wiigelec" >> install/slack-desc
+    echo "$appname: using foreign and domestic code bases and tools" >> install/slack-desc
+    echo "$appname:" >> install/slack-desc
+    echo "$appname: linuxfromscratch.org" >> install/slack-desc
+    echo "$appname: sourcemage.org" >> install/slack-desc
+
+    # make package
+    /home/compnerd/Downloads/pkgtools/sbin/makepkg -l y -c n \
+	    ../../slakpack/$pkgname
+    
+    # cleanup
+    cd ../
+    rm -rf extract
+done

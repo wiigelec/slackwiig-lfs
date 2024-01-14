@@ -1,0 +1,126 @@
+#!/bin/bash
+
+for FILE in *;
+do
+    #echo $FILE
+
+    # create package directory from jhalfs script name
+    case "$FILE" in
+        *-z-*)
+	    d=${FILE#*-z-}
+	    ;;
+        *)
+	    d=${FILE#*-}
+    esac
+    mkdir -pv $d
+
+    echo $d >> DEPENDS
+
+
+    ########################################################################
+    # DETAILS 
+    
+    #spell
+    echo "SPELL=$d" > $d/DETAILS
+    package=`grep PACKAGE\= $FILE`
+    package=${package/PACKAGE\=/}
+    
+    #version
+    version=${package##*-}
+    version=${version%.tar*}
+    echo "VERSION=$version" >> $d/DETAILS
+    
+    #entered
+    echo "ENTERED=12222023" >> $d/DETAILS
+
+    ########################################################################
+    # PRE_BUILD PRE_INSTAL
+    echo "true" > $d/PRE_BUILD
+    chmod u+x $d/PRE_BUILD
+    echo "true" > $d/PRE_INSTALL
+    chmod u+x $d/PRE_INSTALL  
+
+    ########################################################################
+    # BUILD / INSTALL 
+    touch $d/BUILD
+    touch $d/INSTALL
+
+    echo "unset CFLAGS" > $d/BUILD
+    echo "unset CXXFLAGS" >> $d/BUILD
+    echo "unset CPPFLAGS" >> $d/BUILD
+    echo "unset LDFLAGS" >> $d/BUILD
+
+    splitline=0;
+    splitline=`grep -n "make.*install" $FILE` 
+    splitline=${splitline%%:*}
+    if [[ "$splitline" -eq 0 ]]; then
+        splitline=`grep -n "pip.*install" $FILE`
+   	splitline=${splitline%%:*}
+    fi	
+    if [[ "$splitline" -eq 0 ]]; then
+        splitline=`grep -n "ninja.*install" $FILE`
+   	splitline=${splitline%%:*}
+    fi	
+
+    outfile=$d/BUILD
+    ((splitline == 0)) && outfile=$d/INSTALL
+    declare -i linenum=1
+    while IFS= read -r line;
+    do
+        if (( linenum == splitline )); then
+            outfile=$d/INSTALL
+        fi
+	#echo "$line"
+        echo "$line" >> $outfile
+        linenum+=1
+
+    done < $FILE
+
+    #handle empty files
+    s=$(wc -c $d/BUILD | awk '{print $1}')
+    [[ s -lt 2 ]] && echo "true" >> $d/BUILD
+    s=$(wc -c $d/INSTALL | awk '{print $1}')
+    [[ s -lt 2 ]] && echo "true" >> $d/INSTALL
+
+    # remove jhalfs sudo \\ \$
+    #sed -i 's/.*ROOT_EOF.*//g' $d/BUILD
+    #sed -i 's/.*ROOT_EOF.*//g' $d/INSTALL
+    #sed -i 's/\\\\/\\/g' $d/BUILD
+    #sed -i 's/\\\\/\\/g' $d/INSTALL
+    #sed -i 's/\\\$/\$/g' $d/BUILD
+    #sed -i 's/\\\$/\$/g' $d/INSTALL
+
+    # replace sorcery make wrapper
+    sed -i 's/\(^\|\s\)make/\1\/usr\/bin\/make/g' $d/BUILD
+    sed -i 's/\(^\|\s\)make/\1\/usr\/bin\/make/g' $d/INSTALL
+
+    # remove exit
+    #sed -i 's/exit//g' $d/INSTALL
+    
+    rm $FILE
+    
+    chmod u+x $d/*
+    chown -R root:root $d
+
+done
+
+
+########################################################################
+# BUILD ALL
+#d=zz_build-all
+#mkdir -pv $d
+
+#echo SPELL=$d > $d/DETAILS
+#echo VERSION=1 >> $d/DETAILS
+
+#echo "true" > $d/PRE_BUILD
+#echo "true" > $d/PRE_INSTALL
+#echo "true" > $d/BUILD
+#echo "true" > $d/INSTALL
+
+#mv DEPENDS $d
+
+#chmod u+x $d/*
+#chown -R root:root $d
+
+exit
