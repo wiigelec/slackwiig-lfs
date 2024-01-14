@@ -32,6 +32,8 @@ do
 
     # remove sorcery stuff
     find ./ -type d -name sorcery -delete
+    rm -rf ./tmp/sorcery
+    rm -rf ./var/cache/sorcery
 
     # remove jhalfs stuff
     rm -rf ./sources
