@@ -31,9 +31,10 @@ do
     find ./usr/lib ./usr/libexec -name \*.la -delete
 
     # remove sorcery stuff
-    find ./ -type d -name sorcery -delete
     rm -rf ./tmp/sorcery
     rm -rf ./var/cache/sorcery
+    rm -rf ./var/log/sorcery
+    rm -rf ./var/state/sorcery
 
     # remove jhalfs stuff
     rm -rf ./sources
