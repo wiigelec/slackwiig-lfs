@@ -1,11 +1,11 @@
 /usr/bin/make -j1 install
 
-for libdir in /lib /usr/lib \$(find /opt -name lib); do
-  find \$libdir -name \\*.la           \\
-             ! -path \\*ImageMagick\\* \\
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la           \
+             ! -path \*ImageMagick\* \
                -delete
 done
-ROOT_EOF
+
 sudo /sbin/ldconfig
 
 

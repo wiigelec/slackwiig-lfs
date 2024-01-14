@@ -3,10 +3,10 @@
 
 #make -j1 htmldir=/usr/share/doc/git-2.41.0 install-html
 
-tar -xf ../git-manpages-2.41.0.tar.xz \\
+tar -xf ../git-manpages-2.41.0.tar.xz \
     -C /usr/share/man --no-same-owner --no-overwrite-dir
 mkdir -vp   /usr/share/doc/git-2.41.0
-tar   -xf   ../git-htmldocs-2.41.0.tar.xz \\
+tar   -xf   ../git-htmldocs-2.41.0.tar.xz \
       -C    /usr/share/doc/git-2.41.0 --no-same-owner --no-overwrite-dir
 
 find        /usr/share/doc/git-2.41.0 -type d -exec chmod 755 {} \\;
@@ -26,12 +26,12 @@ mv        /usr/share/doc/git-2.41.0/howto/{*.,}html
 sed -i '/^<a href=/s|howto/|&html/|' /usr/share/doc/git-2.41.0/howto-index.html
 sed -i '/^\\* link:/s|howto/|&html/|' /usr/share/doc/git-2.41.0/howto-index.txt
 
-for libdir in /lib /usr/lib \$(find /opt -name lib); do
-  find \$libdir -name \\*.la           \\
-             ! -path \\*ImageMagick\\* \\
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la           \
+             ! -path \*ImageMagick\* \
                -delete
 done
-ROOT_EOF
+
 sudo /sbin/ldconfig
 
 

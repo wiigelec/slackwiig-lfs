@@ -1,6 +1,6 @@
 /usr/bin/make -j1 install
 
-install-info --dir-file=/usr/share/info/dir           \\
+install-info --dir-file=/usr/share/info/dir           \
              /usr/share/info/gpm.info
 
 rm -fv /usr/lib/libgpm.a
@@ -8,17 +8,17 @@ ln -sfv libgpm.so.2.1.0 /usr/lib/libgpm.so
 install -v -m644 conf/gpm-root.conf /etc
 
 install -v -m755 -d /usr/share/doc/gpm-1.20.7/support
-install -v -m644    doc/support/*                     \\
+install -v -m644    doc/support/*                     \
                     /usr/share/doc/gpm-1.20.7/support
-install -v -m644    doc/{FAQ,HACK_GPM,README*}        \\
+install -v -m644    doc/{FAQ,HACK_GPM,README*}        \
                     /usr/share/doc/gpm-1.20.7
 
-for libdir in /lib /usr/lib \$(find /opt -name lib); do
-  find \$libdir -name \\*.la           \\
-             ! -path \\*ImageMagick\\* \\
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la           \
+             ! -path \*ImageMagick\* \
                -delete
 done
-ROOT_EOF
+
 sudo /sbin/ldconfig
 
 BOOTPKG_DIR=blfs-systemd-units
@@ -52,10 +52,10 @@ else
   BOOTUNPACKDIR=`head -n1 unpacked | sed 's@^./@@;s@/.*@@'`
 fi
 cd $BOOTUNPACKDIR
-sudo -E sh -e << ROOT_EOF
+
 PATH=$PATH:/usr/sbin
 /usr/bin/make install-gpm
-ROOT_EOF
+
 popd
 
 cd $BUILD_DIR

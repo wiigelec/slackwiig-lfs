@@ -79,5 +79,5 @@ cd $JH_UNPACKDIR
             PYTHON=/usr/bin/python3
 /usr/bin/make
 #make -k check || true
-sudo -E sh -e << ROOT_EOF
+
 PATH=$PATH:/usr/sbin

@@ -76,5 +76,5 @@ cd $JH_UNPACKDIR
 ./configure --prefix=/usr --disable-static
 /usr/bin/make
 #make -k check || true
-sudo -E sh -e << ROOT_EOF
+
 PATH=$PATH:/usr/sbin

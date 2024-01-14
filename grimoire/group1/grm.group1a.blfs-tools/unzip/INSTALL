@@ -81,17 +81,17 @@ cd $JH_UNPACKDIR
 
 patch -Np1 -i ../unzip-6.0-consolidated_fixes-1.patch
 /usr/bin/make -f unix/Makefile generic
-sudo -E sh -e << ROOT_EOF
+
 PATH=$PATH:/usr/sbin
-/usr/bin/make -j1 prefix=/usr MANDIR=/usr/share/man/man1 \\
+/usr/bin/make -j1 prefix=/usr MANDIR=/usr/share/man/man1 \
  -f unix/Makefile install
 
-for libdir in /lib /usr/lib \$(find /opt -name lib); do
-  find \$libdir -name \\*.la           \\
-             ! -path \\*ImageMagick\\* \\
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la           \
+             ! -path \*ImageMagick\* \
                -delete
 done
-ROOT_EOF
+
 sudo /sbin/ldconfig
 
 cd $BUILD_DIR

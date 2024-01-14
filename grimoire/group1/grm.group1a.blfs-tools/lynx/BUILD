@@ -93,5 +93,5 @@ patch -p1 -i ../lynx-2.8.9rel.1-security_fix-1.patch
             --with-screen=ncursesw \
             --enable-locale-charset
 /usr/bin/make
-sudo -E sh -e << ROOT_EOF
+
 PATH=$PATH:/usr/sbin

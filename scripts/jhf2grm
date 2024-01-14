@@ -83,14 +83,16 @@ do
     [[ s -lt 2 ]] && echo "true" >> $d/INSTALL
 
     # remove jhalfs sudo 
-    #sed -i 's/.*ROOT_EOF.*//g' $d/BUILD
-    #sed -i 's/.*ROOT_EOF.*//g' $d/INSTALL
-    #sed -i 's/\\\$(find \/opt -name lib)/\$(find \/opt -name lib)/g' $d/BUILD
-    #sed -i 's/\\\$(find \/opt -name lib)/\$(find \/opt -name lib)/g' $d/INSTALL
-    #sed -i 's/find \\\$libdir -name \\\\\*\.la.*\\\\/find \$libdir -name \\\*\.la \\/g' $d/BUILD
-    #sed -i 's/find \\\$libdir -name \\\\\*\.la.*\\\\/find \$libdir -name \\\*\.la \\/g' $d/INSTALL
-    #sed -i 's/\\\\\*ImageMagick\\\\\* \\\\/\\\*ImageMagick\\\* \\/g' $d/BUILD
-    #sed -i 's/\\\\\*ImageMagick\\\\\* \\\\/\\\*ImageMagick\\\* \\/g' $d/INSTALL
+    sed -i 's/.*ROOT_EOF.*//g' $d/BUILD
+    sed -i 's/.*ROOT_EOF.*//g' $d/INSTALL
+    sed -i 's/\\\$(find \/opt -name lib)/\$(find \/opt -name lib)/g' $d/BUILD
+    sed -i 's/\\\$(find \/opt -name lib)/\$(find \/opt -name lib)/g' $d/INSTALL
+    sed -i 's/find \\\$libdir -name \\\\\*\.la/find \$libdir -name \\\*\.la/g' $d/BUILD
+    sed -i 's/find \\\$libdir -name \\\\\*\.la/find \$libdir -name \\\*\.la/g' $d/INSTALL
+    sed -i 's/\\\\\*ImageMagick\\\\\*/\\\*ImageMagick\\\*/g' $d/BUILD
+    sed -i 's/\\\\\*ImageMagick\\\\\*/\\\*ImageMagick\\\*/g' $d/INSTALL
+    sed -i 's/\\\\$/\\/g' $d/BUILD
+    sed -i 's/\\\\$/\\/g' $d/INSTALL
 
     # replace sorcery make wrapper
     sed -i 's/\(^\|\s\)make/\1\/usr\/bin\/make/g' $d/BUILD

@@ -72,5 +72,5 @@ esac
 export JH_UNPACKDIR
 cd $JH_UNPACKDIR
 
-sudo -E sh -e << ROOT_EOF
+
 PATH=$PATH:/usr/sbin

@@ -6,9 +6,10 @@ for libdir in /lib /usr/lib $(find /opt -name lib); do
              ! -path \*ImageMagick\* \
                -delete
 done
+
 sudo /sbin/ldconfig
 
-sudo -E sh -e << ROOT_EOF
+
 PATH=$PATH:/usr/sbin
 cat > /etc/sudoers.d/00-sudo << "EOF"
 Defaults secure_path="/usr/sbin:/usr/bin"
@@ -32,7 +33,7 @@ session   include     system-session
 # End /etc/pam.d/sudo
 EOF
 chmod 644 /etc/pam.d/sudo
-ROOT_EOF
+
 
 cd $BUILD_DIR
 [[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked

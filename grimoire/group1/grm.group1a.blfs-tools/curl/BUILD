@@ -80,5 +80,5 @@ cd $JH_UNPACKDIR
             --with-ca-path=/etc/ssl/certs
 /usr/bin/make
 #make -k test || true
-sudo -E sh -e << ROOT_EOF
+
 PATH=$PATH:/usr/sbin

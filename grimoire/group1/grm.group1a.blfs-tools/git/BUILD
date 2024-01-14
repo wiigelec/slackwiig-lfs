@@ -100,5 +100,5 @@ cd $JH_UNPACKDIR
 #make html
 #make man
 #make -k test || true
-sudo -E sh -e << ROOT_EOF
+
 PATH=$PATH:/usr/sbin
