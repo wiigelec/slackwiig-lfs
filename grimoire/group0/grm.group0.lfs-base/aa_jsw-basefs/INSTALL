@@ -14,25 +14,6 @@ mkdir -pv $INSTALL_ROOT/lib64
 
 
 #----------------------------------------------------------#
-# 5.5. Glibc-2.38
-
-ln -sfv ../lib/ld-linux-x86-64.so.2 $INSTALL_ROOT/lib64
-ln -sfv ../lib/ld-linux-x86-64.so.2 $INSTALL_ROOT/lib64/ld-lsb-x86-64.so.3
-
-
-#----------------------------------------------------------#
-# 6.18. GCC-13.2.0 - Pass 2
-
-ln -sv gcc $INSTALL_ROOT/usr/bin/cc
-
-
-#----------------------------------------------------------#
-# 6.4. Bash-5.2.15
-
-ln -sv bash $INSTALL_ROOT/bin/sh
-
-
-#----------------------------------------------------------#
 # 7.3. Preparing Virtual Kernel File Systems
 
 mkdir -pv $INSTALL_ROOT/{dev,proc,sys,run}
