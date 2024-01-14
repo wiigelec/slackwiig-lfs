@@ -44,7 +44,7 @@ do
     echo "$appname: $appname version $version" >> install/slack-desc
     echo "$appname:" >> install/slack-desc
     echo "$appname: Package created using Linux From Scratch jhalfs build" >> install/slack-desc
-    echo "$appname: scripts, Sourcemage sorcery build tool" >> isntall/slack-desc
+    echo "$appname: scripts, Sourcemage sorcery build tool" >> install/slack-desc
     echo "$appname: and Slackware pkgtools" >> install/slack-desc
     echo "$appname: slackwiig-lfs assembled in the US by wiigelec" >> install/slack-desc
     echo "$appname: using foreign and domestic code bases and tools" >> install/slack-desc
