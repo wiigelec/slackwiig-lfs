@@ -9,8 +9,8 @@ mkdir -vp   /usr/share/doc/git-2.41.0
 tar   -xf   ../git-htmldocs-2.41.0.tar.xz \
       -C    /usr/share/doc/git-2.41.0 --no-same-owner --no-overwrite-dir
 
-find        /usr/share/doc/git-2.41.0 -type d -exec chmod 755 {} \\;
-find        /usr/share/doc/git-2.41.0 -type f -exec chmod 644 {} \\;
+find        /usr/share/doc/git-2.41.0 -type d -exec chmod 755 {} \;
+find        /usr/share/doc/git-2.41.0 -type f -exec chmod 644 {} \;
 mkdir -vp /usr/share/doc/git-2.41.0/man-pages/{html,text}
 mv        /usr/share/doc/git-2.41.0/{git*.txt,man-pages/text}
 mv        /usr/share/doc/git-2.41.0/{git*.,index.,man-pages/}html
@@ -24,7 +24,7 @@ mv        /usr/share/doc/git-2.41.0/howto/{*.txt,text}
 mv        /usr/share/doc/git-2.41.0/howto/{*.,}html
 
 sed -i '/^<a href=/s|howto/|&html/|' /usr/share/doc/git-2.41.0/howto-index.html
-sed -i '/^\\* link:/s|howto/|&html/|' /usr/share/doc/git-2.41.0/howto-index.txt
+sed -i '/^\* link:/s|howto/|&html/|' /usr/share/doc/git-2.41.0/howto-index.txt
 
 for libdir in /lib /usr/lib $(find /opt -name lib); do
   find $libdir -name \*.la           \
