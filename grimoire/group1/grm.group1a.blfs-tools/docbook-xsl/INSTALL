@@ -92,7 +92,7 @@ cd $JH_UNPACKDIR
 
 patch -Np1 -i ../docbook-xsl-nons-1.79.2-stack_fix-1.patch
 tar -xf ../docbook-xsl-doc-1.79.2.tar.bz2 --strip-components=1
-
+sudo -E sh -e << ROOT_EOF
 PATH=$PATH:/usr/sbin
 install -v -m755 -d /usr/share/xml/docbook/xsl-stylesheets-nons-1.79.2
 
@@ -110,15 +110,15 @@ install -v -m644    RELEASE-NOTES* NEWS* \\
                     /usr/share/doc/docbook-xsl-nons-1.79.2
 cp -v -R doc/* /usr/share/doc/docbook-xsl-nons-1.79.2
 
-for libdir in /lib /usr/lib $(find /opt -name lib); do
-  find $libdir -name \*.la \
-             ! -path \*ImageMagick\* \
+for libdir in /lib /usr/lib \$(find /opt -name lib); do
+  find \$libdir -name \\*.la           \\
+             ! -path \\*ImageMagick\\* \\
                -delete
 done
-
+ROOT_EOF
 sudo /sbin/ldconfig
 
-
+sudo -E sh -e << ROOT_EOF
 PATH=$PATH:/usr/sbin
 if [ ! -d /etc/xml ]; then install -v -m755 -d /etc/xml; fi &&
 if [ ! -f /etc/xml/catalog ]; then
@@ -154,7 +154,7 @@ xmlcatalog --noout --add "rewriteURI" \\
            "http://docbook.sourceforge.net/release/xsl/current" \\
            "/usr/share/xml/docbook/xsl-stylesheets-nons-1.79.2" \\
     /etc/xml/catalog
-
+ROOT_EOF
 
 cd $BUILD_DIR
 [[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked

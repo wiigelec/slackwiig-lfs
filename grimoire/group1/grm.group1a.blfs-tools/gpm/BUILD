@@ -87,5 +87,5 @@ patch -Np1 -i ../gpm-1.20.7-consolidated-1.patch
 ./autogen.sh
 ./configure --prefix=/usr --sysconfdir=/etc
 /usr/bin/make
-
+sudo -E sh -e << ROOT_EOF
 PATH=$PATH:/usr/sbin

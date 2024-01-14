@@ -87,5 +87,5 @@ patch -Np1 -i ../sgml-common-0.6.3-manpage-1.patch
 autoreconf -f -i
 ./configure --prefix=/usr --sysconfdir=/etc
 /usr/bin/make
-
+sudo -E sh -e << ROOT_EOF
 PATH=$PATH:/usr/sbin

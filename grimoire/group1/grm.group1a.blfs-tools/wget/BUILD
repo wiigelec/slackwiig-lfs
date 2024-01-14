@@ -78,5 +78,5 @@ cd $JH_UNPACKDIR
             --with-ssl=openssl
 /usr/bin/make
 #make -k check || true
-
+sudo -E sh -e << ROOT_EOF
 PATH=$PATH:/usr/sbin

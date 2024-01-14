@@ -1,15 +1,15 @@
 /usr/bin/make -j1 install-full
 chgrp -v -R root /usr/share/doc/lynx-2.8.9rel.1/lynx_doc
 
-for libdir in /lib /usr/lib $(find /opt -name lib); do
-  find $libdir -name \*.la \
-             ! -path \*ImageMagick\* \
+for libdir in /lib /usr/lib \$(find /opt -name lib); do
+  find \$libdir -name \\*.la           \\
+             ! -path \\*ImageMagick\\* \\
                -delete
 done
-
+ROOT_EOF
 sudo /sbin/ldconfig
 
-
+sudo -E sh -e << ROOT_EOF
 PATH=$PATH:/usr/sbin
 sed -e '/#LOCALE/     a LOCALE_CHARSET:TRUE'     \\
     -i /etc/lynx/lynx.cfg
@@ -17,7 +17,7 @@ sed -e '/#DEFAULT_ED/ a DEFAULT_EDITOR:vi'       \\
     -i /etc/lynx/lynx.cfg
 sed -e '/#PERSIST/    a PERSISTENT_COOKIES:TRUE' \\
     -i /etc/lynx/lynx.cfg
-
+ROOT_EOF
 
 cd $BUILD_DIR
 [[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked

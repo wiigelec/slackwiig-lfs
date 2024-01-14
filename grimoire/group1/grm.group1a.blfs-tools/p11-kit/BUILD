@@ -92,5 +92,5 @@ meson setup ..            \
       -Dtrust_paths=/etc/pki/anchors
 ninja
 #ninja test || true
-
+sudo -E sh -e << ROOT_EOF
 PATH=$PATH:/usr/sbin

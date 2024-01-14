@@ -26,12 +26,12 @@ mv        /usr/share/doc/git-2.41.0/howto/{*.,}html
 sed -i '/^<a href=/s|howto/|&html/|' /usr/share/doc/git-2.41.0/howto-index.html
 sed -i '/^\\* link:/s|howto/|&html/|' /usr/share/doc/git-2.41.0/howto-index.txt
 
-for libdir in /lib /usr/lib $(find /opt -name lib); do
-  find $libdir -name \*.la \
-             ! -path \*ImageMagick\* \
+for libdir in /lib /usr/lib \$(find /opt -name lib); do
+  find \$libdir -name \\*.la           \\
+             ! -path \\*ImageMagick\\* \\
                -delete
 done
-
+ROOT_EOF
 sudo /sbin/ldconfig
 
 
