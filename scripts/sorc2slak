@@ -33,6 +33,7 @@ do
     # remove sorcery stuff
     rm -rf ./tmp/sorcery
     rm -rf ./tmp/liblock-0
+    find ./ -type d -name tmp -delete
     rm -rf ./var/cache/sorcery
     rm -rf ./var/log/sorcery
     rm -rf ./var/state/sorcery
