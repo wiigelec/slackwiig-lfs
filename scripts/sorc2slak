@@ -46,12 +46,12 @@ do
     echo "$appname: Package created using Linux From Scratch jhalfs build" >> install/slack-desc
     echo "$appname: scripts, Sourcemage sorcery build tool" >> isntall/slack-desc
     echo "$appname: and Slackware pkgtools" >> install/slack-desc
-    echo "$appname:" >> install/slack-desc
     echo "$appname: slackwiig-lfs assembled in the US by wiigelec" >> install/slack-desc
     echo "$appname: using foreign and domestic code bases and tools" >> install/slack-desc
     echo "$appname:" >> install/slack-desc
     echo "$appname: linuxfromscratch.org" >> install/slack-desc
     echo "$appname: sourcemage.org" >> install/slack-desc
+    echo "$appname: slackware.com" >> install/slack-desc
 
     # make package
     /home/compnerd/Downloads/pkgtools/sbin/makepkg -l y -c n \
