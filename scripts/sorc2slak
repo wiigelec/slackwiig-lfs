@@ -38,6 +38,7 @@ do
     find ./var -type d -name cache -delete
     find ./var -type d -name log -delete
     find ./var -type d -name state -delete
+    find ./ -type d -name var -delete
 
     # remove jhalfs stuff
     rm -rf ./sources
