@@ -35,6 +35,9 @@ do
     rm -rf ./var/cache/sorcery
     rm -rf ./var/log/sorcery
     rm -rf ./var/state/sorcery
+    find ./ -type d -name /var/cache -delete
+    find ./ -type d -name /var/log -delete
+    find ./ -type d -name /var/state -delete
 
     # remove jhalfs stuff
     rm -rf ./sources
