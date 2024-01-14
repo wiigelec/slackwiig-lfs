@@ -1,12 +1,11 @@
 /usr/bin/make -j1 install
 ln -sfv libsudo_util.so.0.0.0 /usr/lib/sudo/libsudo_util.so.0
 
-for libdir in /lib /usr/lib \$(find /opt -name lib); do
-  find \$libdir -name \\*.la           \\
-             ! -path \\*ImageMagick\\* \\
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la           \
+             ! -path \*ImageMagick\* \
                -delete
 done
-ROOT_EOF
 sudo /sbin/ldconfig
 
 sudo -E sh -e << ROOT_EOF
