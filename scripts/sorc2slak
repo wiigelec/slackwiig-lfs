@@ -39,6 +39,8 @@ do
     find ./var -type d -name log -delete
     find ./var -type d -name state -delete
     find ./ -type d -name var -delete
+    rm -rf ./tmp/liblock-0
+    find ./ -type d -name tmp -delete
 
     # remove jhalfs stuff
     rm -rf ./sources
