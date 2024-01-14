@@ -20,6 +20,10 @@ echo -e "\n\nTotalseconds: $SECONDS\n"
 
 # End of LFS book script
 
+# jsw pull in files for installwatch
+touch /usr/include/gnu/stubs-64.h
+ln -sfv gcc /usr/bin/cc
+
 echo "KB: $(du -skx --exclude=lost+found --exclude=var/lib --exclude=$SCRIPT_ROOT $ROOT)"
 cd $SRC_DIR
 rm -rf $PKGDIR

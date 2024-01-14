@@ -83,6 +83,11 @@ echo -e "\n\nTotalseconds: $SECONDS\n"
 
 # End of LFS book script
 
+# jsw pull in files for installwatch
+ln -sfv ../lib/ld-linux-x86-64.so.2 /lib64
+ln -sfv ../lib/ld-linux-x86-64.so.2 /lib64/ld-lsb-x86-64.so.3
+ln -sfv ../lib/ld-linux-x86-64.so.2 /usr/bin/ld.so
+
 echo "KB: $(du -skx --exclude=lost+found --exclude=var/lib --exclude=$SCRIPT_ROOT $ROOT)"
 cd $SRC_DIR
 rm -rf $PKGDIR
