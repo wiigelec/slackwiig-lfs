@@ -32,7 +32,7 @@ do
 
     # remove sorcery stuff
     rm -rf ./etc/sorcery
-    rm -rf ./var/log
+    rm -rf ./var/log/sorcery
     rm -rf ./var/state
 
     # remove jhalfs stuff
