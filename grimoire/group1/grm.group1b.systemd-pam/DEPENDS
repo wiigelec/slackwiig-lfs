@@ -1,0 +1,10 @@
+linux-pam
+cracklib
+libpwquality
+pcre2
+systemd
+glib2
+gobject-introspection
+duktape
+polkit
+shadow
