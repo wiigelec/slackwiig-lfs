@@ -69,7 +69,7 @@ esac
 export JH_UNPACKDIR
 cd $JH_UNPACKDIR
 
-sudo -E sh -e << ROOT_EOF
+
 PATH=$PATH:/usr/sbin
 install -v -d -m755 /usr/share/xml/docbook/xml-dtd-4.5
 install -v -d -m755 /etc/xml
@@ -142,15 +142,15 @@ xmlcatalog --noout --add "delegateURI" \\
     "file:///etc/xml/docbook" \\
     /etc/xml/catalog
 
-for libdir in /lib /usr/lib \$(find /opt -name lib); do
-  find \$libdir -name \\*.la           \\
-             ! -path \\*ImageMagick\\* \\
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la \
+             ! -path \*ImageMagick\* \
                -delete
 done
-ROOT_EOF
+
 sudo /sbin/ldconfig
 
-sudo -E sh -e << ROOT_EOF
+
 PATH=$PATH:/usr/sbin
 for DTDVERSION in 4.1.2 4.2 4.3 4.4
 do
@@ -175,7 +175,7 @@ do
     "file:///etc/xml/docbook" \\
     /etc/xml/catalog
 done
-ROOT_EOF
+
 
 cd $BUILD_DIR
 [[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked

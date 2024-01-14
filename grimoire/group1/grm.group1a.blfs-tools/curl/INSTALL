@@ -9,12 +9,12 @@ find docs \\( -name Makefile\\* -o  \\
 
 cp -v -R docs -T /usr/share/doc/curl-8.2.1
 
-for libdir in /lib /usr/lib \$(find /opt -name lib); do
-  find \$libdir -name \\*.la           \\
-             ! -path \\*ImageMagick\\* \\
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la \
+             ! -path \*ImageMagick\* \
                -delete
 done
-ROOT_EOF
+
 sudo /sbin/ldconfig
 
 cd $BUILD_DIR

@@ -6,12 +6,12 @@ install-catalog --add /etc/sgml/sgml-ent.cat \\
 install-catalog --add /etc/sgml/sgml-docbook.cat \\
     /etc/sgml/sgml-ent.cat
 
-for libdir in /lib /usr/lib \$(find /opt -name lib); do
-  find \$libdir -name \\*.la           \\
-             ! -path \\*ImageMagick\\* \\
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la \
+             ! -path \*ImageMagick\* \
                -delete
 done
-ROOT_EOF
+
 sudo /sbin/ldconfig
 
 

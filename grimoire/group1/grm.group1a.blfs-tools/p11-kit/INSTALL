@@ -2,18 +2,18 @@ ninja install
 ln -sfv /usr/libexec/p11-kit/trust-extract-compat \\
         /usr/bin/update-ca-certificates
 
-for libdir in /lib /usr/lib \$(find /opt -name lib); do
-  find \$libdir -name \\*.la           \\
-             ! -path \\*ImageMagick\\* \\
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la \
+             ! -path \*ImageMagick\* \
                -delete
 done
-ROOT_EOF
+
 sudo /sbin/ldconfig
 
-sudo -E sh -e << ROOT_EOF
+
 PATH=$PATH:/usr/sbin
 ln -sfv ./pkcs11/p11-kit-trust.so /usr/lib/libnssckbi.so
-ROOT_EOF
+
 
 cd $BUILD_DIR
 [[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked

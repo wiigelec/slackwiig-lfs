@@ -17,7 +17,7 @@ unset MAKE_TERMOUT
 unset MAKE_TERMERR
 if [ -r /etc/profile ]; then source /etc/profile; fi
 # End of environment
-sudo -E sh -e << ROOT_EOF
+
 PATH=$PATH:/usr/sbin
 cat > /etc/profile << "EOF"
 # Begin /etc/profile
@@ -106,12 +106,12 @@ unset script RED GREEN NORMAL
 
 # End /etc/profile
 EOF
-ROOT_EOF
-sudo -E sh -e << ROOT_EOF
+
+
 PATH=$PATH:/usr/sbin
 install --directory --mode=0755 --owner=root --group=root /etc/profile.d
-ROOT_EOF
-sudo -E sh -e << ROOT_EOF
+
+
 PATH=$PATH:/usr/sbin
 cat > /etc/profile.d/bash_completion.sh << "EOF"
 # Begin /etc/profile.d/bash_completion.sh
@@ -150,8 +150,8 @@ fi
 # End /etc/profile.d/bash_completion.sh
 EOF
 install --directory --mode=0755 --owner=root --group=root /etc/bash_completion.d
-ROOT_EOF
-sudo -E sh -e << ROOT_EOF
+
+
 PATH=$PATH:/usr/sbin
 cat > /etc/profile.d/dircolors.sh << "EOF"
 # Setup for /bin/ls and /bin/grep to support color, the alias is in /etc/bashrc.
@@ -166,8 +166,8 @@ fi
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 EOF
-ROOT_EOF
-sudo -E sh -e << ROOT_EOF
+
+
 PATH=$PATH:/usr/sbin
 cat > /etc/profile.d/extrapaths.sh << "EOF"
 if [ -d /usr/local/lib/pkgconfig ] ; then
@@ -188,8 +188,8 @@ fi
 pathappend /usr/share/man  MANPATH
 pathappend /usr/share/info INFOPATH
 EOF
-ROOT_EOF
-sudo -E sh -e << ROOT_EOF
+
+
 PATH=$PATH:/usr/sbin
 cat > /etc/profile.d/readline.sh << "EOF"
 # Set up the INPUTRC environment variable.
@@ -198,8 +198,8 @@ if [ -z "\$INPUTRC" -a ! -f "\$HOME/.inputrc" ] ; then
 fi
 export INPUTRC
 EOF
-ROOT_EOF
-sudo -E sh -e << ROOT_EOF
+
+
 PATH=$PATH:/usr/sbin
 cat > /etc/profile.d/umask.sh << "EOF"
 # By default, the umask should be set.
@@ -209,16 +209,16 @@ else
   umask 022
 fi
 EOF
-ROOT_EOF
-sudo -E sh -e << ROOT_EOF
+
+
 PATH=$PATH:/usr/sbin
 cat > /etc/profile.d/i18n.sh << "EOF"
 # Set up i18n variables
 . /etc/locale.conf
 export LANG
 EOF
-ROOT_EOF
-sudo -E sh -e << ROOT_EOF
+
+
 PATH=$PATH:/usr/sbin
 cat > /etc/bashrc << "EOF"
 # Begin /etc/bashrc
@@ -257,7 +257,7 @@ unset RED GREEN NORMAL
 
 # End /etc/bashrc
 EOF
-ROOT_EOF
+
 cat > ~/.bash_profile << "EOF"
 # Begin ~/.bash_profile
 # Written for Beyond Linux From Scratch
@@ -328,8 +328,8 @@ cat > ~/.bash_logout << "EOF"
 
 # End ~/.bash_logout
 EOF
-sudo -E sh -e << ROOT_EOF
+
 PATH=$PATH:/usr/sbin
 dircolors -p > /etc/dircolors
-ROOT_EOF
+
 exit

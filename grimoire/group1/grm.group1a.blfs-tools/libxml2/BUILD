@@ -96,5 +96,5 @@ tar xf ../xmlts20130923.tar.gz
 #      '^Total|expected' check.log || true
 #check || true
 #check-valgrind || true
-sudo -E sh -e << ROOT_EOF
+
 PATH=$PATH:/usr/sbin
