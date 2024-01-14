@@ -121,6 +121,7 @@ chmod -v 600  $INSTALL_ROOT/var/log/btmp
 #----------------------------------------------------------#
 # 9.2. General Network Configuration
 
+mkdir -pv $INSTALL_ROOT/etc/systemd/network/
 cat > $INSTALL_ROOT/etc/systemd/network/10-eth-static.network << "EOF"
 [Match]
 Name=<network-device-name>
