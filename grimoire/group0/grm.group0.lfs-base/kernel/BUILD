@@ -39,7 +39,7 @@ SECONDS=${PREV_SEC}
 
 # Start of LFS book script
 /usr/bin/make mrproper
-cp -v ../kernel-config .config
+cp -v ${SPELL_DIRECTORY}/kernel-config .config
 timeout 60 /usr/bin/make oldconfig ||\
 { echo kernel config is not up to date; exit 124; }
 /usr/bin/make
