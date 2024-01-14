@@ -32,6 +32,7 @@ do
 
     # remove sorcery stuff
     rm -rf ./tmp/sorcery
+    rm -rf ./tmp/liblock-0
     rm -rf ./var/cache/sorcery
     rm -rf ./var/log/sorcery
     rm -rf ./var/state/sorcery
@@ -39,8 +40,9 @@ do
     find ./var -type d -name log -delete
     find ./var -type d -name state -delete
     find ./ -type d -name var -delete
-    rm -rf ./tmp/liblock-0
     rm -rf ./etc/sorcery
+    rm -rf ./dev
+    rm -rf ./run
 
     # remove jhalfs stuff
     rm -rf ./sources
