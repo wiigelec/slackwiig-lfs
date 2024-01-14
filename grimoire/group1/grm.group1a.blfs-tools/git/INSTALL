@@ -1,0 +1,41 @@
+/usr/bin/make -j1 perllibdir=/usr/lib/perl5/5.38/site_perl install
+#make -j1 install-man
+
+#make -j1 htmldir=/usr/share/doc/git-2.41.0 install-html
+
+tar -xf ../git-manpages-2.41.0.tar.xz \\
+    -C /usr/share/man --no-same-owner --no-overwrite-dir
+mkdir -vp   /usr/share/doc/git-2.41.0
+tar   -xf   ../git-htmldocs-2.41.0.tar.xz \\
+      -C    /usr/share/doc/git-2.41.0 --no-same-owner --no-overwrite-dir
+
+find        /usr/share/doc/git-2.41.0 -type d -exec chmod 755 {} \\;
+find        /usr/share/doc/git-2.41.0 -type f -exec chmod 644 {} \\;
+mkdir -vp /usr/share/doc/git-2.41.0/man-pages/{html,text}
+mv        /usr/share/doc/git-2.41.0/{git*.txt,man-pages/text}
+mv        /usr/share/doc/git-2.41.0/{git*.,index.,man-pages/}html
+
+mkdir -vp /usr/share/doc/git-2.41.0/technical/{html,text}
+mv        /usr/share/doc/git-2.41.0/technical/{*.txt,text}
+mv        /usr/share/doc/git-2.41.0/technical/{*.,}html
+
+mkdir -vp /usr/share/doc/git-2.41.0/howto/{html,text}
+mv        /usr/share/doc/git-2.41.0/howto/{*.txt,text}
+mv        /usr/share/doc/git-2.41.0/howto/{*.,}html
+
+sed -i '/^<a href=/s|howto/|&html/|' /usr/share/doc/git-2.41.0/howto-index.html
+sed -i '/^\\* link:/s|howto/|&html/|' /usr/share/doc/git-2.41.0/howto-index.txt
+
+for libdir in /lib /usr/lib \$(find /opt -name lib); do
+  find \$libdir -name \\*.la           \\
+             ! -path \\*ImageMagick\\* \\
+               -delete
+done
+ROOT_EOF
+sudo /sbin/ldconfig
+
+
+cd $BUILD_DIR
+[[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked
+
+exit

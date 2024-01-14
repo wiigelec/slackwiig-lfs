@@ -1,0 +1,23 @@
+/usr/bin/make -j1 install
+
+rm -rf docs/examples/.deps
+
+find docs \\( -name Makefile\\* -o  \\
+             -name \\*.1       -o  \\
+             -name \\*.3       -o  \\
+             -name CMakeLists.txt \\) -delete
+
+cp -v -R docs -T /usr/share/doc/curl-8.2.1
+
+for libdir in /lib /usr/lib \$(find /opt -name lib); do
+  find \$libdir -name \\*.la           \\
+             ! -path \\*ImageMagick\\* \\
+               -delete
+done
+ROOT_EOF
+sudo /sbin/ldconfig
+
+cd $BUILD_DIR
+[[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked
+
+exit

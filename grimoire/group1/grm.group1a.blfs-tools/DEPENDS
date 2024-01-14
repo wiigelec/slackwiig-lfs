@@ -1,0 +1,17 @@
+sudo
+libxml2
+libxslt
+sgml-common
+unzip
+DocBook
+docbook-xsl
+gpm
+curl
+libtasn1
+p11-kit
+make-ca
+git
+wget
+lynx
+postlfs-config-profile
+postlfs-config-vimrc
