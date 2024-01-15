@@ -119,10 +119,10 @@ install -v -d -m755 /etc/dbus-1/system.d
 install -v -m644 dbus/dbus-wpa_supplicant.conf \
                  /etc/dbus-1/system.d/wpa_supplicant.conf
 systemctl enable wpa_supplicant
-install -v -m755 wpa_gui-qt4/wpa_gui /usr/bin/
-install -v -m644 doc/docbook/wpa_gui.8 /usr/share/man/man8/
-install -v -m644 wpa_gui-qt4/wpa_gui.desktop /usr/share/applications/
-install -v -m644 wpa_gui-qt4/icons/wpa_gui.svg /usr/share/pixmaps/
+#install -v -m755 wpa_gui-qt4/wpa_gui /usr/bin/
+#install -v -m644 doc/docbook/wpa_gui.8 /usr/share/man/man8/
+#install -v -m644 wpa_gui-qt4/wpa_gui.desktop /usr/share/applications/
+#install -v -m644 wpa_gui-qt4/icons/wpa_gui.svg /usr/share/pixmaps/
 
 for libdir in /lib /usr/lib $(find /opt -name lib); do
   find $libdir -name \*.la           \
