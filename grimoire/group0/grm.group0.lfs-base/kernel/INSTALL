@@ -1,10 +1,10 @@
-/usr/bin/make -j1 modules_install
-cp -v arch/x86/boot/bzImage /boot/vmlinuz-6.4.12-lfs-12.0-systemd
-cp -v System.map /boot/System.map-6.4.12
-cp -v .config /boot/config-6.4.12
-cp -r Documentation -T /usr/share/doc/linux-6.4.12
-install -v -m755 -d /etc/modprobe.d
-cat > /etc/modprobe.d/usb.conf << "EOF"
+/usr/bin/make DESTDIR=$INSTALL_ROOT -j1 modules_install
+cp -v arch/x86/boot/bzImage $INSTALL_ROOT/boot/vmlinuz-6.4.12-lfs-12.0-systemd
+cp -v System.map $INSTALL_ROOT/boot/System.map-6.4.12
+cp -v .config $INSTALL_ROOT/boot/config-6.4.12
+cp -r Documentation -T $INSTALL_ROOT/usr/share/doc/linux-6.4.12
+install -v -m755 -d $INSTALL_ROOT/etc/modprobe.d
+cat > $INSTALL_ROOT/etc/modprobe.d/usb.conf << "EOF"
 # Begin /etc/modprobe.d/usb.conf
 
 install ohci_hcd /sbin/modprobe ehci_hcd ; /sbin/modprobe -i ohci_hcd ; true
