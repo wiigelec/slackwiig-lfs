@@ -117,3 +117,16 @@ case $(uname -m) in i?86 )
                      --enable-languages=c,c++       \
                      --with-ld=/usr/bin/ld
         /usr/bin/make all-gcc
+	/usr/bin/make install-gcc
+    popd
+    export TARGET_CC=$PWD/x86_64-gcc/bin/x86_64-linux-gnu-gcc
+esac
+./configure --prefix=/usr        \
+            --sysconfdir=/etc    \
+            --disable-efiemu     \
+            --enable-grub-mkfont \
+            --with-platform=efi  \
+            --target=x86_64      \
+            --disable-werror
+unset TARGET_CC
+/usr/bin/make
