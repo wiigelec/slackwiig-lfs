@@ -1,0 +1,30 @@
+        /usr/bin/make install-gcc
+    popd
+    export TARGET_CC=$PWD/x86_64-gcc/bin/x86_64-linux-gnu-gcc
+esac
+./configure --prefix=/usr        \
+            --sysconfdir=/etc    \
+            --disable-efiemu     \
+            --enable-grub-mkfont \
+            --with-platform=efi  \
+            --target=x86_64      \
+            --disable-werror
+unset TARGET_CC
+/usr/bin/make
+
+PATH=$PATH:/usr/sbin
+/usr/bin/make -j1 install
+mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions
+
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la           \
+             ! -path \*ImageMagick\* \
+               -delete
+done
+
+sudo /sbin/ldconfig
+
+cd $BUILD_DIR
+[[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked
+
+exit

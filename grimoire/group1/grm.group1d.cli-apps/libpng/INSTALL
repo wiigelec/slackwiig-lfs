@@ -1,0 +1,16 @@
+/usr/bin/make -j1 install
+mkdir -v /usr/share/doc/libpng-1.6.40
+cp -v README libpng-manual.txt /usr/share/doc/libpng-1.6.40
+
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la           \
+             ! -path \*ImageMagick\* \
+               -delete
+done
+
+sudo /sbin/ldconfig
+
+cd $BUILD_DIR
+[[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked
+
+exit

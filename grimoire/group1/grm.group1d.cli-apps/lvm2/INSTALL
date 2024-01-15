@@ -1,0 +1,34 @@
+#make -k -C tools install_tools_dynamic || true
+#make -k -C udev  install || true
+#make -k -C libdm install || true
+
+
+PATH=$PATH:/usr/sbin
+#LC_ALL=en_US.UTF-8 /usr/bin/make -k check_local || true
+
+#S=<testname> || true
+#make -k -C test help || true
+#rm test/shell/lvconvert-raid-reshape.sh || true
+
+PATH=$PATH:/usr/sbin
+/usr/bin/make -j1 install
+/usr/bin/make -j1 install_systemd_units
+
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la           \
+             ! -path \*ImageMagick\* \
+               -delete
+done
+
+sudo /sbin/ldconfig
+
+
+PATH=$PATH:/usr/sbin
+sed -e '/locking_dir =/{s/#//;s/var/run/}' \
+    -i /etc/lvm/lvm.conf
+
+
+cd $BUILD_DIR
+[[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked
+
+exit
