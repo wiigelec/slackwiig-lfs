@@ -1,0 +1,17 @@
+/usr/bin/make -j1 install
+mkdir -vp /usr/share/doc/libnl-3.7.0
+tar -xf ../libnl-doc-3.7.0.tar.gz --strip-components=1 --no-same-owner \
+    -C  /usr/share/doc/libnl-3.7.0
+
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la           \
+             ! -path \*ImageMagick\* \
+               -delete
+done
+
+sudo /sbin/ldconfig
+
+cd $BUILD_DIR
+[[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked
+
+exit

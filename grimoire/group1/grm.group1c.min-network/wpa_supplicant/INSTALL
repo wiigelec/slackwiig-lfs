@@ -1,0 +1,145 @@
+#!/bin/bash
+set -e
+# Variables coming from configuration
+export JH_PACK_INSTALL=""
+export JH_SRC_ARCHIVE="/sources"
+export JH_SRC_SUBDIRS=""
+export JH_BUILD_ROOT="/sources"
+export JH_BUILD_SUBDIRS="y"
+export JH_KEEP_FILES=""
+unset CFLAGS
+unset CXXFLAGS
+unset LDFLAGS
+export MAKEFLAGS="-j$(nproc)"
+unset NINJAJOBS
+unset MAKELEVEL
+unset MAKE_TERMOUT
+unset MAKE_TERMERR
+if [ -r /etc/profile ]; then source /etc/profile; fi
+# End of environment
+export JH_PKG_DIR=wpa_supplicant
+SRC_DIR=${JH_SRC_ARCHIVE}${JH_SRC_SUBDIRS:+/${JH_PKG_DIR}}
+BUILD_DIR=${JH_BUILD_ROOT}${JH_BUILD_SUBDIRS:+/${JH_PKG_DIR}}
+mkdir -p $SRC_DIR
+mkdir -p $BUILD_DIR
+
+cd $SRC_DIR
+PACKAGE=wpa_supplicant-2.10.tar.gz
+if [[ ! -f $PACKAGE ]] ; then
+  if [ -f "$JH_SRC_ARCHIVE/$PACKAGE" ] ; then
+    cp "$JH_SRC_ARCHIVE/$PACKAGE" "$PACKAGE"
+  else
+    wget -T 30 -t 5 "https://w1.fi/releases/wpa_supplicant-2.10.tar.gz"
+  fi
+fi
+echo "d26797fcb002898d4ee989179346e1cc  $PACKAGE" | md5sum -c -
+
+cd $BUILD_DIR
+find . -maxdepth 1 -mindepth 1 -type d | xargs sudo rm -rf
+
+case $PACKAGE in
+  *.tar.gz|*.tar.bz2|*.tar.xz|*.tgz|*.tar.lzma)
+     tar -xvf $SRC_DIR/$PACKAGE > unpacked
+     JH_UNPACKDIR=`grep '[^./]\+' unpacked | head -n1 | sed 's@^\./@@;s@/.*@@'`
+     ;;
+  *.tar.lz)
+     bsdtar -xvf $SRC_DIR/$PACKAGE 2> unpacked
+     JH_UNPACKDIR=`head -n1 unpacked | cut  -d" " -f2 | sed 's@^\./@@;s@/.*@@'`
+     ;;
+  *.zip)
+     zipinfo -1 $SRC_DIR/$PACKAGE > unpacked
+     JH_UNPACKDIR="$(sed 's@/.*@@' unpacked | uniq )"
+     if test $(wc -w <<< $JH_UNPACKDIR) -eq 1; then
+       unzip $SRC_DIR/$PACKAGE
+     else
+       JH_UNPACKDIR=${PACKAGE%.zip}
+       unzip -d $JH_UNPACKDIR $SRC_DIR/$PACKAGE
+     fi
+     ;;
+  *)
+     JH_UNPACKDIR=$JH_PKG_DIR-build
+     mkdir $JH_UNPACKDIR
+     cp $SRC_DIR/$PACKAGE $JH_UNPACKDIR
+     ADDITIONAL="$(find . -mindepth 1 -maxdepth 1 -type l)"
+     if [ -n "$ADDITIONAL" ]; then
+         cp $ADDITIONAL $JH_UNPACKDIR
+     fi
+     ;;
+esac
+export JH_UNPACKDIR
+cd $JH_UNPACKDIR
+
+cat > wpa_supplicant/.config << "EOF"
+CONFIG_BACKEND=file
+CONFIG_CTRL_IFACE=y
+CONFIG_DEBUG_FILE=y
+CONFIG_DEBUG_SYSLOG=y
+CONFIG_DEBUG_SYSLOG_FACILITY=LOG_DAEMON
+CONFIG_DRIVER_NL80211=y
+CONFIG_DRIVER_WEXT=y
+CONFIG_DRIVER_WIRED=y
+CONFIG_EAP_GTC=y
+CONFIG_EAP_LEAP=y
+CONFIG_EAP_MD5=y
+CONFIG_EAP_MSCHAPV2=y
+CONFIG_EAP_OTP=y
+CONFIG_EAP_PEAP=y
+CONFIG_EAP_TLS=y
+CONFIG_EAP_TTLS=y
+CONFIG_IEEE8021X_EAPOL=y
+CONFIG_IPV6=y
+CONFIG_LIBNL32=y
+CONFIG_PEERKEY=y
+CONFIG_PKCS12=y
+CONFIG_READLINE=y
+CONFIG_SMARTCARD=y
+CONFIG_WPS=y
+CFLAGS += -I/usr/include/libnl3
+EOF
+cat >> wpa_supplicant/.config << "EOF"
+CONFIG_CTRL_IFACE_DBUS=y
+CONFIG_CTRL_IFACE_DBUS_NEW=y
+CONFIG_CTRL_IFACE_DBUS_INTRO=y
+EOF
+cd wpa_supplicant
+/usr/bin/make BINDIR=/usr/sbin LIBDIR=/usr/lib
+#pushd wpa_gui-qt4
+#qmake wpa_gui.pro
+#/usr/bin/make
+#popd
+
+PATH=$PATH:/usr/sbin
+install -v -m755 wpa_{cli,passphrase,supplicant} /usr/sbin/
+install -v -m644 doc/docbook/wpa_supplicant.conf.5 /usr/share/man/man5/
+install -v -m644 doc/docbook/wpa_{cli,passphrase,supplicant}.8 /usr/share/man/man8/
+install -v -m644 systemd/*.service /usr/lib/systemd/system/
+install -v -m644 dbus/fi.w1.wpa_supplicant1.service \
+                 /usr/share/dbus-1/system-services/
+install -v -d -m755 /etc/dbus-1/system.d
+install -v -m644 dbus/dbus-wpa_supplicant.conf \
+                 /etc/dbus-1/system.d/wpa_supplicant.conf
+systemctl enable wpa_supplicant
+install -v -m755 wpa_gui-qt4/wpa_gui /usr/bin/
+install -v -m644 doc/docbook/wpa_gui.8 /usr/share/man/man8/
+install -v -m644 wpa_gui-qt4/wpa_gui.desktop /usr/share/applications/
+install -v -m644 wpa_gui-qt4/icons/wpa_gui.svg /usr/share/pixmaps/
+
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la           \
+             ! -path \*ImageMagick\* \
+               -delete
+done
+update-desktop-database -q
+
+sudo /sbin/ldconfig
+
+
+PATH=$PATH:/usr/sbin
+#systemctl start wpa_supplicant@**EDITMEwlan0EDITME**
+#systemctl enable wpa_supplicant@**EDITMEwlan0EDITME**
+
+
+cd $BUILD_DIR
+[[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked
+
+exit

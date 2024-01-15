@@ -1,0 +1,20 @@
+ninja install
+
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la           \
+             ! -path \*ImageMagick\* \
+               -delete
+done
+
+sudo /sbin/ldconfig
+
+
+PATH=$PATH:/usr/sbin
+install -vdm755 /usr/share/applications
+update-desktop-database /usr/share/applications
+
+
+cd $BUILD_DIR
+[[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked
+
+exit
