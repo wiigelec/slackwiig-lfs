@@ -1,4 +1,4 @@
-/usr/bin/make DESTDIR=${INSTALL_ROOT} -j1 modules_install
+/usr/bin/make INSTALL_MOD_PATH=${INSTALL_ROOT} -j1 modules_install
 cp -v arch/x86/boot/bzImage ${INSTALL_ROOT}/boot/vmlinuz-6.4.12-lfs-12.0-systemd
 cp -v System.map ${INSTALL_ROOT}/boot/System.map-6.4.12
 cp -v .config ${INSTALL_ROOT}/boot/config-6.4.12
