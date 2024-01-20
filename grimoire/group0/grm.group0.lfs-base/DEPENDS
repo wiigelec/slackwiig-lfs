@@ -47,7 +47,7 @@ openssl
 kmod
 libelf
 libffi
-Python
+python
 flit-core
 wheel
 ninja
