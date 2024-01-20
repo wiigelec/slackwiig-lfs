@@ -83,7 +83,7 @@ esac
 export JH_UNPACKDIR
 cd $JH_UNPACKDIR
 
-sed '/prep :/a\ttouch prep' -i src/Makefile
+sed '/prep :/a\\ttouch prep' -i src/Makefile
 [ $(getconf LONG_BIT) = 64 ] || patch -Np1 -i ../efivar-38-i686-1.patch
 /usr/bin/make ERRORS=
 
