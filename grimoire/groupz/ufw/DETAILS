@@ -1,0 +1,5 @@
+SPELL=ufw
+VERSION=0.36.2
+SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_URL=https://launchpad.net/ufw/0.36/${VERSION}/+download/${SOURCE}
+ENTERED=12222023
