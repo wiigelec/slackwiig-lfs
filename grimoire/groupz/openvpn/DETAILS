@@ -1,0 +1,6 @@
+SPELL=openvpn
+VERSION=2.6.8
+SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_URL=https://swupdate.openvpn.org/community/releases/${SOURCE}
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+ENTERED=12222023
