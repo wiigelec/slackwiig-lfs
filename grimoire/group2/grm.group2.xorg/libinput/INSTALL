@@ -1,0 +1,17 @@
+ninja install
+#install -v -dm755      /usr/share/doc/libinput-1.23.0/html
+#cp -rv Documentation/* /usr/share/doc/libinput-1.23.0/html
+
+
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la           \
+             ! -path \*ImageMagick\* \
+               -delete
+done
+
+sudo /sbin/ldconfig
+
+cd $BUILD_DIR
+[[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked
+
+exit
