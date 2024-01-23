@@ -1,0 +1,20 @@
+/usr/bin/make -j1 docdir=/usr/share/doc/db-5.3.28 install
+
+chown -v -R root:root                        \
+      /usr/bin/db_*                          \
+      /usr/include/db{,_185,_cxx}.h          \
+      /usr/lib/libdb*.{so,la}                \
+      /usr/share/doc/db-5.3.28
+
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la           \
+             ! -path \*ImageMagick\* \
+               -delete
+done
+
+sudo /sbin/ldconfig
+
+cd $BUILD_DIR
+[[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked
+
+exit

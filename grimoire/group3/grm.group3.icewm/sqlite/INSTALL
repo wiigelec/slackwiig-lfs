@@ -1,0 +1,16 @@
+/usr/bin/make -j1 install
+install -v -m755 -d /usr/share/doc/sqlite-3.42.0
+cp -v -R sqlite-doc-3420000/* /usr/share/doc/sqlite-3.42.0
+
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la           \
+             ! -path \*ImageMagick\* \
+               -delete
+done
+
+sudo /sbin/ldconfig
+
+cd $BUILD_DIR
+[[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked
+
+exit

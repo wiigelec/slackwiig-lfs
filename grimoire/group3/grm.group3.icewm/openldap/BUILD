@@ -1,0 +1,121 @@
+unset CFLAGS
+unset CXXFLAGS
+unset CPPFLAGS
+unset LDFLAGS
+#!/bin/bash
+set -e
+# Variables coming from configuration
+export JH_PACK_INSTALL=""
+export JH_SRC_ARCHIVE="/sources"
+export JH_SRC_SUBDIRS=""
+export JH_BUILD_ROOT="/sources"
+export JH_BUILD_SUBDIRS="y"
+export JH_KEEP_FILES=""
+unset CFLAGS
+unset CXXFLAGS
+unset LDFLAGS
+export MAKEFLAGS="-j$(nproc)"
+unset NINJAJOBS
+unset MAKELEVEL
+unset MAKE_TERMOUT
+unset MAKE_TERMERR
+if [ -r /etc/profile ]; then source /etc/profile; fi
+# End of environment
+export JH_PKG_DIR=openldap
+SRC_DIR=${JH_SRC_ARCHIVE}${JH_SRC_SUBDIRS:+/${JH_PKG_DIR}}
+BUILD_DIR=${JH_BUILD_ROOT}${JH_BUILD_SUBDIRS:+/${JH_PKG_DIR}}
+mkdir -p $SRC_DIR
+mkdir -p $BUILD_DIR
+
+cd $SRC_DIR
+PACKAGE=openldap-2.6.6.tgz
+if [[ ! -f $PACKAGE ]] ; then
+  if [ -f "$JH_SRC_ARCHIVE/$PACKAGE" ] ; then
+    cp "$JH_SRC_ARCHIVE/$PACKAGE" "$PACKAGE"
+  else
+    wget -T 30 -t 5 "https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.6.tgz"
+  fi
+fi
+echo "5259e75484be71563e3f5c33d64a274d  $PACKAGE" | md5sum -c -
+
+PATCH=openldap-2.6.6-consolidated-1.patch
+if [[ ! -f $PATCH ]] ; then
+  if [ -f "$JH_SRC_ARCHIVE/$PATCH" ] ; then
+    cp "$JH_SRC_ARCHIVE/$PATCH" "$PATCH"
+  else
+    wget -T 30 -t 5 "https://www.linuxfromscratch.org/patches/blfs/12.0/openldap-2.6.6-consolidated-1.patch"
+  fi
+fi
+[ "$SRC_DIR" != "$BUILD_DIR" ] && ln -sf "$SRC_DIR/$PATCH" "$BUILD_DIR"
+
+cd $BUILD_DIR
+find . -maxdepth 1 -mindepth 1 -type d | xargs sudo rm -rf
+
+case $PACKAGE in
+  *.tar.gz|*.tar.bz2|*.tar.xz|*.tgz|*.tar.lzma)
+     tar -xvf $SRC_DIR/$PACKAGE > unpacked
+     JH_UNPACKDIR=`grep '[^./]\+' unpacked | head -n1 | sed 's@^\./@@;s@/.*@@'`
+     ;;
+  *.tar.lz)
+     bsdtar -xvf $SRC_DIR/$PACKAGE 2> unpacked
+     JH_UNPACKDIR=`head -n1 unpacked | cut  -d" " -f2 | sed 's@^\./@@;s@/.*@@'`
+     ;;
+  *.zip)
+     zipinfo -1 $SRC_DIR/$PACKAGE > unpacked
+     JH_UNPACKDIR="$(sed 's@/.*@@' unpacked | uniq )"
+     if test $(wc -w <<< $JH_UNPACKDIR) -eq 1; then
+       unzip $SRC_DIR/$PACKAGE
+     else
+       JH_UNPACKDIR=${PACKAGE%.zip}
+       unzip -d $JH_UNPACKDIR $SRC_DIR/$PACKAGE
+     fi
+     ;;
+  *)
+     JH_UNPACKDIR=$JH_PKG_DIR-build
+     mkdir $JH_UNPACKDIR
+     cp $SRC_DIR/$PACKAGE $JH_UNPACKDIR
+     ADDITIONAL="$(find . -mindepth 1 -maxdepth 1 -type l)"
+     if [ -n "$ADDITIONAL" ]; then
+         cp $ADDITIONAL $JH_UNPACKDIR
+     fi
+     ;;
+esac
+export JH_UNPACKDIR
+cd $JH_UNPACKDIR
+
+
+PATH=$PATH:/usr/sbin
+groupadd -g 83 ldap
+useradd  -c "OpenLDAP Daemon Owner" \
+         -d /var/lib/openldap -u 83 \
+         -g ldap -s /bin/false ldap
+
+patch -Np1 -i ../openldap-2.6.6-consolidated-1.patch
+autoconf
+
+./configure --prefix=/usr         \
+            --sysconfdir=/etc     \
+            --localstatedir=/var  \
+            --libexecdir=/usr/lib \
+            --disable-static      \
+            --enable-versioning=yes \
+            --disable-debug       \
+            --with-tls=openssl    \
+            --with-cyrus-sasl     \
+            --without-systemd     \
+            --enable-dynamic      \
+            --enable-crypt        \
+            --enable-spasswd      \
+            --enable-slapd        \
+            --enable-modules      \
+            --enable-rlookups     \
+            --enable-backends=mod \
+            --disable-sql         \
+            --disable-wt          \
+            --enable-overlays=mod
+
+/usr/bin/make depend
+/usr/bin/make
+#make -k test || true
+
+PATH=$PATH:/usr/sbin

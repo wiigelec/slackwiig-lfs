@@ -1,0 +1,21 @@
+/usr/bin/make -j1 install
+#install -v -d -m755 /usr/share/doc/alsa-lib-1.2.9/html/search
+#install -v -m644 doc/doxygen/html/*.* \
+#                /usr/share/doc/alsa-lib-1.2.9/html
+#install -v -m644 doc/doxygen/html/search/* \
+#                /usr/share/doc/alsa-lib-1.2.9/html/search
+
+
+for libdir in /lib /usr/lib $(find /opt -name lib); do
+  find $libdir -name \*.la           \
+             ! -path \*ImageMagick\* \
+               -delete
+done
+
+sudo /sbin/ldconfig
+
+
+cd $BUILD_DIR
+[[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked
+
+exit
