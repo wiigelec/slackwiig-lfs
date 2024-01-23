@@ -6,7 +6,7 @@ libXdmcp
 xcb-proto
 libxcb
 libxcvt
-Mako
+mako
 fontconfig
 xtrans
 libX11
