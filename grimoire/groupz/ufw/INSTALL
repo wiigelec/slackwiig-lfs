@@ -1,3 +1,0 @@
-python3 ./setup.py install --home=/usr
-
-cp -r doc/systemd.example /usr/lib/systemd/system/ufw.service

@@ -66,6 +66,9 @@ systemd-coredump:x:79:79:systemd Core Dumper:/:/usr/bin/false
 uuidd:x:80:80:UUID Generation Daemon User:/dev/null:/usr/bin/false
 systemd-oom:x:81:81:systemd Out Of Memory Daemon:/:/usr/bin/false
 nobody:x:65534:65534:Unprivileged User:/dev/null:/usr/bin/false
+tester:x:101:101::/home/tester:/bin/bash
+polkitd:x:27:27:PolicyKit Daemon Owner:/etc/polkit-1:/bin/false
+sshd:x:50:50:sshd PrivSep:/var/lib/sshd:/bin/false
 EOF
 
 cat > $INSTALL_ROOT/etc/group << "EOF"
@@ -103,6 +106,9 @@ systemd-oom:x:81:
 wheel:x:97:
 users:x:999:
 nogroup:x:65534:
+tester:x:101:
+polkitd:x:27:
+sshd:x:50:
 EOF
 
 touch $INSTALL_ROOT/var/log/{btmp,lastlog,faillog,wtmp}
