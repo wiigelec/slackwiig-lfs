@@ -1,0 +1,34 @@
+#!/bin/bash
+
+for FILE in /var/lib/installwatch/*;
+do
+    ### GET PACKAGE NAME AND VERSION ##
+    echo Processing $FILE...
+
+    ### CREATE FILTERED FILE ###
+    filter_file=${FILE%.raw}
+    #echo $filter_file
+
+    ### FILTER FILE ###
+    TAB=$'\t'
+    omit="${TAB}rename\|${TAB}symlink\|${TAB}unlink\|${TAB}access\|${TAB}utimes"
+    filter="dev"
+    grep -v "$omit" $FILE | cut -f3 | sort -u | grep -v "$filter" >> $filter_file
+
+    ### CREATE TAR ###
+    tar_file="$filter_file.tar"
+    tar --no-recursion -cf $tar_file -T $filter_file
+
+    ### MAKE PACKAGE ###
+    package=${FILE%.iwlog.raw}
+    mkdir extract
+    cd extract
+    tar -xf ../$tar_file
+    makepkg -l y -c n ../$package-x86_64-slw01.txz
+    cd ../
+    rm -rf extract
+
+done
+
+
+exit

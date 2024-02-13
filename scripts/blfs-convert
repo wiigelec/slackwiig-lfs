@@ -1,0 +1,63 @@
+#!/bin/bash
+
+for FILE in ~/blfs_root/scripts/*;
+do
+    ### GET PACKAGE NAME AND VERSION ##
+    echo Processing $FILE...
+
+    package=${FILE##*\/}
+    package=${package#*z-}
+    package=$(echo "$package" | tr '[:upper:]' '[:lower:]')
+    #echo $package
+
+    version=$(grep PACKAGE\= $FILE)
+    version=${version/PACKAGE\=/}
+    version=${version##*-}
+    version=${version%.tar*}
+    version=${version%.zip*}
+    version=${version%.tgz*}
+    #echo $version
+
+    ### INSTALLWATCH LOG FILE ###
+    iwlog="$package"-"$version".iwlog.raw
+    iwso="/usr/lib/installwatch.so"
+    #echo $iwlog
+
+    ### PROCESS FILE ###
+    outfile="$FILE".tmp
+    declare -i linenum=1
+    while IFS= read -r line;
+    do
+	### INSERT INSTALLWATCH ###
+	case $line in
+            "sudo -E sh -e << ROOT_EOF" )
+                # preload
+		echo "$line" >> $outfile
+		echo "export INSTALLWATCHFILE=$iwlog" >> $outfile
+                echo "export LD_PRELOAD=$iwso" >> $outfile
+                ;;
+            "ROOT_EOF" )
+                # unset
+		echo "unset INSTALLWATCHFILE" >> $outfile
+                echo "unset LD_PRELOAD" >> $outfile
+		echo "$line" >> $outfile
+                ;;
+	    * )
+		echo "$line" >> $outfile
+		;;
+        esac 
+	#echo "$line"
+        linenum+=1
+
+    done < $FILE
+
+    ### RENAME FILES ###
+    chmod a-x $FILE
+    mv $FILE $FILE.org
+    mv $outfile $FILE
+    chmod a+x $FILE
+
+done
+
+
+exit
