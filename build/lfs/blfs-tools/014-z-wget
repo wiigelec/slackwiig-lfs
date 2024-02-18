@@ -75,7 +75,7 @@ cd $JH_UNPACKDIR
 make
 #make -k check || true
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=wget-1.21.4.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/wget-1.21.4.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 make -j1 install

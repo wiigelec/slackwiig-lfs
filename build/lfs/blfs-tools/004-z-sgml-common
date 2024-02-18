@@ -84,7 +84,7 @@ autoreconf -f -i
 ./configure --prefix=/usr --sysconfdir=/etc
 make
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=sgml-common-0.6.3.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/sgml-common-0.6.3.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 make -j1 docdir=/usr/share/doc install

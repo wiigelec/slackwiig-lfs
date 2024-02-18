@@ -70,7 +70,7 @@ export JH_UNPACKDIR
 cd $JH_UNPACKDIR
 
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=docbook-4.5.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/docbook-4.5.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 install -v -d -m755 /usr/share/xml/docbook/xml-dtd-4.5
@@ -155,7 +155,7 @@ ROOT_EOF
 sudo /sbin/ldconfig
 
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=docbook-4.5.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/docbook-4.5.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 for DTDVERSION in 4.1.2 4.2 4.3 4.4

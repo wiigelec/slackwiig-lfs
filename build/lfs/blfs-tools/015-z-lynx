@@ -90,7 +90,7 @@ patch -p1 -i ../lynx-2.8.9rel.1-security_fix-1.patch
             --enable-locale-charset
 make
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=lynx-lynx2.8.9rel.1.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/lynx-lynx2.8.9rel.1.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 make -j1 install-full
@@ -107,7 +107,7 @@ ROOT_EOF
 sudo /sbin/ldconfig
 
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=lynx-lynx2.8.9rel.1.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/lynx-lynx2.8.9rel.1.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 sed -e '/#LOCALE/     a LOCALE_CHARSET:TRUE'     \\

@@ -82,7 +82,7 @@ cd $JH_UNPACKDIR
 patch -Np1 -i ../unzip-6.0-consolidated_fixes-1.patch
 make -f unix/Makefile generic
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=unzip-unzip60.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/unzip-unzip60.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 make -j1 prefix=/usr MANDIR=/usr/share/man/man1 \\

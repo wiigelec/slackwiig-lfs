@@ -93,7 +93,7 @@ cd $JH_UNPACKDIR
 patch -Np1 -i ../docbook-xsl-nons-1.79.2-stack_fix-1.patch
 tar -xf ../docbook-xsl-doc-1.79.2.tar.bz2 --strip-components=1
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=docbook-xsl-1.79.2.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/docbook-xsl-1.79.2.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 install -v -m755 -d /usr/share/xml/docbook/xsl-stylesheets-nons-1.79.2
@@ -123,7 +123,7 @@ ROOT_EOF
 sudo /sbin/ldconfig
 
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=docbook-xsl-1.79.2.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/docbook-xsl-1.79.2.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 if [ ! -d /etc/xml ]; then install -v -m755 -d /etc/xml; fi &&

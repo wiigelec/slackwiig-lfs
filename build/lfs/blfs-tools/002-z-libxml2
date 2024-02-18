@@ -93,7 +93,7 @@ tar xf ../xmlts20130923.tar.gz
 #check || true
 #check-valgrind || true
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=libxml2-2.10.4.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/libxml2-2.10.4.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 make -j1 install

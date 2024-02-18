@@ -97,7 +97,7 @@ make
 #make man
 #make -k test || true
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=git-2.41.0.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/git-2.41.0.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 make -j1 perllibdir=/usr/lib/perl5/5.38/site_perl install

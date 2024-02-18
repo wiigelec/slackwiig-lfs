@@ -89,7 +89,7 @@ meson setup ..            \
 ninja
 #ninja test || true
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=p11-kit-0.25.0.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/p11-kit-0.25.0.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 ninja install
@@ -107,7 +107,7 @@ ROOT_EOF
 sudo /sbin/ldconfig
 
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=p11-kit-0.25.0.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/p11-kit-0.25.0.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 ln -sfv ./pkcs11/p11-kit-trust.so /usr/lib/libnssckbi.so

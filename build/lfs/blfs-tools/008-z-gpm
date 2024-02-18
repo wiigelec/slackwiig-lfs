@@ -84,7 +84,7 @@ patch -Np1 -i ../gpm-1.20.7-consolidated-1.patch
 ./configure --prefix=/usr --sysconfdir=/etc
 make
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=gpm-1.20.7.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/gpm-1.20.7.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 make -j1 install
@@ -144,7 +144,7 @@ else
 fi
 cd $BOOTUNPACKDIR
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=gpm-1.20.7.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/gpm-1.20.7.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 make install-gpm

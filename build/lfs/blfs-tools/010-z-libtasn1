@@ -73,7 +73,7 @@ cd $JH_UNPACKDIR
 make
 #make -k check || true
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=libtasn1-4.19.0.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/libtasn1-4.19.0.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 make -j1 install
