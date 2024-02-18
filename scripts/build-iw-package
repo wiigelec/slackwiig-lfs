@@ -12,8 +12,12 @@ do
     ### FILTER FILE ###
     TAB=$'\t'
     omit="${TAB}rename\|${TAB}symlink\|${TAB}unlink\|${TAB}access\|${TAB}utimes"
-    filter="dev"
-    grep -v "$omit" $FILE | cut -f3 | sort -u | grep -v "$filter" >> $filter_file
+    echo "$(grep -v "$omit" $FILE)" | cut -f3 | sort -u > $filter_file
+    echo "$(grep -v "/dev" $filter_file)" > $filter_file
+    echo "$(grep -v "/sources" $filter_file)" > $filter_file
+    echo "$(grep -v "/run" $filter_file)" > $filter_file
+    echo "$(grep -v ".tmp" $filter_file)" > $filter_file
+    echo "$(grep -v ".la" $filter_file)" > $filter_file
 
     ### CREATE TAR ###
     tar_file="$filter_file.tar"
@@ -21,12 +25,18 @@ do
 
     ### MAKE PACKAGE ###
     package=${FILE%.iwlog.raw}
+    package="$package-x86_64-slw01.txz"
     mkdir extract
     cd extract
-    tar -xf ../$tar_file
-    makepkg -l y -c n /var/lib/packages/$package-x86_64-slw01.txz
+    tar -xf $tar_file
+    makepkg -l y -c n $package
+    mv -v $package /var/lib/packages
     cd ../
+
+    ### CLEANUP ###
     rm -rf extract
+    rm $filter_file
+    rm $tar_file
 
 done
 
