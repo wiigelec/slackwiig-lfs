@@ -1,0 +1,12 @@
+#!/bin/bash
+
+LFS=/mnt/lfs
+
+umount $LFS/dev/pts
+umount $LFS/dev/shm
+umount $LFS/dev
+umount $LFS/proc
+umount $LFS/sys
+umount $LFS/run
+
+
