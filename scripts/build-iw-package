@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for FILE in /var/lib/installwatch/*;
+for FILE in /var/lib/iwlog/*;
 do
     ### GET PACKAGE NAME AND VERSION ##
     echo Processing $FILE...
@@ -24,7 +24,7 @@ do
     mkdir extract
     cd extract
     tar -xf ../$tar_file
-    makepkg -l y -c n ../$package-x86_64-slw01.txz
+    makepkg -l y -c n /var/lib/packages/$package-x86_64-slw01.txz
     cd ../
     rm -rf extract
 
