@@ -1,0 +1,79 @@
+#!/bin/bash
+
+mkdir -pv ./{etc,var} ./usr/{bin,lib,sbin}
+
+for i in bin lib sbin; do
+  ln -sv usr/$i ./$i
+done
+
+case $(uname -m) in
+  x86_64) mkdir -pv ./lib64 ;;
+esac
+case $(uname -m) in
+    i?86)   ln -sfv ld-linux.so.2 ./lib/ld-lsb.so.3
+    ;;
+    x86_64) ln -sfv ../lib/ld-linux-x86-64.so.2 ./lib64
+            ln -sfv ../lib/ld-linux-x86-64.so.2 ./lib64/ld-lsb-x86-64.so.3
+    ;;
+esac
+
+mkdir -pv ./{boot,home,mnt,opt,srv}
+
+mkdir -pv ./etc/{opt,sysconfig}
+mkdir -pv ./lib/firmware
+mkdir -pv ./media/{floppy,cdrom}
+mkdir -pv ./usr/{,local/}{include,src}
+mkdir -pv ./usr/local/{bin,lib,sbin}
+mkdir -pv ./usr/{,local/}share/{color,dict,doc,info,locale,man}
+mkdir -pv ./usr/{,local/}share/{misc,terminfo,zoneinfo}
+mkdir -pv ./usr/{,local/}share/man/man{1..8}
+mkdir -pv ./var/{cache,local,log,mail,opt,spool}
+mkdir -pv ./var/lib/{color,misc,locate}
+
+ln -sfv /run ./var/run
+ln -sfv /run/lock ./var/lock
+
+install -dv -m 0750 ./root
+install -dv -m 1777 ./tmp ./var/tmp
+
+ln -sv /proc/self/mounts ./etc/mtab
+
+mkdir -pv ./{dev,proc,sys,run}
+
+cp -a /mnt/lfs/etc/hosts ./etc
+cp -a /mnt/lfs/etc/passwd ./etc
+cp -a /mnt/lfs/etc/group ./etc
+cp -a /mnt/lfs/etc/adjtime ./etc
+cp -a /mnt/lfs/etc/vconsole.conf ./etc
+cp -a /mnt/lfs/etc/locale.conf ./etc
+cp -a /mnt/lfs/etc/inputrc ./etc
+cp -a /mnt/lfs/etc/shells ./etc
+cp -a /mnt/lfs/etc/lfs-release ./etc
+cp -a /mnt/lfs/etc/os-release ./etc
+cp -a /mnt/lfs/etc/fstab ./etc
+cp -a /mnt/lfs/etc/gshadow ./etc
+cp -a /mnt/lfs/etc/hostname ./etc
+cp -a /mnt/lfs/etc/lsb-release ./etc
+cp -a /mnt/lfs/etc/lsb-release ./etc
+cp -a /mnt/lfs/etc/nsswitch.conf ./etc
+cp -a /mnt/lfs/etc/shadow ./etc
+cp -a /mnt/lfs/etc/vimrc ./etc
+cp -a /mnt/lfs/etc/localtime ./etc
+
+cp -a /mnt/lfs/etc/default ./etc/
+cp -a /mnt/lfs/etc/modprobe.d ./etc/
+
+cp -a /mnt/lfs/usr/bin/cc ./usr/bin
+cp -a /mnt/lfs/usr/bin/sh ./usr/bin
+
+touch ./var/log/{btmp,lastlog,faillog,wtmp}
+chgrp -v utmp ./var/log/lastlog
+chmod -v 664  ./var/log/lastlog
+chmod -v 600  ./var/log/btmp
+
+mkdir -pv ./etc/systemd/network/
+cp /mnt/lfs/etc/systemd/network/10-eth-static.network ./etc/systemd/network/
+
+exit
+
+/mnt/lfs/usr/sbin/makepkg -l y -c n /mnt/lfs/var/lib/packages/a_basedirs-12.0-x86_64-jsw01.txz
