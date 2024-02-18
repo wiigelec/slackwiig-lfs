@@ -32,21 +32,23 @@ rm -fv ./usr/share/info/dir  # recommended since this directory is already there
                              # on the system
 
 # Strip
+set +e
 for i in $(find ./usr/lib -type f -name \*.so*) \
     $(find ./usr/lib -type f -name \*.a)                 \
     $(find ./usr/{bin,sbin,libexec} -type f); do
         strip --strip-unneeded $i
 done
 find ./usr/lib ./usr/libexec -name \*.la -delete
+set -e
 	
 # Building the binary package
-makepkg -l y -c n $ARCHIVE_NAME
+makepkg -l y -c n "../$ARCHIVE_NAME"
 
 # Installing it on LFS
-installpkg $ARCHIVE_NAME
+#installpkg $ARCHIVE_NAME
 
 # Storing the package (recommended).
-mv -v $ARCHIVE_NAME /var/lib/packages
+mv -v "../$ARCHIVE_NAME" /var/lib/packages
 
 popd                         # Since the $PKG_DEST directory is destroyed
                              # immediately after the return of the function,

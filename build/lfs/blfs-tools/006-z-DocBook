@@ -1,0 +1,191 @@
+#!/bin/bash
+set -e
+# Variables coming from configuration
+export JH_PACK_INSTALL=""
+export JH_SRC_ARCHIVE="/sources"
+export JH_SRC_SUBDIRS=""
+export JH_BUILD_ROOT="/sources"
+export JH_BUILD_SUBDIRS="y"
+export JH_KEEP_FILES=""
+unset CFLAGS
+unset CXXFLAGS
+unset LDFLAGS
+export MAKEFLAGS="-j$(nproc)"
+unset NINJAJOBS
+unset MAKELEVEL
+unset MAKE_TERMOUT
+unset MAKE_TERMERR
+if [ -r /etc/profile ]; then source /etc/profile; fi
+# End of environment
+export JH_PKG_DIR=DocBook
+SRC_DIR=${JH_SRC_ARCHIVE}${JH_SRC_SUBDIRS:+/${JH_PKG_DIR}}
+BUILD_DIR=${JH_BUILD_ROOT}${JH_BUILD_SUBDIRS:+/${JH_PKG_DIR}}
+mkdir -p $SRC_DIR
+mkdir -p $BUILD_DIR
+
+cd $SRC_DIR
+PACKAGE=docbook-xml-4.5.zip
+if [[ ! -f $PACKAGE ]] ; then
+  if [ -f "$JH_SRC_ARCHIVE/$PACKAGE" ] ; then
+    cp "$JH_SRC_ARCHIVE/$PACKAGE" "$PACKAGE"
+  else
+    wget -T 30 -t 5 "https://www.docbook.org/xml/4.5/docbook-xml-4.5.zip"
+  fi
+fi
+echo "03083e288e87a7e829e437358da7ef9e  $PACKAGE" | md5sum -c -
+
+cd $BUILD_DIR
+find . -maxdepth 1 -mindepth 1 -type d | xargs sudo rm -rf
+
+case $PACKAGE in
+  *.tar.gz|*.tar.bz2|*.tar.xz|*.tgz|*.tar.lzma)
+     tar -xvf $SRC_DIR/$PACKAGE > unpacked
+     JH_UNPACKDIR=`grep '[^./]\+' unpacked | head -n1 | sed 's@^\./@@;s@/.*@@'`
+     ;;
+  *.tar.lz)
+     bsdtar -xvf $SRC_DIR/$PACKAGE 2> unpacked
+     JH_UNPACKDIR=`head -n1 unpacked | cut  -d" " -f2 | sed 's@^\./@@;s@/.*@@'`
+     ;;
+  *.zip)
+     zipinfo -1 $SRC_DIR/$PACKAGE > unpacked
+     JH_UNPACKDIR="$(sed 's@/.*@@' unpacked | uniq )"
+     if test $(wc -w <<< $JH_UNPACKDIR) -eq 1; then
+       unzip $SRC_DIR/$PACKAGE
+     else
+       JH_UNPACKDIR=${PACKAGE%.zip}
+       unzip -d $JH_UNPACKDIR $SRC_DIR/$PACKAGE
+     fi
+     ;;
+  *)
+     JH_UNPACKDIR=$JH_PKG_DIR-build
+     mkdir $JH_UNPACKDIR
+     cp $SRC_DIR/$PACKAGE $JH_UNPACKDIR
+     ADDITIONAL="$(find . -mindepth 1 -maxdepth 1 -type l)"
+     if [ -n "$ADDITIONAL" ]; then
+         cp $ADDITIONAL $JH_UNPACKDIR
+     fi
+     ;;
+esac
+export JH_UNPACKDIR
+cd $JH_UNPACKDIR
+
+sudo -E sh -e << ROOT_EOF
+export INSTALLWATCHFILE=docbook-4.5.iwlog.raw
+export LD_PRELOAD=/usr/lib/installwatch.so
+PATH=$PATH:/usr/sbin
+install -v -d -m755 /usr/share/xml/docbook/xml-dtd-4.5
+install -v -d -m755 /etc/xml
+cp -v -af --no-preserve=ownership docbook.cat *.dtd ent/ *.mod \\
+    /usr/share/xml/docbook/xml-dtd-4.5
+if [ ! -e /etc/xml/docbook ]; then
+    xmlcatalog --noout --create /etc/xml/docbook
+fi
+xmlcatalog --noout --add "public" \\
+    "-//OASIS//DTD DocBook XML V4.5//EN" \\
+    "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" \\
+    /etc/xml/docbook
+xmlcatalog --noout --add "public" \\
+    "-//OASIS//DTD DocBook XML CALS Table Model V4.5//EN" \\
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/calstblx.dtd" \\
+    /etc/xml/docbook
+xmlcatalog --noout --add "public" \\
+    "-//OASIS//DTD XML Exchange Table Model 19990315//EN" \\
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/soextblx.dtd" \\
+    /etc/xml/docbook
+xmlcatalog --noout --add "public" \\
+    "-//OASIS//ELEMENTS DocBook XML Information Pool V4.5//EN" \\
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/dbpoolx.mod" \\
+    /etc/xml/docbook
+xmlcatalog --noout --add "public" \\
+    "-//OASIS//ELEMENTS DocBook XML Document Hierarchy V4.5//EN" \\
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/dbhierx.mod" \\
+    /etc/xml/docbook
+xmlcatalog --noout --add "public" \\
+    "-//OASIS//ELEMENTS DocBook XML HTML Tables V4.5//EN" \\
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/htmltblx.mod" \\
+    /etc/xml/docbook
+xmlcatalog --noout --add "public" \\
+    "-//OASIS//ENTITIES DocBook XML Notations V4.5//EN" \\
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/dbnotnx.mod" \\
+    /etc/xml/docbook
+xmlcatalog --noout --add "public" \\
+    "-//OASIS//ENTITIES DocBook XML Character Entities V4.5//EN" \\
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/dbcentx.mod" \\
+    /etc/xml/docbook
+xmlcatalog --noout --add "public" \\
+    "-//OASIS//ENTITIES DocBook XML Additional General Entities V4.5//EN" \\
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/dbgenent.mod" \\
+    /etc/xml/docbook
+xmlcatalog --noout --add "rewriteSystem" \\
+    "http://www.oasis-open.org/docbook/xml/4.5" \\
+    "file:///usr/share/xml/docbook/xml-dtd-4.5" \\
+    /etc/xml/docbook
+xmlcatalog --noout --add "rewriteURI" \\
+    "http://www.oasis-open.org/docbook/xml/4.5" \\
+    "file:///usr/share/xml/docbook/xml-dtd-4.5" \\
+    /etc/xml/docbook
+if [ ! -e /etc/xml/catalog ]; then
+    xmlcatalog --noout --create /etc/xml/catalog
+fi
+xmlcatalog --noout --add "delegatePublic" \\
+    "-//OASIS//ENTITIES DocBook XML" \\
+    "file:///etc/xml/docbook" \\
+    /etc/xml/catalog
+xmlcatalog --noout --add "delegatePublic" \\
+    "-//OASIS//DTD DocBook XML" \\
+    "file:///etc/xml/docbook" \\
+    /etc/xml/catalog
+xmlcatalog --noout --add "delegateSystem" \\
+    "http://www.oasis-open.org/docbook/" \\
+    "file:///etc/xml/docbook" \\
+    /etc/xml/catalog
+xmlcatalog --noout --add "delegateURI" \\
+    "http://www.oasis-open.org/docbook/" \\
+    "file:///etc/xml/docbook" \\
+    /etc/xml/catalog
+
+for libdir in /lib /usr/lib \$(find /opt -name lib); do
+  find \$libdir -name \\*.la           \\
+             ! -path \\*ImageMagick\\* \\
+               -delete
+done
+unset INSTALLWATCHFILE
+unset LD_PRELOAD
+ROOT_EOF
+sudo /sbin/ldconfig
+
+sudo -E sh -e << ROOT_EOF
+export INSTALLWATCHFILE=docbook-4.5.iwlog.raw
+export LD_PRELOAD=/usr/lib/installwatch.so
+PATH=$PATH:/usr/sbin
+for DTDVERSION in 4.1.2 4.2 4.3 4.4
+do
+  xmlcatalog --noout --add "public" \\
+    "-//OASIS//DTD DocBook XML V\$DTDVERSION//EN" \\
+    "http://www.oasis-open.org/docbook/xml/\$DTDVERSION/docbookx.dtd" \\
+    /etc/xml/docbook
+  xmlcatalog --noout --add "rewriteSystem" \\
+    "http://www.oasis-open.org/docbook/xml/\$DTDVERSION" \\
+    "file:///usr/share/xml/docbook/xml-dtd-4.5" \\
+    /etc/xml/docbook
+  xmlcatalog --noout --add "rewriteURI" \\
+    "http://www.oasis-open.org/docbook/xml/\$DTDVERSION" \\
+    "file:///usr/share/xml/docbook/xml-dtd-4.5" \\
+    /etc/xml/docbook
+  xmlcatalog --noout --add "delegateSystem" \\
+    "http://www.oasis-open.org/docbook/xml/\$DTDVERSION/" \\
+    "file:///etc/xml/docbook" \\
+    /etc/xml/catalog
+  xmlcatalog --noout --add "delegateURI" \\
+    "http://www.oasis-open.org/docbook/xml/\$DTDVERSION/" \\
+    "file:///etc/xml/docbook" \\
+    /etc/xml/catalog
+done
+unset INSTALLWATCHFILE
+unset LD_PRELOAD
+ROOT_EOF
+
+cd $BUILD_DIR
+[[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked
+
+exit

@@ -19,7 +19,7 @@ do
     #echo $version
 
     ### INSTALLWATCH LOG FILE ###
-    iwlog="$package"-"$version".iwlog.raw
+    iwlog="/var/lib/iwlog/$package"-"$version".iwlog.raw
     iwso="/usr/lib/installwatch.so"
     #echo $iwlog
 

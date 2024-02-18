@@ -1,0 +1,159 @@
+#!/bin/bash
+set -e
+# Variables coming from configuration
+export JH_PACK_INSTALL=""
+export JH_SRC_ARCHIVE="/sources"
+export JH_SRC_SUBDIRS=""
+export JH_BUILD_ROOT="/sources"
+export JH_BUILD_SUBDIRS="y"
+export JH_KEEP_FILES=""
+unset CFLAGS
+unset CXXFLAGS
+unset LDFLAGS
+export MAKEFLAGS="-j$(nproc)"
+unset NINJAJOBS
+unset MAKELEVEL
+unset MAKE_TERMOUT
+unset MAKE_TERMERR
+if [ -r /etc/profile ]; then source /etc/profile; fi
+# End of environment
+export JH_PKG_DIR=gpm
+SRC_DIR=${JH_SRC_ARCHIVE}${JH_SRC_SUBDIRS:+/${JH_PKG_DIR}}
+BUILD_DIR=${JH_BUILD_ROOT}${JH_BUILD_SUBDIRS:+/${JH_PKG_DIR}}
+mkdir -p $SRC_DIR
+mkdir -p $BUILD_DIR
+
+cd $SRC_DIR
+PACKAGE=gpm-1.20.7.tar.bz2
+if [[ ! -f $PACKAGE ]] ; then
+  if [ -f "$JH_SRC_ARCHIVE/$PACKAGE" ] ; then
+    cp "$JH_SRC_ARCHIVE/$PACKAGE" "$PACKAGE"
+  else
+    wget -T 30 -t 5 "https://anduin.linuxfromscratch.org/BLFS/gpm/gpm-1.20.7.tar.bz2"
+  fi
+fi
+echo "bf84143905a6a903dbd4d4b911a2a2b8  $PACKAGE" | md5sum -c -
+
+PATCH=gpm-1.20.7-consolidated-1.patch
+if [[ ! -f $PATCH ]] ; then
+  if [ -f "$JH_SRC_ARCHIVE/$PATCH" ] ; then
+    cp "$JH_SRC_ARCHIVE/$PATCH" "$PATCH"
+  else
+    wget -T 30 -t 5 "https://www.linuxfromscratch.org/patches/blfs/12.0/gpm-1.20.7-consolidated-1.patch"
+  fi
+fi
+[ "$SRC_DIR" != "$BUILD_DIR" ] && ln -sf "$SRC_DIR/$PATCH" "$BUILD_DIR"
+
+cd $BUILD_DIR
+find . -maxdepth 1 -mindepth 1 -type d | xargs sudo rm -rf
+
+case $PACKAGE in
+  *.tar.gz|*.tar.bz2|*.tar.xz|*.tgz|*.tar.lzma)
+     tar -xvf $SRC_DIR/$PACKAGE > unpacked
+     JH_UNPACKDIR=`grep '[^./]\+' unpacked | head -n1 | sed 's@^\./@@;s@/.*@@'`
+     ;;
+  *.tar.lz)
+     bsdtar -xvf $SRC_DIR/$PACKAGE 2> unpacked
+     JH_UNPACKDIR=`head -n1 unpacked | cut  -d" " -f2 | sed 's@^\./@@;s@/.*@@'`
+     ;;
+  *.zip)
+     zipinfo -1 $SRC_DIR/$PACKAGE > unpacked
+     JH_UNPACKDIR="$(sed 's@/.*@@' unpacked | uniq )"
+     if test $(wc -w <<< $JH_UNPACKDIR) -eq 1; then
+       unzip $SRC_DIR/$PACKAGE
+     else
+       JH_UNPACKDIR=${PACKAGE%.zip}
+       unzip -d $JH_UNPACKDIR $SRC_DIR/$PACKAGE
+     fi
+     ;;
+  *)
+     JH_UNPACKDIR=$JH_PKG_DIR-build
+     mkdir $JH_UNPACKDIR
+     cp $SRC_DIR/$PACKAGE $JH_UNPACKDIR
+     ADDITIONAL="$(find . -mindepth 1 -maxdepth 1 -type l)"
+     if [ -n "$ADDITIONAL" ]; then
+         cp $ADDITIONAL $JH_UNPACKDIR
+     fi
+     ;;
+esac
+export JH_UNPACKDIR
+cd $JH_UNPACKDIR
+
+patch -Np1 -i ../gpm-1.20.7-consolidated-1.patch
+./autogen.sh
+./configure --prefix=/usr --sysconfdir=/etc
+make
+sudo -E sh -e << ROOT_EOF
+export INSTALLWATCHFILE=gpm-1.20.7.iwlog.raw
+export LD_PRELOAD=/usr/lib/installwatch.so
+PATH=$PATH:/usr/sbin
+make -j1 install
+
+install-info --dir-file=/usr/share/info/dir           \\
+             /usr/share/info/gpm.info
+
+rm -fv /usr/lib/libgpm.a
+ln -sfv libgpm.so.2.1.0 /usr/lib/libgpm.so
+install -v -m644 conf/gpm-root.conf /etc
+
+install -v -m755 -d /usr/share/doc/gpm-1.20.7/support
+install -v -m644    doc/support/*                     \\
+                    /usr/share/doc/gpm-1.20.7/support
+install -v -m644    doc/{FAQ,HACK_GPM,README*}        \\
+                    /usr/share/doc/gpm-1.20.7
+
+for libdir in /lib /usr/lib \$(find /opt -name lib); do
+  find \$libdir -name \\*.la           \\
+             ! -path \\*ImageMagick\\* \\
+               -delete
+done
+unset INSTALLWATCHFILE
+unset LD_PRELOAD
+ROOT_EOF
+sudo /sbin/ldconfig
+
+BOOTPKG_DIR=blfs-systemd-units
+
+BOOTSRC_DIR=${JH_SRC_ARCHIVE}${JH_SRC_SUBDIRS:+/${BOOTPKG_DIR}}
+BOOTBUILD_DIR=${JH_BUILD_ROOT}${JH_BUILD_SUBDIRS:+/${BOOTPKG_DIR}}
+mkdir -p $BOOTSRC_DIR
+mkdir -p $BOOTBUILD_DIR
+
+pushd $BOOTSRC_DIR
+URL=https://www.linuxfromscratch.org/blfs/downloads/12.0-systemd/blfs-systemd-units-20230816.tar.xz
+BOOTPACKG=$(basename $URL)
+if [[ ! -f $BOOTPACKG ]] ; then
+  if [[ -f $JH_SRC_ARCHIVE/$BOOTPACKG ]] ; then
+    cp $JH_SRC_ARCHIVE/$BOOTPACKG $BOOTPACKG
+  else
+    wget -T 30 -t 5 $URL
+  fi
+  rm -f $BOOTBUILD_DIR/unpacked
+fi
+
+cd $BOOTBUILD_DIR
+if [[ -e unpacked ]] ; then
+  BOOTUNPACKDIR=`head -n1 unpacked | sed 's@^./@@;s@/.*@@'`
+  if ! [[ -d $BOOTUNPACKDIR ]]; then
+    tar -xvf $BOOTSRC_DIR/$BOOTPACKG > unpacked
+    BOOTUNPACKDIR=`head -n1 unpacked | sed 's@^./@@;s@/.*@@'`
+  fi
+else
+  tar -xvf $BOOTSRC_DIR/$BOOTPACKG > unpacked
+  BOOTUNPACKDIR=`head -n1 unpacked | sed 's@^./@@;s@/.*@@'`
+fi
+cd $BOOTUNPACKDIR
+sudo -E sh -e << ROOT_EOF
+export INSTALLWATCHFILE=gpm-1.20.7.iwlog.raw
+export LD_PRELOAD=/usr/lib/installwatch.so
+PATH=$PATH:/usr/sbin
+make install-gpm
+unset INSTALLWATCHFILE
+unset LD_PRELOAD
+ROOT_EOF
+popd
+
+cd $BUILD_DIR
+[[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked
+
+exit
