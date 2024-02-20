@@ -62,6 +62,11 @@ ln -sv usr/bin  $PKG_DEST
 ln -sv usr/lib  $PKG_DEST
 make -j1 DESTDIR=$PKG_DEST exec_prefix=/usr install
 make -j1 DESTDIR=$PKG_DEST -C man install-man
+
+cp -a /etc/shadow $PKG_DEST/etc
+cp -a /etc/gshadow $PKG_DEST/etc
+cp -a /mnt/lfs/etc/default $PKG_DEST/etc/
+
 rm -fv $PKG_DEST/usr/share/man/man8/nologin.8
 rm -fv $PKG_DEST/sbin/nologin
 for dir in $PKG_DEST/usr/share/man/man{1..8} \

@@ -12,10 +12,10 @@ SCRIPT_ROOT=jhalfs
 
 SRC_DIR=${ROOT}sources
 
-VERSION=9.0.1677
-PKG_DEST=${SRC_DIR}/869-vim
+VERSION=6.4.12
+PKG_DEST=${SRC_DIR}/1002-kernel
 
-PACKAGE=vim-9.0.1677.tar.gz
+PACKAGE=linux-6.4.12.tar.xz
 source ${ROOT}${SCRIPT_ROOT}/packInstall.sh
 export -f packInstall
 cd $SRC_DIR
@@ -36,11 +36,11 @@ export MAKEFLAGS="-j$(nproc)"
 SECONDS=${PREV_SEC}
 
 # Start of LFS book script
-echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
-./configure --prefix=/usr
+make mrproper
+cp -v ../kernel-config .config
+timeout 60 make oldconfig ||\
+{ echo kernel config is not up to date; exit 124; }
 make
-# chown -Rv tester . >> $TEST_LOG 2>&1 || true
-# su tester -c "LANG=en_US.UTF-8 make -k -j1 test" &> vim-test.log >> $TEST_LOG 2>&1 || true
 mkdir -pv $PKG_DEST/{boot,etc}
 mkdir -pv $PKG_DEST/usr/{bin,include,lib/pkgconfig,sbin}
 mkdir -pv $PKG_DEST/usr/share/{doc,info,bash-completion/completions}
@@ -51,12 +51,12 @@ esac
 ln -sv usr/sbin $PKG_DEST
 ln -sv usr/bin  $PKG_DEST
 ln -sv usr/lib  $PKG_DEST
-make -j1 DESTDIR=$PKG_DEST install
-ln -sv vim $PKG_DEST/usr/bin/vi
-for L in  $PKG_DEST/usr/share/man/{,*/}man1/vim.1; do
-    ln -sv vim.1 $(dirname $L)/vi.1
-done
-ln -sv ../vim/vim90/doc $PKG_DEST/usr/share/doc/vim-9.0.1677
+make -j1 INSTALL_MOD_PATH=$PKG_DEST modules_install
+
+cp -v arch/x86/boot/bzImage $PKG_DEST/boot/vmlinuz-6.4.12-lfs-12.0-systemd
+cp -v System.map $PKG_DEST/boot/System.map-6.4.12
+cp -v .config $PKG_DEST/boot/config-6.4.12
+cp -r Documentation -T $PKG_DEST/usr/share/doc/linux-6.4.12
 for dir in $PKG_DEST/usr/share/man/man{1..8} \
            $PKG_DEST/usr/share/bash-completion{/completions,} \
            $PKG_DEST/usr/share/{doc,info,man,} \
@@ -71,28 +71,20 @@ rm -v $PKG_DEST/{lib,bin,sbin}
 
 rm -rf $PKG_DEST/var/{run,lock}
 
-cat > $PKG_DEST/etc/vimrc << "EOF"
-" Begin /etc/vimrc
-
-" Ensure defaults are set before customizing settings, not after
-source $VIMRUNTIME/defaults.vim
-let skip_defaults_vim=1
-
-set nocompatible
-set backspace=2
-set mouse=
-syntax on
-if (&term == "xterm") || (&term == "putty")
-  set background=dark
-endif
-
-" End /etc/vimrc
-EOF
 [ -d $PKG_DEST/var ] && [ -z "$(ls $PKG_DEST/var)" ] && rmdir -v $PKG_DEST/var
 PREV_SEC=${SECONDS}
 packInstall
 SECONDS=${PREV_SEC}
 rm -rf $PKG_DEST
+install -v -m755 -d /etc/modprobe.d
+cat > /etc/modprobe.d/usb.conf << "EOF"
+# Begin /etc/modprobe.d/usb.conf
+
+install ohci_hcd /sbin/modprobe ehci_hcd ; /sbin/modprobe -i ohci_hcd ; true
+install uhci_hcd /sbin/modprobe ehci_hcd ; /sbin/modprobe -i uhci_hcd ; true
+
+# End /etc/modprobe.d/usb.conf
+EOF
 echo -e "\n\nTotalseconds: $SECONDS\n"
 
 # End of LFS book script

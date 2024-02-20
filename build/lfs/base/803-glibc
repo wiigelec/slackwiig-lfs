@@ -82,12 +82,7 @@ rm -v $PKG_DEST/{lib,bin,sbin}
 
 rm -rf $PKG_DEST/var/{run,lock}
 
-[ -d $PKG_DEST/var ] && [ -z "$(ls $PKG_DEST/var)" ] && rmdir -v $PKG_DEST/var
-PREV_SEC=${SECONDS}
-packInstall
-SECONDS=${PREV_SEC}
-rm -rf $PKG_DEST
-mkdir -pv /usr/lib/locale
+mkdir -pv $PKG_DEST/usr/lib/locale
 localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
 localedef -i cs_CZ -f UTF-8 cs_CZ.UTF-8
 localedef -i de_DE -f ISO-8859-1 de_DE
@@ -123,7 +118,7 @@ localedef -i tr_TR -f UTF-8 tr_TR.UTF-8
 localedef -i zh_CN -f GB18030 zh_CN.GB18030
 localedef -i zh_HK -f BIG5-HKSCS zh_HK.BIG5-HKSCS
 localedef -i zh_TW -f UTF-8 zh_TW.UTF-8
-cat > /etc/nsswitch.conf << "EOF"
+cat > $PKG_DEST/etc/nsswitch.conf << "EOF"
 # Begin /etc/nsswitch.conf
 
 passwd: files
@@ -140,6 +135,11 @@ rpc: files
 
 # End /etc/nsswitch.conf
 EOF
+[ -d $PKG_DEST/var ] && [ -z "$(ls $PKG_DEST/var)" ] && rmdir -v $PKG_DEST/var
+PREV_SEC=${SECONDS}
+packInstall
+SECONDS=${PREV_SEC}
+rm -rf $PKG_DEST
 
 OLD_PKG_DEST="$PKG_DEST"
 OLD_PKGDIR=$PKGDIR
@@ -160,6 +160,13 @@ done
 cp -v zone.tab zone1970.tab iso3166.tab $ZONEINFO
 zic -d $ZONEINFO -p America/New_York
 unset ZONEINFO
+ln -sfv /usr/share/zoneinfo/GMT /etc/localtime
+cat > /etc/ld.so.conf << "EOF"
+# Begin /etc/ld.so.conf
+/usr/local/lib
+/opt/lib
+
+EOF
 PREV_SEC=${SECONDS}
 packInstall
 SECONDS=${PREV_SEC}
@@ -169,13 +176,6 @@ PKG_DEST=$OLD_PKG_DEST
 unset OLD_PKG_DEST
 PKGDIR=$OLD_PKGDIR
 unset OLD_PKGDIR
-ln -sfv /usr/share/zoneinfo/GMT /etc/localtime
-cat > /etc/ld.so.conf << "EOF"
-# Begin /etc/ld.so.conf
-/usr/local/lib
-/opt/lib
-
-EOF
 echo -e "\n\nTotalseconds: $SECONDS\n"
 
 # End of LFS book script
