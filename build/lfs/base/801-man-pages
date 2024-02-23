@@ -48,7 +48,7 @@ ln -sv usr/sbin $PKG_DEST
 ln -sv usr/bin  $PKG_DEST
 ln -sv usr/lib  $PKG_DEST
 make -j1 DESTDIR=$PKG_DEST prefix=/usr install
-rm -fv $PKG_DEST/usr/share/man/{man3/getspnam.3,man5/passwd.5}
+#rm -fv $PKG_DEST/usr/share/man/{man3/getspnam.3,man5/passwd.5}
 for dir in $PKG_DEST/usr/share/man/man{1..8} \
            $PKG_DEST/usr/share/bash-completion{/completions,} \
            $PKG_DEST/usr/share/{doc,info,man,} \

@@ -57,6 +57,9 @@ for L in  $PKG_DEST/usr/share/man/{,*/}man1/vim.1; do
     ln -sv vim.1 $(dirname $L)/vi.1
 done
 ln -sv ../vim/vim90/doc $PKG_DEST/usr/share/doc/vim-9.0.1677
+
+cp -a /etc/vimrc $PKG_DEST/etc
+
 for dir in $PKG_DEST/usr/share/man/man{1..8} \
            $PKG_DEST/usr/share/bash-completion{/completions,} \
            $PKG_DEST/usr/share/{doc,info,man,} \
@@ -71,7 +74,12 @@ rm -v $PKG_DEST/{lib,bin,sbin}
 
 rm -rf $PKG_DEST/var/{run,lock}
 
-cat > $PKG_DEST/etc/vimrc << "EOF"
+[ -d $PKG_DEST/var ] && [ -z "$(ls $PKG_DEST/var)" ] && rmdir -v $PKG_DEST/var
+PREV_SEC=${SECONDS}
+packInstall
+SECONDS=${PREV_SEC}
+rm -rf $PKG_DEST
+cat > /etc/vimrc << "EOF"
 " Begin /etc/vimrc
 
 " Ensure defaults are set before customizing settings, not after
@@ -88,11 +96,6 @@ endif
 
 " End /etc/vimrc
 EOF
-[ -d $PKG_DEST/var ] && [ -z "$(ls $PKG_DEST/var)" ] && rmdir -v $PKG_DEST/var
-PREV_SEC=${SECONDS}
-packInstall
-SECONDS=${PREV_SEC}
-rm -rf $PKG_DEST
 echo -e "\n\nTotalseconds: $SECONDS\n"
 
 # End of LFS book script

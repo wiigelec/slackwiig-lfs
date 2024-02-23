@@ -57,6 +57,9 @@ cp -v arch/x86/boot/bzImage $PKG_DEST/boot/vmlinuz-6.4.12-lfs-12.0-systemd
 cp -v System.map $PKG_DEST/boot/System.map-6.4.12
 cp -v .config $PKG_DEST/boot/config-6.4.12
 cp -r Documentation -T $PKG_DEST/usr/share/doc/linux-6.4.12
+
+cp -a /etc/modprobe.d $PKG_DEST/etc
+
 for dir in $PKG_DEST/usr/share/man/man{1..8} \
            $PKG_DEST/usr/share/bash-completion{/completions,} \
            $PKG_DEST/usr/share/{doc,info,man,} \

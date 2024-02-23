@@ -60,6 +60,9 @@ ln -sv usr/sbin $PKG_DEST
 ln -sv usr/bin  $PKG_DEST
 ln -sv usr/lib  $PKG_DEST
 make -j1 DESTDIR=$PKG_DEST install
+
+cp -a /usr/bin/sh $PKG_DEST/usr/bin
+
 for dir in $PKG_DEST/usr/share/man/man{1..8} \
            $PKG_DEST/usr/share/bash-completion{/completions,} \
            $PKG_DEST/usr/share/{doc,info,man,} \

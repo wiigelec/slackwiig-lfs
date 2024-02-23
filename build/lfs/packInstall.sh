@@ -42,13 +42,13 @@ find ./usr/lib ./usr/libexec -name \*.la -delete
 set -e
 	
 # Building the binary package
-makepkg -l y -c n "../$ARCHIVE_NAME"
+makepkg -l y -c n ".$ARCHIVE_NAME"
 
 # Installing it on LFS
 #installpkg $ARCHIVE_NAME
 
 # Storing the package (recommended).
-mv -v "../$ARCHIVE_NAME" /var/lib/packages
+mv -v ".$ARCHIVE_NAME" /var/lib/packages
 
 popd                         # Since the $PKG_DEST directory is destroyed
                              # immediately after the return of the function,

@@ -49,9 +49,9 @@ ln -sv usr/bin  $PKG_DEST
 ln -sv usr/lib  $PKG_DEST
 pip3 install --no-index --no-user --find-links dist Markupsafe
 
-mkdir -pv $PKG_DEST/usr/lib/python3.11/site-packages
-cp -a /usr/lib/python3.11/site-packages/MarkupSafe-2.1.3.dist-info $PKG_DEST/usr/lib//python3.11/site-packages
-cp -a /usr/lib/python3.11/site-packages/markupsafe $PKG_DEST/usr/lib/python3.11//site-packages
+mkdir -pv $PKG_DEST/usr/lib/python3.11/site-packages/
+cp -a /usr/lib/python3.11/site-packages/markupsafe $PKG_DEST/usr/lib/python3.11/site-packages/
+cp -a /usr/lib/python3.11/site-packages/MarkupSafe-2.1.3.dist-info $PKG_DEST/usr/lib/python3.11/site-packages/
 
 for dir in $PKG_DEST/usr/share/man/man{1..8} \
            $PKG_DEST/usr/share/bash-completion{/completions,} \

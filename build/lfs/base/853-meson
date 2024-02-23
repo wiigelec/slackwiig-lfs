@@ -47,19 +47,18 @@ esac
 ln -sv usr/sbin $PKG_DEST
 ln -sv usr/bin  $PKG_DEST
 ln -sv usr/lib  $PKG_DEST
-pip3 install --no-index --upgrade --find-links dist meson
+pip3 install --no-index --find-links dist meson
+install -vDm644 data/shell-completions/bash/meson $PKG_DEST/usr/share/bash-completion/completions/meson
+install -vDm644 data/shell-completions/zsh/_meson $PKG_DEST/usr/share/zsh/site-functions/_meson
 
 cp -a /usr/bin/meson $PKG_DEST/usr/bin
 mkdir -pv $PKG_DEST/usr/lib/python3.11/site-packages
 cp -a /usr/lib/python3.11/site-packages/meson-1.2.1.dist-info $PKG_DEST/usr/lib/python3.11/site-packages
 cp -a /usr/lib/python3.11/site-packages/mesonbuild $PKG_DEST/usr/lib/python3.11/site-packages
-mkdir -pv $PKG_DEST/usr/share/man/man1
 cp -a /usr/share/man/man1/meson.1 $PKG_DEST/usr/share/man/man1
 mkdir -pv $PKG_DEST/usr/share/polkit-1/actions
 cp -a /usr/share/polkit-1/actions/com.mesonbuild.install.policy $PKG_DEST/usr/share/polkit-1/actions
 
-install -vDm644 data/shell-completions/bash/meson $PKG_DEST/usr/share/bash-completion/completions/meson
-install -vDm644 data/shell-completions/zsh/_meson $PKG_DEST/usr/share/zsh/site-functions/_meson
 for dir in $PKG_DEST/usr/share/man/man{1..8} \
            $PKG_DEST/usr/share/bash-completion{/completions,} \
            $PKG_DEST/usr/share/{doc,info,man,} \

@@ -49,9 +49,9 @@ ln -sv usr/lib  $PKG_DEST
 pip3 wheel -w dist --no-build-isolation --no-deps $PWD
 pip3 install --no-index --no-user --find-links dist flit_core
 
-mkdir -pv $PKG_DEST/usr/lib/python3.11/site-packages
-cp -a /usr/lib/python3.11/site-packages/flit_core-3.9.0.dist-info $PKG_DEST/usr/lib/python3.11/site-packages
-cp -a /usr/lib/python3.11/site-packages/flit_core $PKG_DEST/usr/lib/python3.11//site-packages
+mkdir -pv $PKG_DEST/usr/lib/python3.11/site-packages/
+cp -a /usr/lib/python3.11/site-packages/flit_core $PKG_DEST/usr/lib/python3.11/site-packages/
+cp -a /usr/lib/python3.11/site-packages/flit_core-3.9.0.dist-info $PKG_DEST/usr/lib/python3.11/site-packages/
 
 for dir in $PKG_DEST/usr/share/man/man{1..8} \
            $PKG_DEST/usr/share/bash-completion{/completions,} \

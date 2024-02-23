@@ -52,7 +52,7 @@ chmod -v 600  ./var/log/btmp
 
 ### 9.2 ###
 mkdir -pv ./etc/systemd/network/
-cp /mnt/lfs/etc/systemd/network/10-eth-static.network ./etc/systemd/network/
+cp -a /etc/systemd/network/10-eth-static.network ./etc/systemd/network/
 cp -a /etc/hostname ./etc
 cp -a /etc/hosts ./etc
 
@@ -79,6 +79,8 @@ cp -a /etc/lfs-release ./etc
 cp -a /etc/lsb-release ./etc
 cp -a /etc/os-release ./etc
 
+### misc ###
+cp -a /usr/share/info/dir ./usr/share/info
 
 #case $(uname -m) in
 #    i?86)   ln -sfv ld-linux.so.2 ./lib/ld-lsb.so.3

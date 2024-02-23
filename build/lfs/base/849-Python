@@ -53,6 +53,19 @@ ln -sv usr/sbin $PKG_DEST
 ln -sv usr/bin  $PKG_DEST
 ln -sv usr/lib  $PKG_DEST
 make -j1 DESTDIR=$PKG_DEST install
+
+cp -a /usr/bin/pip3 $PKG_DEST/usr/bin
+cp -a /usr/bin/pip3.11 $PKG_DEST/usr/bin
+
+mkdir -pv $PKG_DEST/usr/lib/python3.11/site-packages/
+cp -a /usr/lib/python3.11/site-packages/_distutils_hack $PKG_DEST/usr/lib/python3.11/site-packages/
+cp -a /usr/lib/python3.11/site-packages/distutils-precedence.pth $PKG_DEST/usr/lib/python3.11/site-packages/
+cp -a /usr/lib/python3.11/site-packages/pip $PKG_DEST/usr/lib/python3.11/site-packages/
+cp -a /usr/lib/python3.11/site-packages/pip-23.1.2.dist-info $PKG_DEST/usr/lib/python3.11/site-packages/
+cp -a /usr/lib/python3.11/site-packages/setuptools $PKG_DEST/usr/lib/python3.11/site-packages/
+cp -a /usr/lib/python3.11/site-packages/setuptools-65.5.0.dist-info $PKG_DEST/usr/lib/python3.11/site-packages/
+cp -a /usr/lib/python3.11/site-packages/pkg_resources $PKG_DEST/usr/lib/python3.11/site-packages/
+
 cat > $PKG_DEST/etc/pip.conf << EOF
 [global]
 root-user-action = ignore

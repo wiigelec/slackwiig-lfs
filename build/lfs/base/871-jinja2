@@ -49,9 +49,9 @@ ln -sv usr/lib  $PKG_DEST
 pip3 wheel -w dist --no-build-isolation --no-deps $PWD
 pip3 install --no-index --no-user --find-links dist Jinja2
 
-mkdir -pv $PKG_DEST/usr/lib/python3.11/site-packages
-cp -a /usr/lib/python3.11/site-packages/Jinja2-3.1.2.dist-info $PKG_DEST/usr/lib//python3.11/site-packages
-cp -a /usr/lib/python3.11/site-packages/jinja2 $PKG_DEST/usr/lib/python3.11//site-packages
+mkdir -pv $PKG_DEST/usr/lib/python3.11/site-packages/
+cp -a /usr/lib/python3.11/site-packages/jinja2 $PKG_DEST/usr/lib/python3.11/site-packages/
+cp -a /usr/lib/python3.11/site-packages/Jinja2-3.1.2.dist-info $PKG_DEST/usr/lib/python3.11/site-packages/
 
 for dir in $PKG_DEST/usr/share/man/man{1..8} \
            $PKG_DEST/usr/share/bash-completion{/completions,} \

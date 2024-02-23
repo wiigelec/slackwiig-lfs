@@ -50,9 +50,10 @@ ln -sv usr/lib  $PKG_DEST
 pip3 install --no-index --find-links=dist wheel
 
 cp -a /usr/bin/wheel $PKG_DEST/usr/bin
-mkdir -pv $PKG_DEST/usr/lib/python3.11/site-packages
-cp -a /usr/lib/python3.11/site-packages/wheel-0.41.1.dist-info $PKG_DEST/usr/lib//python3.11/site-packages
-cp -a /usr/lib/python3.11/site-packages/wheel $PKG_DEST/usr/lib/python3.11//site-packages
+
+mkdir -pv $PKG_DEST/usr/lib/python3.11/site-packages/
+cp -a /usr/lib/python3.11/site-packages/wheel $PKG_DEST/usr/lib/python3.11/site-packages/
+cp -a /usr/lib/python3.11/site-packages/wheel-0.41.1.dist-info $PKG_DEST/usr/lib/python3.11/site-packages/
 
 for dir in $PKG_DEST/usr/share/man/man{1..8} \
            $PKG_DEST/usr/share/bash-completion{/completions,} \
