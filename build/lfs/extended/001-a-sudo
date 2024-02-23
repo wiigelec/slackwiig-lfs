@@ -83,7 +83,7 @@ make
 #grep || true
 #      failed make -k-check.log || true
 #sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/001-a-sudo-1.9.14p3.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/sudo-1.9.14p3.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 make -j1 install
@@ -104,7 +104,7 @@ unset LD_PRELOAD
 sudo /sbin/ldconfig
 
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/001-a-sudo-1.9.14p3.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/sudo-1.9.14p3.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 touch /etc/sudoers.d/00-sudo
