@@ -30,7 +30,7 @@ do
     ### FILTER FILE ###
     TAB=$'\t'
     omit="${TAB}rename\|${TAB}symlink\|${TAB}unlink\|${TAB}access\|${TAB}utimes"
-    grep -v "omit" $FILE | cut -f3 | grep "^/" | sed 's#^//#/#g' > $filter_file_tmp
+    grep -v "$omit" $FILE | cut -f3 | grep "^/" | sed 's#^//#/#g' > $filter_file_tmp
     cat $FILE | cut -f4 | grep "^/" | sed 's#^//#/#g' >> $filter_file_tmp
     echo "$(cat $filter_file_tmp | sort -u)" > $filter_file_tmp
     echo "$(grep -v "^/dev" $filter_file_tmp)" > $filter_file_tmp
