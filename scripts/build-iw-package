@@ -1,5 +1,22 @@
 #!/bin/bash
 
+#----------------------------------------------------------------------------#
+parse_iw()  
+{
+  local INPUT=$1
+
+  # it is EXTREMELY IMPORTANT that this variable contains an actual
+  # tab character and not some number of spaces. Otherwise BAD THINGS
+  # will happen.
+  local TAB=$'\t'
+  OMIT_IN="${TAB}rename\|${TAB}symlink\|${TAB}unlink\|${TAB}access\|${TAB}utimes"
+
+  grep -v "$OMIT_IN" $INPUT | cut -f3 | grep "^/" | sed 's#^//#/#g'
+  cat                $INPUT | cut -f4 | grep "^/" | sed 's#^//#/#g'
+}
+
+
+#----------------------------------------------------------------------------#
 for FILE in /var/lib/iwlog/*;
 do
     ### GET PACKAGE NAME AND VERSION ##
@@ -7,17 +24,27 @@ do
 
     ### CREATE FILTERED FILE ###
     filter_file=${FILE%.raw}
+    filter_file_tmp="$filter_file.tmp"
     #echo $filter_file
 
     ### FILTER FILE ###
     TAB=$'\t'
     omit="${TAB}rename\|${TAB}symlink\|${TAB}unlink\|${TAB}access\|${TAB}utimes"
-    echo "$(grep -v "$omit" $FILE)" | cut -f3 | sort -u > $filter_file
-    echo "$(grep -v "/dev" $filter_file)" > $filter_file
-    echo "$(grep -v "/sources" $filter_file)" > $filter_file
-    echo "$(grep -v "/run" $filter_file)" > $filter_file
-    echo "$(grep -v ".tmp" $filter_file)" > $filter_file
-    echo "$(grep -v ".la" $filter_file)" > $filter_file
+    grep -v "omit" $FILE | cut -f3 | grep "^/" | sed 's#^//#/#g' > $filter_file_tmp
+    cat $FILE | cut -f4 | grep "^/" | sed 's#^//#/#g' >> $filter_file_tmp
+    echo "$(cat $filter_file_tmp | sort -u)" > $filter_file_tmp
+    echo "$(grep -v "^/dev" $filter_file_tmp)" > $filter_file_tmp
+    echo "$(grep -v "^/run" $filter_file_tmp)" > $filter_file_tmp
+    echo "$(grep -v "^/proc" $filter_file_tmp)" > $filter_file_tmp
+    echo "$(grep -v "^/sys" $filter_file_tmp)" > $filter_file_tmp
+    echo "$(grep -v "^/sources" $filter_file_tmp)" > $filter_file_tmp
+
+    ### CHECK EXISTS ###
+    while IFS= read -r line; do 
+        if [[ -f $line ]] || [[ -d $line ]]; then
+	    echo $line >> $filter_file
+	fi	    
+    done < $filter_file_tmp
 
     ### CREATE TAR ###
     tar_file="$filter_file.tar"
@@ -30,15 +57,15 @@ do
     cd extract
     tar -xf $tar_file
     makepkg -l y -c n $package
-    mv -v $package /var/lib/packages
+    mv -v $package /var/lib/packages/
     cd ../
 
     ### CLEANUP ###
     rm -rf extract
     rm $filter_file
+    rm $filter_file_tmp
     rm $tar_file
 
 done
-
 
 exit

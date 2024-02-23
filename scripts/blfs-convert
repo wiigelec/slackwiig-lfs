@@ -42,6 +42,10 @@ do
                 echo "unset LD_PRELOAD" >> $outfile
 		echo "$line" >> $outfile
                 ;;
+	    "cat > "* )
+		echo "touch $(echo "$line" | cut -d' ' -f3)" >> $outfile
+		echo "$line" >> $outfile
+		;;
 	    * )
 		echo "$line" >> $outfile
 		;;

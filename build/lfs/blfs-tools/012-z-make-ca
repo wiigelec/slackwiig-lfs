@@ -24,12 +24,12 @@ mkdir -p $SRC_DIR
 mkdir -p $BUILD_DIR
 
 cd $SRC_DIR
-PACKAGE=make-ca-1.13.tar.xz
+PACKAGE=make-ca-1.12.tar.xz
 if [[ ! -f $PACKAGE ]] ; then
   if [ -f "$JH_SRC_ARCHIVE/$PACKAGE" ] ; then
     cp "$JH_SRC_ARCHIVE/$PACKAGE" "$PACKAGE"
   else
-    wget -T 30 -t 5 "https://github.com/lfs-book/make-ca/releases/download/v1.13/make-ca-1.13.tar.xz"
+    wget -T 30 -t 5 "https://github.com/lfs-book/make-ca/releases/download/v1.12/make-ca-1.12.tar.xz"
   fi
 fi
 
@@ -69,7 +69,7 @@ export JH_UNPACKDIR
 cd $JH_UNPACKDIR
 
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/make-ca-1.13.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/make-ca-1.12.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 make -j1 install
@@ -90,10 +90,11 @@ sudo /sbin/ldconfig
 
 export _PIP_STANDALONE_CERT=/etc/pki/tls/certs/ca-bundle.crt
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/make-ca-1.13.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/make-ca-1.12.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 mkdir -pv /etc/profile.d
+touch /etc/profile.d/pythoncerts.sh
 cat > /etc/profile.d/pythoncerts.sh << "EOF"
 # Begin /etc/profile.d/pythoncerts.sh
 
