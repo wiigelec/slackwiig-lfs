@@ -102,6 +102,7 @@ install -v -m755 -d      /usr/lib/cracklib
 
 create-cracklib-dict     /usr/share/dict/cracklib-words \\
                          /usr/share/dict/cracklib-extra-words
+touch /usr/share/dict/cracklib-extra-words
 
 for libdir in /lib /usr/lib \$(find /opt -name lib); do
   find \$libdir -name \\*.la           \\

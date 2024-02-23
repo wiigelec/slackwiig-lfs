@@ -252,6 +252,7 @@ password  include     system-password
 EOF
 
 sed -e s/chpasswd/newusers/ /etc/pam.d/chpasswd >/etc/pam.d/newusers
+touch /etc/pam.d/newusers
 unset INSTALLWATCHFILE
 unset LD_PRELOAD
 ROOT_EOF

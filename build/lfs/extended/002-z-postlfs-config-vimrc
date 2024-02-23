@@ -17,6 +17,8 @@ unset MAKE_TERMOUT
 unset MAKE_TERMERR
 if [ -r /etc/profile ]; then source /etc/profile; fi
 # End of environment
+export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-vimrc-12.0.iwlog.raw
+export LD_PRELOAD=/usr/lib/installwatch.so
 touch ~/.vimrc
 cat > ~/.vimrc <<EOF
 " Begin .vimrc
@@ -27,5 +29,7 @@ set ruler
 
 " End .vimrc
 EOF
+unset INSTALLWATCHFILE
+unset LD_PRELOAD
 
 exit

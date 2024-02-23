@@ -18,7 +18,7 @@ unset MAKE_TERMERR
 if [ -r /etc/profile ]; then source /etc/profile; fi
 # End of environment
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-12.0.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 touch /etc/profile
@@ -113,7 +113,7 @@ unset INSTALLWATCHFILE
 unset LD_PRELOAD
 ROOT_EOF
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-12.0.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 install --directory --mode=0755 --owner=root --group=root /etc/profile.d
@@ -121,7 +121,7 @@ unset INSTALLWATCHFILE
 unset LD_PRELOAD
 ROOT_EOF
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-12.0.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 touch /etc/profile.d/bash_completion.sh
@@ -166,7 +166,7 @@ unset INSTALLWATCHFILE
 unset LD_PRELOAD
 ROOT_EOF
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-12.0.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 touch /etc/profile.d/dircolors.sh
@@ -187,7 +187,7 @@ unset INSTALLWATCHFILE
 unset LD_PRELOAD
 ROOT_EOF
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-12.0.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 touch /etc/profile.d/extrapaths.sh
@@ -214,7 +214,7 @@ unset INSTALLWATCHFILE
 unset LD_PRELOAD
 ROOT_EOF
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-12.0.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 touch /etc/profile.d/readline.sh
@@ -229,7 +229,7 @@ unset INSTALLWATCHFILE
 unset LD_PRELOAD
 ROOT_EOF
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-12.0.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 touch /etc/profile.d/umask.sh
@@ -245,7 +245,7 @@ unset INSTALLWATCHFILE
 unset LD_PRELOAD
 ROOT_EOF
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-12.0.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 touch /etc/profile.d/i18n.sh
@@ -258,7 +258,7 @@ unset INSTALLWATCHFILE
 unset LD_PRELOAD
 ROOT_EOF
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-12.0.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 touch /etc/bashrc
@@ -377,10 +377,11 @@ cat > ~/.bash_logout << "EOF"
 # End ~/.bash_logout
 EOF
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/postlfs-config-profile-12.0.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 dircolors -p > /etc/dircolors
+touch /etc/dircolors
 unset INSTALLWATCHFILE
 unset LD_PRELOAD
 ROOT_EOF
