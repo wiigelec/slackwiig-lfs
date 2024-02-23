@@ -17,32 +17,22 @@ unset MAKE_TERMOUT
 unset MAKE_TERMERR
 if [ -r /etc/profile ]; then source /etc/profile; fi
 # End of environment
-export JH_PKG_DIR=gpm
+export JH_PKG_DIR=dhcpcd
 SRC_DIR=${JH_SRC_ARCHIVE}${JH_SRC_SUBDIRS:+/${JH_PKG_DIR}}
 BUILD_DIR=${JH_BUILD_ROOT}${JH_BUILD_SUBDIRS:+/${JH_PKG_DIR}}
 mkdir -p $SRC_DIR
 mkdir -p $BUILD_DIR
 
 cd $SRC_DIR
-PACKAGE=gpm-1.20.7.tar.bz2
+PACKAGE=dhcpcd-10.0.2.tar.xz
 if [[ ! -f $PACKAGE ]] ; then
   if [ -f "$JH_SRC_ARCHIVE/$PACKAGE" ] ; then
     cp "$JH_SRC_ARCHIVE/$PACKAGE" "$PACKAGE"
   else
-    wget -T 30 -t 5 "https://anduin.linuxfromscratch.org/BLFS/gpm/gpm-1.20.7.tar.bz2"
+    wget -T 30 -t 5 "https://github.com/NetworkConfiguration/dhcpcd/releases/download/v10.0.2/dhcpcd-10.0.2.tar.xz"
   fi
 fi
-echo "bf84143905a6a903dbd4d4b911a2a2b8  $PACKAGE" | md5sum -c -
-
-PATCH=gpm-1.20.7-consolidated-1.patch
-if [[ ! -f $PATCH ]] ; then
-  if [ -f "$JH_SRC_ARCHIVE/$PATCH" ] ; then
-    cp "$JH_SRC_ARCHIVE/$PATCH" "$PATCH"
-  else
-    wget -T 30 -t 5 "https://www.linuxfromscratch.org/patches/blfs/12.0/gpm-1.20.7-consolidated-1.patch"
-  fi
-fi
-[ "$SRC_DIR" != "$BUILD_DIR" ] && ln -sf "$SRC_DIR/$PATCH" "$BUILD_DIR"
+echo "1f266e2c32567bc778ea22c599fb06d9  $PACKAGE" | md5sum -c -
 
 cd $BUILD_DIR
 find . -maxdepth 1 -mindepth 1 -type d | xargs sudo rm -rf
@@ -79,28 +69,19 @@ esac
 export JH_UNPACKDIR
 cd $JH_UNPACKDIR
 
-patch -Np1 -i ../gpm-1.20.7-consolidated-1.patch
-./autogen.sh
-./configure --prefix=/usr --sysconfdir=/etc
+./configure --prefix=/usr                \
+            --sysconfdir=/etc            \
+            --libexecdir=/usr/lib/dhcpcd \
+            --dbdir=/var/lib/dhcpcd      \
+            --runstatedir=/run           \
+            --disable-privsep
 make
+#make -k test || true
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/gpm-1.20.7.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/dhcpcd-10.0.2.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 make -j1 install
-
-install-info --dir-file=/usr/share/info/dir           \\
-             /usr/share/info/gpm.info
-
-rm -fv /usr/lib/libgpm.a
-ln -sfv libgpm.so.2.1.0 /usr/lib/libgpm.so
-install -v -m644 conf/gpm-root.conf /etc
-
-install -v -m755 -d /usr/share/doc/gpm-1.20.7/support
-install -v -m644    doc/support/*                     \\
-                    /usr/share/doc/gpm-1.20.7/support
-install -v -m644    doc/{FAQ,HACK_GPM,README*}        \\
-                    /usr/share/doc/gpm-1.20.7
 
 for libdir in /lib /usr/lib \$(find /opt -name lib); do
   find \$libdir -name \\*.la           \\
@@ -144,14 +125,23 @@ else
 fi
 cd $BOOTUNPACKDIR
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/gpm-1.20.7.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/dhcpcd-10.0.2.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
-make install-gpm
+#make install-dhcpcd
 unset INSTALLWATCHFILE
 unset LD_PRELOAD
 ROOT_EOF
 popd
+sudo -E sh -e << ROOT_EOF
+export INSTALLWATCHFILE=/var/lib/iwlog/dhcpcd-10.0.2.iwlog.raw
+export LD_PRELOAD=/usr/lib/installwatch.so
+PATH=$PATH:/usr/sbin
+#systemctl start dhcpcd@**EDITMEeth0EDITME**
+#systemctl enable dhcpcd@**EDITMEeth0EDITME**
+unset INSTALLWATCHFILE
+unset LD_PRELOAD
+ROOT_EOF
 
 cd $BUILD_DIR
 [[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked

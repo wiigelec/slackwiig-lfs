@@ -17,21 +17,33 @@ unset MAKE_TERMOUT
 unset MAKE_TERMERR
 if [ -r /etc/profile ]; then source /etc/profile; fi
 # End of environment
-export JH_PKG_DIR=make-ca
+export JH_PKG_DIR=cracklib
 SRC_DIR=${JH_SRC_ARCHIVE}${JH_SRC_SUBDIRS:+/${JH_PKG_DIR}}
 BUILD_DIR=${JH_BUILD_ROOT}${JH_BUILD_SUBDIRS:+/${JH_PKG_DIR}}
 mkdir -p $SRC_DIR
 mkdir -p $BUILD_DIR
 
 cd $SRC_DIR
-PACKAGE=make-ca-1.13.tar.xz
+PACKAGE=cracklib-2.9.11.tar.xz
 if [[ ! -f $PACKAGE ]] ; then
   if [ -f "$JH_SRC_ARCHIVE/$PACKAGE" ] ; then
     cp "$JH_SRC_ARCHIVE/$PACKAGE" "$PACKAGE"
   else
-    wget -T 30 -t 5 "https://github.com/lfs-book/make-ca/releases/download/v1.13/make-ca-1.13.tar.xz"
+    wget -T 30 -t 5 "https://github.com/cracklib/cracklib/releases/download/v2.9.11/cracklib-2.9.11.tar.xz"
   fi
 fi
+echo "a6dfb1766aab43a54e1cbd78abf0a20a  $PACKAGE" | md5sum -c -
+
+PACKAGE1=cracklib-words-2.9.11.xz
+if [[ ! -f $PACKAGE1 ]] ; then
+  if [ -f "$JH_SRC_ARCHIVE/$PACKAGE1" ] ; then
+    cp "$JH_SRC_ARCHIVE/$PACKAGE1" "$PACKAGE1"
+  else
+    wget -T 30 -t 5 "https://github.com/cracklib/cracklib/releases/download/v2.9.11/cracklib-words-2.9.11.xz"
+  fi
+fi
+echo "f27804022dbf2682a7f7c353317f9a53  $PACKAGE1" | md5sum -c -
+[ "$SRC_DIR" != "$BUILD_DIR" ] && ln -sf "$SRC_DIR/$PACKAGE1" "$BUILD_DIR"
 
 cd $BUILD_DIR
 find . -maxdepth 1 -mindepth 1 -type d | xargs sudo rm -rf
@@ -68,14 +80,28 @@ esac
 export JH_UNPACKDIR
 cd $JH_UNPACKDIR
 
+autoreconf -fiv
+
+PYTHON=python3               \
+./configure --prefix=/usr    \
+            --disable-static \
+            --with-default-dict=/usr/lib/cracklib/pw_dict
+make
 sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/make-ca-1.13.iwlog.raw
+export INSTALLWATCHFILE=/var/lib/iwlog/cracklib-2.9.11.iwlog.raw
 export LD_PRELOAD=/usr/lib/installwatch.so
 PATH=$PATH:/usr/sbin
 make -j1 install
-install -vdm755 /etc/ssl/local
-/usr/sbin/make-ca -g
-systemctl enable update-pki.timer
+install -v -m644 -D    ../cracklib-words-2.9.11.xz \\
+                         /usr/share/dict/cracklib-words.xz
+
+unxz -v                  /usr/share/dict/cracklib-words.xz
+ln -v -sf cracklib-words /usr/share/dict/words
+echo \$(hostname) >>      /usr/share/dict/cracklib-extra-words
+install -v -m755 -d      /usr/lib/cracklib
+
+create-cracklib-dict     /usr/share/dict/cracklib-words \\
+                         /usr/share/dict/cracklib-extra-words
 
 for libdir in /lib /usr/lib \$(find /opt -name lib); do
   find \$libdir -name \\*.la           \\
@@ -85,26 +111,8 @@ done
 unset INSTALLWATCHFILE
 unset LD_PRELOAD
 ROOT_EOF
+#make -k test || true
 sudo /sbin/ldconfig
-
-
-export _PIP_STANDALONE_CERT=/etc/pki/tls/certs/ca-bundle.crt
-sudo -E sh -e << ROOT_EOF
-export INSTALLWATCHFILE=/var/lib/iwlog/make-ca-1.13.iwlog.raw
-export LD_PRELOAD=/usr/lib/installwatch.so
-PATH=$PATH:/usr/sbin
-mkdir -pv /etc/profile.d
-touch /etc/profile.d/pythoncerts.sh
-cat > /etc/profile.d/pythoncerts.sh << "EOF"
-# Begin /etc/profile.d/pythoncerts.sh
-
-export _PIP_STANDALONE_CERT=/etc/pki/tls/certs/ca-bundle.crt
-
-# End /etc/profile.d/pythoncerts.sh
-EOF
-unset INSTALLWATCHFILE
-unset LD_PRELOAD
-ROOT_EOF
 
 cd $BUILD_DIR
 [[ -n "$JH_KEEP_FILES" ]] || sudo rm -rf $JH_UNPACKDIR unpacked
