@@ -35,7 +35,7 @@ fi
 echo "4cc21cf7c9a89290b230954aed0d1e11  $PACKAGE" | md5sum -c -
 
 cd $BUILD_DIR
-find . -maxdepth 1 -mindepth 1 -type d | xargs sudo rm -rf
+find . -maxdepth 1 -mindepth 1 -type d | xargs rm -rf
 
 case $PACKAGE in
   *.tar.gz|*.tar.bz2|*.tar.xz|*.tgz|*.tar.lzma)
