@@ -1,4 +1,8 @@
 ./001-a-sudo
+./001-m-wget
+./001-n-libtasn1
+./001-o-p11-kit
+./001-p-make-ca
 ./001-z-postlfs-config-profile
 ./002-z-postlfs-config-vimrc
 ./003-z-linux-pam
@@ -12,15 +16,13 @@
 ./011-z-lynx
 ./012-z-apache
 ./013-z-curl
-./014-z-libtasn1
 ./015-z-libxslt
 ./016-z-sgml-common
 ./017-z-DocBook
 ./018-z-docbook-xsl
-./019-z-p11-kit
-./020-z-make-ca
 ./021-z-git
 ./022-z-cracklib
+./023-z-libpwquality
 ./024-z-systemd
 ./025-z-glib2
 ./026-z-gobject-introspection
@@ -30,6 +32,5 @@
 ./031-z-gpm
 ./032-z-python3
 ./033-z-dhcpcd
-./034-z-wget
 ./035-z-libnl
 ./036-z-wpa_supplicant
