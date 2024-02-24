@@ -1,20 +1,5 @@
 #!/bin/bash
 
-#----------------------------------------------------------------------------#
-parse_iw()  
-{
-  local INPUT=$1
-
-  # it is EXTREMELY IMPORTANT that this variable contains an actual
-  # tab character and not some number of spaces. Otherwise BAD THINGS
-  # will happen.
-  local TAB=$'\t'
-  OMIT_IN="${TAB}rename\|${TAB}symlink\|${TAB}unlink\|${TAB}access\|${TAB}utimes"
-
-  grep -v "$OMIT_IN" $INPUT | cut -f3 | grep "^/" | sed 's#^//#/#g'
-  cat                $INPUT | cut -f4 | grep "^/" | sed 's#^//#/#g'
-}
-
 
 #----------------------------------------------------------------------------#
 for FILE in /var/lib/iwlog/*;
@@ -52,7 +37,7 @@ do
 
     ### MAKE PACKAGE ###
     package=${FILE%.iwlog.raw}
-    package="$package-x86_64-slw01.txz"
+    package="$package-x86_64-swl01.txz"
     mkdir extract
     cd extract
     tar -xf $tar_file
