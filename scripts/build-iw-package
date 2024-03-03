@@ -19,10 +19,13 @@ do
     cat $FILE | cut -f4 | grep "^/" | sed 's#^//#/#g' >> $filter_file_tmp
     echo "$(cat $filter_file_tmp | sort -u)" > $filter_file_tmp
     echo "$(grep -v "^/dev" $filter_file_tmp)" > $filter_file_tmp
-    echo "$(grep -v "^/run" $filter_file_tmp)" > $filter_file_tmp
+#    echo "$(grep -v "^/run" $filter_file_tmp)" > $filter_file_tmp
     echo "$(grep -v "^/proc" $filter_file_tmp)" > $filter_file_tmp
     echo "$(grep -v "^/sys" $filter_file_tmp)" > $filter_file_tmp
     echo "$(grep -v "^/sources" $filter_file_tmp)" > $filter_file_tmp
+    echo "$(grep -v "^/home" $filter_file_tmp)" > $filter_file_tmp
+    echo "$(grep -v "^/etc/passwd" $filter_file_tmp)" > $filter_file_tmp
+    echo "$(grep -v "^/etc/group" $filter_file_tmp)" > $filter_file_tmp
 
     ### CHECK EXISTS ###
     while IFS= read -r line; do 

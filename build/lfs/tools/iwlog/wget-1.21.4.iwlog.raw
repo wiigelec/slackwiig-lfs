@@ -1,0 +1,2656 @@
+3	open	/dev/tty	#success
+3	open	/dev/null	#success
+3	open	/dev/null	#success
+3	open	/dev/tty	#success
+3	open	/dev/null	#success
+3	open	/dev/tty	#success
+3	open	/dev/null	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+3	open	/dev/null	#success
+3	open	/dev/null	#success
+3	open	/dev/tty	#success
+3	open	/dev/null	#success
+3	open	/dev/tty	#success
+3	open	/dev/null	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/bin	#File exists
+3	open	/dev/null	#success
+5	open	/usr/bin/wget	#success
+0	chmod	/usr/bin/wget	00755	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+4	open	/etc/wgetrc	#success
+0	chmod	/etc/wgetrc	00644	#success
+3	open	/dev/tty	#success
+4	open	/usr/share/man/man1/wget.1	#success
+0	chmod	/usr/share/man/man1/wget.1	00644	#success
+3	open	/dev/tty	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/info	#File exists
+5	open	/usr/share/info/wget.info	#success
+0	chmod	/usr/share/info/wget.info	00644	#success
+3	open	/dev/tty	#success
+3	open	/dev/null	#success
+0	fopen	/usr/share/info/dir	#success
+94401379517296	fopen	/usr/share/info/dir	#success
+3	open	/dev/tty	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/be	#File exists
+-1	mkdir	/usr/share/locale/be/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/be/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/be/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/bg	#File exists
+-1	mkdir	/usr/share/locale/bg/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/bg/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/bg/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/ca	#File exists
+-1	mkdir	/usr/share/locale/ca/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/ca/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/ca/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/cs	#File exists
+-1	mkdir	/usr/share/locale/cs/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/cs/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/cs/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/da	#File exists
+-1	mkdir	/usr/share/locale/da/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/da/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/da/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/de	#File exists
+-1	mkdir	/usr/share/locale/de/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/de/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/de/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/el	#File exists
+-1	mkdir	/usr/share/locale/el/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/el/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/el/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/en_GB	#File exists
+-1	mkdir	/usr/share/locale/en_GB/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/en_GB/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/en_GB/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/eo	#File exists
+-1	mkdir	/usr/share/locale/eo/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/eo/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/eo/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/es	#File exists
+-1	mkdir	/usr/share/locale/es/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/es/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/es/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/et	#File exists
+-1	mkdir	/usr/share/locale/et/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/et/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/et/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/eu	#File exists
+-1	mkdir	/usr/share/locale/eu/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/eu/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/eu/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/fi	#File exists
+-1	mkdir	/usr/share/locale/fi/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/fi/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/fi/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/fr	#File exists
+-1	mkdir	/usr/share/locale/fr/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/fr/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/fr/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/ga	#File exists
+-1	mkdir	/usr/share/locale/ga/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/ga/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/ga/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/gl	#File exists
+-1	mkdir	/usr/share/locale/gl/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/gl/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/gl/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/he	#File exists
+-1	mkdir	/usr/share/locale/he/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/he/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/he/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/hr	#File exists
+-1	mkdir	/usr/share/locale/hr/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/hr/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/hr/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/hu	#File exists
+-1	mkdir	/usr/share/locale/hu/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/hu/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/hu/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/id	#File exists
+-1	mkdir	/usr/share/locale/id/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/id/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/id/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/it	#File exists
+-1	mkdir	/usr/share/locale/it/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/it/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/it/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/ja	#File exists
+-1	mkdir	/usr/share/locale/ja/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/ja/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/ja/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/ka	#File exists
+-1	mkdir	/usr/share/locale/ka/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/ka/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/ka/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/ko	#File exists
+-1	mkdir	/usr/share/locale/ko/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/ko/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/ko/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/lt	#File exists
+-1	mkdir	/usr/share/locale/lt/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/lt/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/lt/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/nb	#File exists
+-1	mkdir	/usr/share/locale/nb/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/nb/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/nb/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/nl	#File exists
+-1	mkdir	/usr/share/locale/nl/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/nl/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/nl/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/pl	#File exists
+-1	mkdir	/usr/share/locale/pl/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/pl/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/pl/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/pt	#File exists
+-1	mkdir	/usr/share/locale/pt/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/pt/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/pt/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/pt_BR	#File exists
+-1	mkdir	/usr/share/locale/pt_BR/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/pt_BR/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/pt_BR/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/ro	#File exists
+-1	mkdir	/usr/share/locale/ro/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/ro/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/ro/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/ru	#File exists
+-1	mkdir	/usr/share/locale/ru/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/ru/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/ru/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/sk	#File exists
+-1	mkdir	/usr/share/locale/sk/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/sk/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/sk/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/sl	#File exists
+-1	mkdir	/usr/share/locale/sl/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/sl/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/sl/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/sr	#File exists
+-1	mkdir	/usr/share/locale/sr/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/sr/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/sr/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/sv	#File exists
+-1	mkdir	/usr/share/locale/sv/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/sv/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/sv/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/tr	#File exists
+-1	mkdir	/usr/share/locale/tr/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/tr/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/tr/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/uk	#File exists
+-1	mkdir	/usr/share/locale/uk/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/uk/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/uk/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/vi	#File exists
+-1	mkdir	/usr/share/locale/vi/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/vi/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/vi/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/zh_CN	#File exists
+-1	mkdir	/usr/share/locale/zh_CN/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/zh_CN/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/zh_CN/LC_MESSAGES/wget.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/zh_TW	#File exists
+-1	mkdir	/usr/share/locale/zh_TW/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/zh_TW/LC_MESSAGES/wget.mo	#success
+0	chmod	/usr/share/locale/zh_TW/LC_MESSAGES/wget.mo	00644	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/af	#File exists
+-1	mkdir	/usr/share/locale/af/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/af/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/af/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/be	#File exists
+-1	mkdir	/usr/share/locale/be/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/be/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/be/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/bg	#File exists
+-1	mkdir	/usr/share/locale/bg/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/bg/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/bg/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/ca	#File exists
+-1	mkdir	/usr/share/locale/ca/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/ca/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/ca/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/cs	#File exists
+-1	mkdir	/usr/share/locale/cs/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/cs/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/cs/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/da	#File exists
+-1	mkdir	/usr/share/locale/da/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/da/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/da/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/de	#File exists
+-1	mkdir	/usr/share/locale/de/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/de/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/de/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/el	#File exists
+-1	mkdir	/usr/share/locale/el/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/el/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/el/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/eo	#File exists
+-1	mkdir	/usr/share/locale/eo/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/eo/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/eo/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/es	#File exists
+-1	mkdir	/usr/share/locale/es/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/es/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/es/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/et	#File exists
+-1	mkdir	/usr/share/locale/et/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/et/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/et/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/eu	#File exists
+-1	mkdir	/usr/share/locale/eu/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/eu/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/eu/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/fi	#File exists
+-1	mkdir	/usr/share/locale/fi/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/fi/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/fi/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/fr	#File exists
+-1	mkdir	/usr/share/locale/fr/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/fr/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/fr/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/ga	#File exists
+-1	mkdir	/usr/share/locale/ga/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/ga/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/ga/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/gl	#File exists
+-1	mkdir	/usr/share/locale/gl/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/gl/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/gl/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/hu	#File exists
+-1	mkdir	/usr/share/locale/hu/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/hu/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/hu/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/it	#File exists
+-1	mkdir	/usr/share/locale/it/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/it/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/it/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/ja	#File exists
+-1	mkdir	/usr/share/locale/ja/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/ja/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/ja/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/ka	#File exists
+-1	mkdir	/usr/share/locale/ka/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/ka/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/ka/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/ko	#File exists
+-1	mkdir	/usr/share/locale/ko/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/ko/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/ko/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/ms	#File exists
+-1	mkdir	/usr/share/locale/ms/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/ms/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/ms/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/nb	#File exists
+-1	mkdir	/usr/share/locale/nb/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/nb/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/nb/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/nl	#File exists
+-1	mkdir	/usr/share/locale/nl/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/nl/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/nl/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/pl	#File exists
+-1	mkdir	/usr/share/locale/pl/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/pl/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/pl/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/pt	#File exists
+-1	mkdir	/usr/share/locale/pt/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/pt/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/pt/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/pt_BR	#File exists
+-1	mkdir	/usr/share/locale/pt_BR/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/pt_BR/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/pt_BR/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/ro	#File exists
+-1	mkdir	/usr/share/locale/ro/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/ro/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/ro/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/ru	#File exists
+-1	mkdir	/usr/share/locale/ru/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/ru/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/ru/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/rw	#File exists
+-1	mkdir	/usr/share/locale/rw/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/rw/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/rw/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/sk	#File exists
+-1	mkdir	/usr/share/locale/sk/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/sk/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/sk/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/sl	#File exists
+-1	mkdir	/usr/share/locale/sl/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/sl/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/sl/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/sr	#File exists
+-1	mkdir	/usr/share/locale/sr/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/sr/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/sr/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/sv	#File exists
+-1	mkdir	/usr/share/locale/sv/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/sv/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/sv/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/tr	#File exists
+-1	mkdir	/usr/share/locale/tr/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/tr/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/tr/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/uk	#File exists
+-1	mkdir	/usr/share/locale/uk/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/uk/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/uk/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/vi	#File exists
+-1	mkdir	/usr/share/locale/vi/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/vi/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/vi/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/zh_CN	#File exists
+-1	mkdir	/usr/share/locale/zh_CN/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/zh_CN/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/zh_CN/LC_MESSAGES/wget-gnulib.mo	00644	#success
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/locale	#File exists
+-1	mkdir	/usr/share/locale/zh_TW	#File exists
+-1	mkdir	/usr/share/locale/zh_TW/LC_MESSAGES	#File exists
+4	open	/usr/share/locale/zh_TW/LC_MESSAGES/wget-gnulib.mo	#success
+0	chmod	/usr/share/locale/zh_TW/LC_MESSAGES/wget-gnulib.mo	00644	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+3	open	/dev/null	#success
+3	open	/dev/tty	#success
+3	open	/dev/null	#success
+3	open	/dev/null	#success
+3	open	/dev/tty	#success
+3	open	/dev/null	#success
+3	open	/dev/tty	#success
+3	open	/dev/null	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+3	open	/dev/null	#success
+3	open	/dev/null	#success
+3	open	/dev/tty	#success
+3	open	/dev/null	#success
+3	open	/dev/tty	#success
+3	open	/dev/null	#success
+3	open	/dev/tty	#success
+3	open	/dev/tty	#success
+0	unlink	/sources/wget/wget-1.21.4/Makefile.in	#success
+0	unlink	/sources/wget/wget-1.21.4/msdos/Makefile.DJ	#success
+0	unlink	/sources/wget/wget-1.21.4/msdos/Makefile.WC	#success
+0	unlink	/sources/wget/wget-1.21.4/msdos/config.h	#success
+0	rmdir	/sources/wget/wget-1.21.4/msdos	#success
+0	unlink	/sources/wget/wget-1.21.4/.tarball-version	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/vi.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/sv.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/Makefile.in	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/en@boldquot.header	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/pt.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/nl.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/pt.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/zh_CN.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/pl.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/pl.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/sk.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ms.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/nl.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/gl.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/en@quot.header	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/boldquot.sed	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ru.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ko.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/vi.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/hu.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ca.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/it.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/et.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/be.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/uk.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/pt_BR.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/insert-header.sin	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/Makefile.in.in	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/pt_BR.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/Rules-quot	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/nb.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/quot.sed	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ja.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/sl.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/cs.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/el.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ka.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/Makefile	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/hu.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ro.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/fr.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/es.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ga.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/tr.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/de.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ko.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/sk.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/da.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/cs.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/POTFILES	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/fr.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/zh_CN.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ka.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/zh_TW.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ms.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/eu.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/et.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/bg.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/tr.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/wget-gnulib.pot	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/Makevars	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/sr.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/rw.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/el.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/bg.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/eu.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/sr.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/zh_TW.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/es.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/stamp-po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ga.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/da.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/af.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/rw.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/sl.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/it.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/uk.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/POTFILES.in	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/de.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ru.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/remove-potcdate.sin	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ca.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/eo.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/LINGUAS	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/eo.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/sv.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/fi.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ja.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/be.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/fi.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/nb.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/ro.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/gl.po	#success
+0	unlink	/sources/wget/wget-1.21.4/gnulib_po/af.gmo	#success
+0	rmdir	/sources/wget/wget-1.21.4/gnulib_po	#success
+0	unlink	/sources/wget/wget-1.21.4/Makefile.am	#success
+0	unlink	/sources/wget/wget-1.21.4/aclocal.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/config.status	#success
+0	unlink	/sources/wget/wget-1.21.4/ABOUT-NLS	#success
+0	unlink	/sources/wget/wget-1.21.4/README	#success
+0	unlink	/sources/wget/wget-1.21.4/doc/Makefile.in	#success
+0	unlink	/sources/wget/wget-1.21.4/doc/Makefile.am	#success
+0	unlink	/sources/wget/wget-1.21.4/doc/wget.texi	#success
+0	unlink	/sources/wget/wget-1.21.4/doc/wget.1	#success
+0	unlink	/sources/wget/wget-1.21.4/doc/texi2pod.pl	#success
+0	unlink	/sources/wget/wget-1.21.4/doc/sample.wgetrc	#success
+0	unlink	/sources/wget/wget-1.21.4/doc/Makefile	#success
+0	unlink	/sources/wget/wget-1.21.4/doc/wget.info	#success
+0	unlink	/sources/wget/wget-1.21.4/doc/fdl.texi	#success
+0	unlink	/sources/wget/wget-1.21.4/doc/sample.wgetrc.munged_for_texi_inclusion	#success
+0	unlink	/sources/wget/wget-1.21.4/doc/version.texi	#success
+0	unlink	/sources/wget/wget-1.21.4/doc/stamp-vti	#success
+0	unlink	/sources/wget/wget-1.21.4/doc/wget.pod	#success
+0	rmdir	/sources/wget/wget-1.21.4/doc	#success
+0	unlink	/sources/wget/wget-1.21.4/COPYING	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_netrc_fuzzer.dict	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/Makefile.in	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_css_fuzzer.repro/buffer-overflow-6600180399865856	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_css_fuzzer.repro/slowness-6275836549267456	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_css_fuzzer.repro/negative-size-param-5724866467594240	#success
+0	rmdir	/sources/wget/wget-1.21.4/fuzz/wget_css_fuzzer.repro	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/Makefile.am	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_ntlm_fuzzer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_robots_fuzzer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_options_fuzzer.dict	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_ftpls_fuzzer.dict	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_cookie_fuzzer.dict	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_progress_fuzzer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_html_fuzzer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_css_fuzzer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/Makefile	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_html_fuzzer.dict	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_ftpls_fuzzer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_options_fuzzer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/test-runner.sh	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/.deps/wget_progress_fuzzer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/.deps/wget_css_fuzzer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/.deps/main.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/.deps/wget_html_fuzzer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/.deps/wget_cookie_fuzzer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/.deps/wget_ntlm_fuzzer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/.deps/wget_robots_fuzzer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/.deps/wget_netrc_fuzzer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/.deps/wget_options_fuzzer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/.deps/wget_ftpls_fuzzer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/.deps/wget_url_fuzzer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/.deps/wget_read_hunk_fuzzer.Po	#success
+0	rmdir	/sources/wget/wget-1.21.4/fuzz/.deps	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_netrc_fuzzer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_cookie_fuzzer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/README.md	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_url_fuzzer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/main.c	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/wget_read_hunk_fuzzer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/fuzz/fuzzer.h	#success
+0	rmdir	/sources/wget/wget-1.21.4/fuzz	#success
+0	unlink	/sources/wget/wget-1.21.4/configure.ac	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/gitlog-to-changelog	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/texinfo.tex	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/gnu-web-doc-update	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/config.sub	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/update-copyright	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/install-sh	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/test-driver	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/compile	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/config.rpath	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/config.guess	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/build_info.pl	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/vc-list-files	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/missing	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/gnupload	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/git-version-gen	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/announce-gen	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/useless-if-before-free	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/depcomp	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/mdate-sh	#success
+0	unlink	/sources/wget/wget-1.21.4/build-aux/gendocs.sh	#success
+0	rmdir	/sources/wget/wget-1.21.4/build-aux	#success
+0	unlink	/sources/wget/wget-1.21.4/maint.mk	#success
+0	unlink	/sources/wget/wget-1.21.4/util/Makefile.in	#success
+0	unlink	/sources/wget/wget-1.21.4/util/Makefile.am	#success
+0	unlink	/sources/wget/wget-1.21.4/util/trunc.c	#success
+0	unlink	/sources/wget/wget-1.21.4/util/README	#success
+0	unlink	/sources/wget/wget-1.21.4/util/Makefile	#success
+0	unlink	/sources/wget/wget-1.21.4/util/rmold.pl	#success
+0	rmdir	/sources/wget/wget-1.21.4/util	#success
+0	unlink	/sources/wget/wget-1.21.4/AUTHORS	#success
+0	unlink	/sources/wget/wget-1.21.4/config.log	#success
+0	unlink	/sources/wget/wget-1.21.4/NEWS	#success
+0	unlink	/sources/wget/wget-1.21.4/Makefile	#success
+0	unlink	/sources/wget/wget-1.21.4/INSTALL	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-k.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/unit-tests.c	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-idn-robots.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/valgrind-suppressions	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Makefile.in	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-iri-percent.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-https-crl.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/FTPServer.pm	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test--no-content-disposition-trivial.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp-iri-disabled.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-E-k-K.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-N--no-content-disposition-trivial.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/HTTPTest.pm	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-N-old.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Makefile.am	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-E-k.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-https-clientcert.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-https-badcerts.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-stdouterr.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-N-current.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/rootca.conf	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/user.key	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/server-cert.pem	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/test-ca-cert.pem	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/wotca.pem	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/revoked-crl.pem	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/README	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/create-certs.sh	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/expired-template.txt	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/client-key.pem	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/interca.conf	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/wgethosts	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/revoked-template.txt	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/test-ca-template.txt	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/expired.pem	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/test-ca-key.pem	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/interca.conf.in	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/rootca.conf.in	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/client-cert.pem	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/selfsigned.key	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/selfsigned.crt	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/client-template.txt	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/interca.key	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/invalid.pem	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/server-key.pem	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/server-template.txt	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/invalid-template.txt	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/interca.crt	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/certs/user.crt	#success
+0	rmdir	/sources/wget/wget-1.21.4/tests/certs	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-idn-cmd-utf8.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test--spider-r-HTTP-Content-Disposition.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-O--no-content-disposition-trivial.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-https-selfsigned.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test--httpsonly-r.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-N.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/WgetFeature.pm	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test--spider-r--no-content-disposition-trivial.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/SSLServer.pm	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp-iri-recursive.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-O-HTTP-Content-Disposition.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp-list-Unknown.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-auth-no-challenge-url.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test--no-content-disposition.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp-list-Unknown-hidden.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/FTPTest.pm	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-https-pfs.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-HTTP-Content-Disposition-2.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-meta-robots.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp-list-Unknown-a.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-auth-basic.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-Restrict-Uppercase.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-proxy-auth-basic.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-idn-headers.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp-iri.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-iri.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Makefile	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-idn-robots-utf8.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test--spider-fail.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp-bad-list.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-https-tlsv1x.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-O-nonexisting.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp-dir.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/unit-tests.h	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-cookies.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-c-shorter.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-O-nc.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-cookies-401.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-nonexisting-quiet.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-restrict-ascii.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/.deps/unit-tests.Po	#success
+0	rmdir	/sources/wget/wget-1.21.4/tests/.deps	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-c.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-N-HTTP-Content-Disposition.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-HTTP-Content-Disposition-1.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/valgrind-suppressions-ssl	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-auth-no-challenge.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-idn-cmd.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-iri-list.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp--start-pos.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp-recursive.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-N--no-content-disposition.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-auth-with-content-disposition.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-auth-retcode.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-https-tlsv1.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-https-weboftrust.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-proxied-https-auth-keepalive.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-np.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-N-no-info.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp-list-UNIX-hidden.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-iri-forced-remote.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-O.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test--spider.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test--spider-r.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-204.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp-list-Multinet.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-i-ftp.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-noop.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp-iri-fallback.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp-pasv-not-supported.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-iri-disabled.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test--start-pos--continue.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-HTTP-Content-Disposition.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-idn-meta.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test--spider-r--no-content-disposition.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-c-partial.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test--post-file.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-Restrict-Lowercase.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test--start-pos.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/SSLTest.pm	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/WgetTests.pm	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp-list-Unknown-list-a-fails.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-proxied-https-auth.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-O--no-content-disposition.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-ftp-pasv-fail.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-i-http.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-N-smaller.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/Test-c-full.px	#success
+0	unlink	/sources/wget/wget-1.21.4/tests/HTTPServer.pm	#success
+0	rmdir	/sources/wget/wget-1.21.4/tests	#success
+0	unlink	/sources/wget/wget-1.21.4/src/spider.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/html-parse.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/Makefile.in	#success
+0	unlink	/sources/wget/wget-1.21.4/src/ftp.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/log.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/metalink.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/ftp-opie.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/utils.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/http.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/css-url.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/cookies.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/http.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/Makefile.am	#success
+0	unlink	/sources/wget/wget-1.21.4/src/warc.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/css.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/xattr.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/ftp-ls.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/version.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/ftp-basic.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/url.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/ssl.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/options.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/convert.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/css_.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/connect.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/ftp-basic.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/ftp.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/utils.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/recur.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/res.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/init.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/connect.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/build_info.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/hash.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/css-url.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/spider.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/exits.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/ptimer.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/netrc.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/wget	#success
+0	unlink	/sources/wget/wget-1.21.4/src/xattr.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/hash.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/progress.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/host.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/spider.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/hsts.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/log.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/http-ntlm.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/build_info.c.in	#success
+0	unlink	/sources/wget/wget-1.21.4/src/wget.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/css-url.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/ftp-ls.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/utils.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/http.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/retr.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/html-url.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/openssl.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/host.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/res.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/css_.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/mswindows.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/html-url.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/exits.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/stamp-h1	#success
+0	unlink	/sources/wget/wget-1.21.4/src/Makefile	#success
+0	unlink	/sources/wget/wget-1.21.4/src/progress.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/version.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/css.l	#success
+0	unlink	/sources/wget/wget-1.21.4/src/convert.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/retr.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/warc.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/progress.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/html-parse.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/sysdep.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-version.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-connect.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-main.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/html-url.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/gnutls.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/url.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/ftp-opie.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-http-ntlm.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-convert.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-exits.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-ftp-ls.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-ftp-basic.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-build_info.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/openssl.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/ftp-basic.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-ftp-opie.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-utils.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/main.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/http.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/netrc.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/mswindows.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/iri.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/ptimer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/cookies.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/recur.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-retr.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/hash.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-progress.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-log.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-css_.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-netrc.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/connect.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-xattr.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-css-url.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-hsts.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-cookies.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/log.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-mswindows.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-warc.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-html-parse.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-url.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-http.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/ftp-ls.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-metalink.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/css-url.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/init.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-ptimer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/res.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/utils.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/host.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/metalink.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-gnutls.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/ftp.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-html-url.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/retr.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-openssl.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/progress.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/xattr.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/convert.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-spider.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/version.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/warc.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/exits.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-ftp.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-recur.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/http-ntlm.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/html-parse.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-iri.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-hash.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/hsts.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-init.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/css_.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/build_info.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-host.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/spider.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/src/.deps/libunittest_a-res.Po	#success
+0	rmdir	/sources/wget/wget-1.21.4/src/.deps	#success
+0	unlink	/sources/wget/wget-1.21.4/src/metalink.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/iri.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/retr.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/init.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/warc.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/cookies.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/hsts.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/css-tokens.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/netrc.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/http-ntlm.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/gnutls.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/main.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/config.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/exits.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/mswindows.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/config.h.in	#success
+0	unlink	/sources/wget/wget-1.21.4/src/log.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/init.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/recur.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/iri.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/version.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/cookies.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/ftp.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/url.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/host.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/hsts.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/build_info.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/xattr.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/convert.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/recur.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/ftp-opie.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/http-ntlm.h	#success
+0	unlink	/sources/wget/wget-1.21.4/src/html-parse.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/netrc.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/ptimer.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/ptimer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/openssl.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/hash.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/connect.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/res.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/main.c	#success
+0	unlink	/sources/wget/wget-1.21.4/src/url.o	#success
+0	unlink	/sources/wget/wget-1.21.4/src/html-url.c	#success
+0	rmdir	/sources/wget/wget-1.21.4/src	#success
+0	unlink	/sources/wget/wget-1.21.4/MAILING-LIST	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/mbchar.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/lseek.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/printf.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/regex.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/wmemchr.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/error.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/unlocked-io.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fseeko.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/flexmember.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/getdelim.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/netdb_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/eealloc.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/nl_langinfo.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/utimes.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/gettime.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fclose.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/mbrtowc.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/findprog-in.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sha512.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/tmpdir.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sys_file_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fflush.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/mbtowc.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/locale_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/wctype_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sockpfaf.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/iswxdigit.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sys_select_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/warnings.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/open-cloexec.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/save-cwd.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/wcwidth.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/ctype_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/strndup.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/strerror.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sys_uio_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/raise.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/dirfd.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/localeconv.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/libunistring-base.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/mkstemp.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/iconv_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/quotearg.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/openat.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fcntl_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/float_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/stdint_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/mbstate_t.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/readdir.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/getcwd-abort-bug.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/servent.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/rewinddir.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fatal-signal.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/getpass.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/clock_time.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/intmax_t.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sys_types_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/socketlib.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/memrchr.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/md4.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/strtok_r.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/msvc-nothrow.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/stdio_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/environ.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/posix_spawn_faction_addchdir.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/zzgnulib.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/wchar_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/lstat.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/mkdir.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/dup.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fcntl.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/stat.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/lib-prefix.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/xstrndup.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/close.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/getcwd.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/getgroups.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/locale-zh.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/asm-underscore.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/utimens.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/getrandom.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/mbsrtowcs.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sh-filename.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/af_alg.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/strtoll.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/btowc.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sys_wait_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/tm_gmtoff.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fseek.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/timegm.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/gettext.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/nls.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/iswblank.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/setlocale_null.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/ssize_t.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/extern-inline.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/wchar_t.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/pipe.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/ungetc.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/waitpid.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/error_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/utime_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/unictype_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/reallocarray.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/select.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/langinfo_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/msvc-inval.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/strcase.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/readlink.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/tcgetattr.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/iconv.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/md5.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/musl.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/wmempcpy.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/snprintf.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/realloc.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/pthread_sigmask.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/calloc.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sig_atomic_t.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/gnulib-comp.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sha1.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/alloca.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/stddef_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/open-slash.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/unistd-safer.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/link.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/eaccess.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/time_r.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/memchr.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/errno_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/rename.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/getline.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fcntl-o.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/tempname.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/uninorm_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sys_socket_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/rawmemchr.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/dirent_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fnmatch.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/po.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/d-ino.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fopen.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/timespec.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/getaddrinfo.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/vasprintf.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/wait-process.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sha256.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/canonicalize.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/extensions.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/gettimeofday.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/utime.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/malloc.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sockets.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/signalblocking.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/include_next.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/pathmax.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/intlmacosx.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/inttypes.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/inet_ntop.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/gl-openssl.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/base32.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/unlink.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/warn-on-use.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sigaction.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fstatat.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/vasnprintf.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/mkostemp.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/pselect.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/getdtablesize.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/stdint.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/double-slash-root.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/off_t.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/pthread_rwlock_rdlock.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/libunistring.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/strnlen.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/getopt.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/opendir.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/string_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/strptime.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/dup2.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/byteswap.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/group-member.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/locale-ja.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/strings_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/nocrash.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/spawn_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/multiarch.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/codeset.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/vsnprintf.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fstat.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sys_random_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sigpipe.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/xsize.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sys_time_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/wcrtomb.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/wget_manywarnings.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fchdir.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/access.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/00gnulib.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/quote.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/posix_spawn.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/stat-time.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/gnulib-common.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sched_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/flock.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/exponentd.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/lock.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/signal_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fdopendir.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/isblank.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/filenamecat.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/unicase_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/getpagesize.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/host-cpu-c-abi.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/ioctl.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/inttypes_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sys_ioctl_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/chdir-long.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/absolute-header.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/libunistring-optional.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/assert_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/open.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/symlink.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/netinet_in_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/nanosleep.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/secure_getenv.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/rmdir.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/limits-h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/localcharset.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/arpa_inet_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/ftello.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/spawn-pipe.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/malloca.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/stdlib_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/mbiter.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/mktime.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/mode_t.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/lib-link.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/write.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fnmatch_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/inline.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/strerror_r.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/freading.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/visibility.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/wget.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/stdalign.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/free.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/threadlib.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/ftell.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/__inline.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/socklen.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/getcwd-path-max.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/largefile.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/strdup.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/strpbrk.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/stpcpy.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/futimens.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/xalloc.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/mbsinit.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/hostent.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/c-bool.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/time_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/lib-ld.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/strchrnul.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/strtol.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/pipe2.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/iswdigit.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/unistd_h.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/mmap-anon.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/wint_t.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/closedir.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/size_max.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/fpurge.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/mempcpy.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/locale-fr.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/getprogname.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/minmax.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/builtin-expect.m4	#success
+0	unlink	/sources/wget/wget-1.21.4/m4/sys_stat_h.m4	#success
+0	rmdir	/sources/wget/wget-1.21.4/m4	#success
+0	unlink	/sources/wget/wget-1.21.4/ChangeLog	#success
+0	unlink	/sources/wget/wget-1.21.4/po/vi.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/he.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/sv.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/Makefile.in	#success
+0	unlink	/sources/wget/wget-1.21.4/po/en@boldquot.header	#success
+0	unlink	/sources/wget/wget-1.21.4/po/pt.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/nl.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/pt.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/zh_CN.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/pl.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/pl.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/sk.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/wget.pot	#success
+0	unlink	/sources/wget/wget-1.21.4/po/nl.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/gl.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/hr.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/en@quot.header	#success
+0	unlink	/sources/wget/wget-1.21.4/po/boldquot.sed	#success
+0	unlink	/sources/wget/wget-1.21.4/po/ru.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/ko.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/vi.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/hu.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/ca.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/it.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/et.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/be.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/uk.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/id.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/pt_BR.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/lt.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/insert-header.sin	#success
+0	unlink	/sources/wget/wget-1.21.4/po/Makefile.in.in	#success
+0	unlink	/sources/wget/wget-1.21.4/po/pt_BR.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/Rules-quot	#success
+0	unlink	/sources/wget/wget-1.21.4/po/nb.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/quot.sed	#success
+0	unlink	/sources/wget/wget-1.21.4/po/ja.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/sl.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/cs.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/el.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/ka.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/Makefile	#success
+0	unlink	/sources/wget/wget-1.21.4/po/hu.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/ro.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/fr.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/es.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/ga.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/tr.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/de.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/ko.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/en_GB.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/hr.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/sk.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/da.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/cs.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/POTFILES	#success
+0	unlink	/sources/wget/wget-1.21.4/po/fr.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/zh_CN.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/ka.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/zh_TW.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/eu.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/et.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/bg.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/tr.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/Makevars	#success
+0	unlink	/sources/wget/wget-1.21.4/po/sr.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/el.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/bg.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/eu.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/sr.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/zh_TW.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/es.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/id.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/en_GB.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/stamp-po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/ga.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/da.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/lt.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/sl.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/it.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/uk.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/POTFILES.in	#success
+0	unlink	/sources/wget/wget-1.21.4/po/de.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/he.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/ru.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/remove-potcdate.sin	#success
+0	unlink	/sources/wget/wget-1.21.4/po/ca.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/eo.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/LINGUAS	#success
+0	unlink	/sources/wget/wget-1.21.4/po/eo.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/sv.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/fi.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/ja.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/be.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/fi.gmo	#success
+0	unlink	/sources/wget/wget-1.21.4/po/nb.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/ro.po	#success
+0	unlink	/sources/wget/wget-1.21.4/po/gl.po	#success
+0	rmdir	/sources/wget/wget-1.21.4/po	#success
+0	unlink	/sources/wget/wget-1.21.4/.version	#success
+0	unlink	/sources/wget/wget-1.21.4/configure	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-pinnedpubkey-pem-https.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/server/http/http_server.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/server/http/__init__.py	#success
+0	rmdir	/sources/wget/wget-1.21.4/testenv/server/http	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/server/__init__.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/server/ftp/__init__.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/server/ftp/ftp_server.py	#success
+0	rmdir	/sources/wget/wget-1.21.4/testenv/server/ftp	#success
+0	rmdir	/sources/wget/wget-1.21.4/testenv/server	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/exc/__init__.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/exc/server_error.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/exc/test_failed.py	#success
+0	rmdir	/sources/wget/wget-1.21.4/testenv/exc	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Makefile.in	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-c-full.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-relpath-trust.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-pinnedpubkey-der-https.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-http-quoted.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-auth-basic-no-netrc-fail.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Makefile.am	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-Content-disposition-2.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test--spider-r.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/certs/ca-template.cfg	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/certs/server-pubkey.der	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/certs/server-cert.pem	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/certs/README	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/certs/server-template.cfg	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/certs/make_ca.sh	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/certs/server-pubkey.pem	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/certs/server-pubkey-sha256.base64	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/certs/ca-cert.pem	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/certs/server-crl.pem	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/certs/server-key.pem	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/certs/ca-key.pem	#success
+0	rmdir	/sources/wget/wget-1.21.4/testenv/certs	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/misc/__init__.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/misc/colour_terminal.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/misc/metalinkv3_xml.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/misc/wget_file.py	#success
+0	rmdir	/sources/wget/wget-1.21.4/testenv/misc	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-homeprefix-trust.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-urlbreak.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/README	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-homeprefix.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-recursive-include.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-http-xml-trust.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-http-baddigest.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-O.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-redirect-crash.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-no_proxy-env.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test--rejected-log.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-pinnedpubkey-der-no-check-https.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-Post.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-auth-basic.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-missing-scheme-retval.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-http-xml-trust-name.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-auth-basic-netrc.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-auth-basic-netrc-pass-given.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/test/__init__.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/test/base_test.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/test/http_test.py	#success
+0	rmdir	/sources/wget/wget-1.21.4/testenv/test	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test--https-crl.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-auth-digest.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-homepath.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-auth-retcode.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-recursive-basic.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-condget.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-auth-with-content-disposition.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-http-xml-type.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-nohash.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-Head.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Makefile	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-trust.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-pinnedpubkey-hash-https.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-pinnedpubkey-pem-fail-https.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-auth-no-challenge-url.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-prefix-trust.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-auth-no-challenge.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-relpath.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-cookie-domain-mismatch.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-auth-both.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/valgrind-suppressions-ssl	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-reserved-chars.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-cookie-401.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-emptyprefix-trust.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-abspath-trust.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-416.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-pinnedpubkey-hash-no-check-fail-https.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-http-xml-type-trust.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-size.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-recursive-redirect.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-prefix.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-504.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-auth-basic-netrc-user-given.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-nourls.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-http-xml-type-trust-content.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/files_crawled.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/expected_files.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/rule_sample.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/__init__.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/expect_header.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/send_header.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/wget_commands.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/reject_header.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/response.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/domains.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/environment_variables.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/urls.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/server_files.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/hook_sample.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/expected_ret_code.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/local_files.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/conf/authentication.py	#success
+0	rmdir	/sources/wget/wget-1.21.4/testenv/conf	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-relprefix-trust.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test--https.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-http.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-relprefix.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-redirect.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-http-xml-type-content.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-Content-disposition.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-continue.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-absprefix-trust.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-homepath-trust.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-cookie-expires.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-auth-basic-fail.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-absprefix.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test--convert-links--content-on-error.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-xml-abspath.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-metalink-http-xml.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-cookie.py	#success
+0	unlink	/sources/wget/wget-1.21.4/testenv/Test-hsts.py	#success
+0	rmdir	/sources/wget/wget-1.21.4/testenv	#success
+0	unlink	/sources/wget/wget-1.21.4/GNUmakefile	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/filename.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/file-set.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/basename-lgpl.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uninorm.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unlink.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stdio-write.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistd.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/md5.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/c-strcasestr.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-file-set.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/wait-process.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/nl_langinfo.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/af_alg.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/pselect.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloca.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/canonicalize.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/Makefile.in	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/pipe.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-strnlen1.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stdckdint.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/isblank.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-stripslash.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/c-strcasestr.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-gettime.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/streq.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/hash-triple.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-dup-safer-flag.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbrtowc.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/md2-stream.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fflush.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/cloexec.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloca.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/filenamecat.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawn.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sig-handler.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/xalloc-die.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strtok_r.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/time_r.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/assert.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-fpurge.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sha512.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/regex.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stddef.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/closedir.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/alloca.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/os2-spawn.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys_types.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getopt-pfx-ext.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/exitfail.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uniwidth.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-filenamecat-lgpl.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-sig-handler.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/libgnu_a-tolower.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/special-casing.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/u8-casemap.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/special-casing-table.gperf	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/empty-prefix-context.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/u-casemap.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/caseprop.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/libgnu_a-ignorable.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/context.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/ignorable.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/tolower.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/unicasemap.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/empty-suffix-context.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/ignorable.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/u8-tolower.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/.deps/libgnu_a-cased.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/.deps/libgnu_a-empty-suffix-context.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/.deps/libgnu_a-special-casing.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/.deps/libgnu_a-u8-casemap.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/.deps/libgnu_a-empty-prefix-context.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/.deps/libgnu_a-ignorable.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/.deps/libgnu_a-u8-tolower.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/.deps/.dirstamp	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/.deps/libgnu_a-tolower.Po	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/unicase/.deps	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/special-casing.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/tolower.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/simple-mapping.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/cased.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/special-casing.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/libgnu_a-empty-prefix-context.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/libgnu_a-empty-suffix-context.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/.dirstamp	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/libgnu_a-cased.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/special-casing-table.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/libgnu_a-u8-tolower.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/libgnu_a-u8-casemap.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/cased.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase/libgnu_a-special-casing.o	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/unicase	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/btowc.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-sha1-stream.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unitypes.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getopt1.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strerror_r.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/dirent.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mkstemp.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/wmemchr.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/calloc.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/Makefile.am	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/localcharset.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys/time.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys/wait.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys/socket.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys/types.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys/file.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys/uio.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys/select.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys/random.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys/stat.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys/ioctl.h	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/sys	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/ftello.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/alloca.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/pipe-safer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fd-safer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/assure.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strings.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/nanosleep.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/printf-args.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-fatal-signal.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-xmemdup0.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/langinfo.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawn_faction_destroy.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strcasecmp.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawn.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-md2.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/vsnprintf.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/asnprintf.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-save-cwd.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/c-strcase.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getopt_int.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/time.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/dirent-private.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-openat-proc.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getcwd.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strnlen1.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uninorm.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/signal.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/itold.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/same-inode.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/openat.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/windows-recmutex.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/bind.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stat.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/rawmemchr.valgrind	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/errno.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strtol.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/u8-uctomb.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/u8-cpy.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/libgnu_a-u8-mbtouc-unsafe.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/u8-uctomb-aux.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/u-cpy.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/.deps/libgnu_a-u8-uctomb.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/.deps/libgnu_a-u8-cpy.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/.deps/libgnu_a-u8-mbtouc-unsafe-aux.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/.deps/libgnu_a-u8-mbtouc-unsafe.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/.deps/libgnu_a-u8-uctomb-aux.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/.deps/.dirstamp	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/.deps/libgnu_a-u8-strlen.Po	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/unistr/.deps	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/libgnu_a-u8-uctomb.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/u8-mbtouc-unsafe.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/u8-mbtouc-unsafe-aux.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/u8-strlen.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/libgnu_a-u8-cpy.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/libgnu_a-u8-uctomb-aux.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/.dirstamp	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/libgnu_a-u8-strlen.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr/libgnu_a-u8-mbtouc-unsafe-aux.o	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/unistr	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-openat-die.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getdtablesize.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/bitrotate.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/write.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/gai_strerror.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-tempname.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/hash-triple-simple.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawnattr_setflags.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/eloop-threshold.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stdckdint.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/windows-rwlock.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getopt-core.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/scratch_buffer.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-utimens.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-xstrndup.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbsrtowcs.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/msvc-nothrow.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbiter.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/ialloc.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/dup-safer-flag.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/thread-optim.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/arg-nonnull.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strerror.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fseek.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/float.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/waitpid.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-binary-io.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-malloca.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strdup.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sigprocmask.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/concat-filename.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/ctype.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getprogname.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sha512-stream.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/save-cwd.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/tmpdir.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/xsize.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbtowc-impl.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getcwd-lgpl.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/lc-charset-dispatch.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-tmpdir.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-getprogname.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu.a	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mempcpy.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fopen.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/open.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-sha256.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sha256-stream.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stdio.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/gnulib.mk	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/c-ctype.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stat-time.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/connect.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/wctype.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/msvc-inval.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/hash.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-wctype-h.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/str-two-way.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sockets.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawn_faction_init.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-hash-triple-simple.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/canonicalize.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fstat.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/base32.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbsrtowcs-impl.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/openat-priv.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/base32.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/limits.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/msvc-inval.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/arpa/inet.h	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/arpa	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/socket.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-dup-safer.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-nanosleep.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-pipe2.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uniwidth/cjk.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uniwidth/.deps/libgnu_a-width.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uniwidth/.deps/.dirstamp	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/uniwidth/.deps	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uniwidth/width2.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uniwidth/libgnu_a-width.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uniwidth/width.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uniwidth/.dirstamp	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uniwidth/width0.h	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/uniwidth	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/netdb.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-hard-locale.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unlocked-io.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/md2.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sha1-stream.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sched.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-spawn_faction_addchdir.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sha1.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/u64.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys_file.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stat-w32.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-canonicalize.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawn_faction_addopen.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fcntl.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/timespec.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getpass.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fnmatch.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-pipe-safer.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fchdir.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/msvc-nothrow.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/flexmember.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistr.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/md5.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-md4-stream.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-fcntl.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbsinit.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/wctype-h.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-md4.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/readdir.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-bitrotate.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/send.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sigaction.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/md4-stream.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/tempname.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/snprintf.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawn-pipe.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sched.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/printf-args.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-sockets.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getopt.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/md2.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys_ioctl.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strchrnul.valgrind	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/freading.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-localcharset.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mkostemp.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/regex.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/xstrndup.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-md5.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/hash-pjw.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unictype.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/byteswap.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbtowc-lock.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/free.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbsrtowcs-state.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/xalloc.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/attribute.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/inttypes.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawnp.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/wchar.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/raise.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/md4.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getline.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/printf-parse.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-concat-filename.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/recv.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-sha512.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/cdefs.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/concat-filename.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-stat-time.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/memchr.valgrind	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/utime.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-hash.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/setsockopt.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/group-member.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getrandom.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getpass.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stpcpy.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistd-safer.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/lstat.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/regexec.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unitypes.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/readlink.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-xsize.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fnmatch.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/dirname-lgpl.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fstatat.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/opendir.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/Makefile	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/xmemdup0.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/ctype.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-fd-safer.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/intprops-internal.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-quotearg.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getprogname.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/rename.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-u64.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-sha1.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-ialloc.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/iswxdigit.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fopen.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/wctype.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/minmax.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-c-strncasecmp.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unictype.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/accept.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-spawn-pipe.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistd.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fpurge.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/af_alg.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/hard-locale.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libc-config.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-mbsrtowcs.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/pipe2-safer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawnattr_init.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strerror_r.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys_wait.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strerror-override.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stdio-impl.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sockets.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stdio.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/flock.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/setlocale-lock.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/utimens.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/windows-spawn.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/chdir-long.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fcntl.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-md2-stream.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/listen.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawn_faction_addchdir.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-c-strcasestr.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/close.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/secure_getenv.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sha512.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/utime.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-dirname-lgpl.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/alloca.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/quotearg.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/select.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/setlocale_null.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/error.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/c-strcasecmp.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stat-w32.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/pipe2.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/windows-spawn.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/timespec.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-sha512-stream.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/gl_openssl.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/windows-initguard.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/locale.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys_socket.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/float+.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-basename-lgpl.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/w32sock.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/printf-args.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/memrchr.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/localeconv.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-tmpdir.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-stripslash.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-dup.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-readdir.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-windows-recmutex.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-getcwd-lgpl.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-localcharset.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-regex.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-os2-spawn.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-mbrtowc.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-mbtowc.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-spawn_faction_destroy.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-strcasecmp.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-socket.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-lstat.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-itold.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-futimens.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-xalloc-die.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-sha256.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-printf-parse.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-spawni.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-select.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-malloc.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-xstrndup.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fd-safer-flag.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fcntl.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fopen.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-pipe.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-mbsrtowcs.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-spawn_faction_addchdir.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-strndup.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-stat-w32.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-printf-args.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/vasnprintf.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-quotearg.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-u64.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-ialloc.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/printf-args.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-bitrotate.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-mkdir.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-dirfd.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-spawn.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-mempcpy.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fdopendir.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-timespec.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-filenamecat-lgpl.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-close.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-free.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-getdtablesize.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-alloca.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-strerror.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-spawnattr_destroy.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-getgroups.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-iswxdigit.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-strchrnul.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/printf-parse.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-send.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-mkstemp.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-strptime.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/alloca.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-strnlen1.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-nl_langinfo.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-wait-process.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-spawn_faction_addclose.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fnmatch_loop.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-rawmemchr.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-gai_strerror.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-md4-stream.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-wmempcpy.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-timegm.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-spawnp.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-getopt1.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-sigprocmask.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-mbtowc-lock.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-pipe2.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-ftell.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-wcrtomb.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-group-member.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-getcwd.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-listen.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-reallocarray.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-vasnprintf.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-gettimeofday.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-hard-locale.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/strerror_r.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-md5-stream.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-strtoll.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-sha1-stream.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fstat.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-md2.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-sha512-stream.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-spawn_faction_adddup2.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-ftello.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-rmdir.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-sockets.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-setlocale_null.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-msvc-inval.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-stat.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-vsnprintf.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-hash.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-basename.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-hash-pjw.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-asprintf.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-regexec.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-windows-spawn.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-pipe-safer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-gettime.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-getopt.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-concat-filename.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fstatat.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-opendir.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-wctype-h.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-base32.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-link.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-flock.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-raise.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/fopen.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fd-hook.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-utime.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-spawnattr_init.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-memrchr.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-save-cwd.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-memchr.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-hash-triple-simple.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-sigaction.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-recv.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-strnlen.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-openat-die.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-sha512.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-mbsinit.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-sys_socket.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-md5.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-calloc.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-canonicalize.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-strerror_r.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-closedir.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-spawnattr_setflags.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-nanosleep.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-dup-safer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-c-strncasecmp.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-getpeername.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-xsize.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-mbchar.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-access.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-windows-once.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-getpass.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fnmatch.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-stat-time.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-mktime.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-realloc.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-strtol.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-windows-rwlock.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-getsockname.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fatal-signal.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-strerror-override.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-getrandom.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-canonicalize-lgpl.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-asnprintf.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-stpcpy.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-vasprintf.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-spawn_faction_init.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-wcwidth.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/mktime.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-dirname.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-utimens.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fseek.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fpurge.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-pthread_sigmask.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-strtok_r.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-openat-proc.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-rewinddir.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-basename-lgpl.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-findprog-in.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-regcomp.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-setsockopt.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-chdir-long.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-spawn_faction_addopen.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-af_alg.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-openat.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-mbiter.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-localeconv.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-sha1.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-accept.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-spawnattr_setsigmask.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-dirname-lgpl.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-stdio-write.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-xmalloc.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-readlink.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-msvc-nothrow.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-getaddrinfo.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-isblank.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-c-strcasecmp.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-rename.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fseeko.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-mkostemp.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-snprintf.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-file-set.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-bind.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-malloca.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-getprogname.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-c-ctype.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-write.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-c-strcasestr.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-sha256-stream.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-strpbrk.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-tempname.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-at-func.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-iswblank.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-exitfail.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-ioctl.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-connect.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-getline.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-float.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-secure_getenv.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-lseek.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fflush.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-pselect.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-time_r.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-symlink.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/mbsrtowcs-state.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-dup-safer-flag.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/asnprintf.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-btowc.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-unlink.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-mbsrtowcs-state.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-open.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-nl_langinfo-lock.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-iswdigit.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-freading.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-md2-stream.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-spawnattr_setpgroup.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-stdio-read.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fchdir.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-md4.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-regex_internal.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-strdup.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-dup2.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-cloexec.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-wmemchr.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-fd-safer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-strncasecmp.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-spawn-pipe.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-binary-io.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-error.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-unistd.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-inet_ntop.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-setlocale-lock.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-windows-mutex.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-pipe2-safer.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-xmemdup0.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-sig-handler.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-lc-charset-dispatch.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-waitpid.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/.deps/libgnu_a-getdelim.Po	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/.deps	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/wait-process.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/printf-parse.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strchrnul.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/bitrotate.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/tmpdir.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys_stat.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys_time.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-fseeko.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-mbchar.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys_socket.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbrtowc-impl-utf8.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strtoll.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/iswblank.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uninorm/libgnu_a-u8-normalize.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uninorm/u-normalize-internal.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uninorm/u8-normalize.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uninorm/.deps/libgnu_a-u8-normalize.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uninorm/.deps/libgnu_a-decompose-internal.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uninorm/.deps/.dirstamp	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/uninorm/.deps	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uninorm/decompose-internal.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uninorm/decompose-internal.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uninorm/.dirstamp	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uninorm/libgnu_a-decompose-internal.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uninorm/normalize-internal.h	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/uninorm	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strptime.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libunistring.valgrind	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/openat-die.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/pthread_sigmask.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/windows-mutex.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/c-strcaseeq.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawnattr_setpgroup.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/asnprintf.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbchar.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbtowc.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stripslash.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-sys_socket.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/regcomp.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/md4.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbsrtowcs-state.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sha256.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getopt-cdefs.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-xalloc-die.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/inttypes.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys_select.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/regex_internal.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/c++defs.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/u64.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-timespec.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strndup.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/timegm.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/printf-parse.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/futimens.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/access.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/findprog.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getgroups.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getaddrinfo.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/xalloc-oversized.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mktime-internal.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/wmemchr-impl.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawn.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/xsize.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strnlen1.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strnlen.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-md5-stream.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/findprog-in.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/localcharset.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fd-hook.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/save-cwd.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getopt.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-base32.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/openat.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fd-safer-flag.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strerror-override.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/wchar.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/_Noreturn.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getsockname.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/chdir-long.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/array-mergesort.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/verify.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mktime.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistd--.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/vasnprintf.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-af_alg.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stdio-read.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawn-pipe.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys-limits.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/gettext.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbiter.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/utime.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/nl_langinfo-lock.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/wcrtomb.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/vasnprintf.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strings.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-mbiter.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unistd.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sha256.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-basename.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/locale.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawn_int.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/openat-proc.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawni.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-findprog-in.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/setlocale_null.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/dup.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbchar.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/limits.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/gettime.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/canonicalize-lgpl.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stdlib.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strncasecmp.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/uniwidth.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/freading.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/wmempcpy.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stat-time.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-exitfail.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-unistd.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/dup-safer.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fnmatch_loop.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/netdb.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/ioctl.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/langinfo.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-pipe2-safer.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/float.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-setlocale_null.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fdopendir.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/pathmax.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-fd-hook.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-mbrtowc.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/windows-once.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-xmalloc.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/rewinddir.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-fseek.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/wcwidth.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/inet_ntop.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/symlink.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/dup2.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mkdir.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/rmdir.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-c-strcasecmp.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys_random.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unicase.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawnattr_setsigmask.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mktime.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unictype/pr_soft_dotted.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unictype/libgnu_a-combiningclass.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unictype/pr_soft_dotted.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unictype/libgnu_a-pr_soft_dotted.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unictype/.deps/libgnu_a-pr_soft_dotted.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unictype/.deps/libgnu_a-combiningclass.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unictype/.deps/.dirstamp	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/unictype/.deps	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unictype/combiningclass.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unictype/bitmap.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unictype/.dirstamp	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/unictype/combiningclass.c	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/unictype	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/lseek.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-hash-pjw.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbrtowc-impl.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/binary-io.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/string.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/iconv.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sys_uio.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-chdir-long.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-sha256-stream.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stddef.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/os2-spawn.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-c-ctype.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-wait-process.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/dynarray_at_failure.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/libgnu_a-scratch_buffer_grow_preserve.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/dynarray_resize_clear.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/scratch_buffer.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/scratch_buffer.gl.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/libgnu_a-dynarray_emplace_enlarge.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/libgnu_a-dynarray_at_failure.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/libgnu_a-dynarray_finalize.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/dynarray-skeleton.gl.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/.deps/libgnu_a-dynarray_emplace_enlarge.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/.deps/libgnu_a-dynarray_at_failure.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/.deps/libgnu_a-dynarray_resize_clear.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/.deps/libgnu_a-scratch_buffer_grow_preserve.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/.deps/libgnu_a-dynarray_finalize.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/.deps/libgnu_a-dynarray-skeleton.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/.deps/libgnu_a-dynarray_resize.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/.deps/libgnu_a-scratch_buffer_grow.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/.deps/libgnu_a-scratch_buffer_set_array_size.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/.deps/.dirstamp	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/malloc/.deps	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/scratch_buffer_grow.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/libgnu_a-dynarray_resize.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/libgnu_a-scratch_buffer_set_array_size.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/scratch_buffer_set_array_size.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/.dirstamp	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/dynarray_emplace_enlarge.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/libgnu_a-scratch_buffer_grow.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/libgnu_a-dynarray_resize_clear.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/dynarray-skeleton.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/dynarray_resize.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/dynarray.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/dynarray_finalize.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/dynarray.gl.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc/scratch_buffer_grow_preserve.c	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/malloc	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/c-strncasecmp.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getdelim.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/hash-pjw.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fatal-signal.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-dirname.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/intprops.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getopt-ext.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawnattr_destroy.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/time.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawn_faction_addclose.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fatal-signal.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/basename.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/hard-locale.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/dirfd.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/utimens.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/c-ctype.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/gettimeofday.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/dirname.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/rawmemchr.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/malloc.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fd-hook.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/warn-on-use.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/string.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/idx.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-btowc.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/vasnprintf.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/dirname.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/spawn_faction_adddup2.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/filenamecat-lgpl.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getopt-pfx-core.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/glthread/libgnu_a-lock.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/glthread/lock.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/glthread/.deps/libgnu_a-lock.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/glthread/.deps/libgnu_a-threadlib.Po	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/glthread/.deps/.dirstamp	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/glthread/.deps	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/glthread/lock.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/glthread/.dirstamp	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/glthread/threadlib.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/glthread/libgnu_a-threadlib.o	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib/glthread	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/ftell.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stdint.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/basename-lgpl.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/strpbrk.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sig-handler.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/ialloc.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-cloexec.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-fflush.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/md5-stream.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/windows-rwlock.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-fd-safer-flag.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/signal.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/dynarray.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/sha1.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/windows-mutex.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/cloexec.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fcntl.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/iswdigit.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/realloc.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/exitfail.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/reallocarray.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/mbtowc-lock.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/lc-charset-dispatch.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/asprintf.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/quotearg.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/hash.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/memchr.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/quote.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/vasprintf.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/xmemdup0.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/dirent.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/netinet_in.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-ioctl.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/file-set.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/at-func.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/error.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/regex_internal.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/windows-once.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/windows-recmutex.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/size_max.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/xstrndup.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/getpeername.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/stdlib.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/arpa_inet.in.h	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/fseeko.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/tempname.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/binary-io.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/libgnu_a-freading.o	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/xmalloc.c	#success
+0	unlink	/sources/wget/wget-1.21.4/lib/link.c	#success
+0	rmdir	/sources/wget/wget-1.21.4/lib	#success
+0	rmdir	/sources/wget/wget-1.21.4	#success
+0	unlink	/sources/wget/unpacked	#success

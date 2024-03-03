@@ -1,0 +1,143 @@
+-1	mkdir	/usr	#File exists
+-1	mkdir	/usr/share	#File exists
+-1	mkdir	/usr/share/xml	#File exists
+0	mkdir	/usr/share/xml/docbook	#success
+0	mkdir	/usr/share/xml/docbook/xml-dtd-4.5	#success
+-1	mkdir	/etc	#File exists
+0	mkdir	/etc/xml	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/docbook.cat	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/calstblx.dtd	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/docbookx.dtd	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/soextblx.dtd	#success
+0	fchmod	5	0100644	#success
+0	mkdir	/usr/share/xml/docbook/xml-dtd-4.5/ent	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/README	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isoamsa.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isoamsb.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isoamsc.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isoamsn.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isoamso.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isoamsr.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isobox.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isocyr1.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isocyr2.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isodia.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isogrk1.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isogrk2.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isogrk3.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isogrk4.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isolat1.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isolat2.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isonum.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isopub.ent	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/ent/isotech.ent	#success
+0	fchmod	5	0100644	#success
+0	utimensat	/usr/share/xml/docbook/xml-dtd-4.5/ent	#success
+0	chmod	/usr/share/xml/docbook/xml-dtd-4.5/ent	040755	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/dbcentx.mod	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/dbgenent.mod	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/dbhierx.mod	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/dbnotnx.mod	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/dbpoolx.mod	#success
+0	fchmod	5	0100644	#success
+5	open	/usr/share/xml/docbook/xml-dtd-4.5/htmltblx.mod	#success
+0	fchmod	5	0100644	#success
+94542866704608	fopen64	/etc/xml/docbook	#success
+94352425448032	fopen64	/etc/xml/docbook	#success
+94316007752416	fopen64	/etc/xml/docbook	#success
+94151319510560	fopen64	/etc/xml/docbook	#success
+94605207707296	fopen64	/etc/xml/docbook	#success
+94078398185264	fopen64	/etc/xml/docbook	#success
+94463711846336	fopen64	/etc/xml/docbook	#success
+94315122937088	fopen64	/etc/xml/docbook	#success
+94198579056000	fopen64	/etc/xml/docbook	#success
+93940934581776	fopen64	/etc/xml/docbook	#success
+93929860636320	fopen64	/etc/xml/docbook	#success
+94654749749040	fopen64	/etc/xml/docbook	#success
+94521439664352	fopen64	/etc/xml/catalog	#success
+94180045271648	fopen64	/etc/xml/catalog	#success
+94234812302048	fopen64	/etc/xml/catalog	#success
+94358483343296	fopen64	/etc/xml/catalog	#success
+93880496623200	fopen64	/etc/xml/catalog	#success
+94127853039536	fopen64	/etc/xml/docbook	#success
+94340620836928	fopen64	/etc/xml/docbook	#success
+94905433522528	fopen64	/etc/xml/docbook	#success
+94108118593216	fopen64	/etc/xml/catalog	#success
+94616023732032	fopen64	/etc/xml/catalog	#success
+93838321009296	fopen64	/etc/xml/docbook	#success
+94086897103744	fopen64	/etc/xml/docbook	#success
+94419134723264	fopen64	/etc/xml/docbook	#success
+94693865844656	fopen64	/etc/xml/catalog	#success
+94134006087712	fopen64	/etc/xml/catalog	#success
+94380165137104	fopen64	/etc/xml/docbook	#success
+94246261389648	fopen64	/etc/xml/docbook	#success
+94866147158848	fopen64	/etc/xml/docbook	#success
+94286337920320	fopen64	/etc/xml/catalog	#success
+94016389852608	fopen64	/etc/xml/catalog	#success
+94757483805936	fopen64	/etc/xml/docbook	#success
+94047391747664	fopen64	/etc/xml/docbook	#success
+93834024513568	fopen64	/etc/xml/docbook	#success
+94047729180208	fopen64	/etc/xml/catalog	#success
+94238529175200	fopen64	/etc/xml/catalog	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/htmltblx.mod	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/soextblx.dtd	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isoamsr.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isodia.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isogrk2.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/README	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isotech.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isolat2.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isopub.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isogrk4.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isoamsa.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isogrk1.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isobox.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isolat1.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isocyr2.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isonum.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isoamsb.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isoamsc.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isoamso.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isoamsn.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isocyr1.ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ent/isogrk3.ent	#success
+0	rmdir	/sources/DocBook/docbook-xml-4.5/ent	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/README	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/dbhierx.mod	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/dbnotnx.mod	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/dbgenent.mod	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/dbcentx.mod	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/docbook.cat	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/docbookx.dtd	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/dbpoolx.mod	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/ChangeLog	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/calstblx.dtd	#success
+0	unlink	/sources/DocBook/docbook-xml-4.5/catalog.xml	#success
+0	rmdir	/sources/DocBook/docbook-xml-4.5	#success
+0	unlink	/sources/DocBook/unpacked	#success

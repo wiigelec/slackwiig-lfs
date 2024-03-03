@@ -1,0 +1,99 @@
+#!/bin/bash
+
+### BLFS TOOLS SCRIPTS ###
+for FILE in /mnt/lfs/blfs_root/scripts/*;
+do
+    [ ! -f $FILE ] && continue
+
+    ### GET PACKAGE  ##
+    echo Processing $FILE...
+
+    package=$(grep PACKAGE\= $FILE)
+    package=${package/PACKAGE\=/}
+    package=$(echo "$package" | tr '[:upper:]' '[:lower:]')
+    case $package in
+	*".tar"*)
+            package=${package%.tar*}
+	    ;;
+        *."tgz"*)
+            package=${package%.tgz*}
+	    ;;
+        *".zip"*)
+            package=${package%.zip*}
+	    ;;
+    esac
+
+    ### INSTALLWATCH LOG FILE ###
+    iwlog="/var/lib/iwlog/$package.iwlog.raw"
+    iwso="/usr/lib/installwatch.so"
+    #echo $iwlog
+
+    ## FIND PRELOAD LINE ###
+    preload_line=0;
+    if [[ "$preload_line" -eq 0 ]]; then
+        preload_line=$(grep -n 'make.*install' $FILE)
+        preload_line=${preload_line%%:*}
+    fi
+    if [[ "$preload_line" -eq 0 ]]; then
+	preload_line=$(grep -n 'pip.*install' $FILE)
+        preload_line=${preload_line%%:*}
+    fi
+    if [[ "$preload_line" -eq 0 ]]; then
+	preload_line=$(grep -n 'ninja.*install' $FILE)
+   	preload_line=${preload_line%%:*}
+    fi
+    if [[ "$preload_line" -eq 0 ]]; then
+        preload_line=$(grep -n 'cd $PKGDIR' $FILE)
+        preload_line=${preload_line%%:*}
+    fi
+    if [[ "$preload_line" -eq 0 ]]; then
+	preload_line=$(grep -n 'cd $JH_UNPACKDIR' $FILE)
+   	preload_line=${preload_line%%:*}
+    fi
+    if [[ "$preload_line" -eq 0 ]]; then
+        echo "Not a jhalfs script"
+	continue
+    fi
+    #echo $preload_line
+
+    ### FIND LAST LINE ###
+    last_line=$(wc -l $FILE)
+    last_line=$(grep -n 'exit' $FILE)
+    last_line=${last_line%%:*}
+    last_line=$((last_line+0))
+
+    ### PROCESS FILE ###
+    outfile="$FILE".tmp
+    declare -i linenum=1
+    while IFS= read -r line;
+    do
+        if (( linenum == preload_line )); then
+            echo "export INSTALLWATCHFILE=$iwlog" >> $outfile
+            echo "export LD_PRELOAD=$iwso" >> $outfile
+        elif (( linenum == last_line )); then
+            echo "unset INSTALLWATCHFILE" >> $outfile
+            echo "unset LD_PRELOAD" >> $outfile
+	fi
+
+	### TOUCH CAT ###
+        case $line in
+            "cat > "* )
+                echo "touch $(echo "$line" | cut -d' ' -f3)" >> $outfile
+                ;;
+        esac
+
+        echo "$line" >> $outfile
+	#echo "$line"
+        linenum+=1
+
+    done < $FILE
+
+    ### RENAME FILES ###
+    chmod a-x $FILE
+    mv $FILE $FILE.org
+    mv $outfile $FILE
+    chmod a+x $FILE
+
+done
+
+exit
