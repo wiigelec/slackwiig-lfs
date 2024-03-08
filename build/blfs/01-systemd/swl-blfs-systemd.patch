@@ -1,6 +1,20 @@
-diff '--color=auto' -Nuar org/scripts/003-z-cracklib mod/scripts/003-z-cracklib
---- org/scripts/003-z-cracklib	2024-03-06 17:42:50.705696347 -0700
-+++ mod/scripts/003-z-cracklib	2024-03-06 17:41:32.819700337 -0700
+diff '--color=auto' -Nuar org/001-z-postlfs-config-profile mod/001-z-postlfs-config-profile
+--- org/001-z-postlfs-config-profile	2024-03-07 17:18:53.326977106 -0700
++++ mod/001-z-postlfs-config-profile	2024-03-07 17:15:27.475463860 -0700
+@@ -381,6 +381,10 @@
+ export LD_PRELOAD=/usr/lib/installwatch.so
+ PATH=$PATH:/usr/sbin
+ dircolors -p > /etc/dircolors
++
++# swl add
++touch /etc/dircolors
++
+ unset INSTALLWATCHFILE
+ unset LD_PRELOAD
+ ROOT_EOF
+diff '--color=auto' -Nuar org/003-z-cracklib mod/003-z-cracklib
+--- org/003-z-cracklib	2024-03-07 17:18:53.327977118 -0700
++++ mod/003-z-cracklib	2024-03-07 17:15:27.476463872 -0700
 @@ -103,6 +103,9 @@
  create-cracklib-dict     /usr/share/dict/cracklib-words \\
                           /usr/share/dict/cracklib-extra-words
@@ -11,15 +25,15 @@ diff '--color=auto' -Nuar org/scripts/003-z-cracklib mod/scripts/003-z-cracklib
  for libdir in /lib /usr/lib \$(find /opt -name lib); do
    find \$libdir -name \\*.la           \\
               ! -path \\*ImageMagick\\* \\
-diff '--color=auto' -Nuar org/scripts/006-z-systemd mod/scripts/006-z-systemd
---- org/scripts/006-z-systemd	2024-03-06 17:42:50.706696371 -0700
-+++ mod/scripts/006-z-systemd	2024-03-06 17:41:32.820700363 -0700
+diff '--color=auto' -Nuar org/006-z-systemd mod/006-z-systemd
+--- org/006-z-systemd	2024-03-07 17:18:53.329977142 -0700
++++ mod/006-z-systemd	2024-03-07 17:15:27.476463872 -0700
 @@ -100,6 +100,24 @@
  PATH=$PATH:/usr/sbin
  ninja install
  
 +# swl add
-+/mnt/lfs/usr/share/man/man1/systemd-cryptenroll.1
++touch /usr/share/man/man1/systemd-cryptenroll.1
 +touch /usr/share/man/man5/crypttab.5
 +touch /usr/share/man/man5/integritytab.5
 +touch /usr/share/man/man5/limits.5
@@ -39,9 +53,9 @@ diff '--color=auto' -Nuar org/scripts/006-z-systemd mod/scripts/006-z-systemd
  for libdir in /lib /usr/lib \$(find /opt -name lib); do
    find \$libdir -name \\*.la           \\
               ! -path \\*ImageMagick\\* \\
-diff '--color=auto' -Nuar org/scripts/013-z-python3 mod/scripts/013-z-python3
---- org/scripts/013-z-python3	2024-03-06 17:42:50.708696421 -0700
-+++ mod/scripts/013-z-python3	2024-03-06 17:41:32.821700390 -0700
+diff '--color=auto' -Nuar org/013-z-python3 mod/013-z-python3
+--- org/013-z-python3	2024-03-07 17:18:53.333977190 -0700
++++ mod/013-z-python3	2024-03-07 17:15:27.477463885 -0700
 @@ -92,6 +92,10 @@
  export INSTALLWATCHFILE=/var/lib/iwlog/python3-3.11.4.iwlog.raw
  export LD_PRELOAD=/usr/lib/installwatch.so
@@ -61,6 +75,19 @@ diff '--color=auto' -Nuar org/scripts/013-z-python3 mod/scripts/013-z-python3
 +touch /etc/pip.conf
 +touch /usr/bin/pip3
 +touch /usr/bin/pip3.11
++
+ for libdir in /lib /usr/lib \$(find /opt -name lib); do
+   find \$libdir -name \\*.la           \\
+              ! -path \\*ImageMagick\\* \\
+diff '--color=auto' -Nuar org/014-z-shadow mod/014-z-shadow
+--- org/014-z-shadow	2024-03-07 17:18:53.334977202 -0700
++++ mod/014-z-shadow	2024-03-07 17:15:27.477463885 -0700
+@@ -92,6 +92,9 @@
+ make -j1 exec_prefix=/usr install
+ make -j1 -C man install-man
+ 
++# swl add
++touch /etc/default/useradd
 +
  for libdir in /lib /usr/lib \$(find /opt -name lib); do
    find \$libdir -name \\*.la           \\
