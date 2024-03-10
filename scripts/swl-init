@@ -10,3 +10,12 @@ groupadd -fg 27 polkitd &&
 useradd -c "PolicyKit Daemon Owner" -d /etc/polkit-1 -u 27 \
         -g polkitd -s /bin/false polkitd
 
+# lightdm init
+groupadd -g 65 lightdm       &&
+useradd  -c "Lightdm Daemon" \
+         -d /var/lib/lightdm \
+         -u 65 -g lightdm    \
+         -s /bin/false lightdm
+
+# graphite ln
+ln -s libgraphite2.so.3.2.1 /usr/lib/libgraphite2.so.3
