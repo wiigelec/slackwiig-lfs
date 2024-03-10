@@ -1,0 +1,8 @@
+1 b fontconfig
+1 b freetype2
+1 b harfbuzz
+1 b fribidi
+1 b glib2
+2 b cairo
+2 b gobject-introspection
+2 b libxshmfence

@@ -1,0 +1,5 @@
+1 b glib2
+2 b duktape
+2 b gobject-introspection
+2 b libxslt
+2 b linux-pam

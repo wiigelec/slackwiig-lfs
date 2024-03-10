@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# systemd init
+systemd-machine-id-setup
+systemctl preset-all
+systemctl disable systemd-sysupdate{,-reboot}
+
+# polkit init
+groupadd -fg 27 polkitd &&
+useradd -c "PolicyKit Daemon Owner" -d /etc/polkit-1 -u 27 \
+        -g polkitd -s /bin/false polkitd
+

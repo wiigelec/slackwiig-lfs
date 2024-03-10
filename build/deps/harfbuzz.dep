@@ -1,0 +1,5 @@
+2 b gobject-introspection
+2 b glib2
+1 b graphite2-pass1
+2 b icu
+1 b freetype2-pass1

@@ -1,0 +1,7 @@
+1 b glib2
+1 b libjpeg
+1 b libpng
+1 b shared-mime-info
+2 b docutils
+2 b libtiff
+3 b gobject-introspection

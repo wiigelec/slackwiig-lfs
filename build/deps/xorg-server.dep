@@ -1,0 +1,6 @@
+1 b libxcvt
+1 b pixman
+1 b font-xfree86-type1
+2 b libepoxy
+2 b libtirpc
+3 b xkeyboard-config

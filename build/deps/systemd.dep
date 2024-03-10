@@ -1,0 +1,9 @@
+2 b linux-pam
+3 b curl
+3 b libpwquality
+3 b make-ca
+3 b p11-kitgroupxx
+3 b pcre2
+3 b DocBook
+3 b docbook-xsl
+3 b libxslt

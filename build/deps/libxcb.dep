@@ -1,0 +1,4 @@
+1 b libXau
+1 b xcb-proto
+2 b libXdmcp
+3 b libxslt
