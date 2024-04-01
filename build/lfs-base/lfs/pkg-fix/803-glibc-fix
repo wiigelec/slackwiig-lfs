@@ -1,0 +1,25 @@
+#!/bin/bash
+
+FIX_PKG=glibc-2.39-x86_64-swl01.txz
+EXPLODE_DIR=/sources/explode-pgk
+PKG_DIR=/var/lib/packages
+
+### EXPLODE PKG ###
+mkdir $EXPLODE_DIR
+pushd $EXPLODE_DIR
+explodepkg "$PKG_DIR/$FIX_PKG"
+
+### ADD FILES ###
+cp -a /etc/localtime ./etc
+cp -a /etc/nsswitch.conf ./etc
+mkdir ./lib64
+cp -a /lib64/* ./lib64
+cp -a /usr/lib/locale ./usr/lib
+cp -a /etc/ld.so.conf ./etc
+
+### REBUILD PKG ###
+makepkg -l y -c n "$PKG_DIR/$FIX_PKG"
+
+### CLEANUP ###
+popd
+rm -rf $EXPLODE_DIR

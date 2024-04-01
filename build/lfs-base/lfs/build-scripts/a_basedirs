@@ -1,0 +1,93 @@
+#!/bin/bash
+
+mkdir -pv basedirs
+cd basedirs
+
+### 3.1 ###
+mkdir -v ./sources
+chmod -v a+wt ./sources
+
+### 4.2 ###
+mkdir -pv ./{etc,var} ./usr/{bin,lib,sbin}
+for i in bin lib sbin; do
+  ln -sv usr/$i ./$i
+done
+case $(uname -m) in
+  x86_64) mkdir -pv ./lib64 ;;
+esac
+
+### 7.3 ###
+mkdir -pv ./{dev,proc,sys,run}
+
+### 7.5 ###
+mkdir -pv ./{boot,home,mnt,opt,srv}
+mkdir -pv ./etc/{opt,sysconfig}
+mkdir -pv ./lib/firmware
+mkdir -pv ./media/{floppy,cdrom}
+mkdir -pv ./usr/{,local/}{include,src}
+mkdir -pv ./usr/local/{bin,lib,sbin}
+mkdir -pv ./usr/{,local/}share/{color,dict,doc,info,locale,man}
+mkdir -pv ./usr/{,local/}share/{misc,terminfo,zoneinfo}
+mkdir -pv ./usr/{,local/}share/man/man{1..8}
+mkdir -pv ./var/{cache,local,log,mail,opt,spool}
+mkdir -pv ./var/lib/{color,misc,locate}
+
+ln -sfv /run ./var/run
+ln -sfv /run/lock ./var/lock
+
+install -dv -m 0750 ./root
+install -dv -m 1777 ./tmp ./var/tmp
+
+### 7.6 ###
+ln -sv /proc/self/mounts ./etc/mtab
+
+cp -a /etc/hosts ./etc
+cp -a /etc/passwd ./etc
+cp -a /etc/group ./etc
+
+touch ./var/log/{btmp,lastlog,faillog,wtmp}
+chgrp -v utmp ./var/log/lastlog
+chmod -v 664  ./var/log/lastlog
+chmod -v 600  ./var/log/btmp
+
+### 9.2 ###
+mkdir -pv ./etc/systemd/network/
+cp -a /etc/systemd/network/10-eth-static.network ./etc/systemd/network/
+cp -a /etc/hostname ./etc
+cp -a /etc/hosts ./etc
+
+### 9.5 ###
+cp -a /etc/adjtime ./etc
+
+### 9.6 ###
+cp -a /etc/vconsole.conf ./etc
+
+### 9.7 ###
+cp -a /etc/profile ./etc
+cp -a /etc/locale.conf ./etc
+
+### 9.8 ###
+cp -a /etc/inputrc ./etc
+
+### 9.9 ###
+cp -a /etc/shells ./etc
+
+### 10.2 ###
+cp -a /etc/fstab ./etc
+
+### 11.1 ###
+cp -a /etc/lfs-release ./etc
+cp -a /etc/lsb-release ./etc
+cp -a /etc/os-release ./etc
+
+### misc ###
+cp -a /usr/share/info/dir ./usr/share/info
+
+### MAKEPKG ###
+makepkg -l y -c n /var/lib/packages/a_basedirs-12.1-x86_64-swl01.txz
+
+### CLEANUP ###
+cd ../
+rm -rf basedirs
+
+exit

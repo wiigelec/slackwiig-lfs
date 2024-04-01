@@ -1,0 +1,22 @@
+#!/bin/bash
+
+FIX_PKG=shadow-4.14.5-x86_64-swl01.txz
+EXPLODE_DIR=/sources/explode-pgk
+PKG_DIR=/var/lib/packages
+
+### EXPLODE PKG ###
+mkdir $EXPLODE_DIR
+pushd $EXPLODE_DIR
+explodepkg "$PKG_DIR/$FIX_PKG"
+
+### ADD FILES ###
+cp -a /etc/default ./etc/
+cp -a /etc/gshadow ./etc
+cp -a /etc/shadow ./etc
+
+### REBUILD PKG ###
+makepkg -l y -c n "$PKG_DIR/$FIX_PKG"
+
+### CLEANUP ###
+popd
+rm -rf $EXPLODE_DIR

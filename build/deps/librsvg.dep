@@ -1,8 +1,0 @@
-1 b cairo
-1 b gdk-pixbuf
-1 b pango
-1 b rust
-2 b gobject-introspection
-2 b vala
-3 b docutils
-3 b font-xfree86-type1

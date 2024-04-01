@@ -1,7 +1,0 @@
-1 b libxshmfence
-1 b libdrm
-1 b Mako
-1 b libva-pass1
-2 b libvdpau
-2 b llvm
-2 b wayland-protocols

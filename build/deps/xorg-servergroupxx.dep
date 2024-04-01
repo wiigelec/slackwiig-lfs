@@ -1,4 +1,0 @@
-1 b xorg-server
-1 b xkeyboard-config
-2 b systemdgroupxx
-2 b xorg-libinput-driver

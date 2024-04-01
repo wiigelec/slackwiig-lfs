@@ -1,6 +1,0 @@
-SPELL=libcap-ng
-VERSION=0.8.4
-SOURCE=${SPELL}-${VERSION}.tar.gz
-SOURCE_URL=https://people.redhat.com/sgrubb/libcap-ng/${SOURCE}
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-ENTERED=12222023

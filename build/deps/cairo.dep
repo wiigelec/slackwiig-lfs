@@ -1,8 +1,0 @@
-1 b libpng
-1 b pixman
-2 b fontconfig
-2 b glib2
-2 b libxshmfence
-3 b libdrm
-3 b libxml2
-3 b mesa

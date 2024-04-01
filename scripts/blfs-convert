@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for FILE in ~/blfs_root/scripts/*;
+for FILE in ./scripts/*;
 do
     ### GET PACKAGE NAME AND VERSION ##
     echo Processing $FILE...
@@ -46,6 +46,10 @@ do
 		echo "touch $(echo "$line" | cut -d' ' -f3)" >> $outfile
 		echo "$line" >> $outfile
 		;;
+	    "cat >> "* )
+		echo "touch $(echo "$line" | cut -d' ' -f3)" >> $outfile
+		echo "$line" >> $outfile
+		;;
 	    * )
 		echo "$line" >> $outfile
 		;;
@@ -56,8 +60,9 @@ do
     done < $FILE
 
     ### RENAME FILES ###
-    chmod a-x $FILE
-    mv $FILE $FILE.org
+    #chmod a-x $FILE
+    #mv $FILE $FILE.org
+    rm $FILE
     mv $outfile $FILE
     chmod a+x $FILE
 

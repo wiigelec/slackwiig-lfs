@@ -1,0 +1,77 @@
+#!/bin/bash
+set +h
+set -e
+
+
+
+PREV_SEC=${SECONDS}
+      
+ROOT=$LFS/
+
+SCRIPT_ROOT=jhalfs
+
+SRC_DIR=${ROOT}sources
+
+VERSION=6.7.4
+PKG_DEST=${SRC_DIR}/503-linux-headers
+
+PACKAGE=linux-6.7.4.tar.xz
+cd $SRC_DIR
+PKGDIR=$(tar -tf $PACKAGE | head -n1 | sed 's@^./@@;s@/.*@@')
+export PKGDIR VERSION PKG_DEST
+
+if [ -d "$PKGDIR" ]; then rm -rf $PKGDIR; fi
+if [ -d "$PKG_DEST" ]; then rm -rf $PKG_DEST; fi
+if [ -d "${PKGDIR%-*}-build" ]; then  rm -rf ${PKGDIR%-*}-build; fi
+
+echo "KB: $(du -skx --exclude=lost+found --exclude=var/lib --exclude=$SCRIPT_ROOT $ROOT)"
+
+source ${ROOT}${SCRIPT_ROOT}/packInstall.sh
+export -f packInstall
+
+tar -xf $PACKAGE
+cd $PKGDIR
+
+export MAKEFLAGS="-j$(nproc)"
+SECONDS=${PREV_SEC}
+
+# Start of LFS book script
+mkdir -pv $PKG_DEST/{boot,etc}
+mkdir -pv $PKG_DEST/usr/{bin,include,lib/pkgconfig,sbin}
+mkdir -pv $PKG_DEST/usr/share/{doc,info,bash-completion/completions}
+mkdir -pv $PKG_DEST/usr/share/man/man{1..8}
+case $(uname -m) in
+ x86_64) mkdir -v $PKG_DEST/lib64 ;;
+esac
+ln -sv usr/sbin $PKG_DEST
+ln -sv usr/bin  $PKG_DEST
+ln -sv usr/lib  $PKG_DEST
+make mrproper
+make headers
+find usr/include -type f ! -name '*.h' -delete
+
+cp -rv usr/include $PKG_DEST/usr
+for dir in $PKG_DEST/usr/share/man/man{1..8} \
+           $PKG_DEST/usr/share/bash-completion{/completions,} \
+           $PKG_DEST/usr/share/{doc,info,man,} \
+           $PKG_DEST/usr/lib/pkgconfig \
+           $PKG_DEST/usr/{lib,bin,sbin,include} \
+           $PKG_DEST/{boot,etc}; do
+  [ -d "$dir" ] && [ -z "$(ls $dir)" ] && rmdir -v $dir
+done
+[ -d $PKG_DEST/lib64 ] && [ -z "$(ls $PKG_DEST/lib64)" ] &&
+  rmdir -v $PKG_DEST/lib64
+rm -v $PKG_DEST/{lib,bin,sbin}
+
+rm -rf $PKG_DEST/var/{run,lock}
+
+[ -d $PKG_DEST/var ] && [ -z "$(ls $PKG_DEST/var)" ] && rmdir -v $PKG_DEST/var
+echo -e "\n\nTotalseconds: $SECONDS\n"
+packInstall
+# End of LFS book script
+
+echo "KB: $(du -skx --exclude=lost+found --exclude=var/lib --exclude=$SCRIPT_ROOT $ROOT)"
+cd $SRC_DIR
+rm -rf $PKGDIR
+if [ -d "${PKGDIR%-*}-build" ]; then  rm -rf ${PKGDIR%-*}-build; fi
+exit

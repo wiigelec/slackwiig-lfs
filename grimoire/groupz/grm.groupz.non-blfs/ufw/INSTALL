@@ -1,5 +1,0 @@
-cd "$SOURCE_DIRECTORY"
-
-python3 ./setup.py install --prefix=/usr
-
-cp -r doc/systemd.example /usr/lib/systemd/system/ufw.service

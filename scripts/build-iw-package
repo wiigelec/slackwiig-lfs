@@ -43,6 +43,20 @@ do
     package="$package-x86_64-swl01.txz"
     mkdir extract
     cd extract
+
+    # QT5 FIX
+    if [[ $(grep '/opt/qt5' $filter_file) ]]; then
+        if [[ ! $(grep '/opt/qt-5.15.12' $filter_file) ]]; then
+            mkdir -pv ./opt/qt-5.15.12
+        fi
+    fi
+    # KF5 FIX
+    if [[ $(grep '/opt/kf5' $filter_file) ]]; then
+        if [[ ! $(grep '/opt/kf5-5.115.0' $filter_file) ]]; then
+            mkdir -pv ./opt/kf5-5.115.0
+        fi
+    fi
+
     tar -xf $tar_file
     makepkg -l y -c n $package
     mv -v $package /var/lib/packages/
