@@ -23,6 +23,10 @@ do
     iwso="/usr/lib/installwatch.so"
     #echo $iwlog
 
+    ### DIFF LOG FILEs ###
+    difflog1="/var/lib/iwlog/$package"-"$version".difflog1
+    difflog2="/var/lib/iwlog/$package"-"$version".difflog2
+
     ### PROCESS FILE ###
     outfile="$FILE".tmp
     declare -i linenum=1
@@ -49,6 +53,19 @@ do
 	    "cat >> "* )
 		echo "touch $(echo "$line" | cut -d' ' -f3)" >> $outfile
 		echo "$line" >> $outfile
+		;;
+	### INSERT DIFF LOGS ###
+	    "#!/bin/bash" )
+		echo "$line" >> $outfile
+		echo "sudo -E sh -e << ROOT_EOF" >> $outfile
+		echo "find / -xdev > $difflog1" >> $outfile
+		echo "ROOT_EOF" >> $outfile
+		;;
+	    "exit" )
+		echo "sudo -E sh -e << ROOT_EOF" >> $outfile
+		echo "find / -xdev > $difflog2" >> $outfile
+		echo "ROOT_EOF" >> $outfile
+		echo "$line" >> $outfile 
 		;;
 	    * )
 		echo "$line" >> $outfile

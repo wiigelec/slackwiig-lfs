@@ -1,0 +1,21 @@
+#!/bin/bash
+
+FIX_PKG=modemmanager-1.18.12-x86_64-swl01.txz
+EXPLODE_DIR=/sources/explode-pgk
+PKG_DIR=/var/lib/packages
+
+### EXPLODE PKG ###
+mkdir $EXPLODE_DIR
+pushd $EXPLODE_DIR
+explodepkg "$PKG_DIR/$FIX_PKG"
+
+### FIX FILES ###
+sed -i '/( cd \. ; rm -rf lib )/d' install/doinst.sh
+sed -i '/( cd \. ; ln -sf usr\/lib lib )/d' install/doinst.sh
+
+### REBUILD PKG ###
+makepkg -l y -c n "$PKG_DIR/$FIX_PKG"
+
+### CLEANUP ###
+popd
+rm -rf $EXPLODE_DIR
