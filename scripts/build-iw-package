@@ -34,6 +34,7 @@ do
     cat $diff_file $iwlog_file | sort -u > $pkg_file_tmp
 
     ### FILTER FILE ###
+    sed -i '/^\/sources/d' $pkg_file_tmp
     sed -i '/^\/dev/d' $pkg_file_tmp
     sed -i '/^\/proc/d' $pkg_file_tmp
     sed -i '/^\/sys/d' $pkg_file_tmp
