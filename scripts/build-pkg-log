@@ -1,0 +1,63 @@
+#!/bin/bash
+
+#----------------------------------------------------------------------------#
+for FILE in /var/lib/iwlog/*.iwlog.raw;
+do
+    ### GET PACKAGE NAME AND VERSION ##
+    echo Processing $FILE...
+
+    ### CREATE FILENAMES ###
+    iwlog_file=${FILE%.raw}
+    pkg_file=${iwlog_file%.iwlog}.pkg
+    pkg_file_tmp=${iwlog_file%.iwlog}.pkg.tmp
+
+    ### CREATE DIFF FILE ###
+    diff_file1=${FILE%.iwlog*}.difflog1
+    diff_file2=${FILE%.iwlog*}.difflog2
+    diff_file=${FILE%.iwlog*}.difflog
+
+    diff $diff_file1 $diff_file2 > $diff_file
+
+    ### FILTER DIFF FILE ###
+    sed -i '/^>/!d' $diff_file
+    sed -i 's/> //g' $diff_file
+    sed -i '/iwlog/d' $diff_file
+
+    ### CREATE IWLOG FILE ###
+    TAB=$'\t'
+    omit="${TAB}rename\|${TAB}symlink\|${TAB}unlink\|${TAB}access\|${TAB}utimes"
+    grep -v "$omit" $FILE | cut -f3 | grep "^/" | sed 's#^//#/#g' > $iwlog_file
+    cat $FILE | cut -f4 | grep "^/" | sed 's#^//#/#g' >> $iwlog_file
+
+    ### MERGE DIFF AND IWLOG FILES ###
+    cat $diff_file $iwlog_file | sort -u > $pkg_file_tmp
+
+    ### FILTER FILE ###
+    sed -i '/^\/sources/d' $pkg_file_tmp
+    sed -i '/^\/dev/d' $pkg_file_tmp
+    sed -i '/^\/proc/d' $pkg_file_tmp
+    sed -i '/^\/sys/d' $pkg_file_tmp
+    sed -i '/^\/sources/d' $pkg_file_tmp
+    sed -i '/^\/home/d' $pkg_file_tmp
+    sed -i '/^\/etc\/passwd/d' $pkg_file_tmp
+    sed -i '/^\/etc\/group/d' $pkg_file_tmp
+    sed -i '/^\/var\/lib\/systemd\/coredump\//d' $pkg_file_tmp
+    sed -i '/^\/opt\/kf5\/share\/icons\/hicolor\//d' $pkg_file_tmp
+
+    ### CHECK EXISTS ###
+    if [[ -f $pkg_file ]]; then rm $pkg_file; fi
+    while IFS= read -r line; do 
+        if [[ -f $line ]] || [[ -d $line ]]; then
+            echo $line >> $pkg_file
+        fi	    
+    done < $pkg_file_tmp
+
+    ### CLEANUP ###
+    rm $diff_file
+    rm $iwlog_file
+    rm $pkg_file_tmp
+    mv $pkg_file /var/lib/pkglog
+
+done
+
+exit

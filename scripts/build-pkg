@@ -1,0 +1,36 @@
+#!/bin/bash
+
+#----------------------------------------------------------------------------#
+for FILE in /var/lib/pkglog/*.pkg;
+do
+    ### GET PACKAGE NAME AND VERSION ##
+    echo Processing $FILE...
+
+    ### CREATE FILENAMES ###
+    pkg_file=$FILE
+
+    ### CREATE TAR ###
+    tar_file="$pkg_file.tar"
+    tar --no-recursion -cf $tar_file -T $pkg_file
+
+    ### MAKE PACKAGE ###
+    package=${FILE%.iwlog.raw}
+    package="$package-x86_64-swl01.txz"
+    pushd /var/lib/pkglog
+    mkdir extract
+    cd extract
+
+    tar -xf $tar_file
+
+    makepkg -l y -c n $package
+    mv -v $package /var/lib/packages/
+    cd ../
+
+    ### CLEANUP ###
+    rm -rf extract
+    rm $tar_file
+    popd
+
+done
+
+exit
