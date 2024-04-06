@@ -43,6 +43,7 @@ do
     sed -i '/^\/etc\/group/d' $pkg_file_tmp
     sed -i '/^\/var\/lib\/systemd\/coredump\//d' $pkg_file_tmp
     sed -i '/^\/opt\/kf5\/share\/icons\/hicolor\//d' $pkg_file_tmp
+    sed -i '/^\/tmp/d' $pkg_file_tmp
 
     ### CHECK EXISTS ###
     if [[ -f $pkg_file ]]; then rm $pkg_file; fi
