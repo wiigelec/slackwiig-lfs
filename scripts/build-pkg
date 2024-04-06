@@ -14,7 +14,7 @@ do
     tar --no-recursion -cf $tar_file -T $pkg_file
 
     ### MAKE PACKAGE ###
-    package=${FILE%.iwlog.raw}
+    package=${FILE%.pkg}
     package="$package-x86_64-swl01.txz"
     pushd /var/lib/pkglog
     mkdir extract
