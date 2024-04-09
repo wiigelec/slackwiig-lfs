@@ -1,0 +1,137 @@
+#!/bin/bash
+
+#-----------------------------------------------------------------------------#
+#
+# swl-deps
+# Dependency manager for slackwiig-lfs
+#
+#-----------------------------------------------------------------------------#
+
+### CONFIGURATION ###
+SCRIPT_DIR="$HOME/blfs_root/scripts"
+INSTALL_DIR="/var/lib/pkgtools/packages"
+PKG_DIR="/mnt/swl/packages"
+MIRROR="http://localhost:8000/swl/packages"
+DOWNLOAD_DIR="/var/lib/packages"
+
+#-----------------------------------------------------------------------------#
+function getDeps ( )
+{
+	if [[ -z "$location" ]]; then
+		location=$SCRIPT_DIR
+	fi
+
+	local tmp_outfile=$(mktemp /tmp/tmp_outfile.XXXXXXXXXX)
+
+	grep PACKAGE= $location/* > $tmp_outfile
+
+	sed -i 's/.*PACKAGE=//g' $tmp_outfile
+	sed -i 's/\.tar.*//g' $tmp_outfile
+	sed -i 's/\.tgz.*//g' $tmp_outfile
+	sed -i 's/\.zip.*//g' $tmp_outfile
+	sed -i 's/$/-x86_64-swl01.txz/g' $tmp_outfile
+
+	# pass1 packages
+	sed -i '0,/freetype/s//freetype-pass1/' $tmp_outfile
+	sed -i '0,/graphite2/s//graphite2-pass1/' $tmp_outfile
+	sed -i '0,/libva/s//libva-pass1/' $tmp_outfile
+
+	cat $tmp_outfile | tr [:upper:] [:lower:]
+	rm $tmp_outfile
+}
+
+#-----------------------------------------------------------------------------#
+function testDeps ( )
+{
+	if [[ -z "$location" ]]; then 
+		echo "No file specified" 
+		exit
+	fi
+
+	cat $location \
+		| sed 's/\(.*\)-x86_64.*/\1/g' \
+		| sed 's/\(.*\)-\(.*\)/\1 \2/g' \
+		| column -t
+	
+}
+
+#-----------------------------------------------------------------------------#
+function checkStatus ( )
+{
+	if [[ -z "$location" ]]; then 
+		echo "No file specified" 
+		exit
+	fi
+
+	local tmp_outfile=$(mktemp /tmp/tmp_outfile.XXXXXXXXXX)
+
+	# read file
+    	while IFS= read -r line;
+    	do
+		local tmp_line=$line
+		if [[ $(find $INSTALL_DIR -name $line) ]]; then
+			tmp_line="$tmp_line***INSTALLED"
+		elif [[ ! $(find $PKG_DIR -name $line) ]]; then
+			wget -q --spider $MIRROR/$line
+			if [[ $? -ne 0 ]]; then
+				tmp_line="$tmp_line***UNAVAILABLE"
+			fi
+		fi
+		echo $tmp_line >> $tmp_outfile
+    	done < $location
+
+	cat $tmp_outfile | column -t -s "***"
+	rm $tmp_outfile
+
+}
+#-----------------------------------------------------------------------------#
+function downloadDeps ( )
+{
+	if [[ -z "$location" ]]; then 
+		echo "No file specified" 
+		exit
+	fi
+	
+	# read file
+    	while IFS= read -r line;
+    	do
+		wget -nc -P $DOWNLOAD_DIR/$line $MIRROR/$line 
+
+    	done < $location
+}
+
+#-----------------------------------------------------------------------------#
+function usage ( )
+{
+	echo "this way dummy"
+	exit
+}
+
+
+###############################################################################
+### MAIN ###
+
+# parse command line
+action=$1
+location=$2
+
+
+case $action in
+    -c|--create )
+        getDeps
+        ;;
+    -t|--test )
+        testDeps
+        ;;
+    -s|--status )
+	checkStatus
+        ;;
+    -d|--download )
+    	downloadDeps
+        ;;
+    * ) usage ;;
+esac
+
+###############################################################################
+
+
