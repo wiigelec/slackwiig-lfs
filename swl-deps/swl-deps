@@ -10,12 +10,12 @@
 ### CONFIGURATION ###
 SCRIPT_DIR="$HOME/blfs_root/scripts"
 INSTALL_DIR="/var/lib/pkgtools/packages"
-PKG_DIR="/mnt/swl/packages"
-MIRROR="http://localhost:8000/swl/packages"
-DOWNLOAD_DIR="/var/lib/packages"
+PKG_DIR="/var/lib/swl/packages"
+LIST_DIR="/var/lib/swl/lists"
+MIRROR="http://localhost:8000/swl/packages-121"
 
 #-----------------------------------------------------------------------------#
-function getDeps ( )
+function createList ( )
 {
 	if [[ -z "$location" ]]; then
 		location=$SCRIPT_DIR
@@ -41,10 +41,10 @@ function getDeps ( )
 }
 
 #-----------------------------------------------------------------------------#
-function testDeps ( )
+function testList ( )
 {
-	if [[ -z "$location" ]]; then 
-		echo "No file specified" 
+	if [[ -z "$list" ]]; then 
+		echo "No list specified" 
 		exit
 	fi
 
@@ -56,10 +56,10 @@ function testDeps ( )
 }
 
 #-----------------------------------------------------------------------------#
-function checkStatus ( )
+function installStatus ( )
 {
-	if [[ -z "$location" ]]; then 
-		echo "No file specified" 
+	if [[ -z "$list" ]]; then 
+		echo "No list specified" 
 		exit
 	fi
 
@@ -68,42 +68,146 @@ function checkStatus ( )
 	# read file
     	while IFS= read -r line;
     	do
-		local tmp_line=$line
-		if [[ $(find $INSTALL_DIR -name $line) ]]; then
-			tmp_line="$tmp_line***INSTALLED"
-		elif [[ ! $(find $PKG_DIR -name $line) ]]; then
-			wget -q --spider $MIRROR/$line
-			if [[ $? -ne 0 ]]; then
-				tmp_line="$tmp_line***UNAVAILABLE"
-			fi
+		local out_line=""
+		# check installed
+		out_line=$(check_installed $line)
+		if [[ ! -z $out_line ]]; then
+			echo "$line**INSTALLED" >> $tmp_outfile
+			continue
 		fi
-		echo $tmp_line >> $tmp_outfile
-    	done < $location
 
-	cat $tmp_outfile | column -t -s "***"
+		# check file
+		out_line=$(check_file $line)
+		if [[ ! -z $out_line ]]; then
+			echo "$line**$out_line" >> $tmp_outfile
+			continue
+		fi
+
+		# check mirror
+		out_line=$(check_mirror $line)
+		if [[ ! -z $out_line ]]; then
+			echo "$line**$out_line" >> $tmp_outfile
+			continue
+		fi
+
+		out_line="NOT FOUND"
+		
+		echo "$line**$out_line" >> $tmp_outfile
+
+    	done < $list
+
+	cat $tmp_outfile | column -t -s "**"
 	rm $tmp_outfile
 
 }
 #-----------------------------------------------------------------------------#
 function downloadDeps ( )
 {
-	if [[ -z "$location" ]]; then 
-		echo "No file specified" 
+	if [[ -z "$list" ]]; then 
+		echo "No list specified" 
 		exit
 	fi
 	
-	# read file
+	# read list
     	while IFS= read -r line;
     	do
-		wget -nc -P $DOWNLOAD_DIR/$line $MIRROR/$line 
+		# check mirror
+		local url=$(check_mirror $line)
+		if [[ -z $url ]]; then
+			echo "SKIPPING $line: NOT FOUND ON MIRROR"
+			continue
+		fi
 
-    	done < $location
+		# download
+		wget -nv -P $PKG_DIR $url 
+
+    	done < $list
 }
+
+#-----------------------------------------------------------------------------#
+function installDeps ( )
+{
+	if [[ -z "$list" ]]; then 
+		echo "No list specified" 
+		exit
+	fi
+	if [[ -z "$install_cmd" ]]; then 
+		echo "No install command specified" 
+		exit
+	fi
+
+	list="$LIST_DIR/$list"
+
+	# read list
+        while IFS= read -r line;
+        do
+		local pkg_file=$(check_installed $line)
+		if [[ ! -z $pkg_file ]]; then
+			echo "SKIPPING: $line INSTALLED"
+			continue
+		fi
+
+		pkg_file=$(check_file $line)
+		if [[ -z $pkg_file ]]; then
+			echo "SKIPPING: $line NOT FOUND"
+			continue
+		fi
+
+		# install pkg
+		$install_cmd $pkg_file
+		
+        done < $list
+
+}
+
+#-----------------------------------------------------------------------------#
+function check_installed ( )
+{
+	pkg=$1
+	pkg=${pkg%.txz}
+	local output=""
+	if [[ $(find "$INSTALL_DIR/" -name $pkg) ]]; then
+		output="$INSTALL_DIR/$pkg"
+	fi
+
+	echo $output
+}
+
+#-----------------------------------------------------------------------------#
+function check_file ( )
+{
+	pkg=$1
+	local output=""
+	if [[ $(find "$PKG_DIR/" -maxdepth 1 -name $pkg) ]]; then
+		output="$PKG_DIR/$pkg"
+	fi
+
+	echo $output
+}
+
+#-----------------------------------------------------------------------------#
+function check_mirror ( )
+{
+	pkg=$1
+	local output=""
+	local url="$MIRROR/$pkg"
+	if [[ $(wget -S --spider $url 2>&1 | grep 200) ]]; then
+		output=$url
+	fi
+
+	echo $output
+}
+
+
 
 #-----------------------------------------------------------------------------#
 function usage ( )
 {
-	echo "this way dummy"
+	echo "-c | --create"
+	echo "-t | --test"
+	echo "-s | --status"
+	echo "-d | --download"
+	echo "-i | --install"
 	exit
 }
 
@@ -113,21 +217,31 @@ function usage ( )
 
 # parse command line
 action=$1
-location=$2
+list=$2
+install_cmd=$3
 
 
 case $action in
     -c|--create )
-        getDeps
+        createList
         ;;
     -t|--test )
-        testDeps
+        testList
         ;;
-    -s|--status )
-	checkStatus
+    -s|--install-status )
+	installStatus
         ;;
     -d|--download )
     	downloadDeps
+        ;;
+    -i|--install )
+    	installDeps
+        ;;
+    -u|--remove-status )
+    	removeStatus
+        ;;
+    -u|--remove )
+    	removeDeps
         ;;
     * ) usage ;;
 esac
