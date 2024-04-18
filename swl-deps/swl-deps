@@ -12,7 +12,7 @@ SCRIPT_DIR="$HOME/blfs_root/scripts"
 INSTALL_DIR="/var/lib/pkgtools/packages"
 PKG_DIR="/var/lib/swl/packages"
 LIST_DIR="/var/lib/swl/lists"
-MIRROR="http://localhost:8000/swl/packages-121"
+MIRROR="http://localhost:8000/swl-packages.121/packages"
 
 #-----------------------------------------------------------------------------#
 function createList ( )
@@ -48,7 +48,7 @@ function testList ( )
 		exit
 	fi
 
-	cat $location \
+	cat $list \
 		| sed 's/\(.*\)-x86_64.*/\1/g' \
 		| sed 's/\(.*\)-\(.*\)/\1 \2/g' \
 		| column -t
@@ -119,7 +119,7 @@ function downloadDeps ( )
 		fi
 
 		# download
-		wget -nv -P $PKG_DIR $url 
+		wget -nv --show-progress -P $PKG_DIR $url 
 
     	done < $list
 }
@@ -190,8 +190,16 @@ function check_mirror ( )
 {
 	pkg=$1
 	local output=""
-	local url="$MIRROR/$pkg"
-	if [[ $(wget -S --spider $url 2>&1 | grep 200) ]]; then
+	local url="$MIRROR"
+	if [[ "$list" == *"lfs-base.list" ]]; then
+	       url="$url/lfs-base/$pkg"
+        else
+		dir=${pkg:0:1}
+		url="$url/$dir/$pkg"
+	fi
+
+        wget -q --spider $url
+	if [[ $? -eq 0 ]]; then
 		output=$url
 	fi
 
@@ -204,13 +212,11 @@ function check_mirror ( )
 function usage ( )
 {
 	echo "-c | --create"
-	echo "-t | --test"
 	echo "-s | --status"
 	echo "-d | --download"
-	echo "-i | --install"
+	echo "-u | --remove-status"
 	exit
 }
-
 
 ###############################################################################
 ### MAIN ###
@@ -225,23 +231,14 @@ case $action in
     -c|--create )
         createList
         ;;
-    -t|--test )
-        testList
-        ;;
     -s|--install-status )
 	installStatus
         ;;
     -d|--download )
     	downloadDeps
         ;;
-    -i|--install )
-    	installDeps
-        ;;
     -u|--remove-status )
     	removeStatus
-        ;;
-    -u|--remove )
-    	removeDeps
         ;;
     * ) usage ;;
 esac
