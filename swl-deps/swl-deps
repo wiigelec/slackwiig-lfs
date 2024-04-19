@@ -105,12 +105,6 @@ function downloadDeps ( )
 	# read list
     	while IFS= read -r line;
     	do
-		# check installed
-		local pkg_file=$(check_installed $line)
-		if [[ ! -z $pkg_file ]]; then
-			echo "SKIPPING: $line INSTALLED"
-			continue
-		fi
 		# check mirror
 		local url=$(check_mirror $line)
 		if [[ -z $url ]]; then
