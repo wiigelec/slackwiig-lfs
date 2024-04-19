@@ -66,27 +66,27 @@ function installStatus ( )
 		# check installed
 		out_line=$(check_installed $line)
 		if [[ ! -z $out_line ]]; then
-			echo "$line**INSTALLED" >> $tmp_outfile
+			echo "$line  INSTALLED" >> $tmp_outfile
 			continue
 		fi
 
 		# check file
 		out_line=$(check_file $line)
 		if [[ ! -z $out_line ]]; then
-			echo "$line**$out_line" >> $tmp_outfile
+			echo "$line  $out_line" >> $tmp_outfile
 			continue
 		fi
 
 		# check mirror
 		out_line=$(check_mirror $line)
 		if [[ ! -z $out_line ]]; then
-			echo "$line**$out_line" >> $tmp_outfile
+			echo "$line  $out_line" >> $tmp_outfile
 			continue
 		fi
 
 		out_line="NOT FOUND"
 		
-		echo "$line**$out_line" >> $tmp_outfile
+		echo "$line  $out_line" >> $tmp_outfile
 
     	done < $list
 
@@ -105,6 +105,12 @@ function downloadDeps ( )
 	# read list
     	while IFS= read -r line;
     	do
+		# check installed
+		local pkg_file=$(check_installed $line)
+		if [[ ! -z $pkg_file ]]; then
+			echo "SKIPPING: $line INSTALLED"
+			continue
+		fi
 		# check mirror
 		local url=$(check_mirror $line)
 		if [[ -z $url ]]; then
@@ -113,7 +119,7 @@ function downloadDeps ( )
 		fi
 
 		# download
-		wget -nv --show-progress -P $PKG_DIR $url 
+		wget -nv --show-progress -P $PKG_DIR $url -O $PKG_DIR/$line
 
     	done < $list
 }
@@ -133,11 +139,11 @@ function installDeps ( )
 	# read list
         while IFS= read -r line;
         do
-		#local pkg_file=$(check_installed $line)
-		#if [[ ! -z $pkg_file ]]; then
-		#	echo "SKIPPING: $line INSTALLED"
-		#	continue
-		#fi
+		local pkg_file=$(check_installed $line)
+		if [[ ! -z $pkg_file ]]; then
+			echo "SKIPPING: $line INSTALLED"
+			continue
+		fi
 
 		pkg_file=$(check_file $line)
 		if [[ -z $pkg_file ]]; then
