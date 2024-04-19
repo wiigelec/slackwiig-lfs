@@ -94,6 +94,29 @@ function installStatus ( )
 	rm $tmp_outfile
 
 }
+    	
+#-----------------------------------------------------------------------------#
+function removeStatus ( )
+{
+	if [[ -z "$list" ]]; then 
+		echo "No list specified" 
+		exit
+	fi
+
+	# read file
+        while IFS= read -r line;
+        do
+		# check used
+		used=$(check_used $line)
+		if [[ ! -z $used ]]; then
+			echo "$line  USED"
+		else
+			echo "$line"
+		fi
+		
+	done < $list
+}
+
 #-----------------------------------------------------------------------------#
 function downloadDeps ( )
 {
@@ -113,7 +136,7 @@ function downloadDeps ( )
 		fi
 
 		# download
-		wget -nv --show-progress -P $PKG_DIR $url -O $PKG_DIR/$line
+		wget -P $PKG_DIR $url -O $PKG_DIR/$line
 
     	done < $list
 }
@@ -138,17 +161,46 @@ function installDeps ( )
 			echo "SKIPPING: $line INSTALLED"
 			continue
 		fi
-
-		pkg_file=$(check_file $line)
-		if [[ -z $pkg_file ]]; then
-			echo "ERROR: $line NOT FOUND"
-			break
-		fi
+                pkg_file=$(check_file $line)
+                if [[ -z $pkg_file ]]; then
+                        echo "ERROR: $line NOT FOUND"
+                        break
+                fi
 
 		# install pkg
 		$install_cmd $pkg_file
 		
         done < $list
+
+}
+
+#-----------------------------------------------------------------------------#
+function removeDeps ( )
+{
+        if [[ -z "$list" ]]; then
+                echo "No list specified"
+                exit
+        fi
+        if [[ -z "$install_cmd" ]]; then
+                echo "No remove command specified"
+                exit
+        fi
+
+        # read list
+        while IFS= read -r line;
+        do
+                local used=$(check_used $line)
+                if [[ ! -z $used ]]; then
+                        echo "SKIPPING: $line USED"
+                        continue
+                fi
+
+                # remove pkg
+                $remove_cmd $line
+
+        done < $list
+
+	rm $list
 
 }
 
@@ -198,7 +250,12 @@ function check_mirror ( )
 	echo $output
 }
 
-
+#-----------------------------------------------------------------------------#
+function check_used ( )
+{
+	pkg=$1
+	echo "$(grep --exclude $list $pkg $LIST_DIR/*)"
+}
 
 #-----------------------------------------------------------------------------#
 function usage ( )
@@ -208,6 +265,7 @@ function usage ( )
 	echo "-d | --download"
 	echo "-i | --install"
 	echo "-u | --remove-status"
+	echo "-r | --remove"
 	exit
 }
 
@@ -218,6 +276,7 @@ function usage ( )
 action=$1
 list=$2
 install_cmd=$3
+remove_cmd=$3
 
 
 case $action in
@@ -235,6 +294,9 @@ case $action in
         ;;
     -u|--remove-status )
     	removeStatus
+        ;;
+    -r|--remove )
+    	removeDeps
         ;;
     * ) usage ;;
 esac
