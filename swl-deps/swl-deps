@@ -21,6 +21,16 @@ function createList ( )
 		location=$SCRIPT_DIR
 	fi
 
+	for FILE in $location/*;
+	do
+		pkg=${FILE#*-z-}
+		pkg=$(echo $pkg | tr '[:upper:]' '[:lower:]')
+		found=$(grep $pkg $LIST_DIR/packages-121.list | head -n1)
+		echo "$found-swl121.txz"
+	done
+
+	return
+
 	local tmp_outfile=$(mktemp /tmp/tmp_outfile.XXXXXXXXXX)
 
 	grep PACKAGE= $location/* > $tmp_outfile
