@@ -25,29 +25,13 @@ function createList ( )
 	do
 		pkg=${FILE#*-z-}
 		pkg=$(echo $pkg | tr '[:upper:]' '[:lower:]')
-		found=$(grep $pkg $LIST_DIR/packages-121.list | head -n1)
+		found=$(grep ^$pkg $LIST_DIR/packages-121.list | head -n1)
+		if [[ -z $found ]]; then
+			found="NOT FOUND: $pkg"
+		fi
 		echo "$found-swl121.txz"
 	done
 
-	return
-
-	local tmp_outfile=$(mktemp /tmp/tmp_outfile.XXXXXXXXXX)
-
-	grep PACKAGE= $location/* > $tmp_outfile
-
-	sed -i 's/.*PACKAGE=//g' $tmp_outfile
-	sed -i 's/\.tar.*//g' $tmp_outfile
-	sed -i 's/\.tgz.*//g' $tmp_outfile
-	sed -i 's/\.zip.*//g' $tmp_outfile
-	sed -i 's/$/-x86_64-swl01.txz/g' $tmp_outfile
-
-	# pass1 packages
-	sed -i '0,/freetype/s//freetype-pass1/' $tmp_outfile
-	sed -i '0,/graphite2/s//graphite2-pass1/' $tmp_outfile
-	sed -i '0,/libva/s//libva-pass1/' $tmp_outfile
-
-	cat $tmp_outfile | tr [:upper:] [:lower:]
-	rm $tmp_outfile
 }
 
 #-----------------------------------------------------------------------------#
@@ -106,7 +90,7 @@ function installStatus ( )
 
     	done < $list
 
-	cat $tmp_outfile | column -t -s "**"
+	cat $tmp_outfile
 	rm $tmp_outfile
 
 }
@@ -146,21 +130,19 @@ function installDeps ( )
 		exit
 	fi
 
-	list="$LIST_DIR/$list"
-
 	# read list
         while IFS= read -r line;
         do
-		local pkg_file=$(check_installed $line)
-		if [[ ! -z $pkg_file ]]; then
-			echo "SKIPPING: $line INSTALLED"
-			continue
-		fi
+		#local pkg_file=$(check_installed $line)
+		#if [[ ! -z $pkg_file ]]; then
+		#	echo "SKIPPING: $line INSTALLED"
+		#	continue
+		#fi
 
 		pkg_file=$(check_file $line)
 		if [[ -z $pkg_file ]]; then
-			echo "SKIPPING: $line NOT FOUND"
-			continue
+			echo "ERROR: $line NOT FOUND"
+			break
 		fi
 
 		# install pkg
@@ -224,6 +206,7 @@ function usage ( )
 	echo "-c | --create"
 	echo "-s | --status"
 	echo "-d | --download"
+	echo "-i | --install"
 	echo "-u | --remove-status"
 	exit
 }
@@ -246,6 +229,9 @@ case $action in
         ;;
     -d|--download )
     	downloadDeps
+        ;;
+    -i|--install )
+    	installDeps
         ;;
     -u|--remove-status )
     	removeStatus
