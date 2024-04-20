@@ -150,7 +150,7 @@ function installDeps ( )
         while IFS= read -r line;
         do
 		local pkg_file=$(check_installed $line)
-		if [[ ! -z $pkg_file ]]; then
+		if [[ ! -z $pkg_file && "$list" != "lfs-base.list" && $force == 0 ]]; then
 			echo "SKIPPING: $line INSTALLED"
 			continue
 		fi
@@ -167,7 +167,7 @@ function installDeps ( )
         done < $list
 
 	if [[ $error = 0 ]]; then
-		cp $list $LIST_DIR
+		cp -i $list $LIST_DIR
 	fi
 
 }
@@ -267,6 +267,7 @@ function usage ( )
 	echo "-s | --status"
 	echo "-d | --download"
 	echo "-i | --install"
+	echo "-f | --force-install"
 	echo "-u | --remove-status"
 	echo "-r | --remove"
 	exit
@@ -280,6 +281,7 @@ action=$1
 list=$2
 install_cmd=$3
 remove_cmd=$3
+force=0
 
 
 case $action in
@@ -296,6 +298,10 @@ case $action in
     	downloadDeps
         ;;
     -i|--install )
+    	installDeps
+        ;;
+    -f|--force-install )
+	force=1
     	installDeps
         ;;
     -u|--remove-status )
