@@ -8,11 +8,11 @@
 #-----------------------------------------------------------------------------#
 
 ### CONFIGURATION ###
-SCRIPT_DIR="$HOME/blfs_root/scripts"
-INSTALL_DIR="/var/lib/pkgtools/packages"
-PKG_DIR="/var/lib/swl/packages"
-LIST_DIR="/var/lib/swl/lists"
-MIRROR="http://localhost:8000/swl/packages-121"
+SCRIPT_DIR="$HOME/blfs_root/scripts/"
+INSTALL_DIR="/var/lib/pkgtools/packages/"
+PKG_DIR="/var/lib/swl/packages/"
+LIST_DIR="/var/lib/swl/lists/"
+MIRROR="http://localhost:8000/swl-packages.121/"
 
 #-----------------------------------------------------------------------------#
 function createList ( )
@@ -21,38 +21,29 @@ function createList ( )
 		location=$SCRIPT_DIR
 	fi
 
-	local tmp_outfile=$(mktemp /tmp/tmp_outfile.XXXXXXXXXX)
+	for FILE in $location/*;
+	do
+		pkg=${FILE#*-z-}
+		pkg=$(echo $pkg | tr '[:upper:]' '[:lower:]')
+		found=$(grep ^$pkg $LIST_DIR/packages-121.list | head -n1)
+		if [[ -z $found ]]; then
+			found="NOT FOUND: $pkg"
+		fi
+		echo "$found-swl121.txz"
+	done
 
-	grep PACKAGE= $location/* > $tmp_outfile
-
-	sed -i 's/.*PACKAGE=//g' $tmp_outfile
-	sed -i 's/\.tar.*//g' $tmp_outfile
-	sed -i 's/\.tgz.*//g' $tmp_outfile
-	sed -i 's/\.zip.*//g' $tmp_outfile
-	sed -i 's/$/-x86_64-swl01.txz/g' $tmp_outfile
-
-	# pass1 packages
-	sed -i '0,/freetype/s//freetype-pass1/' $tmp_outfile
-	sed -i '0,/graphite2/s//graphite2-pass1/' $tmp_outfile
-	sed -i '0,/libva/s//libva-pass1/' $tmp_outfile
-
-	cat $tmp_outfile | tr [:upper:] [:lower:]
-	rm $tmp_outfile
 }
 
 #-----------------------------------------------------------------------------#
-function testList ( )
+function browseLists ( )
 {
-	if [[ -z "$list" ]]; then 
-		echo "No list specified" 
-		exit
+	if [[ ! -e $LIST_DIR ]]; then
+		echo "LIST_DIR $LIST_DIR does not exist."
+		return
 	fi
 
-	cat $location \
-		| sed 's/\(.*\)-x86_64.*/\1/g' \
-		| sed 's/\(.*\)-\(.*\)/\1 \2/g' \
-		| column -t
-	
+	lynx ${MIRROR}lists/
+
 }
 
 #-----------------------------------------------------------------------------#
@@ -63,8 +54,6 @@ function installStatus ( )
 		exit
 	fi
 
-	local tmp_outfile=$(mktemp /tmp/tmp_outfile.XXXXXXXXXX)
-
 	# read file
     	while IFS= read -r line;
     	do
@@ -72,34 +61,54 @@ function installStatus ( )
 		# check installed
 		out_line=$(check_installed $line)
 		if [[ ! -z $out_line ]]; then
-			echo "$line**INSTALLED" >> $tmp_outfile
+			echo "$line  INSTALLED"
 			continue
 		fi
 
 		# check file
 		out_line=$(check_file $line)
 		if [[ ! -z $out_line ]]; then
-			echo "$line**$out_line" >> $tmp_outfile
+			echo "$line  $out_line"
 			continue
 		fi
 
 		# check mirror
 		out_line=$(check_mirror $line)
 		if [[ ! -z $out_line ]]; then
-			echo "$line**$out_line" >> $tmp_outfile
+			echo "$line  $out_line"
 			continue
 		fi
 
 		out_line="NOT FOUND"
 		
-		echo "$line**$out_line" >> $tmp_outfile
+		echo "$line  $out_line"
 
     	done < $list
 
-	cat $tmp_outfile | column -t -s "**"
-	rm $tmp_outfile
-
 }
+    	
+#-----------------------------------------------------------------------------#
+function removeStatus ( )
+{
+	if [[ -z "$list" ]]; then 
+		echo "No list specified" 
+		exit
+	fi
+
+	# read file
+        while IFS= read -r line;
+        do
+		# check used
+		used=$(check_used $line)
+		if [[ ! -z $used ]]; then
+			echo "$line  USED"
+		else
+			echo "$line"
+		fi
+		
+	done < $list
+}
+
 #-----------------------------------------------------------------------------#
 function downloadDeps ( )
 {
@@ -119,7 +128,7 @@ function downloadDeps ( )
 		fi
 
 		# download
-		wget -nv -P $PKG_DIR $url 
+		wget -nc -P $PKG_DIR $url
 
     	done < $list
 }
@@ -136,27 +145,64 @@ function installDeps ( )
 		exit
 	fi
 
-	list="$LIST_DIR/$list"
-
 	# read list
+	local error=0
         while IFS= read -r line;
         do
 		local pkg_file=$(check_installed $line)
-		if [[ ! -z $pkg_file ]]; then
+		if [[ ! -z $pkg_file && "$list" != "lfs-base.list" && $force == 0 ]]; then
 			echo "SKIPPING: $line INSTALLED"
 			continue
 		fi
-
-		pkg_file=$(check_file $line)
-		if [[ -z $pkg_file ]]; then
-			echo "SKIPPING: $line NOT FOUND"
-			continue
-		fi
+                pkg_file=$(check_file $line)
+                if [[ -z $pkg_file ]]; then
+                        echo "ERROR: $line NOT FOUND"
+                        break
+                fi
 
 		# install pkg
 		$install_cmd $pkg_file
+		error=$?
 		
         done < $list
+
+	if [[ $error = 0 ]]; then
+		cp -i $list $LIST_DIR
+	fi
+
+}
+
+#-----------------------------------------------------------------------------#
+function removeDeps ( )
+{
+        if [[ -z "$list" ]]; then
+                echo "No list specified"
+                exit
+        fi
+        if [[ -z "$install_cmd" ]]; then
+                echo "No remove command specified"
+                exit
+        fi
+
+        # read list
+	local error=0
+        while IFS= read -r line;
+        do
+                local used=$(check_used $line)
+                if [[ ! -z $used ]]; then
+                        echo "SKIPPING: $line USED"
+                        continue
+                fi
+
+                # remove pkg
+                $remove_cmd $line
+		error=$?
+
+        done < $list
+
+	if [[ $error = 0 ]]; then
+		rm -i ${list}
+	fi
 
 }
 
@@ -190,27 +236,42 @@ function check_mirror ( )
 {
 	pkg=$1
 	local output=""
-	local url="$MIRROR/$pkg"
-	if [[ $(wget -S --spider $url 2>&1 | grep 200) ]]; then
+	local url=${MIRROR}packages
+	if [[ "$list" == *"lfs-base.list" ]]; then
+	       url="$url/lfs-base/$pkg"
+        else
+		dir=${pkg:0:1}
+		url="$url/$dir/$pkg"
+	fi
+
+        wget -q --spider $url
+	if [[ $? -eq 0 ]]; then
 		output=$url
 	fi
 
 	echo $output
 }
 
-
+#-----------------------------------------------------------------------------#
+function check_used ( )
+{
+	pkg=$1
+	echo "$(grep --exclude=$list $pkg $LIST_DIR*)"
+}
 
 #-----------------------------------------------------------------------------#
 function usage ( )
 {
 	echo "-c | --create"
-	echo "-t | --test"
+	echo "-b | --browse"
 	echo "-s | --status"
 	echo "-d | --download"
 	echo "-i | --install"
+	echo "-f | --force-install"
+	echo "-u | --remove-status"
+	echo "-r | --remove"
 	exit
 }
-
 
 ###############################################################################
 ### MAIN ###
@@ -219,14 +280,16 @@ function usage ( )
 action=$1
 list=$2
 install_cmd=$3
+remove_cmd=$3
+force=0
 
 
 case $action in
     -c|--create )
         createList
         ;;
-    -t|--test )
-        testList
+    -b|--browse )
+        browseLists
         ;;
     -s|--install-status )
 	installStatus
@@ -237,10 +300,14 @@ case $action in
     -i|--install )
     	installDeps
         ;;
+    -f|--force-install )
+	force=1
+    	installDeps
+        ;;
     -u|--remove-status )
     	removeStatus
         ;;
-    -u|--remove )
+    -r|--remove )
     	removeDeps
         ;;
     * ) usage ;;
