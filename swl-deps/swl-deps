@@ -150,7 +150,7 @@ function installDeps ( )
         while IFS= read -r line;
         do
 		local pkg_file=$(check_installed $line)
-		if [[ ! -z $pkg_file && "$list" != "lfs-base.list" && $force == 0 ]]; then
+		if [[ ! -z $pkg_file && $force == 0 ]]; then
 			echo "SKIPPING: $line INSTALLED"
 			continue
 		fi
