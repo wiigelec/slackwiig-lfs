@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FIX_PKG=python-3.12.2-x86_64-swl01.txz
+FIX_PKG=python3-3.12.2-amd64-swl121.txz
 EXPLODE_DIR=/sources/explode-pgk
 PKG_DIR=/var/lib/packages
 

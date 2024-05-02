@@ -1,3 +1,0 @@
-#!/bin/bash
-
-ls | sed 's/\(.*\)-x86.*/\1/g' | sed 's/\(.*\)-/\1 /g' | column -t

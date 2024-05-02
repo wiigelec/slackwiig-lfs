@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FIX_PKG=glibc-2.39-x86_64-swl01.txz
+FIX_PKG=glibc-2.39-amd64-swl121.txz
 EXPLODE_DIR=/sources/explode-pgk
 PKG_DIR=/var/lib/packages
 

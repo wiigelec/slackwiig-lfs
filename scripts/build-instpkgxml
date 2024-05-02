@@ -1,0 +1,26 @@
+#!/bin/bash
+
+
+echo "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>"
+echo "<!DOCTYPE sublist SYSTEM \"/home/compnerd/blfs_root/packdesc.dtd\">"
+echo "<sublist>"
+echo "<name>Installed</name>"
+
+for FILE in /var/lib/pkgtools/packages/*; do
+
+	# get pkg and version
+	pkg=${FILE##*/}
+	pkg=${pkg%-amd64*}
+	version=${pkg##*-}
+	pkg=${pkg%-*}
+
+	# write xml
+	echo "  <package>"
+	echo "    <name>$pkg</name>"
+	echo "    <version>$version</version>"
+	echo "  </package>"
+
+
+done
+
+echo "</sublist>"

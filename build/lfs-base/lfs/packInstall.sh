@@ -21,11 +21,11 @@ case $PCKGVRS in
 # the last sed above is because some package managers do not want a '_'
 # in version.
 esac
-local ARCHIVE_NAME=$(dirname ${PKGDIR})/${PACKAGE}-${VERSION}-x86_64-swl01.txz
 case $(uname -m) in
   x86_64) local ARCH=amd64 ;;
   *) local ARCH=i386 ;;
 esac
+local ARCHIVE_NAME=$(dirname ${PKGDIR})/${PACKAGE}-${VERSION}-${ARCH}-swl121.txz
 
 pushd $PKG_DEST
 rm -fv ./usr/share/info/dir  # recommended since this directory is already there

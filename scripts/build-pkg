@@ -1,35 +1,32 @@
 #!/bin/bash
 
+ARCH=amd64
+SWL=swl121
+
 #----------------------------------------------------------------------------#
-for FILE in /var/lib/pkglog/*.pkg;
+for FILE in ./*.pkglog;
 do
-    ### GET PACKAGE NAME AND VERSION ##
     echo Processing $FILE...
 
-    ### CREATE FILENAMES ###
-    pkg_file=$FILE
-
-    ### CREATE TAR ###
-    tar_file="$pkg_file.tar"
-    tar --no-recursion -cf $tar_file -T $pkg_file
+    # tar files
+    pkg=${FILE%.pkglog}
+    tar_file="$pkg.tar"
+    tar --no-recursion -cf $tar_file -T $FILE
 
     ### MAKE PACKAGE ###
-    package=${FILE%.pkg}
-    package="$package-x86_64-swl01.txz"
-    pushd /var/lib/pkglog
+    pkg="$pkg-$ARCH-$SWL.txz"
     mkdir extract
     cd extract
 
-    tar -xf $tar_file
+    tar -xf ../$tar_file
 
-    makepkg -l y -c n $package
-    mv -v $package /var/lib/packages/
+    makepkg -l y -c n ../$pkg
     cd ../
+    mv -v $pkg ../packages/$pkg
 
     ### CLEANUP ###
     rm -rf extract
     rm $tar_file
-    popd
 
 done
 

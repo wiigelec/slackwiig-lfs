@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FIX_PKG=vim-9.1.0041-x86_64-swl01.txz
+FIX_PKG=vim-9.1.0041-amd64-swl121.txz
 EXPLODE_DIR=/sources/explode-pgk
 PKG_DIR=/var/lib/packages
 

@@ -1,0 +1,40 @@
+#!/bin/bash
+
+#----------------------------------------------------------------------------#
+for FILE in ./*.difflog1;
+do
+    ### GET PACKAGE NAME AND VERSION ##
+    echo Processing $FILE...
+
+    # package
+    pkg=${FILE%.difflog1}
+    diff1=$FILE
+    diff2=$pkg.difflog2
+    log=$pkg.pkglog
+
+    # diff
+    diff $diff1 $diff2 > $log.tmp
+
+    # filter
+    sed -i '/^>/!d' $log.tmp
+    sed -i 's/> //g' $log.tmp
+    sed -i '/^\/var\/lib\/swl\/difflog/d' $log.tmp
+    sed -i '/^\/sources/d' $log.tmp
+    sed -i '/^\/dev/d' $log.tmp
+    sed -i '/^\/proc/d' $log.tmp
+    sed -i '/^\/sys/d' $log.tmp
+    sed -i '/^\/home/d' $log.tmp
+    sed -i '/^\/etc\/passwd/d' $log.tmp
+    sed -i '/^\/etc\/group/d' $log.tmp
+    sed -i '/^\/var\/lib\/systemd\/coredump\//d' $log.tmp
+    sed -i '/^\/opt\/kf5\/share\/icons\/hicolor\//d' $log.tmp
+    sed -i '/^\/tmp/d' $log.tmp
+
+    # cleanup
+    cat $log.tmp | sort -u > $log
+    mv $log ../pkglog/$log
+    rm $log.tmp
+
+done
+
+exit

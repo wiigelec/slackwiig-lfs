@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LFS=/mnt/lfs
+LFS=${LFS:-/mnt/lfs}
 
 mount -v --bind /dev $LFS/dev
 
