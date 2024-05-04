@@ -11,7 +11,7 @@ do
     #echo $package
 
     # version lookup
-    lookup=$(grep "^$package  " /var/lib/swl/pkg-versions.jhalfs)
+    lookup=$(grep -i "^$package  " /var/lib/swl/pkg-versions.jhalfs)
     echo $lookup
     version=${lookup#*  }
     version=${version% }
