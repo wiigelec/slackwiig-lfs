@@ -10,6 +10,7 @@ do
 
     # tar files
     pkg=${FILE%.pkglog}
+    pkg=${pkg#./}
     tar_file="$pkg.tar"
     tar --no-recursion -cf $tar_file -T $FILE
 
