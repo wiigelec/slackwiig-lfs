@@ -8,7 +8,7 @@ do
     package=${FILE##*\/}
     package=${package#*z-}
     package=$(echo "$package" | tr '[:upper:]' '[:lower:]')
-    #echo $package
+    echo $package
 
     # version lookup
     lookup=$(grep -i "^$package  " /var/lib/swl/pkg-versions.jhalfs)
