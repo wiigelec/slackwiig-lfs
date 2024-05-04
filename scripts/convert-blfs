@@ -11,9 +11,10 @@ do
     #echo $package
 
     # version lookup
-    lookup=$(grep "^$package  " /var/lib/swl/swl-versions.121)
+    lookup=$(grep "^$package  " /var/lib/swl/pkg-versions.jhalfs)
     echo $lookup
     version=${lookup#*  }
+    version=${version% }
     echo $version
 
     # diff logs
