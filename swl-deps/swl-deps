@@ -9,9 +9,9 @@
 
 ### CONFIGURATION ###
 SCRIPT_DIR="$HOME/blfs_root/scripts/"
-INSTALL_DIR="/var/lib/pkgtools/packages/"
-PKG_DIR="/var/lib/swl/packages/"
-LIST_DIR="/var/lib/swl/lists/"
+INSTALL_DIR="$ROOT/var/lib/pkgtools/packages/"
+PKG_DIR="$ROOT/var/lib/swl/packages/"
+LIST_DIR="$ROOT/var/lib/swl/lists/"
 MIRROR="http://localhost:8000/swl-packages.121/"
 
 #-----------------------------------------------------------------------------#
