@@ -11,5 +11,5 @@ for FILE in ./stage/*; do
 	dir=${dir:0:1}
 	mkdir -pv $dir
 
-       mv $FILE $dir
+       cp -i $FILE $dir
 done
