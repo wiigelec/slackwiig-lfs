@@ -1,0 +1,19 @@
+#!/bin/bash
+
+CONFIG_FILE="$HOME/blfs_root/configuration"
+
+while IFS= read -r line;
+do
+	pkg=${line%  *}
+	echo $pkg
+
+	cp "$CONFIG_FILE".swl $CONFIG_FILE
+
+	sed -i "s/%%PKG%%/$pkg/g" $CONFIG_FILE
+
+	$HOME/blfs_root/gen_pkg_book.sh
+
+	pkg_vers=$(echo $line | sed 's/ /-/g')
+	swl-deps -c > /var/lib/swl/lists/"$pkg_vers".list
+
+done < /var/lib/swl/swl-versions.121

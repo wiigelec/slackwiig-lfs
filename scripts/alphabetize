@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ ! -d stage ]]; then
+	echo "No stage dir."
+	exit
+fi
+
+for FILE in ./stage/*; do
+
+	dir=${FILE##*/}
+	dir=${dir:0:1}
+	mkdir -pv $dir
+
+       mv $FILE $dir
+done
