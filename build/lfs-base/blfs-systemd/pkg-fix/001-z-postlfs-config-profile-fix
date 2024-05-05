@@ -1,8 +1,8 @@
 #!/bin/bash
 
-FIX_PKG=postlfs-config-profile-12.1-x86_64-swl01.txz
-EXPLODE_DIR=/sources/explode-pgk
-PKG_DIR=/var/lib/packages
+FIX_PKG=postlfs-config-profile-12.1-amd64-swl01.txz
+EXPLODE_DIR=/sources/explode-pkg
+PKG_DIR=/var/lib/swl/packages
 
 ### EXPLODE PKG ###
 mkdir $EXPLODE_DIR

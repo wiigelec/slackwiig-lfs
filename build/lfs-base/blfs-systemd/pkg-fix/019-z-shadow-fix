@@ -1,8 +1,8 @@
 #!/bin/bash
 
-FIX_PKG=shadow-4.14.5-x86_64-swl01.txz
-EXPLODE_DIR=/sources/explode-pgk
-PKG_DIR=/var/lib/packages
+FIX_PKG=shadow-4.14.5-amd64-swl01.txz
+EXPLODE_DIR=/sources/explode-pkg
+PKG_DIR=/var/lib/swl/packages
 
 ### EXPLODE PKG ###
 mkdir $EXPLODE_DIR
