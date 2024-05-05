@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FIX_PKG=cracklib-2.9.11-amd64-swl01.txz
+FIX_PKG=cracklib-2.9.11-amd64-swl121.txz
 EXPLODE_DIR=/sources/explode-pkg
 PKG_DIR=/var/lib/swl/packages
 
