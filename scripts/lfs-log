@@ -1,0 +1,27 @@
+#!/bin/bash
+
+for FILE in /var/lib/pkgtools/packages/*; do
+	pkg=${FILE%-amd64-*}
+	pkg=${pkg##*/}
+	if [[ "$pkg" == "python-3.12.2" ]]; then pkg="python3-3.12.2"; fi
+	echo "Processing $pkg..."
+	cat $FILE | \
+		sed '/^[A-Z]/d' | \
+		sed '/^\./d' | \
+		sed 's/^/\//g' \
+		> /var/lib/swl/difflog/$pkg.difflog2
+	touch /var/lib/swl/difflog/$pkg.difflog1
+done
+
+for FILE in /jhalfs/installed-files/*; do
+	pkg=${FILE##*/}
+	pkg=${pkg#*-}
+	if [[ "$pkg" == "Python" ]]; then pkg="python3"; fi
+	pkg=$(grep "^$pkg  " /var/lib/swl/pkg-versions-121.jhalfs)
+	if [[ -z $pkg ]]; then
+		pkg="NOT FOUND: $FILE"
+	fi
+	pkg=$(echo $pkg | sed 's/\s/-/g')
+	echo "Processing $pkg..."
+	cat $FILE | sed 's/\s.*//g' >> /var/lib/swl/difflog/$pkg.difflog2
+done

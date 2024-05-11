@@ -84,7 +84,7 @@ cp -a /etc/os-release ./etc
 cp -a /usr/share/info/dir ./usr/share/info
 
 ### MAKEPKG ###
-makepkg -l y -c n /var/lib/packages/a_basedirs-12.1-amd64-swl121.txz
+makepkg -l y -c n /var/lib/swl/packages/a_basedirs-12.1-amd64-swl121.txz
 
 ### CLEANUP ###
 cd ../

@@ -31,27 +31,32 @@ pushd $PKG_DEST
 rm -fv ./usr/share/info/dir  # recommended since this directory is already there
                              # on the system
 
-# Strip
-set +e
-for i in $(find ./usr/lib -type f -name \*.so*) \
-    $(find ./usr/lib -type f -name \*.a)                 \
-    $(find ./usr/{bin,sbin,libexec} -type f); do
-        strip --strip-unneeded $i
-done
-find ./usr/lib ./usr/libexec -name \*.la -delete
-set -e
-	
+# pkg lookup
+#echo "debug:pkg lookup"
+#echo "debug: grep \"^$PACKAGE  \" /var/lib/swl/pkg-versions-121.jhalfs"
+local swl_pkg=$(grep "^$PACKAGE  " /var/lib/swl/pkg-versions-121.jhalfs)
+if [[ ! -z $swl_pkg ]]; then
+	#echo "debug:swl_pkg ($swl_pkg) found"
+	swl_pkg=${swl_pkg/  /-}
+	swl_pkg=$(dirname ${PKGDIR})/${swl_pkg}-${ARCH}-swl121.txz
+	ARCHIVE_NAME=$swl_pkg
+#else
+#	echo "debug:swl_pkg ($ARCHIVE_NAME) not found"
+fi
+
 # Convert to lower case
 ARCHIVE_NAME=$(echo "$ARCHIVE_NAME" | sed 's/./\L&/g')
+#echo "ARCHIVE_NAME: $ARCHIVE_NAME"
 
 # Building the binary package
+#echo "debug:makepkg"
 makepkg -l y -c n ".$ARCHIVE_NAME"
 
 # Installing it on LFS
 installpkg ".$ARCHIVE_NAME"
 
 # Storing the package (recommended).
-mv -v ".$ARCHIVE_NAME" /var/lib/packages
+cp ".$ARCHIVE_NAME" /var/lib/swl/packages
 
 popd                         # Since the $PKG_DEST directory is destroyed
                              # immediately after the return of the function,

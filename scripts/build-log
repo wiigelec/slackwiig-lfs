@@ -29,9 +29,27 @@ do
     sed -i '/^\/var\/lib\/systemd\/coredump\//d' $log.tmp
     sed -i '/^\/opt\/kf5\/share\/icons\/hicolor\//d' $log.tmp
     sed -i '/^\/tmp/d' $log.tmp
+    sed -i '/^\/etc\/ld\.so\.cache/d' $log.tmp
+    sed -i '/^\/install\/.*/d' $log.tmp
+    sed -i '/^\/var\/cache/d' $log.tmp
+    sed -i '/^\/var\/lib\/pkgtools/d' $log.tmp
+    sed -i '/^\/var\/lib\/swl/d' $log.tmp
+
+    # sort
+    cat $log.tmp | sort -u > $log
+    rm $log.tmp
+    cp $log $log.tmp
+    rm $log
+
+    # check files exist
+    while IFS= read -r line;
+    do
+	    if [[ -e $line ]]; then
+		    echo $line >> $log
+	    fi
+    done < $log.tmp
 
     # cleanup
-    cat $log.tmp | sort -u > $log
     mv $log ../pkglog/$log
     rm $log.tmp
 

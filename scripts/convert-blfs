@@ -24,12 +24,17 @@ do
     # insert diff log
     sed -i "2 i ROOT_EOF" $FILE
     sed -i "2 i find / -xdev > $difflog1" $FILE
+    sed -i "2 i touch /sources/timestamp-marker" $FILE
     sed -i "2 i sudo -E sh -e << ROOT_EOF" $FILE
 
     declare -i last_line=$(wc -l < $FILE)
     sed -i "$last_line i sudo -E sh -e << ROOT_EOF" $FILE
     last_line=$(wc -l < $FILE)
     sed -i "$last_line i find / -xdev > $difflog2" $FILE
+    last_line=$(wc -l < $FILE)
+    sed -i "$last_line i find / -xdev -newer /sources/timestamp-marker >> $difflog2" $FILE
+    last_line=$(wc -l < $FILE)
+    sed -i "$last_line i rm /sources/timestamp-marker" $FILE
     last_line=$(wc -l < $FILE)
     sed -i "$last_line i ROOT_EOF" $FILE
 
