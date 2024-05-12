@@ -34,6 +34,9 @@ do
     sed -i '/^\/var\/cache/d' $log.tmp
     sed -i '/^\/var\/lib\/pkgtools/d' $log.tmp
     sed -i '/^\/var\/lib\/swl/d' $log.tmp
+    sed -i '/^\/var\/lib\/systemd\/timesync/d' $log.tmp
+    sed -i '/^\/var\/log\/journal/d' $log.tmp
+    sed -i '/^\/var\/log\/wtmp/d' $log.tmp
 
     # sort
     cat $log.tmp | sort -u > $log
