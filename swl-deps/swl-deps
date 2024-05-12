@@ -156,8 +156,8 @@ function installDeps ( )
 		fi
                 pkg_file=$(check_file $line)
                 if [[ -z $pkg_file ]]; then
-                        echo "ERROR: $line NOT FOUND"
-                        break
+                        echo "SKIPPING: $line NOT FOUND"
+                        continue
                 fi
 
 		# install pkg
