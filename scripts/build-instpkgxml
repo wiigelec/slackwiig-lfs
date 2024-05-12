@@ -14,6 +14,13 @@ for FILE in /var/lib/pkgtools/packages/*; do
 	version=${pkg##*-}
 	pkg=${pkg%-*}
 
+	# lookup package
+	lookup=$(grep -i "^$pkg  " /var/lib/swl/pkg-versions-121.jhalfs)
+	if [[ ! -z $lookup ]]; then
+		pkg=${lookup%  *}
+		version=${lookup#*  }
+	fi
+
 	# write xml
 	echo "  <package>"
 	echo "    <name>$pkg</name>"
