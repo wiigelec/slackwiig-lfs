@@ -201,7 +201,8 @@ function removeDeps ( )
         done < $list
 
 	if [[ $error = 0 ]]; then
-		rm -i ${list}
+		rmlist=${list##*/}
+		rm -i $LIST_DIR/$rmlist
 	fi
 
 }
