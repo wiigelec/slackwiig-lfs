@@ -82,6 +82,9 @@ cp -a /etc/os-release ./etc
 
 ### misc ###
 cp -a /usr/share/info/dir ./usr/share/info
+cp -a /lib64/* ./lib64
+cp -a /usr/bin/cc ./usr/bin
+cp -a /usr/bin/sh ./usr/bin
 
 ### MAKEPKG ###
 makepkg -l y -c n /var/lib/swl/packages/a_basedirs-12.1-amd64-swl121.txz

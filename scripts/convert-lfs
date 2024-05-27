@@ -1,0 +1,43 @@
+#!/bin/bash
+
+for FILE in ./scripts/*;
+do
+    ### GET PACKAGE NAME AND VERSION ##
+    echo Processing $FILE...
+
+    package=${FILE##*\/}
+    package=${package#*-}
+    # handle python3
+    if [[ $package == "Python" ]] ; then package="Python3"; fi
+    package=$(echo "$package" | tr '[:upper:]' '[:lower:]')
+    echo $package
+
+    # version lookup
+    lookup=$(grep -i "^$package  " /var/lib/swl/pkg-versions-121.jhalfs)
+    echo $lookup
+    version=${lookup#*  }
+    version=${version% }
+    echo $version
+
+    # diff logs
+    difflog1="/var/lib/swl/difflog/$package"-"$version".difflog1
+    difflog2="/var/lib/swl/difflog/$package"-"$version".difflog2
+
+    # insert diff log
+    sed -i "2 i find / -xdev > $difflog1" $FILE
+    sed -i "2 i touch /sources/timestamp-marker" $FILE
+
+    declare -i last_line=$(wc -l < $FILE)
+    last_line=$(wc -l < $FILE)
+    sed -i "$last_line i find / -xdev > $difflog2" $FILE
+    last_line=$(wc -l < $FILE)
+    sed -i "$last_line i find / -xdev -newer /sources/timestamp-marker >> $difflog2" $FILE
+    last_line=$(wc -l < $FILE)
+    sed -i "$last_line i rm /sources/timestamp-marker" $FILE
+    last_line=$(wc -l < $FILE)
+
+
+done
+
+
+exit
