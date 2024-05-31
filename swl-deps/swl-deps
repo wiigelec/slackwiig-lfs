@@ -127,6 +127,18 @@ function downloadDeps ( )
 			continue
 		fi
 
+		# check installed
+		local installed=$(check_installed $line)
+		if [[ ! -z $isntalled && $force == 0 ]]; then
+			echo "SKIPPING: $line INSTALLED"
+			continue
+		fi
+
+		# force remove
+		if [[ $force == 1 ]]; then
+			rm $PKG_DIR/$line
+		fi
+
 		# download
 		wget -nc -P $PKG_DIR $url
 
@@ -266,9 +278,8 @@ function usage ( )
 	echo "-c | --create"
 	echo "-b | --browse"
 	echo "-s | --status"
-	echo "-d | --download"
-	echo "-i | --install"
-	echo "-f | --force-install"
+	echo "-(f)d | --(force-)download"
+	echo "-(f)i | --(force-)install"
 	echo "-u | --remove-status"
 	echo "-r | --remove"
 	exit
@@ -298,10 +309,14 @@ case $action in
     -d|--download )
     	downloadDeps
         ;;
+    -fd|--force-download )
+	force=1
+    	downloadDeps
+        ;;
     -i|--install )
     	installDeps
         ;;
-    -f|--force-install )
+    -fi|--force-install )
 	force=1
     	installDeps
         ;;
