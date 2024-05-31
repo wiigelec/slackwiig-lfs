@@ -10,8 +10,9 @@
 ### CONFIGURATION ###
 SCRIPT_DIR="$HOME/blfs_root/scripts/"
 INSTALL_DIR="$ROOT/var/lib/pkgtools/packages/"
-PKG_DIR="$ROOT/var/lib/swl/packages/"
-LIST_DIR="$ROOT/var/lib/swl/lists/"
+SWL_DIR="$ROOT/var/lib/swl"
+PKG_DIR="$SWL_DIR/packages/"
+LIST_DIR="$SWL_DIR/lists/"
 MIRROR="http://localhost:8000/swl-packages.121/"
 
 #-----------------------------------------------------------------------------#
@@ -25,7 +26,7 @@ function createList ( )
 	do
 		pkg=${FILE#*-z-}
 		pkg=$(echo $pkg | tr '[:upper:]' '[:lower:]')
-		found=$(grep ^$pkg $LIST_DIR/swl-packages-121.list | head -n1)
+		found=$(grep ^$pkg $SWL_DIR/swl-packages-121.list | head -n1)
 		if [[ -z $found ]]; then
 			found="NOT FOUND: $pkg"
 		fi
