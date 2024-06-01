@@ -48,6 +48,12 @@ function browseLists ( )
 }
 
 #-----------------------------------------------------------------------------#
+function browsePatches ( )
+{
+	lynx ${MIRROR}packages/patches
+}
+
+#-----------------------------------------------------------------------------#
 function installStatus ( )
 {
 	if [[ -z "$list" ]]; then 
@@ -283,6 +289,7 @@ function usage ( )
 	echo "-(f)i | --(force-)install"
 	echo "-u | --remove-status"
 	echo "-r | --remove"
+	echo "-p | --patch"
 	exit
 }
 
@@ -326,6 +333,9 @@ case $action in
         ;;
     -r|--remove )
     	removeDeps
+        ;;
+    -p|--patch )
+        browsePatches
         ;;
     * ) usage ;;
 esac
