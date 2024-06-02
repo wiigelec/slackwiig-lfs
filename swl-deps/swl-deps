@@ -136,7 +136,7 @@ function downloadDeps ( )
 
 		# check installed
 		local installed=$(check_installed $line)
-		if [[ ! -z $isntalled && $force == 0 ]]; then
+		if [[ ! -z $installed && $force == 0 ]]; then
 			echo "SKIPPING: $line INSTALLED"
 			continue
 		fi
