@@ -13,7 +13,8 @@ INSTALL_DIR="$ROOT/var/lib/pkgtools/packages/"
 SWL_DIR="$ROOT/var/lib/swl"
 PKG_DIR="$SWL_DIR/packages/"
 LIST_DIR="$SWL_DIR/lists/"
-MIRROR="http://localhost:8000/swl-packages.121/"
+SWL_VERSION="121"
+MIRROR="http://swl-mirror:8000/swl-packages.$SWL_VERSION/"
 
 #-----------------------------------------------------------------------------#
 function createList ( )
