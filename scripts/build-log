@@ -20,6 +20,8 @@ do
     sed -i 's/> //g' $log.tmp
     sed -i '/^\/var\/lib\/swl\/difflog/d' $log.tmp
     sed -i '/^\/sources/d' $log.tmp
+    sed -i '/^\/jhalfs/d' $log.tmp
+    sed -i '/^\/blfs_root/d' $log.tmp
     sed -i '/^\/dev/d' $log.tmp
     sed -i '/^\/proc/d' $log.tmp
     sed -i '/^\/sys/d' $log.tmp
