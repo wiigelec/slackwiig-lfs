@@ -25,6 +25,7 @@ do
     sed -i '/^\/dev/d' $log.tmp
     sed -i '/^\/proc/d' $log.tmp
     sed -i '/^\/sys/d' $log.tmp
+    sed -i '/^\/root/d' $log.tmp
     sed -i '/^\/home/d' $log.tmp
     sed -i '/^\/etc\/passwd/d' $log.tmp
     sed -i '/^\/etc\/group/d' $log.tmp
