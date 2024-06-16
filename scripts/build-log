@@ -29,6 +29,7 @@ do
     sed -i '/^\/home/d' $log.tmp
     sed -i '/^\/etc\/passwd/d' $log.tmp
     sed -i '/^\/etc\/group/d' $log.tmp
+    sed -i '/^\/etc\/gshadow/d' $log.tmp
     sed -i '/^\/var\/lib\/systemd\/coredump\//d' $log.tmp
     sed -i '/^\/opt\/kf5\/share\/icons\/hicolor\//d' $log.tmp
     sed -i '/^\/tmp/d' $log.tmp
