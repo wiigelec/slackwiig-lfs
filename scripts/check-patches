@@ -8,7 +8,7 @@ do
 	echo "Checking $line..."
 	echo
 	pkg=${line%-amd*}
-	pkg=${pkg%%-*}
+	pkg=${pkg%-*}
 	pkg="$pkg-"
 	patched=$(grep "^$pkg" /var/lib/swl/lists/patches.list)
 	if [[ ! -z $patched ]] ; then
