@@ -269,7 +269,15 @@ function auditPackages ( )
 function auditFiles ( )
 {
 	echo "Auditing files not associated with an installed package..."
-	for FILE in $(find / -type f -o -type d -path /sys -prune -o -path /proc -prune -o -path /run -prune -o -path /var/lib/pkgtools -prune -o -path /var/lib/swl -prune)
+	for FILE in $(find / -type f -o -type d \
+		-path /sys -prune \
+		-o -path /proc -prune \
+		-o -path /run -prune \
+		-o -path /var/lib/pkgtools -prune \
+		-o -path /var/lib/swl -prune \
+		-o -path /root -prune \
+		-o -path /home -prune \
+		-o -path /var/log -prune)
 	do
 		pkg=$(echo $FILE | sed 's/\/usr\/lib/lib/g')
 		pkg=${pkg#/}
