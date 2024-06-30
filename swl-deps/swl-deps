@@ -230,6 +230,11 @@ function removeDeps ( )
 #-----------------------------------------------------------------------------#
 function auditLists ( )
 {
+	echo ""
+	echo "Auditing lists..."
+	echo "Searching for list packages that are not installed..."
+	echo ""
+
 	for FILE in $LIST_DIR/*;
 	do
 		echo "------------------------------------------------------------"
@@ -253,7 +258,9 @@ function auditLists ( )
 #-----------------------------------------------------------------------------#
 function auditPackages ( )
 {
-	echo "Auditing installed packages not in a list..."
+	echo ""
+	echo "Auditing installed packages..."
+	echo "Searching for packages not associated with a list..."
 	echo ""
 	for FILE in $INSTALL_DIR/*;
 	do
@@ -268,7 +275,10 @@ function auditPackages ( )
 #-----------------------------------------------------------------------------#
 function auditFiles ( )
 {
-	echo "Auditing files not associated with an installed package..."
+	echo ""
+	echo "Auditing files..."
+	echo "Searching for files not associated with an installed package..."
+	echo ""
 	for FILE in $(find / -type f -o -type d \
 		-path /sys -prune \
 		-o -path /proc -prune \
@@ -291,7 +301,9 @@ function auditFiles ( )
 #-----------------------------------------------------------------------------#
 function auditInstalled ( )
 {
+	echo""
 	echo "Auditing installed package files..."
+	echo "Searching for package files that cannot be found on the file system..."
 	echo""
 
 	for FILE in $INSTALL_DIR/*;
