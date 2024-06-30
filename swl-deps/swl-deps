@@ -12,7 +12,7 @@ SCRIPT_DIR="$HOME/blfs_root/scripts/"
 INSTALL_DIR="$ROOT/var/lib/pkgtools/packages/"
 SWL_DIR="$ROOT/var/lib/swl"
 PKG_DIR="$SWL_DIR/packages/"
-LIST_DIR="$SWL_DIR/lists/"
+LIST_DIR="$SWL_DIR/lists"
 SWL_VERSION="121"
 MIRROR="http://swl-mirror:8000/swl-packages.$SWL_VERSION/"
 
@@ -228,6 +228,88 @@ function removeDeps ( )
 }
 
 #-----------------------------------------------------------------------------#
+function auditLists ( )
+{
+	for FILE in $LIST_DIR/*;
+	do
+		echo "------------------------------------------------------------"
+		echo "Auditing list $FILE:"
+		echo ""
+        
+		while IFS= read -r line;
+		do
+			# remove .txz
+			name=${line%.txz}
+			found="$(find $INSTALL_DIR -type f -name $name)"
+			if [[ -z "$found" ]]; then
+				echo "$line: NOT INSTALLED"
+			fi
+        
+		done < $FILE
+		echo ""
+	done
+}
+
+#-----------------------------------------------------------------------------#
+function auditPackages ( )
+{
+	echo "Auditing installed packages not in a list..."
+	echo ""
+	for FILE in $INSTALL_DIR/*;
+	do
+		pkg=${FILE##*/}
+		found=$(grep $pkg $LIST_DIR/*)
+		if [[ -z "$found" ]]; then
+			echo "$pkg: NO LIST"
+		fi
+	done
+}
+
+#-----------------------------------------------------------------------------#
+function auditFiles ( )
+{
+	echo "Auditing files not associated with an installed package..."
+	for FILE in $(find / -type f -o -type d -path /sys -prune -o -path /proc -prune -o -path /run -prune -o -path /var/lib/pkgtools -prune)
+	do
+		pkg=$(echo $FILE | sed 's/\/usr\/lib/lib/g')
+		pkg=${pkg#/}
+		found=$(grep $pkg $INSTALL_DIR/*)
+		if [[ -z "$found" ]]; then
+			echo $FILE
+		fi
+	done
+}
+
+#-----------------------------------------------------------------------------#
+function auditInstalled ( )
+{
+	echo "Auditing installed package files..."
+	echo""
+
+	for FILE in $INSTALL_DIR/*;
+	do
+		fileList=0
+		while IFS= read -r line;
+		do
+			if [[ "$line" == "FILE LIST:" ]]; then fileList=1; continue; fi
+			if [[ "$fileList" == 0 ]]; then continue; fi
+
+			# check exists
+			check="/$line"
+			if [[ "$check" == "/install/"* ]]; then continue; fi
+			if [[ -f $check ]]; then continue; fi
+			if [[ -d $check ]]; then continue; fi
+
+			pkg=${FILE##*/}
+
+			echo "$pkg:  $check  NOT FOUND"
+
+		done < $FILE
+
+	done
+}
+
+#-----------------------------------------------------------------------------#
 function check_installed ( )
 {
 	pkg=$1
@@ -291,6 +373,10 @@ function usage ( )
 	echo "-u | --remove-status"
 	echo "-r | --remove"
 	echo "-p | --patch"
+	echo "-ap|--audit-packages"
+	echo "-al|--audit-lists"
+	echo "-af|--audit-files"
+	echo "-ai|--audit-installed"
 	exit
 }
 
@@ -337,6 +423,18 @@ case $action in
         ;;
     -p|--patch )
         browsePatches
+        ;;
+    -ap|--audit-packages )
+        auditPackages
+        ;;
+    -al|--audit-lists )
+        auditLists
+        ;;
+    -af|--audit-files )
+        auditFiles
+        ;;
+    -ai|--audit-installed )
+        auditInstalled
         ;;
     * ) usage ;;
 esac
