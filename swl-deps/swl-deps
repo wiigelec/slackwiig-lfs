@@ -389,7 +389,7 @@ function check_mirror ( )
 function check_used ( )
 {
 	pkg=$1
-	echo "$(grep --exclude=$list $pkg $LIST_DIR*)"
+	echo "$(grep --exclude=$list $pkg $LIST_DIR/*)"
 }
 
 #-----------------------------------------------------------------------------#
