@@ -291,6 +291,7 @@ function auditFiles ( )
 		-o -path /var/lib/swl -prune \
 		-o -path /root -prune \
 		-o -path /home -prune \
+		-o -path /sources -prune \
 		-o -path /var/log -prune)
 	do
 		pkg=$(echo $FILE | sed 's/\/usr\/lib/lib/g')
