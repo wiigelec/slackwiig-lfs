@@ -294,7 +294,7 @@ function auditFiles ( )
 		-o -path /var/log -prune)
 	do
 		pkg=$(echo $FILE | sed 's/\/usr\/lib/lib/g')
-		pkg=$(echo $FILE | sed 's/\/usr\/sbin/sbin/g')
+		pkg=$(echo $pkg | sed 's/\/usr\/sbin/sbin/g')
 		pkg=${pkg#/}
 		found=$(grep $pkg $INSTALL_DIR/*)
 		if [[ -z "$found" ]]; then
