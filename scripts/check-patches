@@ -15,7 +15,7 @@ do
 		echo "PATCHED: $line -> $patched"
 	fi
 	echo
-	found=$(find /var/lib/pkgtools/packages -name "$pkg*")
+	found=$(find /var/lib/pkgtools/packages -name "$pkg*" | xargs)
 	if [[ ! -z $found ]]; then
 		echo "FOUND: $found"
 	fi
