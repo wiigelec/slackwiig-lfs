@@ -38,6 +38,7 @@ do
     sed -i '/^\/install\/.*/d' $log.tmp
     sed -i '/^\/var\/cache/d' $log.tmp
     sed -i '/^\/var\/lib\/pkgtools/d' $log.tmp
+    sed -i '/^\/var\/lib\/packages/d' $log.tmp
     sed -i '/^\/var\/lib\/swl/d' $log.tmp
     sed -i '/^\/var\/lib\/systemd\/timesync/d' $log.tmp
     sed -i '/^\/var\/log\/journal/d' $log.tmp

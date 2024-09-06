@@ -1,6 +1,9 @@
 #!/bin/bash
 
-for FILE in ./scripts/*;
+#SWL_VER=122
+VER_FIL=/var/lib/swl/pkg-versions-${SWL_VER}.jhalfs
+
+for FILE in ./chapter{08,10}/*;
 do
     ### GET PACKAGE NAME AND VERSION ##
     echo Processing $FILE...
@@ -13,7 +16,7 @@ do
     echo $package
 
     # version lookup
-    lookup=$(grep -i "^$package  " /var/lib/swl/pkg-versions-121.jhalfs)
+    lookup=$(grep -i "^$package  " $VER_FIL)
     echo $lookup
     version=${lookup#*  }
     version=${version% }

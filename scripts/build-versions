@@ -1,0 +1,32 @@
+#!/bin/bash
+
+
+TMPFILE=$(mktemp)
+
+grep -A2 "<package>" packages.xml > $TMPFILE
+
+while IFS= read -r line;
+do
+	#echo $line
+	if [[ $line == *"package"* ]]; then
+
+		read -r name
+		read -r version
+
+		name=${name#<name>}
+		name=${name%</name>}
+
+		version=${version#<version>}
+		version=${version%</version>}
+
+		echo "$name  $version"
+	fi
+
+done < $TMPFILE
+
+rm $TMPFILE
+
+
+
+
+
