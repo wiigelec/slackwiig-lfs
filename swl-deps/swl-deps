@@ -253,6 +253,8 @@ function auditLists ( )
 		done < $FILE
 		echo ""
 	done
+
+	echo ""
 }
 
 #-----------------------------------------------------------------------------#
@@ -270,6 +272,8 @@ function auditPackages ( )
 			echo "$pkg: NO LIST"
 		fi
 	done
+
+	echo ""
 }
 
 #-----------------------------------------------------------------------------#
@@ -287,15 +291,20 @@ function auditFiles ( )
 		-o -path /var/lib/swl -prune \
 		-o -path /root -prune \
 		-o -path /home -prune \
+		-o -path /sources -prune \
+		-o -path /mnt -prune \
 		-o -path /var/log -prune)
 	do
 		pkg=$(echo $FILE | sed 's/\/usr\/lib/lib/g')
+		pkg=$(echo $pkg | sed 's/\/usr\/sbin/sbin/g')
 		pkg=${pkg#/}
 		found=$(grep $pkg $INSTALL_DIR/*)
 		if [[ -z "$found" ]]; then
 			echo $FILE
 		fi
 	done
+
+	echo ""
 }
 
 #-----------------------------------------------------------------------------#
@@ -327,6 +336,8 @@ function auditInstalled ( )
 		done < $FILE
 
 	done
+
+	echo ""
 }
 
 #-----------------------------------------------------------------------------#
@@ -379,7 +390,7 @@ function check_mirror ( )
 function check_used ( )
 {
 	pkg=$1
-	echo "$(grep --exclude=$list $pkg $LIST_DIR*)"
+	echo "$(grep --exclude=$list $pkg $LIST_DIR/*)"
 }
 
 #-----------------------------------------------------------------------------#
