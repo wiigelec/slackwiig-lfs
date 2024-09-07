@@ -1,5 +1,7 @@
 #!/bin/bash
 
+if [[ -z $1 ]]; then echo "no swl version"; exit; fi
+
 mkdir -pv basedirs
 cd basedirs
 
@@ -44,8 +46,6 @@ ln -sv /proc/self/mounts ./etc/mtab
 cp -a /etc/hosts ./etc
 cp -a /etc/passwd ./etc
 cp -a /etc/group ./etc
-cp -a /etc/shadow ./etc
-cp -a /etc/gshadow ./etc
 
 touch ./var/log/{btmp,lastlog,faillog,wtmp}
 chgrp -v utmp ./var/log/lastlog
@@ -89,7 +89,7 @@ cp -a /usr/bin/cc ./usr/bin
 cp -a /usr/bin/sh ./usr/bin
 
 ### MAKEPKG ###
-makepkg -l y -c n /var/lib/swl/packages/a_basedirs-12.1-amd64-swl121.txz
+makepkg -l y -c n /var/lib/swl/packages/a_basedirs-12.1-amd64-swl$1.txz
 
 ### CLEANUP ###
 cd ../

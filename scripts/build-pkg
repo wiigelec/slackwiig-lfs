@@ -1,7 +1,9 @@
 #!/bin/bash
 
+if [[ -z $1 ]]; then echo "no swl version"; exit; fi
+
 ARCH=amd64
-SWL=swl121
+SWL=swl$1
 
 #----------------------------------------------------------------------------#
 for FILE in ./*.pkglog;

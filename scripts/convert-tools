@@ -1,6 +1,8 @@
 #!/bin/bash
 
-VER_FIL=/var/lib/swl/pkg-versions-${SWL_VER}.jhalfs
+if [[ -z $1 ]]; then echo "no swl version"; exit; fi
+
+VER_FIL=/var/lib/swl/pkg-versions-$1.jhalfs
 
 for FILE in ./scripts/*;
 do
