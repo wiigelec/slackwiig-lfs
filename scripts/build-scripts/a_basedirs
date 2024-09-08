@@ -90,6 +90,13 @@ cp -a /lib64/* ./lib64
 cp -a /usr/bin/cc ./usr/bin
 cp -a /usr/bin/sh ./usr/bin
 
+### swl ###
+mkdir -p ./var/lib/swl/difflog
+mkdir -p ./var/lib/swl/pkglog
+mkdir -p ./var/lib/swl/packages
+cp -a /var/lib/swl/pkg-versions-$1.jhalfs ./var/lib/swl
+
+
 ### MAKEPKG ###
 makepkg -l y -c n /var/lib/swl/packages/a_basedirs-12.1-amd64-swl$1.txz
 
