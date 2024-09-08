@@ -98,7 +98,7 @@ cp -a /var/lib/swl/pkg-versions-$1.jhalfs ./var/lib/swl
 
 
 ### MAKEPKG ###
-makepkg -l y -c n /var/lib/swl/packages/a_basedirs-12.1-amd64-swl$1.txz
+makepkg -l y -c n /var/lib/swl/packages/a_basedirs-1.0-amd64-swl$1.txz
 
 ### CLEANUP ###
 cd ../
