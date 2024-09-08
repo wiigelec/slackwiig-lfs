@@ -1,5 +1,7 @@
 #!/bin/bash
 
+if [[ -z $1 ]]; then echo "no swl version"; exit; fi
+
 for FILE in ./scripts/*;
 do
     ### GET PACKAGE NAME AND VERSION ##
@@ -11,7 +13,7 @@ do
     echo $package
 
     # version lookup
-    lookup=$(grep -i "^$package  " /var/lib/swl/pkg-versions-121.jhalfs)
+    lookup=$(grep -i "^$package  " /var/lib/swl/pkg-versions-122.jhalfs)
     echo $lookup
     version=${lookup#*  }
     version=${version% }

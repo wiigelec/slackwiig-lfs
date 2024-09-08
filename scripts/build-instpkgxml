@@ -1,5 +1,6 @@
 #!/bin/bash
 
+if [[ -z $1 ]]; then echo "no swl version"; exit; fi
 
 echo "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>"
 echo "<!DOCTYPE sublist SYSTEM \"/home/compnerd/blfs_root/packdesc.dtd\">"
@@ -15,7 +16,7 @@ for FILE in /var/lib/pkgtools/packages/*; do
 	pkg=${pkg%-*}
 
 	# lookup package
-	lookup=$(grep -i "^$pkg  " /var/lib/swl/pkg-versions-121.jhalfs)
+	lookup=$(grep -i "^$pkg  " /var/lib/swl/pkg-versions-$1.jhalfs)
 	if [[ ! -z $lookup ]]; then
 		pkg=${lookup%  *}
 		version=${lookup#*  }
