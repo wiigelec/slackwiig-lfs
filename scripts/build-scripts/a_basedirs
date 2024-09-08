@@ -46,6 +46,8 @@ ln -sv /proc/self/mounts ./etc/mtab
 cp -a /etc/hosts ./etc
 cp -a /etc/passwd ./etc
 cp -a /etc/group ./etc
+cp -a /etc/shadow ./etc
+cp -a /etc/gshadow ./etc
 
 touch ./var/log/{btmp,lastlog,faillog,wtmp}
 chgrp -v utmp ./var/log/lastlog
