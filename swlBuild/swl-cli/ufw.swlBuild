@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Setup
+SWL_VER=122
+
+PKG_NAME=ufw
+PKG_VER=0.36.2
+PKG_FULL=${PKG_NAME}-${PKG_VER}
+
+pushd /sources
+
+# Download
+TAR_FILE=${PKG_FULL}.tar.gz
+wget https://launchpad.net/ufw/0.36/0.36.2/+download/$TAR_FILE
+tar -xf $TAR_FILE
+
+
+# Build
+pushd $PKG_FULL
+
+
+# Destdir install
+python3 setup.py install --root=/sources/destdir
+
+sudo mkdir -pv /sources/destdir/usr/lib/systemd/system/
+sudo cp doc/systemd.example /sources/destdir/usr/lib/systemd/system/ufw.service
+
+popd
+
+# Package
+pushd /sources/destdir
+sudo makepkg -l y -c n ../$PKG_FULL-amd64-swl$SWL_VER.txz
+popd
+
+# Cleanup
+#sudo rm -rf /sources/destir
+#rm -rf $PKG_FULL
+#rm $TAR_FILE
+
+popd
+
+
+
+
