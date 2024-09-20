@@ -29,13 +29,13 @@ popd
 
 # Package
 pushd /sources/destdir
-sudo makepkg -l y -c n ../$PKG_FULL-amd64-swl$SWL_VER.txz
+sudo makepkg -l y -c n /sources/$PKG_FULL-amd64-swl$SWL_VER.txz
 popd
 
 # Cleanup
-sudo rm -rf /sources/destir
-sudo rm -rf $PKG_FULL
-rm $TAR_FILE
+sudo rm -rf /sources/destdir
+sudo rm -rf /sources/$PKG_FULL
+rm /sources/$TAR_FILE
 
 popd
 
