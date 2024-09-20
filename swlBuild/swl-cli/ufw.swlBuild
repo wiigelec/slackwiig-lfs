@@ -34,7 +34,7 @@ popd
 
 # Cleanup
 sudo rm -rf /sources/destir
-rm -rf $PKG_FULL
+sudo rm -rf $PKG_FULL
 rm $TAR_FILE
 
 popd
