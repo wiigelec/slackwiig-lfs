@@ -1,30 +1,14 @@
 #!/bin/bash
 
-
-TMPFILE=$(mktemp)
-
-grep -A2 "<package>" packages.xml > $TMPFILE
-
-while IFS= read -r line;
-do
-	#echo $line
-	if [[ $line == *"package"* ]]; then
-
-		read -r name
-		read -r version
-
-		name=${name#<name>}
-		name=${name%</name>}
-
-		version=${version#<version>}
-		version=${version%</version>}
-
-		echo "$name  $version"
-	fi
-
-done < $TMPFILE
-
-rm $TMPFILE
+grep bool Config.in  \
+	| sed 's/.*\sbool\s//' \
+	| sed 's/"//' \
+	| sed 's/"//' \
+	| sed 's/ /  /' \
+	| sed 's/.*\sfor.*//' \
+	| sed 's/.*\sDHCP.*//' \
+	| sed 's/.*\swith.*//' \
+	| sort
 
 
 
