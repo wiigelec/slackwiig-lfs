@@ -1,9 +1,12 @@
 #!/bin/bash
 
-if [[ -z $1 ]]; then echo "no swl version"; exit; fi
+if [[ -z $1 ]]; then echo "No version"; exit 1; fi
 
-mkdir -pv basedirs
-cd basedirs
+DEST_DIR=/sources/destdir
+PKG_NAME=aa_basedirs-0.0-amd64-swl$1.txz
+
+mkdir -pv $DEST_DIR
+pushd $DEST_DIR
 
 ### 3.1 ###
 mkdir -v ./sources
@@ -43,12 +46,6 @@ install -dv -m 1777 ./tmp ./var/tmp
 ### 7.6 ###
 ln -sv /proc/self/mounts ./etc/mtab
 
-cp -a /etc/hosts ./etc
-cp -a /etc/passwd ./etc
-cp -a /etc/group ./etc
-cp -a /etc/shadow ./etc
-cp -a /etc/gshadow ./etc
-
 touch ./var/log/{btmp,lastlog,faillog,wtmp}
 chgrp -v utmp ./var/log/lastlog
 chmod -v 664  ./var/log/lastlog
@@ -58,7 +55,6 @@ chmod -v 600  ./var/log/btmp
 mkdir -pv ./etc/systemd/network/
 cp -a /etc/systemd/network/10-eth-static.network ./etc/systemd/network/
 cp -a /etc/hostname ./etc
-cp -a /etc/hosts ./etc
 
 ### 9.5 ###
 cp -a /etc/adjtime ./etc
@@ -77,7 +73,6 @@ cp -a /etc/inputrc ./etc
 cp -a /etc/shells ./etc
 
 ### 10.2 ###
-cp -a /etc/fstab ./etc
 
 ### 11.1 ###
 cp -a /etc/lfs-release ./etc
@@ -86,22 +81,16 @@ cp -a /etc/os-release ./etc
 
 ### misc ###
 cp -a /usr/share/info/dir ./usr/share/info
-cp -a /lib64/* ./lib64
 cp -a /usr/bin/cc ./usr/bin
 cp -a /usr/bin/sh ./usr/bin
 
-### swl ###
-mkdir -p ./var/lib/swl/difflog
-mkdir -p ./var/lib/swl/pkglog
-mkdir -p ./var/lib/swl/packages
-cp -a /var/lib/swl/pkg-versions-$1.jhalfs ./var/lib/swl
-
 
 ### MAKEPKG ###
-makepkg -l y -c n /var/lib/swl/packages/a_basedirs-1.0-amd64-swl$1.txz
+makepkg -l y -c n /sources/$PKG_NAME
+
 
 ### CLEANUP ###
-cd ../
-rm -rf basedirs
+popd
+rm -rf $DEST_DIR
 
 exit
