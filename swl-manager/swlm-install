@@ -1,0 +1,221 @@
+#!/bin/bash
+###################################################################
+#
+# swl-install
+#
+# Install lfs-base and swl-base packages
+#
+###################################################################
+
+source $SWL_INSTALL_PATH/swlm-common-funcs
+
+
+###################################################################
+# USAGE
+###################################################################
+function usage
+{
+	cat << EOF
+
+INSTALL USAGE:
+
+ROOT=/install/root swl-manager install (options) <version>
+
+OPTIONS:
+	-l	lfs-base only
+	-v	display mirror available versions
+	-c	configure installation (passwd, fstab)
+
+EOF
+}
+
+
+####################################################################
+# CONFIGURATION
+####################################################################
+
+#------------------------------------------------------------------#
+# Parse command line
+#------------------------------------------------------------------#
+
+if [[ -z $1 ]]; then usage; exit; fi
+
+version=0
+swlbase=true
+configure=false
+
+case $1 in
+
+	-v) 	;;
+	-l)	if [[ -z $2 ]]; then usage; exit; fi
+		version=$2
+		swlbase=false
+		;;
+		
+	-c) 	configure=true ;;
+	*) 	version=$1 ;;
+esac
+
+
+#------------------------------------------------------------------#
+# CONFIGURE ONLY
+#------------------------------------------------------------------#
+
+if [[ $configure == true ]]; then configure_install; exit 0; fi
+
+
+#------------------------------------------------------------------#
+# GET MIRROR VERSIONS
+#------------------------------------------------------------------#
+
+mirror_versions=$(get_mirror_versions)
+
+if [[ $version == 0 ]]; then
+
+	echo ""
+	echo "Versions available on mirror $mirror:"
+	echo ""
+
+	for each in $mirror_versions
+	do
+		echo $each
+	done
+
+	exit
+fi
+
+### Verify mirror ###
+if [[ ! "$mirror_versions" =~ (^|[ ])$version([ ]|$) ]]; then
+	echo ""
+	echo "ERROR: Version $version not found on mirror $SWL_MIRROR"
+	echo ""
+	echo "Available versions: $mirror_versions"
+	exit
+fi
+
+#------------------------------------------------------------------#
+# Summary output and user verification
+#------------------------------------------------------------------#
+
+# Install root
+install_root="/"
+if [[ ! -z $ROOT ]]; then install_root=$ROOT; fi
+
+echo ""
+echo "Installation Summary:"
+echo ""
+echo "VERSION: $version"
+echo "INSTALL ROOT: $install_root"
+echo "SWL BASE: $swlbase"
+echo ""
+echo "WARNING! Data on $install_root could be permanently modified and render the system unusable!"
+echo ""
+read -p "Is this configuration acceptable? (Yes): " confirm 
+if [[ $confirm != "Yes" ]]; then echo "Aborting..."; exit 1; fi
+
+
+####################################################################
+# DOWNLOAD PACKAGES
+####################################################################
+
+### Create temp dir on install root for package download ###
+tmpdir="${ROOT}/swltmpdir$RANDOM"
+
+set -e # exit on error
+
+### Download lfs-base packages ###
+echo ""
+echo "Downloading lfs base packages..."
+echo ""
+
+lfsbasedir=$tmpdir/lfs-base
+mkdir -pv $lfsbasedir
+
+url=$SWL_MIRROR_VERSIONS_PATH/$version/base/lfs/
+wget -r -np -nd -P $lfsbasedir $url
+
+
+### Download swl-base packages ###
+if [[ $swlbase == true ]]; then
+	echo ""
+	echo "Downloading swl base packages..."
+	echo ""
+
+	swlbasedir=$tmpdir/swl-base
+	mkdir -pv $swlbasedir
+
+	url=$SWL_MIRROR_VERSIONS_PATH/$version/base/swl/
+	wget -r -np -nd -P $swlbasedir $url
+fi
+
+set -e
+
+
+####################################################################
+# INSTALL PACKAGES
+####################################################################
+
+### Install lfs base ###
+echo ""
+echo "Installing lfs base packages..."
+echo ""
+
+$SWL_INSTALL_CMD $lfsbasedir/*.txz
+
+### Install swl base ###
+if [[ $swlbase == true ]]; then
+	echo ""
+	echo "Installing swl base packages..."
+	echo ""
+
+	$SWL_INSTALL_CMD $swlbasedir/*.txz
+
+	# create lfs base list
+	ls $lfsbasedir > $ROOT/$SWL_LIST_DIR/lfs-base.list
+
+	# create swl base list
+	ls $swlbasedir > $ROOT/$SWL_LIST_DIR/swl-base.list
+fi
+
+
+####################################################################
+# INITIALIZE INSTALLATION
+####################################################################
+
+# passwd and fstab
+configure_install
+
+
+### Initialize swl ###
+if [[ $swlbase == true ]]; then
+
+	# Install swl
+	echo ""
+        echo "Installing swl..."
+        echo ""
+        git clone https://github.com/wiigelec/slackwiig-lfs $ROOT/usr/src/slackwiig-lfs
+        echo ""
+
+	# Create links
+	ln -sv /usr/src/slackwiig-lfs/swl-manager/swl-manager $ROOT/usr/sbin/swl-manager
+
+	# Initiallize polkit
+        echo "Initializing polkit..."
+        echo ""
+        chroot $ROOT /usr/src/slackwiig-lfs/scripts/init/polkit-init
+
+	# Write version file
+	echo $version > $ROOT/$SWL_BASE_DIR/swl-version
+fi
+
+
+####################################################################
+# CLEANUP
+####################################################################
+
+### Remove temp dir ###
+rm -rf $tmpdir
+
+
+echo ""
+echo "Base system installation complete."
