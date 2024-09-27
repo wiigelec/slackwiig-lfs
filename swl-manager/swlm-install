@@ -190,19 +190,20 @@ configure_install
 if [[ $swlbase == true ]]; then
 
 	# Install swl
-	echo ""
+	echo
         echo "Installing swl..."
-        echo ""
+        echo
         git clone https://github.com/wiigelec/slackwiig-lfs $ROOT/usr/src/slackwiig-lfs
-        echo ""
+        echo
 
 	# Create links
 	ln -sv /usr/src/slackwiig-lfs/swl-manager/swl-manager $ROOT/usr/sbin/
 	ln -sv /usr/src/slackwiig-lfs/swl-manager/swlm-config $ROOT/usr/sbin/
 
 	# Initiallize polkit
+	echo
         echo "Initializing polkit..."
-        echo ""
+        echo
         chroot $ROOT /usr/src/slackwiig-lfs/scripts/init/polkit-init
 
 	# Write version file
