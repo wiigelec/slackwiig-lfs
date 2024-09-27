@@ -197,7 +197,8 @@ if [[ $swlbase == true ]]; then
         echo ""
 
 	# Create links
-	ln -sv /usr/src/slackwiig-lfs/swl-manager/swl-manager $ROOT/usr/sbin/swl-manager
+	ln -sv /usr/src/slackwiig-lfs/swl-manager/swl-manager $ROOT/usr/sbin/
+	ln -sv /usr/src/slackwiig-lfs/swl-manager/swlm-config $ROOT/usr/sbin/
 
 	# Initiallize polkit
         echo "Initializing polkit..."
