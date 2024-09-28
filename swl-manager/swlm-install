@@ -108,74 +108,22 @@ echo "VERSION: $version"
 echo "INSTALL ROOT: $install_root"
 echo "SWL BASE: $swlbase"
 echo ""
-echo "WARNING! Data on $install_root could be permanently modified and render the system unusable!"
+echo "WARNING! Data on $install_root will be permanently modified and could render the system unusable!"
 echo ""
 read -p "Is this configuration acceptable? (Yes): " confirm 
 if [[ $confirm != "Yes" ]]; then echo "Cancelling..."; exit 1; fi
 
 
 ####################################################################
-# DOWNLOAD PACKAGES
+# INSTALL BASE PACKAGES
 ####################################################################
 
-### Create temp dir on install root for package download ###
-tmpdir="${ROOT}/swltmpdir$RANDOM"
-
-set -e # exit on error
-
-### Download lfs-base packages ###
-echo ""
-echo "Downloading lfs base packages..."
-echo ""
-
-lfsbasedir=$tmpdir/lfs-base
-mkdir -pv $lfsbasedir
-
-url=$SWL_MIRROR_VERSIONS_PATH/$version/base/lfs/
-wget -r -np -nd -P $lfsbasedir $url
+### INSTALL LFS BASE ###
+install_lfsbase $version
 
 
-### Download swl-base packages ###
-if [[ $swlbase == true ]]; then
-	echo ""
-	echo "Downloading swl base packages..."
-	echo ""
-
-	swlbasedir=$tmpdir/swl-base
-	mkdir -pv $swlbasedir
-
-	url=$SWL_MIRROR_VERSIONS_PATH/$version/base/swl/
-	wget -r -np -nd -P $swlbasedir $url
-fi
-
-set -e
-
-
-####################################################################
-# INSTALL PACKAGES
-####################################################################
-
-### Install lfs base ###
-echo ""
-echo "Installing lfs base packages..."
-echo ""
-
-$SWL_INSTALL_CMD $lfsbasedir/*.txz
-
-### Install swl base ###
-if [[ $swlbase == true ]]; then
-	echo ""
-	echo "Installing swl base packages..."
-	echo ""
-
-	$SWL_INSTALL_CMD $swlbasedir/*.txz
-
-	# create lfs base list
-	ls $lfsbasedir > $SWL_LIST_DIR/lfs-base.list
-
-	# create swl base list
-	ls $swlbasedir > $SWL_LIST_DIR/swl-base.list
-fi
+### INSTALL SWL BASE
+if [[ $swlbase == true ]]; then install_swlbase $version; fi
 
 
 ####################################################################

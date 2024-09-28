@@ -13,7 +13,6 @@
 #
 ####################################################################
 
-#------------------------------------------------------------------#
 
 #------------------------------------------------------------------#
 function install_configure
@@ -31,7 +30,7 @@ function install_configure
 	utility_mount_kernelfs
 	if [[ $? != 0 ]]; then echo "Error mounting kernel filesystems."; exit 1; fi
 	chroot $ROOT bash -c 'passwd root'
-	unmount_kernel_fs
+	utility_unmount_kernelfs
 
 	### Edit fstab ###
 	echo
@@ -44,6 +43,80 @@ function install_configure
 	echo
 }
 
+#------------------------------------------------------------------#
+function install_lfsbase
+{
+	version=$1
+
+	### Download lfs base packages ###
+
+	# create temp dir on install root for package download
+	tmpdir="${ROOT}/swltmpdir$RANDOM"
+
+	set -e # exit on error
+
+	### Download lfs-base packages ###
+	echo
+	echo "Downloading lfs base packages..."
+	echo
+
+	lfsbasedir=$tmpdir/lfs-base
+	mkdir -pv $lfsbasedir
+
+	url=$SWL_MIRROR_VERSIONS_PATH/$version/base/lfs/
+	wget -r -np -nd -P $lfsbasedir $url
+
+	set -e
+
+
+	### Install lfs base packages ###
+	echo
+	echo "Installing lfs base packages..."
+	echo
+
+	$SWL_INSTALL_CMD $lfsbasedir/*.txz
+
+	### CLEANUP ###
+	rm -rf $tmpdir
+}
+
+#------------------------------------------------------------------#
+function install_swlbase
+{
+
+	version=$1
+
+	# create temp dir on install root for package download
+        tmpdir="${ROOT}/swltmpdir$RANDOM"
+	mkdir -pv $tmpdir
+
+	### Generate lfs-base.list ###
+	ls $SWL_PKG_INSTALL_DIR | sed 's/$/.txz/' > $tmpdir/lfs-base.list
+	
+ 	### DOWNLOAD SWL BASE LIST ###
+	#set the version
+	export SWL_VERSION=$version
+	source /usr/sbin/swlm-config
+	set +e #exit on error
+	wget -P $tmpdir $SWL_SWLBASE_LIST_URL
+	set -e
+
+	### DOWNLOAD SWL BASE LIST ###
+	swl-manager list -fd $tmpdir/swl-base.list
+
+	### INSTALL SWL BASE LIST ###
+	echo
+	echo "Installing swl-base packages..."
+	echo
+	echo "Yes" | swl-manager list -fi $tmpdir/swl-base.list
+
+	### MOVE LFS BASE LIST ###
+	mv $tmpdir/lfs-base.list $SWL_LIST_DIR/
+
+	### CLEANUP ###
+	rm -rf $tmpdir
+
+}
 
 ####################################################################
 #
@@ -124,8 +197,13 @@ function list_install
                 fi
 
 		$SWL_INSTALL_CMD $SWL_PKG_DIR_PATH/$line
+		error=$?
 
 	done < $list
+
+	### COPY LIST TO LIST DIR ###
+	if [[ $error == 0 ]]; then cp -i $list $SWL_LIST_DIR; fi
+
 
 }
 

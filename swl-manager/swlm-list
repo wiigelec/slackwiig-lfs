@@ -84,17 +84,6 @@ if [[ $blfs == true ]]; then
 fi
 
 
-### LFSBASE LIST ###
-if [[ $lfsbase == true ]]; then
-	create_lfsbase_list
-fi
-
-
-### BLFS LIST ###
-if [[ $swlbase == true ]]; then
-	create_swlbase_list
-fi
-
 ###################################################################
 # DOWNLOAD LIST
 ###################################################################
