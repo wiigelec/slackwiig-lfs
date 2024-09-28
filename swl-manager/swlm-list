@@ -1,0 +1,81 @@
+#!/bin/bash
+###################################################################
+#
+# swl-list
+#
+# 
+#
+###################################################################
+
+
+source $SWL_INSTALL_PATH/api/swl-api-functions
+
+
+###################################################################
+# USAGE
+###################################################################
+function usage
+{
+        cat << EOF
+
+INSTALL USAGE:
+
+swl-manager list (options) <list>
+
+OPTIONS:
+        -c	blfs_root/scripts list
+        -l      lfs-base list
+	-s	swl-base list
+
+EOF
+}
+
+
+####################################################################
+# CONFIGURATION
+####################################################################
+
+#------------------------------------------------------------------#
+# Parse command line
+#------------------------------------------------------------------#
+
+if [[ -z $1 ]]; then usage; exit; fi
+
+blfs=false
+lfsbase=false
+swlbase=false
+
+case $1 in
+
+        -c)     blfs=true;;
+        -l)     lfsbase=true;;
+        -s)     swlbase=true;;
+        *)      usage ;;
+esac
+
+
+###################################################################
+# CREATE LIST
+###################################################################
+
+
+### BLFS LIST ###
+if [[ $blfs == true ]]; then
+
+	create_blfs_list
+
+fi
+
+
+### LFSBASE LIST ###
+if [[ $lfsbase == true ]]; then
+	create_lfsbase_list
+fi
+
+
+### BLFS LIST ###
+if [[ $swlbase == true ]]; then
+	create_swlbase_list
+fi
+
+

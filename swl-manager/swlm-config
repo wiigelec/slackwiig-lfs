@@ -1,7 +1,13 @@
 #!/bin/bash
 
+export SWL_VERSION=122
 
-export SWL_INSTALL_PATH=/usr/src/slackwiig-lfs/swl-manager
+export SWL_DIR_PATH=/var/lib/swl
+export SWL_INSTALL_PATH=/usr/src/slackwiig-lfs/
+export SWL_PKG_VERSIONS_FILE=$SWL_DIR_PATH/pkg-versions-$SWL_VERSION.jhalfs
+
+
+export SWL_BLFS_SCRIPT_PATH=$HOME/blfs_root/scripts
 
 
 export SWL_MIRROR=http://swl-mirror:8000
@@ -15,4 +21,5 @@ export SWL_INSTALL_CMD="installpkg --terse"
 export SWL_BASE_DIR="/var/lib/swl"
 export SWL_LIST_DIR="$SWL_BASE_DIR/lists"
 
-export SWL_INSTALL=$SWL_INSTALL_PATH/swlm-install
+export SWL_INSTALL=$SWL_INSTALL_PATH//swl-manager/swlm-install
+export SWL_LIST=$SWL_INSTALL_PATH/swl-manager/swlm-list

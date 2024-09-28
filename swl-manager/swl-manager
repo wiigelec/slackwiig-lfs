@@ -18,13 +18,17 @@ function usage
         cat << EOF
 
 swl-manager install
+swl-manager list
 
 EOF
 }
 
 
 case $1 in
+
 	install) $SWL_INSTALL $2 $3 ;;
+
+	list) $SWL_LIST $2 $3 ;;
 
 	*) usage ;;
 

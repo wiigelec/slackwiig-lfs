@@ -1,0 +1,107 @@
+#!/bin/bash
+
+####################################################################
+#
+#
+#
+####################################################################
+
+#------------------------------------------------------------------#
+function get_mirror_versions
+{
+	versions=$(curl -s $SWL_MIRROR_VERSIONS_PATH	\
+                | grep "<li>"                		\
+                | sed 's/\/<\/a>.*//g'       		\
+		| sed 's/.*\">//g'	     		\
+		| xargs)
+
+	echo $versions
+
+}
+
+#------------------------------------------------------------------#
+function configure_install
+{
+	### Confirm ###
+	echo
+	read -p "Configure $ROOT installation? (Yes): " confirm
+	if [[ $confirm != "Yes" ]]; then echo "Aborting..."; exit 1; fi
+
+	### Set root passwd ###
+	echo
+	echo "Setting new root password:"
+	echo
+
+	mount_kernel_fs
+	chroot $ROOT bash -c 'passwd root'
+	unmount_kernel_fs
+
+	### Edit fstab ###
+	echo
+	echo "Editing fstab:"
+	echo
+	vi $ROOT/etc/fstab
+
+	echo
+	echo "Configuration complete."
+	echo
+}
+
+
+#------------------------------------------------------------------#
+function mount_kernel_fs
+{
+	{
+	mount -v --bind /dev $ROOT/dev
+	mount -vt devpts devpts -o gid=5,mode=0620 $ROOT/dev/pts
+	mount -vt proc proc $ROOT/proc
+	mount -vt sysfs sysfs $ROOT/sys
+	mount -vt tmpfs tmpfs $ROOT/run
+	if [ -h $ROOT/dev/shm ]; then
+  		install -v -d -m 1777 $ROOT$(realpath /dev/shm)
+	else
+	 	 mount -vt tmpfs -o nosuid,nodev tmpfs $ROOT/dev/shm
+	fi
+	} > /dev/null
+}
+
+
+function unmount_kernel_fs
+{
+	mountpoint -q $ROOT/dev/shm && umount $ROOT/dev/shm
+	umount $ROOT/dev/pts
+	umount $ROOT/{sys,proc,run,dev}
+}
+
+
+####################################################################
+#
+#
+#
+####################################################################
+
+#------------------------------------------------------------------#
+function create_blfs_list
+{
+	# iterate script files
+        for FILE in $SWL_BLFS_SCRIPT_PATH/*;
+        do
+                pkg=${FILE#*-z-}
+
+		# pass1
+		pass1=false
+		if [[ $pkg == *"pass1" ]]; then pkg=${pkg/-pass1/}; pass1=true; fi
+		
+                found=$(grep "^$pkg " $SWL_PKG_VERSIONS_FILE)
+                if [[ -z $found ]]; then
+                        found="NOT FOUND: $pkg"
+                fi
+
+		# pass1
+		if [[ $pass1 == true ]]; then found=${found/  /-pass1  }; fi
+
+		found=${found/  /-}
+		found=$found-amd64-swl$SWL_VERSION.txz
+                echo $found | tr '[:upper:]' '[:lower:]'
+        done
+}
