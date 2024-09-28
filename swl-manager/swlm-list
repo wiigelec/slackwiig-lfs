@@ -23,9 +23,12 @@ INSTALL USAGE:
 swl-manager list (options) <list>
 
 OPTIONS:
-        -c	blfs_root/scripts list
-        -l      lfs-base list
-	-s	swl-base list
+        -c	create blfs_root/scripts list
+	-(f)d 	(force) download list
+	-(f)i 	(force) install list
+        -l      create lfs-base list
+	-s	create swl-base list
+	-t	check installed and mirror status
 
 EOF
 }
@@ -42,16 +45,37 @@ EOF
 if [[ -z $1 ]]; then usage; exit; fi
 
 blfs=false
+download=false
+force=false
+install=false
+list=$2
 lfsbase=false
+stat=false
 swlbase=false
+
 
 case $1 in
 
         -c)     blfs=true;;
+        -d)     download=true;;
+        -fd)    download=true; force=true;;
+        -fi)    install=true; force=true;;
+        -i)     install=true;;
         -l)     lfsbase=true;;
         -s)     swlbase=true;;
+        -t)     stat=true;;
         *)      usage ;;
 esac
+
+
+###################################################################
+# LIST STATUS
+###################################################################
+
+if [[ $stat == true ]]; then
+	if [[ -z $list ]]; then usage; exit 1; fi
+	list_check_status $list
+fi
 
 
 ###################################################################
@@ -61,9 +85,7 @@ esac
 
 ### BLFS LIST ###
 if [[ $blfs == true ]]; then
-
-	create_blfs_list
-
+	list_create_blfs
 fi
 
 
@@ -78,4 +100,23 @@ if [[ $swlbase == true ]]; then
 	create_swlbase_list
 fi
 
+###################################################################
+# DOWNLOAD LIST
+###################################################################
 
+if [[ $download == true ]]; then
+	if [[ -z $list ]]; then usage; exit 1; fi
+	if [[ ! -f $list ]]; then echo "$list: file not found."; exit 1; fi
+	mirror_download_list $list $force
+fi
+
+
+###################################################################
+# INSTALL LIST
+###################################################################
+
+if [[ $install == true ]]; then
+	if [[ -z $list ]]; then usage; exit 1; fi
+	if [[ ! -f $list ]]; then echo "$list: file not found."; exit 1; fi
+	list_install $list $force
+fi

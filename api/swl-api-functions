@@ -6,6 +6,7 @@
 #
 ####################################################################
 
+
 #------------------------------------------------------------------#
 function get_mirror_versions
 {
@@ -76,12 +77,37 @@ function unmount_kernel_fs
 
 ####################################################################
 #
-#
+# LIST FUNCTIONS
 #
 ####################################################################
 
 #------------------------------------------------------------------#
-function create_blfs_list
+function list_check_status
+{
+	list=$1
+
+	# read list
+	while IFS= read -r line; 
+	do
+		echo "--------------------------------------------------------------------"
+		echo "Status of list package $line:"
+		# check installed
+		echo "INSTALLED: $(package_check_installed $line)"
+
+		# check mirror
+		echo "MIRROR: $(mirror_check_package $line)"
+
+		# check downloaded
+		echo "DOWNLOADED: $(package_check_downloaded $line)"
+
+		echo
+	done < $list
+
+}
+
+
+#------------------------------------------------------------------#
+function list_create_blfs
 {
 	# iterate script files
         for FILE in $SWL_BLFS_SCRIPT_PATH/*;
@@ -104,4 +130,96 @@ function create_blfs_list
 		found=$found-amd64-swl$SWL_VERSION.txz
                 echo $found | tr '[:upper:]' '[:lower:]'
         done
+}
+
+
+#------------------------------------------------------------------#
+function list_install
+{
+
+	echo
+}
+
+
+####################################################################
+#
+# MIRROR FUNCTIONS
+#
+####################################################################
+
+#------------------------------------------------------------------#
+function mirror_check_package
+{
+	pkg=$1
+        output=""
+        dir=${pkg:0:1}
+        url="$SWL_MIRROR_PACKAGES_PATH/$dir/$pkg"
+	
+        wget -q --spider $url
+        if [[ $? -eq 0 ]]; then
+                output=$url
+        fi
+
+        echo $output
+}
+
+#------------------------------------------------------------------#
+function mirror_download_list
+{
+	list=$1
+	force=$2
+
+	# read list
+        while IFS= read -r line;
+        do
+                # check installed
+                installed=$(package_check_installed $line)
+                if [[ ! -z $installed && $force == false ]]; then
+                        echo "SKIPPING: $line INSTALLED"
+                        continue
+                fi
+
+                # check mirror
+                url=$(mirror_check_package $line)
+                if [[ -z $url ]]; then
+                        echo "SKIPPING: $line: NOT FOUND ON MIRROR"
+                        continue
+                fi
+
+                # force remove
+                if [[ $force == true ]]; then
+                        rm $SWL_PKG_DIR_PATH/$line
+                fi
+
+                # download
+                wget -nc -P $SWL_PKG_DIR_PATH $url
+
+        done < $list
+
+}
+
+
+
+
+
+####################################################################
+#
+# PACKAGE FUNCTIONS
+#
+####################################################################
+
+#------------------------------------------------------------------#
+function package_check_installed
+{
+        pkg=$1
+        pkg=${pkg%.txz}
+	echo "$(find $SWL_PKG_INSTALL_DIR -name $pkg)"
+}
+
+
+#------------------------------------------------------------------#
+function package_check_downloaded
+{
+        pkg=$1
+	echo "$(find $SWL_PKG_DIR_PATH -name $pkg)"
 }
