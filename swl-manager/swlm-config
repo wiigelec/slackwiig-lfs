@@ -1,15 +1,19 @@
 #!/bin/bash
 
 
-export SWL_DIR_PATH=/var/lib/swl
+export SWL_DIR_PATH=$ROOT/var/lib/swl
 export SWL_VERSION_FILE=$SWL_DIR_PATH/swl-version
-export SWL_VERSION=$(cat $SWL_VERSION_FILE)
+if [[ -f $SWL_VERSION_FILE ]]; then export SWL_VERSION=$(cat $SWL_VERSION_FILE);
+else export SWL_VERSION=NOVERSION; fi
 
 
 export SWL_INSTALL_PATH=/usr/src/slackwiig-lfs
 export SWL_PKG_VERSIONS_FILE=$SWL_DIR_PATH/pkg-versions-$SWL_VERSION.jhalfs
 export SWL_PKG_DIR_PATH=$SWL_DIR_PATH/packages
+export SWL_SBIN_PATH=$ROOT/usr/sbin
 
+# chroot path
+export SWL_POLKIT_INIT=/usr/src/slackwiig-lfs/scripts/init/polkit-init
 
 
 export SWL_BLFS_SCRIPT_PATH=$HOME/blfs_root/scripts
@@ -24,13 +28,12 @@ export SWL_INSTALL_CMD="installpkg --terse"
 
 
 
-export SWL_BASE_DIR="/var/lib/swl"
-export SWL_LIST_DIR="$SWL_BASE_DIR/lists"
+export SWL_BASE_DIR=$ROOT/var/lib/swl
+export SWL_LIST_DIR=$SWL_BASE_DIR/lists
 
-export SWL_INSTALL=$SWL_INSTALL_PATH//swl-manager/swlm-install
+export SWL_INSTALL=$SWL_INSTALL_PATH/swl-manager/swlm-install
 export SWL_LIST=$SWL_INSTALL_PATH/swl-manager/swlm-list
 
 
-export SWL_PKG_INSTALL_DIR=/var/lib/pkgtools/packages
+export SWL_PKG_INSTALL_DIR=$ROOT/var/lib/pkgtools/packages
 
-export SWL_FUNC_SRC=0

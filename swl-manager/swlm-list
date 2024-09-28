@@ -26,9 +26,7 @@ OPTIONS:
         -c	create blfs_root/scripts list
 	-(f)d 	(force) download list
 	-(f)i 	(force) install list
-        -l      create lfs-base list
-	-s	create swl-base list
-	-t	check installed and mirror status
+	-s	check installed and mirror status
 
 EOF
 }
@@ -49,9 +47,7 @@ download=false
 force=false
 install=false
 list=$2
-lfsbase=false
 stat=false
-swlbase=false
 
 
 case $1 in
@@ -59,11 +55,9 @@ case $1 in
         -c)     blfs=true;;
         -d)     download=true;;
         -fd)    download=true; force=true;;
-        -fi)    install=true; force=true;;
         -i)     install=true;;
-        -l)     lfsbase=true;;
-        -s)     swlbase=true;;
-        -t)     stat=true;;
+        -fi)    install=true; force=true;;
+        -s)     stat=true;;
         *)      usage ;;
 esac
 
@@ -74,6 +68,7 @@ esac
 
 if [[ $stat == true ]]; then
 	if [[ -z $list ]]; then usage; exit 1; fi
+	if [[ ! -f $list ]]; then echo "$list: file not found."; exit 1; fi
 	list_check_status $list
 fi
 

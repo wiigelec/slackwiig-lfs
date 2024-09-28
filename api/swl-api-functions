@@ -7,33 +7,29 @@
 ####################################################################
 
 
-#------------------------------------------------------------------#
-function get_mirror_versions
-{
-	versions=$(curl -s $SWL_MIRROR_VERSIONS_PATH	\
-                | grep "<li>"                		\
-                | sed 's/\/<\/a>.*//g'       		\
-		| sed 's/.*\">//g'	     		\
-		| xargs)
-
-	echo $versions
-
-}
+####################################################################
+#
+# INSTALL FUNCTIONS
+#
+####################################################################
 
 #------------------------------------------------------------------#
-function configure_install
+
+#------------------------------------------------------------------#
+function install_configure
 {
 	### Confirm ###
 	echo
 	read -p "Configure $ROOT installation? (Yes): " confirm
-	if [[ $confirm != "Yes" ]]; then echo "Aborting..."; exit 1; fi
+	if [[ $confirm != "Yes" ]]; then echo "Cancelling configuration..."; return; fi
 
 	### Set root passwd ###
 	echo
 	echo "Setting new root password:"
 	echo
 
-	mount_kernel_fs
+	utility_mount_kernelfs
+	if [[ $? != 0 ]]; then echo "Error mounting kernel filesystems."; exit 1; fi
 	chroot $ROOT bash -c 'passwd root'
 	unmount_kernel_fs
 
@@ -46,32 +42,6 @@ function configure_install
 	echo
 	echo "Configuration complete."
 	echo
-}
-
-
-#------------------------------------------------------------------#
-function mount_kernel_fs
-{
-	{
-	mount -v --bind /dev $ROOT/dev
-	mount -vt devpts devpts -o gid=5,mode=0620 $ROOT/dev/pts
-	mount -vt proc proc $ROOT/proc
-	mount -vt sysfs sysfs $ROOT/sys
-	mount -vt tmpfs tmpfs $ROOT/run
-	if [ -h $ROOT/dev/shm ]; then
-  		install -v -d -m 1777 $ROOT$(realpath /dev/shm)
-	else
-	 	 mount -vt tmpfs -o nosuid,nodev tmpfs $ROOT/dev/shm
-	fi
-	} > /dev/null
-}
-
-
-function unmount_kernel_fs
-{
-	mountpoint -q $ROOT/dev/shm && umount $ROOT/dev/shm
-	umount $ROOT/dev/pts
-	umount $ROOT/{sys,proc,run,dev}
 }
 
 
@@ -136,8 +106,27 @@ function list_create_blfs
 #------------------------------------------------------------------#
 function list_install
 {
+	list=$1
+        force=$2
 
 	echo
+	read -p "Installing packages to $ROOT. Continue? (Yes): " confirm
+	if [[ $confirm != "Yes" ]]; then echo "Cancelling..."; exit 1; fi
+
+        # read list
+        while IFS= read -r line;
+        do
+		# check installed
+                installed=$(package_check_installed $line)
+                if [[ ! -z $installed && $force == false ]]; then
+                        echo "SKIPPING: $line INSTALLED"
+                        continue
+                fi
+
+		$SWL_INSTALL_CMD $SWL_PKG_DIR_PATH/$line
+
+	done < $list
+
 }
 
 
@@ -161,6 +150,18 @@ function mirror_check_package
         fi
 
         echo $output
+}
+
+#------------------------------------------------------------------#
+function mirror_get_versions
+{
+	versions=$(curl -s $SWL_MIRROR_VERSIONS_PATH/	\
+                | grep "<li>"                		\
+                | sed 's/\/<\/a>.*//g'       		\
+		| sed 's/.*\">//g'	     		\
+		| xargs)
+
+	echo $versions
 }
 
 #------------------------------------------------------------------#
@@ -222,4 +223,36 @@ function package_check_downloaded
 {
         pkg=$1
 	echo "$(find $SWL_PKG_DIR_PATH -name $pkg)"
+}
+
+
+####################################################################
+#
+# UTILITY FUNCTIONS
+#
+####################################################################
+
+#-------------------------------------------------------------------#
+function utility_mount_kernelfs
+{
+	{
+        mount -v --bind /dev $ROOT/dev
+        mount -vt devpts devpts -o gid=5,mode=0620 $ROOT/dev/pts
+        mount -vt proc proc $ROOT/proc
+        mount -vt sysfs sysfs $ROOT/sys
+        mount -vt tmpfs tmpfs $ROOT/run
+        if [ -h $ROOT/dev/shm ]; then
+          	install -v -d -m 1777 $ROOT$(realpath /dev/shm)
+        else
+         	 mount -vt tmpfs -o nosuid,nodev tmpfs $ROOT/dev/shm
+        fi
+        } > /dev/null
+}
+
+#-------------------------------------------------------------------#
+function utility_unmount_kernelfs
+{
+	mountpoint -q $ROOT/dev/shm && umount $ROOT/dev/shm
+	umount $ROOT/dev/pts
+	umount $ROOT/{sys,proc,run,dev}
 }

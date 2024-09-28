@@ -7,7 +7,7 @@
 #
 ###################################################################
 
-source $SWL_INSTALL_PATH/swlm-common-funcs
+source $SWL_INSTALL_PATH/api/swl-api-functions
 
 
 ###################################################################
@@ -61,20 +61,20 @@ esac
 # CONFIGURE ONLY
 #------------------------------------------------------------------#
 
-if [[ $configure == true ]]; then configure_install; exit 0; fi
+if [[ $configure == true ]]; then install_configure; exit 0; fi
 
 
 #------------------------------------------------------------------#
 # GET MIRROR VERSIONS
 #------------------------------------------------------------------#
 
-mirror_versions=$(get_mirror_versions)
+mirror_versions=$(mirror_get_versions)
 
 if [[ $version == 0 ]]; then
 
-	echo ""
-	echo "Versions available on mirror $mirror:"
-	echo ""
+	echo
+	echo "Versions available on mirror $SWL_MIRROR:"
+	echo
 
 	for each in $mirror_versions
 	do
@@ -111,7 +111,7 @@ echo ""
 echo "WARNING! Data on $install_root could be permanently modified and render the system unusable!"
 echo ""
 read -p "Is this configuration acceptable? (Yes): " confirm 
-if [[ $confirm != "Yes" ]]; then echo "Aborting..."; exit 1; fi
+if [[ $confirm != "Yes" ]]; then echo "Cancelling..."; exit 1; fi
 
 
 ####################################################################
@@ -171,10 +171,10 @@ if [[ $swlbase == true ]]; then
 	$SWL_INSTALL_CMD $swlbasedir/*.txz
 
 	# create lfs base list
-	ls $lfsbasedir > $ROOT/$SWL_LIST_DIR/lfs-base.list
+	ls $lfsbasedir > $SWL_LIST_DIR/lfs-base.list
 
 	# create swl base list
-	ls $swlbasedir > $ROOT/$SWL_LIST_DIR/swl-base.list
+	ls $swlbasedir > $SWL_LIST_DIR/swl-base.list
 fi
 
 
@@ -183,7 +183,7 @@ fi
 ####################################################################
 
 # passwd and fstab
-configure_install
+install_configure
 
 
 ### Initialize swl ###
@@ -193,21 +193,21 @@ if [[ $swlbase == true ]]; then
 	echo
         echo "Installing swl..."
         echo
-        git clone https://github.com/wiigelec/slackwiig-lfs $ROOT/usr/src/slackwiig-lfs
+        git clone https://github.com/wiigelec/slackwiig-lfs $ROOT/$SWL_INSTALL_PATH
         echo
 
 	# Create links
-	ln -sv /usr/src/slackwiig-lfs/swl-manager/swl-manager $ROOT/usr/sbin/
-	ln -sv /usr/src/slackwiig-lfs/swl-manager/swlm-config $ROOT/usr/sbin/
+	ln -sv /usr/src/slackwiig-lfs/swl-manager/swl-manager $SWL_SBIN_PATH
+	ln -sv /usr/src/slackwiig-lfs/swl-manager/swlm-config $SWL_SBIN_PATH
 
 	# Initiallize polkit
 	echo
         echo "Initializing polkit..."
         echo
-        chroot $ROOT /usr/src/slackwiig-lfs/scripts/init/polkit-init
+        chroot $ROOT $SWL_POLKIT_INIT
 
 	# Write version file
-	echo $version > $ROOT/$SWL_BASE_DIR/swl-version
+	echo $version > $SWL_VERSION_FILE
 fi
 
 
