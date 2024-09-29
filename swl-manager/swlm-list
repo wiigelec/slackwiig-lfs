@@ -26,6 +26,7 @@ OPTIONS:
         -c	create blfs_root/scripts list
 	-(f)d 	(force) download list
 	-(f)i 	(force) install list
+	-r	remove list
 	-s	check installed and mirror status
 
 EOF
@@ -47,6 +48,7 @@ download=false
 force=false
 install=false
 list=$2
+remove=false
 stat=false
 
 
@@ -57,6 +59,7 @@ case $1 in
         -fd)    download=true; force=true;;
         -i)     install=true;;
         -fi)    install=true; force=true;;
+        -r)     remove=true;;
         -s)     stat=true;;
         *)      usage ;;
 esac
@@ -103,4 +106,15 @@ if [[ $install == true ]]; then
 	if [[ -z $list ]]; then usage; exit 1; fi
 	if [[ ! -f $list ]]; then echo "$list: file not found."; exit 1; fi
 	list_install $list $force
+fi
+
+
+###################################################################
+# REMOVE LIST
+###################################################################
+
+if [[ $remove == true ]]; then
+	if [[ -z $list ]]; then usage; exit 1; fi
+	if [[ ! -f $list ]]; then echo "$list: file not found."; exit 1; fi
+	list_remove $list
 fi

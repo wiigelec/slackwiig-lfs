@@ -210,6 +210,34 @@ function list_install
 }
 
 
+#------------------------------------------------------------------#
+function list_remove
+{
+	### REMOVE LIST ###
+	while IFS= read -r line;
+        do
+		# Check if package is used by another list
+                used=$(grep --exclude=$list $line $SWL_LIST_DIR/*)
+                if [[ ! -z $used ]]; then
+                        echo "SKIPPING: $line USED"
+                        continue
+                fi
+
+                # remove pkg
+                $SWL_REMOVE_CMD $line
+                error=$?
+
+        done < $list
+
+	# Remove list file
+        if [[ $error == 0 ]]; then
+                rmlist=${list##*/}
+                rm -i $SWL_LIST_DIR/$rmlist
+        fi
+
+}
+
+
 ####################################################################
 #
 # MIRROR FUNCTIONS

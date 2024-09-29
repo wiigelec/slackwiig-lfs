@@ -25,6 +25,7 @@ export SWL_SWLBASE_LIST_URL=$SWL_MIRROR_VERSIONS_PATH/$SWL_VERSION/lists/swl-bas
 
 
 export SWL_INSTALL_CMD="installpkg --terse"
+export SWL_REMOVE_CMD="removepkg --terse"
 
 
 
