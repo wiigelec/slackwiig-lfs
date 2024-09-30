@@ -17,6 +17,7 @@ function usage
 {
         cat << EOF
 
+swl-manager audit
 swl-manager browse
 swl-manager install
 swl-manager list
@@ -26,6 +27,8 @@ EOF
 
 
 case $1 in
+
+	audit) $SWL_AUDIT $2 ;;
 
 	browse) lynx $SWL_MIRROR ;;
 

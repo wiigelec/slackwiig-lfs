@@ -1,0 +1,204 @@
+#!/bin/bash
+###################################################################
+#
+# swl-audit
+#
+# 
+#
+###################################################################
+
+
+source $SWL_INSTALL_PATH/api/swl-api-functions
+
+
+###################################################################
+# USAGE
+###################################################################
+function usage
+{
+        cat << EOF
+
+AUDIT USAGE:
+
+swl-manager audit (options)
+
+OPTIONS:
+        -f      display files not installed with a package
+        -l	display missing list packages
+        -i   	display missing packages files
+        -p      display installed packages not associated with a list
+
+EOF
+}
+
+
+####################################################################
+# CONFIGURATION
+####################################################################
+
+#------------------------------------------------------------------#
+# Parse command line
+#------------------------------------------------------------------#
+
+if [[ -z $1 ]]; then usage; exit; fi
+
+files=false
+lists=false
+installed=false
+packages=false
+
+
+case $1 in
+
+        -f)     files=true;;
+        -l)     lists=true;;
+        -i)    	installed=true;;
+        -p)    	packages=true;;
+        *)      usage ;;
+esac
+
+
+	
+### SET ROOT ###
+ROOT=${ROOT:-/}	
+[[ $ROOT != */ ]] && ROOT=$ROOT/
+
+####################################################################
+# AUDIT FILES
+####################################################################
+
+if [[ $files == true ]]; then
+
+	echo
+        echo "Auditing files in $ROOT..."
+        echo "Searching for files not associated with an installed package..."
+        echo
+        for FILE in $(find $ROOT -type f -o -type d \
+                -path ${ROOT}sys -prune \
+                -o -path ${ROOT}proc -prune \
+                -o -path ${ROOT}run -prune \
+                -o -path ${ROOT}var/lib/pkgtools -prune \
+                -o -path ${ROOT}var/lib/swl -prune \
+                -o -path ${ROOT}root -prune \
+                -o -path ${ROOT}home -prune \
+                -o -path ${ROOT}sources -prune \
+                -o -path ${ROOT}mnt -prune \
+                -o -path ${ROOT}var/log -prune)
+        do
+                pkg=$(echo $FILE | sed 's/.*\/usr\/lib/lib/g')
+                pkg=$(echo $pkg | sed 's/.*\/usr\/sbin/sbin/g')
+                pkg=${pkg#$ROOT}
+                found=$(grep $pkg $SWL_PKG_INSTALL_DIR/*)
+                if [[ -z "$found" ]]; then
+                        echo "NOT FOUND:$FILE"
+                fi
+        done
+
+        echo
+
+fi
+
+####################################################################
+# AUDIT LISTS
+####################################################################
+
+if [[ $lists == true ]]; then
+
+	echo
+        echo "Auditing lists in $SWL_LIST_DIR."
+        echo "Searching for list packages that are not installed..."
+        echo
+
+	latch=false
+        for FILE in $SWL_LIST_DIR/*;
+        do
+                echo "------------------------------------------------------------"
+                echo "Auditing list $FILE:"
+                echo
+
+                while IFS= read -r line;
+                do
+                        # remove .txz
+                        name=${line%.txz}
+                        found="$(find $SWL_PKG_INSTALL_DIR -type f -name $name)"
+                        if [[ -z "$found" ]]; then
+                                echo "$line: NOT INSTALLED"
+				latch=true
+                        fi
+
+                done < $FILE
+	
+		[[ $latch == false ]] && echo "All list packages installed."
+                echo
+        done
+
+
+        echo
+
+fi
+
+
+####################################################################
+# AUDIT INSTALLED
+####################################################################
+
+if [[ $installed == true ]]; then
+
+	echo
+        echo "Auditing installed package files in $SWL_INSTALLED_PKG_DIR."
+        echo "Searching for package files not found on the system..."
+        echo
+
+        for FILE in $SWL_PKG_INSTALL_DIR/*;
+        do
+                fileList=0
+                while IFS= read -r line;
+                do
+                        if [[ "$line" == "FILE LIST:" ]]; then fileList=1; continue; fi
+                        if [[ "$fileList" == 0 ]]; then continue; fi
+
+                        # check exists
+                        check="$ROOT$line"
+                        if [[ "$check" == "${ROOT}install/"* ]]; then continue; fi
+                        if [[ -f $check ]]; then continue; fi
+                        if [[ -d $check ]]; then continue; fi
+
+                        pkg=${FILE##*/}
+
+                        echo "$pkg:  $check  NOT FOUND"
+
+                done < $FILE
+
+        done
+
+        echo 
+
+fi
+
+
+####################################################################
+# AUDIT PACKAGES
+####################################################################
+
+if [[ $packages == true ]]; then
+
+	echo
+	echo "Auditing installed packages in $SWL_PKG_INSTALL_DIR."
+        echo "Searching for packages not associated with a list..."
+        echo
+
+	latch=false
+        for FILE in $SWL_PKG_INSTALL_DIR/*;
+        do
+                pkg=${FILE##*/}
+                found=$(grep $pkg $SWL_LIST_DIR/*)
+                if [[ -z "$found" ]]; then
+                        echo "$pkg: NO LIST"
+			latch=true
+                fi
+        done
+
+	[[ $latch == false ]] && echo "All installed packages associated with a list."
+        echo
+
+fi

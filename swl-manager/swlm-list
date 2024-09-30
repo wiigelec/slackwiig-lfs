@@ -18,7 +18,7 @@ function usage
 {
         cat << EOF
 
-INSTALL USAGE:
+LIST USAGE:
 
 swl-manager list (options) <list>
 
