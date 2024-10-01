@@ -90,7 +90,7 @@ if [[ $files == true ]]; then
                 pkg=${pkg#$ROOT}
                 found=$(grep $pkg $SWL_PKG_INSTALL_DIR/*)
                 if [[ -z "$found" ]]; then
-                        echo "NOT FOUND:$FILE"
+                        echo "$FILE"
                 fi
         done
 
@@ -122,7 +122,7 @@ if [[ $lists == true ]]; then
                         name=${line%.txz}
                         found="$(find $SWL_PKG_INSTALL_DIR -type f -name $name)"
                         if [[ -z "$found" ]]; then
-                                echo "$line: NOT INSTALLED"
+                                echo "$line"
 				latch=true
                         fi
 
@@ -165,7 +165,7 @@ if [[ $installed == true ]]; then
 
                         pkg=${FILE##*/}
 
-                        echo "$pkg:  $check  NOT FOUND"
+                        echo "$pkg:  $check"
 
                 done < $FILE
 
@@ -193,7 +193,7 @@ if [[ $packages == true ]]; then
                 pkg=${FILE##*/}
                 found=$(grep $pkg $SWL_LIST_DIR/*)
                 if [[ -z "$found" ]]; then
-                        echo "$pkg: NO LIST"
+                        echo "$pkg"
 			latch=true
                 fi
         done

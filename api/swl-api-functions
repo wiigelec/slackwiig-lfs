@@ -48,51 +48,40 @@ function install_lfsbase
 {
 	version=$1
 
-	### Download lfs base packages ###
+        # create temp dir on install root for package download
+        tmpdir="${ROOT}/swltmpdir$RANDOM"
+        mkdir -pv $tmpdir
 
-	# create temp dir on install root for package download
-	tmpdir="${ROOT}/swltmpdir$RANDOM"
+        ### DOWNLOAD LFS BASE LIST ###
+        #set the version
+        export SWL_VERSION=$version
+        source /usr/sbin/swlm-config
+        set +e #exit on error
+        wget -P $tmpdir $SWL_LFSBASE_LIST_URL
+        set -e
 
-	set -e # exit on error
+        ### DOWNLOAD LFS BASE LIST ###
+        swl-manager list -d $tmpdir/lfs-base.list
 
-	### Download lfs-base packages ###
-	echo
-	echo "Downloading lfs base packages..."
-	echo
+        ### INSTALL LFS BASE LIST ###
+        echo
+        echo "Installing lfs-base packages..."
+        echo
+        echo "Yes" | swl-manager list -i $tmpdir/lfs-base.list
 
-	lfsbasedir=$tmpdir/lfs-base
-	mkdir -pv $lfsbasedir
-
-	url=$SWL_MIRROR_VERSIONS_PATH/$version/base/lfs/
-	wget -r -np -nd -P $lfsbasedir $url
-
-	set -e
-
-
-	### Install lfs base packages ###
-	echo
-	echo "Installing lfs base packages..."
-	echo
-
-	$SWL_INSTALL_CMD $lfsbasedir/*.txz
-
-	### CLEANUP ###
-	rm -rf $tmpdir
+        ### CLEANUP ###
+        rm -rf $tmpdir
 }
 
 #------------------------------------------------------------------#
 function install_swlbase
 {
-
 	version=$1
 
 	# create temp dir on install root for package download
         tmpdir="${ROOT}/swltmpdir$RANDOM"
 	mkdir -pv $tmpdir
 
-	### Generate lfs-base.list ###
-	ls $SWL_PKG_INSTALL_DIR | sed 's/$/.txz/' > $tmpdir/lfs-base.list
-	
  	### DOWNLOAD SWL BASE LIST ###
 	#set the version
 	export SWL_VERSION=$version
@@ -102,20 +91,16 @@ function install_swlbase
 	set -e
 
 	### DOWNLOAD SWL BASE LIST ###
-	swl-manager list -fd $tmpdir/swl-base.list
+	swl-manager list -d $tmpdir/swl-base.list
 
 	### INSTALL SWL BASE LIST ###
 	echo
 	echo "Installing swl-base packages..."
 	echo
-	echo "Yes" | swl-manager list -fi $tmpdir/swl-base.list
-
-	### MOVE LFS BASE LIST ###
-	mv $tmpdir/lfs-base.list $SWL_LIST_DIR/
+	echo "Yes" | swl-manager list -i $tmpdir/swl-base.list
 
 	### CLEANUP ###
 	rm -rf $tmpdir
-
 }
 
 ####################################################################
@@ -204,7 +189,7 @@ function list_install
 	done < $list
 
 	### COPY LIST TO LIST DIR ###
-	if [[ $error == 0 ]]; then cp -i $list $SWL_LIST_DIR; fi
+	if [[ $error == 0 ]]; then mkdir -p $SWL_LIST_DIR && cp -i $list $SWL_LIST_DIR; fi
 
 
 }
@@ -308,9 +293,6 @@ function mirror_download_list
 }
 
 
-
-
-
 ####################################################################
 #
 # PACKAGE FUNCTIONS
@@ -322,7 +304,11 @@ function package_check_installed
 {
         pkg=$1
         pkg=${pkg%.txz}
-	echo "$(find $SWL_PKG_INSTALL_DIR -name $pkg)"
+	if [[ ! -d $SWL_PKG_INSTALL_DIR ]]; then 
+		echo
+	else 
+		echo "$(find $SWL_PKG_INSTALL_DIR -name $pkg)"
+	fi
 }
 
 
@@ -330,7 +316,11 @@ function package_check_installed
 function package_check_downloaded
 {
         pkg=$1
-	echo "$(find $SWL_PKG_DIR_PATH -name $pkg)"
+	if [[ ! -d $SWL_PKG_DIR_PATH ]]; then 
+		echo
+	else 
+		echo "$(find $SWL_PKG_DIR_PATH -name $pkg)"
+	fi
 }
 
 
