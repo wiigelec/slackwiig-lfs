@@ -13,13 +13,8 @@ mkdir -v ./sources
 chmod -v a+wt ./sources
 
 ### 4.2 ###
-mkdir -pv ./{etc,var} ./usr/{bin,lib,sbin}
-for i in bin lib sbin; do
-  ln -sv usr/$i ./$i
-done
-case $(uname -m) in
-  x86_64) mkdir -pv ./lib64 ;;
-esac
+
+### SEE VOLATILE DIRS
 
 ### 7.3 ###
 mkdir -pv ./{dev,proc,sys,run}

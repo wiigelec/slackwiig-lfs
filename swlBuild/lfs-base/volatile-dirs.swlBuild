@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then echo "No version"; exit 1; fi
+
+DEST_DIR=/sources/destdir
+PKG_NAME=aa_volatile-dirs-0.0-amd64-swl$1.txz
+
+mkdir -pv $DEST_DIR
+pushd $DEST_DIR
+
+### VOLATILE DIRS ###
+mkdir -pv ./{etc,var} ./usr/{bin,lib,sbin}
+for i in bin lib sbin; do
+  ln -sv usr/$i ./$i
+done
+case $(uname -m) in
+  x86_64) mkdir -pv ./lib64 ;;
+esac
+
+### MAKEPKG ###
+makepkg -l y -c n /sources/$PKG_NAME
+
+### CLEANUP ###
+popd
+rm -rf $DEST_DIR
+
+exit
+
+

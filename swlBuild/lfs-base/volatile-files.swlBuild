@@ -3,7 +3,7 @@
 if [[ -z $1 ]]; then echo "No version"; exit 1; fi
 
 DEST_DIR=/sources/destdir
-PKG_NAME=aa_volatile-0.0-amd64-swl$1.txz
+PKG_NAME=aa_volatile-files-0.0-amd64-swl$1.txz
 
 mkdir -pv $DEST_DIR
 pushd $DEST_DIR
