@@ -1,0 +1,90 @@
+#!/bin/bash
+###################################################################
+#
+# swl-upgrade
+#
+# 
+#
+###################################################################
+
+source $SWL_INSTALL_PATH/api/swl-api-functions
+
+
+###################################################################
+# USAGE
+###################################################################
+
+function usage
+{
+        cat << EOF
+
+UPGRADE USAGE:
+
+ROOT=/install/root swl-manager upgrade <version>
+
+EOF
+}
+
+
+####################################################################
+# CONFIGURATION
+####################################################################
+
+#------------------------------------------------------------------#
+# Parse command line
+#------------------------------------------------------------------#
+
+if [[ -z $1 ]]; then usage; exit; fi
+
+version=$1
+
+#------------------------------------------------------------------#
+# GET MIRROR VERSIONS
+#------------------------------------------------------------------#
+
+mirror_versions=$(mirror_get_versions)
+
+if [[ $version == 0 ]]; then
+
+        echo
+        echo "Versions available on mirror $SWL_MIRROR:"
+        echo
+
+        for each in $mirror_versions
+        do
+                echo $each
+        done
+
+        exit
+fi
+
+### Verify mirror ###
+if [[ ! "$mirror_versions" =~ (^|[ ])$version([ ]|$) ]]; then
+        echo ""
+        echo "ERROR: Version $version not found on mirror $SWL_MIRROR"
+        echo ""
+        echo "Available versions: $mirror_versions"
+        exit
+fi
+
+
+echo
+read -p "Upgrading version $(cat $SWL_VERSION_FILE) to $version on $ROOT. Continue? (Yes): " confirm
+if [[ $confirm != "Yes" ]]; then echo "Cancelling..."; exit 1; fi
+
+###################################################################
+# UPGRADE BASE
+###################################################################
+
+upgrade_lfsbase $version
+
+
+upgrade_swlbase $version
+
+
+###################################################################
+# UPGRADE LISTS
+###################################################################
+
+upgrade_lists $version
+

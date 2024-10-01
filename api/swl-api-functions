@@ -331,6 +331,90 @@ function package_check_downloaded
 
 ####################################################################
 #
+# MIRROR FUNCTIONS
+#
+####################################################################
+
+#------------------------------------------------------------------#
+function upgrade_lfsbase
+{
+	version=$1
+
+        # create temp dir on install root for package download
+        tmpdir="${ROOT}/swltmpdir$RANDOM"
+        mkdir -pv $tmpdir
+
+        ### DOWNLOAD LFS BASE PACKAGES ###
+        #set the version
+        export SWL_VERSION=$version
+        source /usr/sbin/swlm-config
+        set +e #exit on error
+        wget -P $tmpdir $SWL_LFSBASE_LIST_URL
+        set -e
+
+        ### DOWNLOAD LFS BASE LIST ###
+        swl-manager list -fd $tmpdir/lfs-base.list
+
+        ### UPGRADE LFS BASE PACKAGES ###
+        echo
+        echo "Upgrading lfs-base packages..."
+        echo
+	# read list
+        while IFS= read -r line;
+        do
+		### Skip volatile ###
+		if [[ $line == "aa_volatile"* ]]; then continue; fi
+
+                $SWL_UPGRADE_CMD $SWL_PKG_DIR_PATH/$line
+
+        done < $tmpdir/lfs-base.list
+
+        ### CLEANUP ###
+        rm -rf $tmpdir
+}
+
+#------------------------------------------------------------------#
+function upgrade_swlbase
+{
+	version=$1
+
+        # create temp dir on install root for package download
+        tmpdir="${ROOT}/swltmpdir$RANDOM"
+        mkdir -pv $tmpdir
+
+        ### DOWNLOAD SWL BASE LIST ###
+        #set the version
+        export SWL_VERSION=$version
+        source /usr/sbin/swlm-config
+        set +e #exit on error
+        wget -P $tmpdir $SWL_SWLBASE_LIST_URL
+        set -e
+
+        ### DOWNLOAD SWL BASE PACKAGES ###
+        swl-manager list -fd $tmpdir/lfs-base.list
+
+        ### UPGRADE SWL BASE PACKAGES ###
+        echo
+        echo "Upgrading swl-base packages..."
+        echo
+	# read list
+        while IFS= read -r line;
+        do
+                $SWL_UPGRADE_CMD $SWL_PKG_DIR_PATH/$line
+        done < $tpmpdir/swl-base.list
+
+        ### CLEANUP ###
+        rm -rf $tmpdir
+}
+
+#------------------------------------------------------------------#
+function upgrade_lists
+{
+	echo
+}
+
+####################################################################
+#
 # UTILITY FUNCTIONS
 #
 ####################################################################
