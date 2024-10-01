@@ -190,15 +190,20 @@ function list_install
 
 	### COPY LIST TO LIST DIR ###
 	if [[ $error == 0 ]]; then mkdir -p $SWL_LIST_DIR && cp -i $list $SWL_LIST_DIR; fi
-
-
 }
 
 
 #------------------------------------------------------------------#
 function list_remove
 {
-	### REMOVE LIST ###
+	list=$1
+
+	ROOT=${ROOT:-/}
+
+	echo
+	read -p "Removing $(basename $list) packages from $ROOT. Continue? (Yes): " confirm
+	if [[ $confirm != "Yes" ]]; then echo "Cancelling..."; exit 1; fi
+
 	while IFS= read -r line;
         do
 		# Check if package is used by another list
