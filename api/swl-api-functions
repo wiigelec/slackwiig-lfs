@@ -401,7 +401,7 @@ function upgrade_swlbase
         while IFS= read -r line;
         do
                 $SWL_UPGRADE_CMD $SWL_PKG_DIR_PATH/$line
-        done < $tpmpdir/swl-base.list
+        done < $tmpdir/swl-base.list
 
         ### CLEANUP ###
         rm -rf $tmpdir
