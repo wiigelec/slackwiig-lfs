@@ -391,7 +391,7 @@ function upgrade_swlbase
         set -e
 
         ### DOWNLOAD SWL BASE PACKAGES ###
-        swl-manager list -fd $tmpdir/lfs-base.list
+        swl-manager list -fd $tmpdir/swl-base.list
 
         ### UPGRADE SWL BASE PACKAGES ###
         echo
