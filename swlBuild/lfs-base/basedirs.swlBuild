@@ -76,6 +76,7 @@ cp -a /etc/os-release ./etc
 
 ### misc ###
 cp -a /usr/share/info/dir ./usr/share/info
+mkdir ./usr/bin
 cp -a /usr/bin/cc ./usr/bin
 cp -a /usr/bin/sh ./usr/bin
 
