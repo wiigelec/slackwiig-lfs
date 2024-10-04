@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Setup
+SWL_VER=121
+
+PKG_NAME=linux
+PKG_VER=6.7.4
+PKG_FULL=${PKG_NAME}-${PKG_VER}
+
+pushd /sources
+
+# Download
+TAR_FILE=linux-6.7.4.tar.xz
+wget https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.7.4.tar.xz
+tar -xf $TAR_FILE
+
+# Build
+pushd $PKG_FULL
+
+make mrproper
+make headers
+
+find usr/include -type f ! -name '*.h' -delete
+
+# Destdir install
+mkdir -pv /sources/destdir/usr
+cp -rv usr/include /sources/destdir/usr
+
+popd
+
+# Package
+pushd /sources/destdir
+sudo makepkg -l y -c n /sources/linux-headers-$PKG_VER-amd64-swl$SWL_VER.txz
+popd
+
+# Cleanup
+sudo rm -rf /sources/destdir
+sudo rm -rf /sources/$PKG_FULL
+rm /sources/$TAR_FILE
+
+popd
+
+
+
+
