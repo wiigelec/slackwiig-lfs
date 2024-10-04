@@ -1,6 +1,8 @@
 #!/bin/bash
 
-#SWL_VER=122
+if [[ -z $1 ]]; then echo "no swl version"; exit; fi
+
+SWL_VER=$1
 VER_FIL=/var/lib/swl/pkg-versions-${SWL_VER}.jhalfs
 
 for FILE in ./chapter{08,10}/*;
@@ -11,17 +13,18 @@ do
     package=${FILE##*\/}
     package=${package#*-}
     # handle python3
-    if [[ $package == "Python" ]] ; then package="Python3"; fi
-    package=$(echo "$package" | tr '[:upper:]' '[:lower:]')
+    if [[ $package == "Python" ]] ; then package="python3"; fi
     echo $package
 
     # version lookup
-    lookup=$(grep -i "^$package  " $VER_FIL)
+    lookup=$(grep "^$package  " $VER_FIL)
     echo $lookup
     version=${lookup#*  }
     version=${version% }
     echo $version
 
+    package=$(echo "$package" | tr '[:upper:]' '[:lower:]')
+    
     # diff logs
     difflog1="/var/lib/swl/difflog/$package"-"$version".difflog1
     difflog2="/var/lib/swl/difflog/$package"-"$version".difflog2
