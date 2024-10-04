@@ -18,12 +18,12 @@ do
     echo $package
 
     # version lookup
-    lookup=$(grep -i "^$package  " /var/lib/swl/pkg-versions-$SWL_VER.jhalfs)
+    lookup=$(grep "^$package  " /var/lib/swl/pkg-versions-$SWL_VER.jhalfs)
 
     # pass1
     if [[ $pass1 == true ]]; then lookup=${lookup/  /-pass1  }; fi
 
-    lookup=$(echo "$lookup" | tr '[:upper:]' '[:lower:]')
+    package=$(echo "$package" | tr '[:upper:]' '[:lower:]')
 
     echo $lookup
     version=${lookup#*  }
