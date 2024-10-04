@@ -88,3 +88,11 @@ upgrade_swlbase $version
 
 upgrade_lists $version
 
+
+### WRITE VERSION FILE ###
+echo $version > $SWL_VERSION_FILE
+
+
+echo
+echo "Version $version upgrade complete."
+echo
