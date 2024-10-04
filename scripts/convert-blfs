@@ -20,7 +20,7 @@ do
     echo $lookup
 
     # pass1
-    if [[ $pass1 == true ]]; then package=${package/  /-pass1  }; fi
+    if [[ $pass1 == true ]]; then package=$package-pass1; fi
 
     package=$(echo "$package" | tr '[:upper:]' '[:lower:]')
     echo $package
