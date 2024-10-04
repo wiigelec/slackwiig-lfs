@@ -49,7 +49,7 @@ chmod -v 600  ./var/log/btmp
 ### 9.2 ###
 mkdir -pv ./etc/systemd/network/
 cp -a /etc/systemd/network/10-eth-static.network ./etc/systemd/network/
-cp -a /etc/hostname ./etc
+#cp -a /etc/hostname ./etc VOLATILE
 
 ### 9.5 ###
 cp -a /etc/adjtime ./etc

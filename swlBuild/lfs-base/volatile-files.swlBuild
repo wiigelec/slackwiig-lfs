@@ -12,6 +12,8 @@ pushd $DEST_DIR
 mkdir -pv ./etc
 mkdir -pv ./lib64
 
+cp -a /etc/hostname ./etc
+
 cp -a /etc/hosts ./etc
 cp -a /etc/passwd ./etc
 cp -a /etc/group ./etc
