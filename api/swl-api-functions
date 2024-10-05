@@ -170,7 +170,7 @@ function list_install
 	ROOT=${ROOT:-/}
 
 	echo
-	read -p "Installing packages to $ROOT. Continue? (Yes): " confirm
+	read -p "Installing $list packages to $ROOT. Continue? (Yes): " confirm
 	if [[ $confirm != "Yes" ]]; then echo "Cancelling..."; exit 1; fi
 
         # read list
