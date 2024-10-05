@@ -1,5 +1,7 @@
 SWL-BASE PACKAGES:
 
+blfs-tools
+dosfstools
 grub-efi
 initramfs
 kernel-firmware
@@ -8,6 +10,7 @@ lvm2
 network-manager
 pciutils
 pkgtools
+postlfs-config-profile
 python3
 screen
 systemd-pam
