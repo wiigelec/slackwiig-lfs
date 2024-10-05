@@ -183,6 +183,13 @@ function list_install
                         continue
                 fi
 
+		# check downloaded
+                downloaded=$(package_check_downloaded $line)
+                if [[ -z $downloaded ]]; then
+                        echo "SKIPPING: $line NOT DOWNLOADED"
+                        continue
+                fi
+
 		$SWL_INSTALL_CMD $SWL_PKG_DIR_PATH/$line
 		error=$?
 
