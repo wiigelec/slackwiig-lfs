@@ -338,7 +338,7 @@ function package_check_downloaded
 
 ####################################################################
 #
-# MIRROR FUNCTIONS
+# UPGRADE FUNCTIONS
 #
 ####################################################################
 
@@ -373,8 +373,11 @@ function upgrade_lfsbase
 		if [[ $line == "aa_volatile"* ]]; then continue; fi
 
                 $SWL_UPGRADE_CMD $SWL_PKG_DIR_PATH/$line
+	
+	done < $tmpdir/lfs-base.list
 
-        done < $tmpdir/lfs-base.list
+	### MOVE LIST FILE ###
+	cp $tmpdir/lfs-base.list $SWL_LIST_DIR
 
         ### CLEANUP ###
         rm -rf $tmpdir
@@ -409,6 +412,9 @@ function upgrade_swlbase
         do
                 $SWL_UPGRADE_CMD $SWL_PKG_DIR_PATH/$line
         done < $tmpdir/swl-base.list
+
+	### MOVE LIST FILE ###
+	cp $tmpdir/swl-base.list $SWL_LIST_DIR
 
         ### CLEANUP ###
         rm -rf $tmpdir
