@@ -152,6 +152,7 @@ if [[ $installed == true ]]; then
         for FILE in $SWL_PKG_INSTALL_DIR/*;
         do
                 fileList=0
+		latch=false
                 while IFS= read -r line;
                 do
                         if [[ "$line" == "FILE LIST:" ]]; then fileList=1; continue; fi
@@ -166,11 +167,13 @@ if [[ $installed == true ]]; then
                         pkg=${FILE##*/}
 
                         echo "$pkg:  $check"
+			latch=true
 
                 done < $FILE
 
         done
 
+	[[ $latch == false ]] && echo "No missing package files found."
         echo 
 
 fi
