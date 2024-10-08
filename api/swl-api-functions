@@ -369,8 +369,40 @@ function upgrade_lfsbase
 	# read list
         while IFS= read -r line;
         do
-		### Skip volatile ###
-		if [[ $line == "aa_volatile"* ]]; then continue; fi
+		### VOLATILE DIRS ###
+		if [[ $line == "aa_volatile-dirs"* ]]; then
+
+			# destdir and copy
+			destdir="${ROOT}/swltmpdir$RANDOM"
+			$SWL_INSTALL_CMD --root $destdir --terse $SWL_PKG_DIR_PATH/$line
+			cp -a $destdir/* /
+			rm -rf $destdir
+
+			# remove old version
+			oldvers=$(cat $SWL_VERSION_FILE)
+			rmpkg=$(echo $line | sed "s/$version/$oldvers/")
+			$SWL_REMOVE_CMD --terse $rmpkg
+
+			continue
+		fi
+
+		### VOLATILE FILES ###
+		if [[ $line == "aa_volatile-files"* ]]; then
+
+			# destdir rename and copy
+			destdir="${ROOT}/swltmpdir$RANDOM"
+			$SWL_INSTALL_CMD --root $destdir --terse $SWL_PKG_DIR_PATH/$line
+			for f in $destdir/etc/*; do mv $f $f.new; done 
+			cp -a $destdir/* /
+			rm -rf $destdir
+
+			# remove old version
+			oldvers=$(cat $SWL_VERSION_FILE)
+			rmpkg=$(echo $line | sed "s/$version/$oldvers/")
+			$SWL_REMOVE_CMD --terse $rmpkg
+
+			continue
+		fi
 
                 $SWL_UPGRADE_CMD $SWL_PKG_DIR_PATH/$line
 	
