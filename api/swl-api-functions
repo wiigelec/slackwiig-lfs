@@ -360,53 +360,10 @@ function upgrade_lfsbase
         set -e
 
         ### DOWNLOAD LFS BASE LIST ###
-        swl-manager list -fd $tmpdir/lfs-base.list
+	mirror_dowload_list $tmpdir/lfs-base.list true
 
         ### UPGRADE LFS BASE PACKAGES ###
-        echo
-        echo "Upgrading lfs-base packages..."
-        echo
-	# read list
-        while IFS= read -r line;
-        do
-		### VOLATILE DIRS ###
-		if [[ $line == "aa_volatile-dirs"* ]]; then
-
-			# destdir and copy
-			destdir="${ROOT}/swltmpdir$RANDOM"
-			$SWL_INSTALL_CMD --root $destdir --terse $SWL_PKG_DIR_PATH/$line
-			cp -a $destdir/* /
-			rm -rf $destdir
-
-			# remove old version
-			oldvers=$(cat $SWL_VERSION_FILE)
-			rmpkg=$(echo $line | sed "s/$version/$oldvers/")
-			$SWL_REMOVE_CMD --terse $rmpkg
-
-			continue
-		fi
-
-		### VOLATILE FILES ###
-		if [[ $line == "aa_volatile-files"* ]]; then
-
-			# destdir rename and copy
-			destdir="${ROOT}/swltmpdir$RANDOM"
-			$SWL_INSTALL_CMD --root $destdir --terse $SWL_PKG_DIR_PATH/$line
-			for f in $destdir/etc/*; do mv $f $f.new; done 
-			cp -a $destdir/* /
-			rm -rf $destdir
-
-			# remove old version
-			oldvers=$(cat $SWL_VERSION_FILE)
-			rmpkg=$(echo $line | sed "s/$version/$oldvers/")
-			$SWL_REMOVE_CMD --terse $rmpkg
-
-			continue
-		fi
-
-                $SWL_UPGRADE_CMD $SWL_PKG_DIR_PATH/$line
-	
-	done < $tmpdir/lfs-base.list
+	upgrade_list_packages $tmpdir/lfs-base.list
 
 	### MOVE LIST FILE ###
 	cp $tmpdir/lfs-base.list $SWL_LIST_DIR
@@ -433,20 +390,10 @@ function upgrade_swlbase
         set -e
 
         ### DOWNLOAD SWL BASE PACKAGES ###
-        swl-manager list -fd $tmpdir/swl-base.list
+	mirror_dowload_list $tmpdir/swl-base.list true
 
         ### UPGRADE SWL BASE PACKAGES ###
-        echo
-        echo "Upgrading swl-base packages..."
-        echo
-	# read list
-        while IFS= read -r line;
-        do
-                $SWL_UPGRADE_CMD $SWL_PKG_DIR_PATH/$line
-        done < $tmpdir/swl-base.list
-
-	### MOVE LIST FILE ###
-	cp $tmpdir/swl-base.list $SWL_LIST_DIR
+	upgrade_list_packages $tmpdir/swl-base.list
 
         ### CLEANUP ###
         rm -rf $tmpdir
@@ -455,7 +402,116 @@ function upgrade_swlbase
 #------------------------------------------------------------------#
 function upgrade_lists
 {
-	echo
+	#set the version
+	version=$1
+        export SWL_VERSION=$version
+        source /usr/sbin/swlm-config
+
+	# create temp dir on install root for package download
+        tmpdir="${ROOT}/tmp/swltmpdir$RANDOM"
+        mkdir -pv $tmpdir
+
+        ### ITERATE LISTS ###
+        for list in $SWL_LIST_DIR/*.list
+        do
+		# Skip base lists
+		if [[ $list == *"-base.list"* ]]; then continue; fi
+
+		# Download list file
+		baselist=${list##*/}
+		# Get upgrade list
+		url=$SWL_MIRROR_LISTS_PATH/$baselist
+		wget -q --spider $url
+		if [[ $? !=  0 ]]; then
+			echo "$baselist not found: $url"
+			continue
+		fi
+		set +e #exit on error
+		wget -P $tmpdir $url
+		set -e
+
+		upgradelist=$tmpdir/$baselist
+
+		# Download list
+		mirror_download_list $upgradelist
+
+		# Upgrade list
+		upgrade_list_packages $list
+	done
+
+	### CLEANUP ###
+        rm -rf $tmpdir
+}
+
+#------------------------------------------------------------------#
+function upgrade_list_packages
+{
+	list=$1
+
+        echo
+        echo "Upgrading $list packages..."
+        echo
+
+	# read list
+        while IFS= read -r line;
+        do
+                # check installed
+                installed=$(package_check_installed $line)
+                if [[ ! -z $installed && $force == false ]]; then
+                        echo "SKIPPING: $line INSTALLED"
+                        continue
+                fi
+
+                # check downloaded
+                downloaded=$(package_check_downloaded $line)
+                if [[ -z $downloaded ]]; then
+                        echo "SKIPPING: $line NOT DOWNLOADED"
+                        continue
+                fi
+
+		### VOLATILE DIRS ###
+                if [[ $line == "aa_volatile-dirs"* ]]; then
+
+                        # destdir and copy
+                        destdir="${ROOT}/swltmpdir$RANDOM"
+                        $SWL_INSTALL_CMD --root $destdir --terse $SWL_PKG_DIR_PATH/$line
+                        cp -a $destdir/* /
+                        rm -rf $destdir
+
+                        # remove old version
+                        oldvers=$(cat $SWL_VERSION_FILE)
+                        rmpkg=$(echo $line | sed "s/$version/$oldvers/")
+                        $SWL_REMOVE_CMD --terse $rmpkg
+
+                        continue
+                fi
+
+                ### VOLATILE FILES ###
+                if [[ $line == "aa_volatile-files"* ]]; then
+
+                        # destdir rename and copy
+                        destdir="${ROOT}/swltmpdir$RANDOM"
+                        $SWL_INSTALL_CMD --root $destdir --terse $SWL_PKG_DIR_PATH/$line
+                        for f in $destdir/etc/*; do mv $f $f.new; done
+                        cp -a $destdir/* /
+                        rm -rf $destdir
+
+                        # remove old version
+                        oldvers=$(cat $SWL_VERSION_FILE)
+                        rmpkg=$(echo $line | sed "s/$version/$oldvers/")
+                        $SWL_REMOVE_CMD --terse $rmpkg
+
+                        continue
+                fi
+
+                $SWL_UPGRADE_CMD $SWL_PKG_DIR_PATH/$line
+                error=$?
+
+        done < $list
+
+        ### COPY LIST TO LIST DIR ###
+        if [[ $error == 0 ]]; then mkdir -p $SWL_LIST_DIR && cp -i $list $SWL_LIST_DIR; fi
+
 }
 
 ####################################################################

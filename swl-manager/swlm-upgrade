@@ -78,7 +78,6 @@ if [[ $confirm != "Yes" ]]; then echo "Cancelling..."; exit 1; fi
 
 upgrade_lfsbase $version
 
-
 upgrade_swlbase $version
 
 
