@@ -167,10 +167,10 @@ function list_install
 	list=$1
         force=$2
 
-	ROOT=${ROOT:-/}
+	displayroot=${ROOT:-/}
 
 	echo
-	read -p "Installing $list packages to $ROOT. Continue? (Yes): " confirm
+	read -p "Installing $list packages to $displayroot. Continue? (Yes): " confirm
 	if [[ $confirm != "Yes" ]]; then echo "Cancelling..."; exit 1; fi
 
         # read list
@@ -205,10 +205,10 @@ function list_remove
 {
 	list=$1
 
-	ROOT=${ROOT:-/}
+	displayroot=${ROOT:-/}
 
 	echo
-	read -p "Removing $(basename $list) packages from $ROOT. Continue? (Yes): " confirm
+	read -p "Removing $(basename $list) packages from $displayroot. Continue? (Yes): " confirm
 	if [[ $confirm != "Yes" ]]; then echo "Cancelling..."; exit 1; fi
 
 	while IFS= read -r line;

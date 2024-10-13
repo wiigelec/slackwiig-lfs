@@ -67,9 +67,9 @@ if [[ ! "$mirror_versions" =~ (^|[ ])$version([ ]|$) ]]; then
         exit
 fi
 
-ROOT=${ROOT:-/}
+displayroot=${ROOT:-/}
 echo
-read -p "Upgrading version $(cat $SWL_VERSION_FILE) to $version on $ROOT. Continue? (Yes): " confirm
+read -p "Upgrading version $(cat $SWL_VERSION_FILE) to $version on $displayroot. Continue? (Yes): " confirm
 if [[ $confirm != "Yes" ]]; then echo "Cancelling..."; exit 1; fi
 
 ###################################################################
