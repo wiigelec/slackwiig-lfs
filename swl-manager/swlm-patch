@@ -42,8 +42,9 @@ wget -r -np -nd -e robots=off -R "index.html*" --quiet -P $tmpdir $url
 
 ### ITERATE PATCHES ###
 applied=0;
-for list in $tmpdir/*.list
+for list in $tmpdir/*
 do
+	if [[ ! -f $list ]]; then continue; fi
 
 	# See if the package is installed
 	pkg=$(head -n1 $list)

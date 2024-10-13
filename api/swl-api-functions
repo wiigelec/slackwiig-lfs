@@ -414,9 +414,8 @@ function upgrade_lists
         export SWL_VERSION=$version
         source /usr/sbin/swlm-config
 
-	# create temp dir on install root for package download
-        tmpdir="${ROOT}/tmp/swltmpdir$RANDOM"
-        mkdir -pv $tmpdir
+	# create temp dir
+	tmpdir=$(utility_make_tmpdir)
 
         ### ITERATE LISTS ###
         for list in $SWL_LIST_DIR/*.list
@@ -424,13 +423,19 @@ function upgrade_lists
 		# Skip base lists
 		if [[ $list == *"-base.list"* ]]; then continue; fi
 
+		# Remove patch files
+		if [[ $list == *".patch.list"* ]]; then rm $list; continue; fi
+
 		# Download list file
 		baselist=${list##*/}
 		# Get upgrade list
 		url=$SWL_MIRROR_LISTS_PATH/$baselist
-		wget -q --spider $url
-		if [[ $? !=  0 ]]; then
+		found=$(curl --head --silent $url | head -n1)
+		if [[ $found == *"404"* ]]; then
+			echo
 			echo "$baselist not found: $url"
+			read -p "Type R to remove, <Enter> to continue  " confirm
+			if [[ $confirm == "R" ]]; then rm $list; fi
 			continue
 		fi
 		set +e #exit on error
