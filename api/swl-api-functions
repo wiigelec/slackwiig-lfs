@@ -293,7 +293,7 @@ function mirror_download_list
                 fi
 
                 # force remove
-                if [[ $force == true ]]; then
+                if [[ $force == true && -f $SWL_PKG_DIR_PATH/$line ]]; then
                         rm $SWL_PKG_DIR_PATH/$line
                 fi
 
@@ -360,7 +360,7 @@ function upgrade_lfsbase
         set -e
 
         ### DOWNLOAD LFS BASE LIST ###
-	mirror_dowload_list $tmpdir/lfs-base.list true
+	mirror_download_list $tmpdir/lfs-base.list true
 
         ### UPGRADE LFS BASE PACKAGES ###
 	upgrade_list_packages $tmpdir/lfs-base.list
@@ -390,7 +390,7 @@ function upgrade_swlbase
         set -e
 
         ### DOWNLOAD SWL BASE PACKAGES ###
-	mirror_dowload_list $tmpdir/swl-base.list true
+	mirror_download_list $tmpdir/swl-base.list true
 
         ### UPGRADE SWL BASE PACKAGES ###
 	upgrade_list_packages $tmpdir/swl-base.list
@@ -436,7 +436,7 @@ function upgrade_lists
 		mirror_download_list $upgradelist
 
 		# Upgrade list
-		upgrade_list_packages $list
+		upgrade_list_packages $list false
 	done
 
 	### CLEANUP ###
@@ -447,6 +447,7 @@ function upgrade_lists
 function upgrade_list_packages
 {
 	list=$1
+	force=${2:-false}
 
         echo
         echo "Upgrading $list packages..."
