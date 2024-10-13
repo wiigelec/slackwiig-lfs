@@ -19,6 +19,7 @@ export SWL_BLFS_SCRIPT_PATH=$HOME/blfs_root/scripts
 export SWL_MIRROR=http://swl-mirror:8000
 export SWL_MIRROR_VERSIONS_PATH=${SWL_MIRROR}/swl
 export SWL_MIRROR_PACKAGES_PATH=$SWL_MIRROR_VERSIONS_PATH/$SWL_VERSION/packages
+export SWL_MIRROR_PATCHES_PATH=$SWL_MIRROR_VERSIONS_PATH/$SWL_VERSION/patches
 export SWL_MIRROR_LISTS_PATH=$SWL_MIRROR_VERSIONS_PATH/$SWL_VERSION/lists
 export SWL_LFSBASE_LIST_URL=$SWL_MIRROR_VERSIONS_PATH/$SWL_VERSION/lists/lfs-base.list
 export SWL_SWLBASE_LIST_URL=$SWL_MIRROR_VERSIONS_PATH/$SWL_VERSION/lists/swl-base.list
@@ -35,6 +36,7 @@ export SWL_INSTALL=$SWL_INSTALL_PATH/swl-manager/swlm-install
 export SWL_LIST=$SWL_INSTALL_PATH/swl-manager/swlm-list
 export SWL_AUDIT=$SWL_INSTALL_PATH/swl-manager/swlm-audit
 export SWL_UPGRADE=$SWL_INSTALL_PATH/swl-manager/swlm-upgrade
+export SWL_PATCH=$SWL_INSTALL_PATH/swl-manager/swlm-patch
 
 export SWL_PKG_INSTALL_DIR=$ROOT/var/lib/pkgtools/packages
 

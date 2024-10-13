@@ -21,6 +21,7 @@ swl-manager audit
 swl-manager browse
 swl-manager install
 swl-manager list
+swl-manager patch
 swl-manager upgrade
 
 EOF
@@ -36,6 +37,8 @@ case $1 in
 	install) $SWL_INSTALL $2 $3 ;;
 
 	list) $SWL_LIST $2 $3 ;;
+
+	patch) $SWL_PATCH ;;
 
 	upgrade) $SWL_UPGRADE $2 ;;
 

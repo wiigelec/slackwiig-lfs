@@ -1,0 +1,86 @@
+#!/bin/bash
+###################################################################
+#
+# swl-patch
+#
+# 
+#
+###################################################################
+
+
+source $SWL_INSTALL_PATH/api/swl-api-functions
+
+
+###################################################################
+# USAGE
+###################################################################
+function usage
+{
+        cat << EOF
+
+PATCH USAGE:
+
+swl-manager patch
+
+EOF
+}
+
+
+###################################################################
+# PATCH
+###################################################################
+
+version=$(cat $SWL_VERSION_FILE)
+
+echo
+echo "Searching for version $version patches on $SWL_MIRROR..."
+
+### DOWNLOAD PATCHES ###
+tmpdir=$(utility_make_tmpdir)
+url=$SWL_MIRROR_PATCHES_PATH/
+wget -r -np -nd -e robots=off -R "index.html*" --quiet -P $tmpdir $url
+
+### ITERATE PATCHES ###
+applied=0;
+for list in $tmpdir/*.list
+do
+
+	# See if the package is installed
+	pkg=$(head -n1 $list)
+	#strip
+	pkg=${pkg%-*}
+	pkg=${pkg%-*}
+	pkg=${pkg%-*}
+	found=""
+	found=$(ls $SWL_PKG_INSTALL_DIR | sed 's/\(.*\)-.*/\1/' | \
+		sed 's/\(.*\)-.*/\1/' | sed 's/\(.*\)-.*/\1/' | grep -x $pkg)
+
+	if [[ ! -z $found ]]; then
+
+		echo
+		read -p "Patch $pkg? (Yes): " confirm
+		if [[ $confirm != "Yes" ]]; then continue; fi
+
+		echo
+		echo "Patching $pkg..."
+				
+		applied=1
+
+		### UPGRADE LIST ###
+		echo
+		echo "Downloading..."
+		mirror_download_list $list
+		upgrade_list_packages $list
+	fi
+done
+
+if [[ $applied == 0 ]]; then
+	echo
+	echo "No patches applied."
+fi
+
+echo
+echo "Patching complete."
+echo
+
+

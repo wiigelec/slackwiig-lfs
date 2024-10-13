@@ -196,7 +196,7 @@ function list_install
 	done < $list
 
 	### COPY LIST TO LIST DIR ###
-	if [[ $error == 0 ]]; then mkdir -p $SWL_LIST_DIR && cp -i $list $SWL_LIST_DIR; fi
+	if [[ $error == 0 ]]; then mkdir -p $SWL_LIST_DIR && cp $list $SWL_LIST_DIR; fi
 }
 
 
@@ -457,7 +457,7 @@ function upgrade_list_packages
 	force=${2:-false}
 
         echo
-        echo "Upgrading $list packages..."
+	echo "Upgrading $(basename $list) packages..."
         echo
 
 	# read list
@@ -518,7 +518,7 @@ function upgrade_list_packages
         done < $list
 
         ### COPY LIST TO LIST DIR ###
-        if [[ $error == 0 ]]; then mkdir -p $SWL_LIST_DIR && cp -i $list $SWL_LIST_DIR; fi
+        if [[ $error == 0 ]]; then mkdir -p $SWL_LIST_DIR && cp $list $SWL_LIST_DIR; fi
 
 }
 
@@ -543,6 +543,14 @@ function utility_mount_kernelfs
          	 mount -vt tmpfs -o nosuid,nodev tmpfs $ROOT/dev/shm
         fi
         } > /dev/null
+}
+
+#-------------------------------------------------------------------#
+function utility_make_tmpdir
+{
+	tmpdir="${ROOT}/tmp/swltmpdir$RANDOM"
+	mkdir -pv $tmpdir > /dev/null
+	echo $tmpdir
 }
 
 #-------------------------------------------------------------------#
