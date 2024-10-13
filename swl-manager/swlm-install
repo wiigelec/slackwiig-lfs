@@ -93,6 +93,15 @@ if [[ ! "$mirror_versions" =~ (^|[ ])$version([ ]|$) ]]; then
 	exit
 fi
 
+####################################################################
+# RUN PARTITIONER
+####################################################################
+
+echo
+read -p "Run partitioner? (Yes): " confirm
+if [[ $confirm == "Yes" ]]; then install_run_partitioner; fi
+
+
 #------------------------------------------------------------------#
 # Summary output and user verification
 #------------------------------------------------------------------#
@@ -157,6 +166,14 @@ if [[ $swlbase == true ]]; then
 	# Write version file
 	echo $version > $SWL_VERSION_FILE
 fi
+
+####################################################################
+# INSTALL BOOTLOADER
+####################################################################
+
+echo
+read -p "Install bootloader? (Yes): " confirm
+if [[ $confirm == "Yes" ]]; then install_bootloader; fi
 
 
 ####################################################################

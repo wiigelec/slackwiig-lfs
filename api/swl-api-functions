@@ -13,6 +13,31 @@
 #
 ####################################################################
 
+#------------------------------------------------------------------#
+function install_bootloader
+{
+	loop=1
+        while [ $loop == 1 ]
+        do
+                echo
+                echo "Type 'c' to enter chroot, type 'q' to quit."
+                read -p ">  " command
+
+		### PROCESS COMMAND ###
+                case $command in
+
+			# Chroot
+                        c) 	utility_mount_kernelfs 
+				utility_chroot
+				utility_unmount_kernelfs
+			;;
+
+                        # Quit
+                        q) loop=0 ;;
+
+		esac
+	done
+}
 
 #------------------------------------------------------------------#
 function install_configure
@@ -71,6 +96,54 @@ function install_lfsbase
 
         ### CLEANUP ###
         rm -rf $tmpdir
+}
+
+#------------------------------------------------------------------#
+function install_run_partitioner
+{
+	loop=1
+	rootpart=""
+	while [ $loop == 1 ]
+	do
+		echo
+		echo "Enter command, type 'h' for list of commands, type 'q' to quit."
+		read -p ">  " command
+		
+		### PROCESS COMMAND ###
+		case $command in
+
+			# Help
+			h) 	echo
+			   	echo "l - list block devices"
+		       	   	echo "f <device> - run fdisk"
+	   		   	echo "r <mount point> - set root partition"		   
+	   		   	echo "s - enter shell"		   
+				;;
+
+
+			# List block devices
+			f*) 	device=${command#* }
+				fdisk $device
+				;;
+
+			# List block devices
+			l) lsblk ;;
+
+			# List block devices
+			r*) 	rootpart=${command#* }
+				echo "Setting root partition to $rootpart"
+				export ROOT=$rootpart
+				;;
+
+			# Shell
+			s) bash ;;
+
+			# Quit
+			q) loop=0 ;;
+			
+		esac
+
+	done
 }
 
 #------------------------------------------------------------------#
@@ -532,6 +605,19 @@ function upgrade_list_packages
 # UTILITY FUNCTIONS
 #
 ####################################################################
+
+#-------------------------------------------------------------------#
+function utility_chroot
+{
+	chroot "$ROOT" /usr/bin/env -i   \
+	HOME=/root                  \
+    	TERM="$TERM"                \
+    	PS1='(lfs chroot) \u:\w\$ ' \
+    	PATH=/usr/bin:/usr/sbin     \
+    	/bin/bash --login
+
+
+}
 
 #-------------------------------------------------------------------#
 function utility_mount_kernelfs
