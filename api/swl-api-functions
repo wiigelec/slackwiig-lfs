@@ -273,7 +273,7 @@ function mirror_get_versions
 function mirror_download_list
 {
 	list=$1
-	force=$2
+	force=${2:-false}
 
 	# read list
         while IFS= read -r line;
@@ -292,7 +292,14 @@ function mirror_download_list
                         continue
                 fi
 
-                # force remove
+		# check downloaded
+                downloaded=$(package_check_downloaded $line)
+                if [[ ! -z $downloaded && $force == false ]]; then
+                        echo "SKIPPING: $line DOWNLOADED"
+                        continue
+                fi
+
+                # force download
                 if [[ $force == true && -f $SWL_PKG_DIR_PATH/$line ]]; then
                         rm $SWL_PKG_DIR_PATH/$line
                 fi
@@ -360,7 +367,7 @@ function upgrade_lfsbase
         set -e
 
         ### DOWNLOAD LFS BASE LIST ###
-	mirror_download_list $tmpdir/lfs-base.list true
+	mirror_download_list $tmpdir/lfs-base.list
 
         ### UPGRADE LFS BASE PACKAGES ###
 	upgrade_list_packages $tmpdir/lfs-base.list
@@ -390,7 +397,7 @@ function upgrade_swlbase
         set -e
 
         ### DOWNLOAD SWL BASE PACKAGES ###
-	mirror_download_list $tmpdir/swl-base.list true
+	mirror_download_list $tmpdir/swl-base.list
 
         ### UPGRADE SWL BASE PACKAGES ###
 	upgrade_list_packages $tmpdir/swl-base.list
@@ -436,7 +443,7 @@ function upgrade_lists
 		mirror_download_list $upgradelist
 
 		# Upgrade list
-		upgrade_list_packages $list false
+		upgrade_list_packages $list
 	done
 
 	### CLEANUP ###
