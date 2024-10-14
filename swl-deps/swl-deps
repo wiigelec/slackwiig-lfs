@@ -26,12 +26,11 @@ function createList ( )
 	for FILE in $location/*;
 	do
 		pkg=${FILE#*-z-}
-		pkg=$(echo $pkg | tr '[:upper:]' '[:lower:]')
-		found=$(grep ^$pkg $SWL_DIR/swl-packages-121.list | head -n1)
+		found=$(grep ^$pkg $SWL_DIR/pkg-versions-122.jhalfs | head -n1)
 		if [[ -z $found ]]; then
 			found="NOT FOUND: $pkg"
 		fi
-		echo "$found"
+		echo $found | tr '[:upper:]' '[:lower:]'
 	done
 
 }
