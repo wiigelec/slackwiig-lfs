@@ -6,6 +6,7 @@ grub-efi
 initramfs
 kernel-firmware
 lm-sensors
+lsof
 lvm2
 network-manager
 pciutils

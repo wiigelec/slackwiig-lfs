@@ -1,0 +1,7 @@
+#!/bin/bash
+
+mountpoint /sys/firmware/efi/efivars || mount -v -t efivarfs efivarfs /sys/firmware/efi/efivars
+
+grub-install --bootloader-id=SWL --recheck
+
+umount /sys/firmware/efi/efivars
