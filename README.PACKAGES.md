@@ -2,8 +2,9 @@
 SWL-BUILD:
 lfs-base
 blfs-tools
-jhalfs
 swl-manager
+jhalfs
+postlfs-config-profile
 which
 pkgtools
 systemd-pam
