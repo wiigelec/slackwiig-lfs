@@ -8,26 +8,23 @@ postlfs-config-profile
 which
 pkgtools
 systemd-pam
-python3 (sqlite)
 
 
-SWL-BASE PACKAGES:
+SWL-BASE:
 
-blfs-tools
 dosfstools
+cryptsetup (lvm2)
 grub-efi
 initramfs
 kernel-firmware
+network-manager
+
+
+SWL-TOOLS:
+
 lm-sensors
 lsof
-lvm2
-network-manager
 pciutils
-pkgtools
-postlfs-config-profile
-python3
 screen
-systemd-pam
-ufw
 usbutils
-which
+ufw
