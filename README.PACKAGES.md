@@ -1,3 +1,15 @@
+
+SWL-BUILD:
+lfs-base
+blfs-tools
+jhalfs
+swl-manager
+which
+pkgtools
+systemd-pam
+python3 (sqlite)
+
+
 SWL-BASE PACKAGES:
 
 blfs-tools
