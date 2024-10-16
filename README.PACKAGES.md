@@ -1,4 +1,5 @@
 
+--------------------------------------------------------------------
 SWL-BUILD:
 lfs-base
 blfs-tools
@@ -10,6 +11,7 @@ pkgtools
 systemd-pam
 
 
+--------------------------------------------------------------------
 SWL-BASE:
 
 dosfstools
@@ -20,6 +22,7 @@ kernel-firmware
 network-manager
 
 
+--------------------------------------------------------------------
 SWL-TOOLS:
 
 lm-sensors
@@ -28,3 +31,10 @@ pciutils
 screen
 usbutils
 ufw
+openvpn
+qemu (spice)
+libvirt
+virt-manager
+tigervnc
+mutter
+irssi
