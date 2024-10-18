@@ -2,6 +2,8 @@
 
 mountpoint /sys/firmware/efi/efivars || mount -v -t efivarfs efivarfs /sys/firmware/efi/efivars
 
+echo "GRUB_ENABLE_CRYPTODISK=1" > /etc/default/grub
+
 grub-install --bootloader-id=SWL --recheck
 
 umount /sys/firmware/efi/efivars
