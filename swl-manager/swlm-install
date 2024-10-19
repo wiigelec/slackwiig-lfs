@@ -150,12 +150,12 @@ if [[ $swlbase == true ]]; then
 	echo
         echo "Installing swl..."
         echo
-        git clone https://github.com/wiigelec/slackwiig-lfs $ROOT/$SWL_INSTALL_PATH
+        if [[ !-d $ROOT/$SWL_INSTALL_PATH ]] && git clone https://github.com/wiigelec/slackwiig-lfs $ROOT/$SWL_INSTALL_PATH
         echo
 
 	# Create links
-	ln -sv /usr/src/slackwiig-lfs/swl-manager/swl-manager $SWL_SBIN_PATH
-	ln -sv /usr/src/slackwiig-lfs/swl-manager/swlm-config $SWL_SBIN_PATH
+	if [[ ! -L $SWL_SBIN_PATH/swl-manager ]] && ln -sv /usr/src/slackwiig-lfs/swl-manager/swl-manager $SWL_SBIN_PATH
+	if [[ ! -L $SWL_SBIN_PATH/swl-config ]] && ln -sv /usr/src/slackwiig-lfs/swl-manager/swlm-config $SWL_SBIN_PATH
 
 	# Initiallize polkit
 	echo
