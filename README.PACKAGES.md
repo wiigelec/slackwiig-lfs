@@ -1,6 +1,7 @@
 
 --------------------------------------------------------------------
 SWL-BUILD:
+
 lfs-base
 blfs-tools
 swl-manager
@@ -14,6 +15,7 @@ systemd-pam
 --------------------------------------------------------------------
 SWL-BASE:
 
+swl-build
 dosfstools
 cryptsetup (lvm2)
 grub-efi
