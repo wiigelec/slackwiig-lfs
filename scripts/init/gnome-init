@@ -1,25 +1,25 @@
 #!/bin/bash
 
 # gdm
-groupadd -g 21 gdm &&
-useradd -c "GDM Daemon Owner" -d /var/lib/gdm -u 21 \
-        -g gdm -s /bin/false gdm &&
+groupadd -g 21 gdm
+id -u gdm &>/dev/null || useradd -c "GDM Daemon Owner" -d /var/lib/gdm -u 21 \
+        -g gdm -s /bin/false gdm
 passwd -ql gdm
 
 systemctl enable gdm
 
 # avahi
 groupadd -fg 84 avahi &&
-useradd -c "Avahi Daemon Owner" -d /run/avahi-daemon -u 84 \
+id -u avahi &>/dev/null || useradd -c "Avahi Daemon Owner" -d /run/avahi-daemon -u 84 \
         -g avahi -s /bin/false avahi
 
 # cups
-useradd -c "Print Service User" -d /var/spool/cups -g lp -s /bin/false -u 9 lp
+id -u lp &>/dev/null || useradd -c "Print Service User" -d /var/spool/cups -g lp -s /bin/false -u 9 lp
 groupadd -g 19 lpadmin
 
 # colord
 groupadd -g 71 colord &&
-useradd -c "Color Daemon Owner" -d /var/lib/colord -u 71 \
+id -u colord &>/dev/null || useradd -c "Color Daemon Owner" -d /var/lib/colord -u 71 \
         -g colord -s /bin/false colord
 
 # init
