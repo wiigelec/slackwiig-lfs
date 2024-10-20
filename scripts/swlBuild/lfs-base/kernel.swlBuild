@@ -34,9 +34,9 @@ make -j$(nproc)
 
 # Destdir install
 mkdir -pv /sources/destdir/boot
-cp arch/x86/boot/bzImage /boot/vmlinuz-$PKG_VER-lfs-$LFS_VER-systemd
-cp System.map /boot/System.map-$PKG_VER
-cp .config /boot/config-$PKG_VER
+cp arch/x86/boot/bzImage boot/vmlinuz-$PKG_VER-lfs-$LFS_VER-systemd
+cp System.map boot/System.map-$PKG_VER
+cp .config boot/config-$PKG_VER
 
 DESTDIR=/sources/destdir make modules_install
 
