@@ -18,7 +18,7 @@ id -u lp &>/dev/null || useradd -c "Print Service User" -d /var/spool/cups -g lp
 groupadd -g 19 lpadmin
 
 # colord
-groupadd -g 71 colord &&
+groupadd -g 71 colord
 id -u colord &>/dev/null || useradd -c "Color Daemon Owner" -d /var/lib/colord -u 71 \
         -g colord -s /bin/false colord
 
