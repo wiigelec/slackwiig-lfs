@@ -17,6 +17,11 @@ useradd -c "Avahi Daemon Owner" -d /run/avahi-daemon -u 84 \
 useradd -c "Print Service User" -d /var/spool/cups -g lp -s /bin/false -u 9 lp
 groupadd -g 19 lpadmin
 
+# colord
+groupadd -g 71 colord &&
+useradd -c "Color Daemon Owner" -d /var/lib/colord -u 71 \
+        -g colord -s /bin/false colord
+
 # init
 ldconfig
 glib-compile-schemas /usr/share/glib-2.0/schemas/
