@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# gdm
+./gdm-init
+
+# avahi
+./avahi-init
+
+# cups
+./cups-init
+
+ldconfig
+glib-compile-schemas /usr/share/glib-2.0/schemas/
