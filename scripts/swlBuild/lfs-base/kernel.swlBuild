@@ -24,11 +24,11 @@ pushd $PKG_FULL
 # Download slackware config
 wget https://mirrors.slackware.com/slackware/slackware64-15.0/source/k/kernel-configs/config-huge-5.15.19.x64 -O .config
 
-# Landlock (tracker-miners)
-sed -i 's/# CONFIG_SECURITY_LANDLOCK is not set/CONFIG_SECURITY_LANDLOCK=y/' .config
-
 make mrproper
 make olddefconfig
+
+# Landlock (tracker-miners)
+sed -i 's/# CONFIG_SECURITY_LANDLOCK is not set/CONFIG_SECURITY_LANDLOCK=y/' .config
 
 make -j$(nproc)
 
