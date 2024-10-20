@@ -270,6 +270,10 @@ function list_install
 
 	### COPY LIST TO LIST DIR ###
 	if [[ $error == 0 ]]; then mkdir -p $SWL_LIST_DIR && cp $list $SWL_LIST_DIR; fi
+
+	### Initialize ###
+	ldconfig
+	[[ -f /usr/bin/glib-compile-schemas ]] && glib-compile-schemas /usr/share/glib-2.0/schemas
 }
 
 
