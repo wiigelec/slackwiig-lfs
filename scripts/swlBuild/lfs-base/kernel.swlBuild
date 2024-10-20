@@ -1,0 +1,60 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then echo "No kernel version."; exit; fi
+if [[ -z $2 ]]; then echo "No swl version."; exit; fi
+
+# Setup
+SWL_VER=$2
+LFS_VER=$(echo "${SLW_VER:0:2}"."${SLW_VER:2:3}")
+
+PKG_NAME=linux
+PKG_VER=$1
+PKG_FULL=${PKG_NAME}-${PKG_VER}
+
+pushd /sources
+
+# Download
+TAR_FILE=linux-$PKG_VER.tar.xz
+wget https://www.kernel.org/pub/linux/kernel/v6.x/$TAR_FILE
+tar -xf $TAR_FILE
+
+# Build
+pushd $PKG_FULL
+
+# Download slackware config
+wget https://mirrors.slackware.com/slackware/slackware64-15.0/source/k/kernel-configs/config-huge-5.15.19.x64 -O .config
+
+# Landlock (tracker-miners)
+sed -i 's/# CONFIG_SECURITY_LANDLOCK is not set/CONFIG_SECURITY_LANDLOCK=y/' .config
+
+make mrproper
+make olddefconfig
+
+make -j$(nproc)
+
+# Destdir install
+mkdir -pv /sources/destdir/boot
+cp arch/x86/boot/bzImage /boot/vmlinuz-$PKG_VER-lfs-$LFS_VER-systemd
+cp System.map /boot/System.map-$PKG_VER
+cp .config /boot/config-$PKG_VER
+
+DESTDIR=/sources/destdir make modules_install
+
+popd
+
+# Package
+pushd /sources/destdir
+sudo chown -R root:root ./*
+sudo makepkg -l y -c n /sources/kernel-$PKG_VER-amd64-swl$SWL_VER.txz
+popd
+
+# Cleanup
+sudo rm -rf /sources/destdir
+sudo rm -rf /sources/$PKG_FULL
+rm /sources/$TAR_FILE
+
+popd
+
+
+
+

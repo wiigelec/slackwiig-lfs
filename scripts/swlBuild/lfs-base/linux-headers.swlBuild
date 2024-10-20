@@ -1,10 +1,13 @@
 #!/bin/bash
 
+if [[ -z $1 ]]; then echo "No kernel version."; exit; fi
+if [[ -z $2 ]]; then echo "No swl version."; exit; fi
+
 # Setup
-SWL_VER=121
+SWL_VER=$2
 
 PKG_NAME=linux
-PKG_VER=6.7.4
+PKG_VER=$1
 PKG_FULL=${PKG_NAME}-${PKG_VER}
 
 pushd /sources
