@@ -274,6 +274,7 @@ function list_install
 	### Initialize ###
 	ldconfig
 	[[ -f /usr/bin/glib-compile-schemas ]] && glib-compile-schemas /usr/share/glib-2.0/schemas
+	[[ -f /usr/bin/gtk-update-icon-cache ]] && gtk-update-icon-cache /usr/share/icons/hicolor
 }
 
 
