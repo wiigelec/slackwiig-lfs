@@ -22,6 +22,14 @@ groupadd -g 71 colord &&
 id -u colord &>/dev/null || useradd -c "Color Daemon Owner" -d /var/lib/colord -u 71 \
         -g colord -s /bin/false colord
 
+# pipewire
+systemctl --global enable pipewire-pulse.socket
+systemctl --global disable pulseaudio
+sed '2i exit # nouse' -i /etc/xdg/Xwayland-session.d/00-pulseaudio-x11
+sed '$a Hidden=true'  -i /etc/xdg/autostart/pulseaudio.desktop
+install -vdm755 /etc/alsa/conf.d
+ln -sfvr /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
+
 # init
 ldconfig
 glib-compile-schemas /usr/share/glib-2.0/schemas/
