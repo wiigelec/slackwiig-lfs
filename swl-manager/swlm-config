@@ -32,6 +32,7 @@ export SWL_BASE_DIR=$ROOT/var/lib/swl
 export SWL_LIST_DIR=$SWL_BASE_DIR/lists
 
 export SWL_INSTALL_PATH=/usr/src/slackwiig-lfs
+export SWL_API_PATH=$SWL_INSTALL_PATH/swl-manager/api
 export SWL_INSTALL=$SWL_INSTALL_PATH/swl-manager/swlm-install
 export SWL_LIST=$SWL_INSTALL_PATH/swl-manager/swlm-list
 export SWL_AUDIT=$SWL_INSTALL_PATH/swl-manager/swlm-audit
