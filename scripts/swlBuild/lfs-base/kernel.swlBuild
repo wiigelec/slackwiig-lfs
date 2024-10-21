@@ -5,7 +5,7 @@ if [[ -z $2 ]]; then echo "No swl version."; exit; fi
 
 # Setup
 SWL_VER=$2
-LFS_VER=$(echo "${SLW_VER:0:2}"."${SLW_VER:2:3}")
+LFS_VER=$(echo "${SWL_VER:0:2}"."${SWL_VER:2:3}")
 
 PKG_NAME=linux
 PKG_VER=$1
@@ -13,7 +13,7 @@ PKG_FULL=${PKG_NAME}-${PKG_VER}
 
 MAKEPKG_NAME=kernel
 ARCH=amd64
-PKG_SWL=swl$PKG_VER
+PKG_SWL=swl$SWL_VER
 PKG_EXT=txz
 
 DEST_DIR=/sources/destdir
@@ -36,6 +36,7 @@ make olddefconfig
 
 # Landlock (tracker-miners)
 sed -i 's/# CONFIG_SECURITY_LANDLOCK is not set/CONFIG_SECURITY_LANDLOCK=y/' .config
+sed -i 's/CONFIG_LSM="lockdown,yama,loadpin,safesetid,integrity"/CONFIG_LSM="landlock,lockdown,yama,loadpin,safesetid,integrity"/' .config
 
 make -j$(nproc)
 
@@ -46,7 +47,7 @@ cp -v arch/x86/boot/bzImage $DEST_DIR/boot/vmlinuz-$PKG_VER-lfs-$LFS_VER-systemd
 cp -v System.map $DEST_DIR/boot/System.map-$PKG_VER
 cp -v .config $DEST_DIR/boot/config-$PKG_VER
 
-DESTDIR=$DEST_DIR make modules_install
+INSTALL_MOD_PATH=$DEST_DIR make modules_install
 
 popd
 
