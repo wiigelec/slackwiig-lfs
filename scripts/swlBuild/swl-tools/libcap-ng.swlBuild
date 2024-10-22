@@ -4,13 +4,11 @@
 # DEPENDENCIES:
 #
 #  libnl
-#  libcap-ng
-#  lzo
 #
 #------------------------------------------------------------------#
 
 
-if [[ -z $1 ]]; then echo "No package version. (2.6.12)"; exit; fi
+if [[ -z $1 ]]; then echo "No package version. (0.8.5)"; exit; fi
 if [[ -z $2 ]]; then echo "No swl version."; exit; fi
 
 
@@ -18,7 +16,7 @@ if [[ -z $2 ]]; then echo "No swl version."; exit; fi
 SWL_VER=$2
 LFS_VER=$(echo "${SWL_VER:0:2}"."${SWL_VER:2:3}")
 
-PKG_NAME=openvpn
+PKG_NAME=libcap-ng
 PKG_VER=$1
 PKG_FULL=${PKG_NAME}-${PKG_VER}
 
@@ -35,14 +33,14 @@ pushd /sources
 
 # Download
 TAR_FILE=$PKG_FULL.tar.gz
-PKG_URL=https://swupdate.openvpn.org/community/releases/$TAR_FILE
+PKG_URL=https://people.redhat.com/sgrubb/libcap-ng/$TAR_FILE
 wget $PKG_URL
 tar -xf $TAR_FILE
 
 # Build
 pushd $PKG_FULL
 
-./configure --prefix=/usr --enable-systemd
+./configure --prefix=/usr
 
 make
 
