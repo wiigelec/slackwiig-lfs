@@ -119,11 +119,11 @@ function install_rebase
                 fi
                 set +e #exit on error
                 wget -P $tmpdir $url
-                set -e
 
 		### COMPARE LISTS ###
                 rebaselist=$tmpdir/$baselist
 		listdiff=$(diff $list $rebaselist)
+                set -e
 		if [[ -z $listdiff ]]; then
 			echo
 			echo "List $list unchanged, skipping."
@@ -137,7 +137,7 @@ function install_rebase
                 mirror_download_list $rebaselist
 
                 # Upgrade list
-                install_list_packages $rebaselist
+                list_install $rebaselist false
 
 	done
 
