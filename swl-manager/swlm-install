@@ -22,9 +22,10 @@ INSTALL USAGE:
 ROOT=/install/root swl-manager install (options) <version>
 
 OPTIONS:
-	-l	lfs-base only
-	-v	display mirror available versions
 	-c	configure installation (passwd, fstab)
+	-l	lfs-base only
+	-r	rebase
+	-v	display mirror available versions
 
 EOF
 }
@@ -43,16 +44,17 @@ if [[ -z $1 ]]; then usage; exit; fi
 version=0
 swlbase=true
 configure=false
+rebase=false
 
 case $1 in
 
-	-v) 	;;
+	-c) 	configure=true ;;
 	-l)	if [[ -z $2 ]]; then usage; exit; fi
 		version=$2
 		swlbase=false
 		;;
-		
-	-c) 	configure=true ;;
+	-r)	rebase=true ;;
+	-v) 	;;
 	*) 	version=$1 ;;
 esac
 
@@ -62,6 +64,14 @@ esac
 #------------------------------------------------------------------#
 
 if [[ $configure == true ]]; then install_configure; exit 0; fi
+
+
+#------------------------------------------------------------------#
+# REBASE
+#------------------------------------------------------------------#
+
+if [[ $rebase == true ]]; then install_rebase; exit 0; fi
+
 
 
 #------------------------------------------------------------------#

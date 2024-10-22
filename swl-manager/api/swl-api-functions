@@ -99,6 +99,53 @@ function install_lfsbase
 }
 
 #------------------------------------------------------------------#
+function install_rebase
+{
+	# create temp dir
+        tmpdir=$(utility_make_tmpdir)
+
+	### LOOP LISTS ###
+	for list in $SWL_LIST_DIR/*.list
+        do
+		# Download list file
+                baselist=${list##*/}
+                # Get upgrade list
+                url=$SWL_MIRROR_LISTS_PATH/$baselist
+                found=$(curl --head --silent $url | head -n1)
+                if [[ $found == *"404"* ]]; then
+                        echo
+                        echo "$baselist not found: $url"
+                        continue
+                fi
+                set +e #exit on error
+                wget -P $tmpdir $url
+                set -e
+
+		### COMPARE LISTS ###
+                rebaselist=$tmpdir/$baselist
+		listdiff=$(diff $list $rebaselist)
+		if [[ -z $listdiff ]]; then
+			echo
+			echo "List $list unchanged, skipping."
+			echo
+			continue
+		fi
+
+		echo "Rebasing $list..."
+
+                # Download list
+                mirror_download_list $rebaselist
+
+                # Upgrade list
+                install_list_packages $rebaselist
+
+	done
+
+	### CLEANUP ###
+        rm -rf $tmpdir
+}
+
+#------------------------------------------------------------------#
 function install_run_partitioner
 {
 	loop=1
