@@ -1,0 +1,72 @@
+#!/bin/bash
+
+#------------------------------------------------------------------#
+# DEPENDENCIES:
+#
+#  libnl
+#
+#------------------------------------------------------------------#
+
+
+if [[ -z $1 ]]; then echo "No package version. (3.6)"; exit; fi
+if [[ -z $2 ]]; then echo "No swl version."; exit; fi
+
+
+# Setup
+SWL_VER=$2
+LFS_VER=$(echo "${SWL_VER:0:2}"."${SWL_VER:2:3}")
+
+PKG_NAME=dmidecode
+PKG_VER=$1
+PKG_FULL=${PKG_NAME}-${PKG_VER}
+
+MAKEPKG_NAME=$PKG_NAME
+ARCH=amd64
+PKG_SWL=swl$SWL_VER
+PKG_EXT=txz
+
+DEST_DIR=/sources/destdir
+
+set -e
+
+pushd /sources
+
+# Download
+TAR_FILE=$PKG_FULL.tar.xz
+PKG_URL=http://download.savannah.gnu.org/releases/dmidecode/$TAR_FILE
+wget $PKG_URL
+tar -xf $TAR_FILE
+
+
+# Build
+pushd $PKG_FULL
+
+sed -i 's/\/usr\/local/\/usr/' Makefile
+
+make
+
+
+# Destdir install
+sed -i "s|DESTDIR.*=.*|DESTDIR = $DEST_DIR|" Makefile
+
+sudo make install
+
+
+popd
+
+# Package
+pushd $DEST_DIR
+sudo chown -R root:root ./*
+sudo makepkg -l y -c n /sources/$MAKEPKG_NAME-$PKG_VER-$ARCH-$PKG_SWL.$PKG_EXT
+popd
+
+# Cleanup
+sudo rm -rf $DEST_DIR
+sudo rm -rf /sources/$PKG_FULL
+rm /sources/$TAR_FILE
+
+popd
+
+
+
+
