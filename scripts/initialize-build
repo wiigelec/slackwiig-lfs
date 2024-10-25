@@ -11,6 +11,8 @@ pushd /usr/src
 sudo git clone https://github.com/wiigelec/slackwiig-lfs
 user=$(whoami)
 sudo chown -R $user:$user slackwiig-lfs
+sudo ln -sv /usr/src/slackwiig-lfs/swl-manager/swl-manager /usr/sbin
+sudo ln -sv /usr/src/slackwiig-lfs/swl-manager/swlm-config /usr/sbin
 popd
 
 
