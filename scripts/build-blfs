@@ -1,0 +1,105 @@
+#!/bin/bash
+####################################################################
+#
+#
+#
+####################################################################
+
+set -e
+
+if [[ -z $1 ]]; then echo "No package list file."; exit 1; fi
+if [[ ! -f $1 ]]; then echo "Package list file $1 not found."; exit 1; fi
+if [[ ! -f /var/lib/swl/swl-version ]]; then echo "No swl version file."; exit 1; fi
+
+PKG_LIST=$1
+SWL_VER=$(cat /var/lib/swl/swl-version)
+
+pushd $HOME/blfs_root &> /dev/null
+
+### GENERATE BLANK CONFIG ###
+[[ -f configuration ]] && rm configuration
+echo "Q Y" | make
+
+### WRITE BUILD PACKAGES ###
+if [[ ! -f $PKG_LIST ]]; then echo "Package list file $PKG_LIST not found -- use full path."; exit 1; fi
+echo "Building PKG_LIST packages."
+while IFS= read -r line;
+do
+	echo "Adding $line."
+	echo "CONFIG_$line" >> configuration
+done < $PKG_LIST
+
+### GENERATE SCRIPTS ###
+./gen_pkg_book.sh
+
+### INSTALL EXISTING PACKAGES ###
+ls scripts | more
+echo
+read -p "Continue? (Yes): " conf
+[[ $conf == "Yes" ]] || exit
+
+echo "Building list..."
+/usr/sbin/swl-manager list -c > $PKG_LIST.list
+sudo swl-manager list -d $PKG_LIST.list
+sudo swl-manager list -i $PKG_LIST.list
+echo "Generating installed packages xml..."
+/usr/src/slackwiig-lfs/scripts/build-instpkgxml $SWL_VER > /var/lib/jhalfs/BLFS/instpkg.xml
+
+### REGENERATE SCRIPTS ###
+rm -rf $HOME/blfs_root/scripts
+echo "Q yes" | make
+
+### EDIT SCRIPT FILES ###
+set +e
+echo "--------------------------------------------------------------------"
+echo "Edit scripts:"
+loop=1
+while [ $loop == 1 ]
+do
+	echo
+	echo "Enter command or 'C' to continue."
+	read -p "> " command
+
+	case $command in
+		C) loop=0;;
+		*) $command
+	esac
+done
+
+### CONVERT BLFS ###
+/usr/src/slackwiig-lfs/scripts/convert-blfs $SWL_VER
+
+### BUILD ###
+[[ ! -d "work" ]] && mkdir work
+
+pushd work &> /dev/null
+../gen-makefile.sh
+make
+popd &> /dev/null
+
+
+popd &> /dev/null
+
+### BUILD PACKAGES ###
+# log
+pushd /var/lib/swl/difflog &> /dev/null
+sudo rm ../pkglog/*
+sudo /usr/src/slackwiig-lfs/scripts/build-log
+popd &> /dev/null
+# pkg
+pushd /var/lib/swl/pkglog &> /dev/null
+sudo /usr/src/slackwiig-lfs/scripts/build-pkg $SWL_VER
+popd &> /dev/null
+
+### INSTALL PACKAGES ###
+# temp list
+ls /var/lib/swl/packages > tmp.list
+sudo swl-manager list -i tmp.list
+rm tmp.list
+echo "Generating installed packages xml..."
+/usr/src/slackwiig-lfs/scripts/build-instpkgxml $SWL_VER > /var/lib/jhalfs/BLFS/instpkg.xml
+
+
+echo
+echo "Done."
+echo
