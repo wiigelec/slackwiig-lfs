@@ -1,0 +1,5 @@
+dosfstools
+cryptsetup
+grub-efi
+initramfs
+NetworkManager
