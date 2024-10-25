@@ -98,9 +98,10 @@ popd &> /dev/null
 
 ### INSTALL PACKAGES ###
 # temp list
-ls /var/lib/swl/packages > tmp.list
-sudo swl-manager list -i tmp.list
-rm tmp.list
+TMP_LIST=/sources/tmp.list
+ls /var/lib/swl/packages > $TMP_LIST
+sudo swl-manager list -i $TMP_LIST
+rm $TMP_LIST
 echo "Generating installed packages xml..."
 /usr/src/slackwiig-lfs/scripts/build-instpkgxml $SWL_VER > /var/lib/jhalfs/BLFS/instpkg.xml
 
