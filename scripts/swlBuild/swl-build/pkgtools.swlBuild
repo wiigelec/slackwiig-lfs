@@ -1,0 +1,62 @@
+#!/bin/bash
+
+#------------------------------------------------------------------#
+# DEPENDENCIES:
+#
+#
+#------------------------------------------------------------------#
+
+PKG_NAME=pkgtools
+
+SWL_VER_FILE=/var/lib/swl/swl-version
+PKG_VER_FILE=./pkg.versions
+if [[ ! -f $SWL_VER_FILE ]]; then echo "$SWL_VER_FILE does not exist."; exit; fi
+if [[ ! -f $PKG_VER_FILE ]]; then echo "$PKG_VER_FILE does not exist."; exit; fi
+
+PKG_VER=$(grep $PKG_NAME $PKG_VER_FILE)
+if [[ -z $PKG_VER ]]; then echo "$PKG_FILE not found in $PKG_VER_FILE"; exit; fi
+PKG_VER=${PKG_VER#* }
+
+SWL_VER=$(cat $SWL_VER_FILE)
+LFS_VER=$(echo "${SWL_VER:0:2}"."${SWL_VER:2:3}")
+
+PKG_FULL=${PKG_NAME}-${PKG_VER}
+
+MAKEPKG_NAME=$PKG_NAME
+ARCH=amd64
+PKG_SWL=swl$SWL_VER
+PKG_EXT=txz
+
+DEST_DIR=/sources/destdir
+
+set -e
+
+pushd /sources
+
+# Download
+TAR_FILE=$PKG_FULL-noarch-42.txz
+PKG_URL=https://mirrors.slackware.com/slackware/slackware64-15.0/slackware64/a/$TAR_FILE
+wget $PKG_URL
+
+mkdir -pv $DEST_DIR
+pushd $DEST_DIR
+tar -xf ../$TAR_FILE
+
+
+# Install
+./sbin/installpkg --terse ../$TAR_FILE
+
+popd
+
+
+# Package
+mv $TAR_FILE /var/lib/swl/packages
+
+# Cleanup
+sudo rm -rf $DEST_DIR
+
+popd
+
+
+
+
