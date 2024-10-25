@@ -16,5 +16,5 @@ all : swl-base-blfs kernel-firmware
 swl-base-blfs : 
 	$(build-blfs) $(swl-base-blfs)
 
-pkgtools : 
+kernel-firmware : 
 	$(kernel-firmware-swlbuild)

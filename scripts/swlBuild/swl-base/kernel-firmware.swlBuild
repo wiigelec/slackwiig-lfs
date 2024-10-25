@@ -37,6 +37,7 @@ pushd /sources
 TAR_FILE=$PKG_FULL-noarch-1.txz
 PKG_URL=https://mirrors.slackware.com/slackware/slackware64-15.0/slackware64/a/$TAR_FILE
 pushd /var/lib/swl/packages
+sudo wget $PKG_URL
 
 popd
 
