@@ -3,6 +3,7 @@
 if [[ -z $1 ]]; then echo "No version"; exit; fi
 SWL_VER=$1
 
+[[ -z $(ls -A ./scripts/) ]] && exit
 for FILE in ./scripts/*;
 do
     ### GET PACKAGE NAME AND VERSION ##

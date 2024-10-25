@@ -258,6 +258,7 @@ function list_check_status
 function list_create_blfs
 {
 	# iterate script files
+	[[ -z $(ls -A $SWL_BLFS_SCRIPT_PATH/) ]] && exit
         for FILE in $SWL_BLFS_SCRIPT_PATH/*;
         do
                 pkg=${FILE#*-z-}

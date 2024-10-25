@@ -6,6 +6,7 @@ ARCH=amd64
 SWL=swl$1
 
 #----------------------------------------------------------------------------#
+[[ -z $(ls -A ./) ]] && exit
 for FILE in ./*.pkglog;
 do
     echo Processing $FILE...

@@ -8,8 +8,8 @@
 
 ### CONFIG VARIABLES ###
 build-blfs = /usr/src/slackwiig-lfs/scripts/build-blfs
-blfs_build_dir = ./build.build
-swl_build_dir = ./build.swl
+blfs_build_dir = /usr/src/slackwiig-lfs/scripts/swlBuild/build.blfs
+swl_build_dir = /usr/src/slackwiig-lfs/scripts/swlBuild/build.swl
 
 
 ### DEFAUT TARGET ###

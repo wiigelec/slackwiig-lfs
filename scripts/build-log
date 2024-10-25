@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #----------------------------------------------------------------------------#
+[[ -z $(ls -A ./) ]] && exit
 for FILE in ./*.difflog1;
 do
     ### GET PACKAGE NAME AND VERSION ##
