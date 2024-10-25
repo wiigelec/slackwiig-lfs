@@ -5,6 +5,45 @@
 #
 ####################################################################
 
+### ADD USER ###
+SWL_USER=compnerd
+useradd -m $SWL_USER
+usermod -aG wheel $SWL_USER
+passwd $SWL_USER
+
+### SUDO ###
+sed -i 's/%wheel ALL=(ALL) ALL/# %wheel ALL=(ALL) ALL/' /etc/sudoers.d/00-sudo
+sed -i 's/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
+
+### NETWORKING ###
+cat << EOF > /etc/systemd/network/10-eth-static.network
+[Match]
+Name=ens3
+
+[Network]
+Address=192.168.122.69/24
+Gateway=192.168.122.1
+DNS=192.168.122.1
+DNS=8.8.8.8
+Domains=local
+EOF
+
+### MIRROR ###
+cat << EOF > /etc/hosts
+# Begin /etc/hosts
+
+10.0.2.9 swl-build-122.local
+::1       ip6-localhost ip6-loopback
+ff02::1   ip6-allnodes
+ff02::2   ip6-allrouters
+
+192.168.69.239 swl-mirror
+
+# End /etc/hosts
+EOF
+
+### CHANGE USER ###
+su $SWL_USER
 
 ### INSTALL SWL-MANAGER ###
 pushd /usr/src
@@ -60,3 +99,6 @@ popd
 sudo mkdir -pv /var/lib/swl/{difflog,pkglog}
 sudo rm -rf /var/lib/swl/packages/*
 
+### LOGOUT ###
+exit # user
+exit # root
