@@ -9,7 +9,7 @@
 PKG_NAME=pkgtools
 
 SWL_VER_FILE=/var/lib/swl/swl-version
-PKG_VER_FILE=./pkg.versions
+PKG_VER_FILE=./swl.build/pkg.versions
 if [[ ! -f $SWL_VER_FILE ]]; then echo "$SWL_VER_FILE does not exist."; exit; fi
 if [[ ! -f $PKG_VER_FILE ]]; then echo "$PKG_VER_FILE does not exist."; exit; fi
 
