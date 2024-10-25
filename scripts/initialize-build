@@ -1,0 +1,54 @@
+#!/bin/bash
+####################################################################
+#
+#
+#
+####################################################################
+
+
+### INSTALL SWL-MANAGER ###
+pushd /usr/src
+sudo git clone https://github.com/wiigelec/slackwiig-lfs
+user=$(whoami)
+sudo chown -R $user:$user slackwiig-lfs
+popd
+
+
+### JHALFS ###
+pushd $HOME
+git clone https://git.linuxfromscratch.org/jhalfs
+popd
+
+
+### BLFS ###
+pushd $HOME/jhalfs
+cat << EOF > configuration
+HAVE_NPROC=y
+HAVE_CGROUP=y
+BOOK_BLFS=y
+BLFS_SYSD=y
+INITSYS="systemd"
+RUN_ME="./install-blfs-tools.sh auto"
+BRANCH=y
+COMMIT="12.2"
+BLFS_ROOT="/blfs_root"
+BLFS_XML="blfs-xml"
+LFS_XML="lfs-xml"
+LFS_BRANCH=y
+BLFS_LFS_COMMIT="12.2"
+TRACKING_DIR="/var/lib/jhalfs/BLFS"
+EOF
+
+# patch jhalfs
+
+
+echo "q y yes" | make
+popd
+
+### INIT BLFS ###
+pushd $HOME/blfs_root
+echo "q" | make
+/usr/src/slackwiig-lfs/scripts/build-versions > pkg-versions-122.jhalfs
+sudo mv pkg-versions-122.jhalfs /var/lib/swl
+popd
+
