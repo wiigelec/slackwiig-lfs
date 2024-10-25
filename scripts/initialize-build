@@ -52,3 +52,6 @@ echo "q" | make
 sudo mv pkg-versions-122.jhalfs /var/lib/swl
 popd
 
+### SWL DIRS ###
+sudo mkdir -pv /var/lib/swl/{difflog,pkglog}
+

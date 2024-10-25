@@ -11,7 +11,7 @@ pkgtools-swlbuild = /usr/src/slackwiig-lfs/scripts/swlBuild/swl-build/pkgtools.s
 
 
 
-all : swl-build-blfs pkgtools
+all : pkgtools swl-build-blfs 
 
 swl-build-blfs : 
 	$(build-blfs) $(swl-build-blfs)

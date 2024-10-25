@@ -44,19 +44,16 @@ tar -xf ../$TAR_FILE
 
 
 # Install
-./sbin/installpkg --terse ../$TAR_FILE
+sudo ./sbin/installpkg --terse ../$TAR_FILE
 
 popd
 
 
 # Package
-mv $TAR_FILE /var/lib/swl/packages
+sudo mv $TAR_FILE /var/lib/swl/packages
 
 # Cleanup
 sudo rm -rf $DEST_DIR
 
 popd
-
-
-
 
