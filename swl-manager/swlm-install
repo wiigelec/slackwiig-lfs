@@ -172,10 +172,10 @@ if [[ $swlbase == true ]]; then
         echo "Initializing polkit..."
         echo
         chroot $ROOT $SWL_POLKIT_INIT
-
-	# Write version file
-	echo $version > $SWL_VERSION_FILE
 fi
+	
+# Write version file
+echo $version > $SWL_VERSION_FILE
 
 ####################################################################
 # INSTALL BOOTLOADER
