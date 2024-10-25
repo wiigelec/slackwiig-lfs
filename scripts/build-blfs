@@ -42,6 +42,7 @@ echo "Building list..."
 /usr/sbin/swl-manager list -c > $PKG_LIST.list
 sudo swl-manager list -d $PKG_LIST.list
 sudo swl-manager list -i $PKG_LIST.list
+rm $PKG_LIST.list
 echo "Generating installed packages xml..."
 /usr/src/slackwiig-lfs/scripts/build-instpkgxml $SWL_VER > /var/lib/jhalfs/BLFS/instpkg.xml
 
