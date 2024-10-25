@@ -4,5 +4,18 @@ It is recommended to run the meta builds in the following order:
 
 swl-build
 swl-base
-swl-ice
-swl-tools
++swl-ice
+  xorg-tools
+  xorg
+  icewm
+  *nm-applet
+  *xfce4-terminal
+  *firefox
+++swl-tools
+
+
+
+*isolated build
++final build after all packages complete for list
+++no final build must keep running list
+

@@ -70,6 +70,10 @@ done
 ### CONVERT BLFS ###
 /usr/src/slackwiig-lfs/scripts/convert-blfs $SWL_VER
 
+### CLEANUP ###
+sudo rm /var/lib/swl/difflog/*
+sudo rm /var/lib/swl/pkglog/*
+
 ### BUILD ###
 [[ ! -d "work" ]] && mkdir work
 
