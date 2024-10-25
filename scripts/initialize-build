@@ -54,4 +54,5 @@ popd
 
 ### SWL DIRS ###
 sudo mkdir -pv /var/lib/swl/{difflog,pkglog}
+sudo rm -rf /var/lib/swl/packages/*
 
