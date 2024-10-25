@@ -41,6 +41,8 @@ EOF
 
 # patch jhalfs
 
+sudo mkdir /var/lib/jhalfs
+sudo chown $user:$user /var/lib/jhalfs
 
 echo "q y yes" | make
 popd
