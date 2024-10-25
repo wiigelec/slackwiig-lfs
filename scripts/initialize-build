@@ -5,6 +5,8 @@
 #
 ####################################################################
 
+set +e
+
 ### ADD USER ###
 SWL_USER=compnerd
 useradd -m $SWL_USER
@@ -28,6 +30,8 @@ DNS=8.8.8.8
 Domains=local
 EOF
 
+systemctl restart systemd-networkd
+
 ### MIRROR ###
 cat << EOF > /etc/hosts
 # Begin /etc/hosts
@@ -43,26 +47,25 @@ ff02::2   ip6-allrouters
 EOF
 
 ### CHANGE USER ###
-su $SWL_USER
+su  - $SWL_USER << USER_EOF
 
 ### INSTALL SWL-MANAGER ###
 pushd /usr/src
 sudo git clone https://github.com/wiigelec/slackwiig-lfs
-user=$(whoami)
-sudo chown -R $user:$user slackwiig-lfs
+sudo chown -R $SWL_USER:$SWL_USER slackwiig-lfs
 sudo ln -sv /usr/src/slackwiig-lfs/swl-manager/swl-manager /usr/sbin
 sudo ln -sv /usr/src/slackwiig-lfs/swl-manager/swlm-config /usr/sbin
 popd
 
 
 ### JHALFS ###
-pushd $HOME
+pushd /home/$SWL_USER
 git clone https://git.linuxfromscratch.org/jhalfs
 popd
 
 
 ### BLFS ###
-pushd $HOME/jhalfs
+pushd /home/$SWL_USER/jhalfs
 cat << EOF > configuration
 HAVE_NPROC=y
 HAVE_CGROUP=y
@@ -83,13 +86,13 @@ EOF
 # patch jhalfs
 
 sudo mkdir /var/lib/jhalfs
-sudo chown $user:$user /var/lib/jhalfs
+sudo chown $SWL_USER:$SWL_USER /var/lib/jhalfs
 
 echo "q y yes" | make
 popd
 
 ### INIT BLFS ###
-pushd $HOME/blfs_root
+pushd /home/$SWL_USER/blfs_root
 echo "q" | make
 /usr/src/slackwiig-lfs/scripts/build-versions > pkg-versions-122.jhalfs
 sudo mv pkg-versions-122.jhalfs /var/lib/swl
@@ -99,6 +102,7 @@ popd
 sudo mkdir -pv /var/lib/swl/{difflog,pkglog}
 sudo rm -rf /var/lib/swl/packages/*
 
+USER_EOF
+
 ### LOGOUT ###
-exit # user
-exit # root
+exit
