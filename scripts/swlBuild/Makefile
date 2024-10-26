@@ -31,7 +31,7 @@ swl-base : swl-base.blfs kernel-firmware.swl
 swl-ice : swl-ice.blfs
 
 
-swl-tools : 
+swl-tools :
 
 
 
@@ -61,6 +61,9 @@ openvpn : openvpn.blfs libcap-ng.swl openvpn.swl
 
 
 qemu-spice : spice-protocol.swl spice.blfs orc.swl spice.swl qemu-spice.blfs
+
+
+virt-manager : 
 
 
 ###################################################################
@@ -112,6 +115,10 @@ qemu-spice.blfs :
 	$(build-blfs) $(blfs_build_dir)/qemu-spice.blfs
 
 
+virt-manager.blfs : 
+	$(build-blfs) $(blfs_build_dir)/virt-manager.blfs
+
+
 ###################################################################
 # SWL BUILDS
 ###################################################################
@@ -146,5 +153,9 @@ spice-protocol.swl :
 
 orc.swl :
 	$(swl_build_dir)/orc.swlBuild
+
+
+virt-manager.swl :
+	$(swl_build_dir)/virt-manager.swlBuild
 
 
