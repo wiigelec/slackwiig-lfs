@@ -12,6 +12,7 @@ swl-base
   *xfce4-terminal
   *firefox
 ++swl-tools
+  *qemu-spice
 
 
 
