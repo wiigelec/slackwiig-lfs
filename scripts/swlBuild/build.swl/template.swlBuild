@@ -55,8 +55,8 @@ pushd $PKG_FULL
 ### ### ### ### ### ### ###
 # EDIT
 
-#./configure --prefix=/usr --enable-systemd
-#make
+#./configure --prefix=/usr
+#make -j$(nproc)
 
 #meson setup --prefix=/usr build
 #ninja -C build

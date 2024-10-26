@@ -57,7 +57,7 @@ swl-ice.blfs :
 ###################################################################
 
 
-openvpn : openvpn.blfs openvpn.swl
+openvpn : openvpn.blfs libcap-ng.swl openvpn.swl
 
 
 qemu-spice : spice-protocol.swl spice.blfs orc.swl spice.swl qemu-spice.blfs

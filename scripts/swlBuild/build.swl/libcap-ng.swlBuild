@@ -1,23 +1,27 @@
 #!/bin/bash
+#------------------------------------------------------------------#
+#
+#
+#
+#------------------------------------------------------------------#
 
-#------------------------------------------------------------------#
-# DEPENDENCIES:
-#
-#
-#------------------------------------------------------------------#
+source /usr/src/slackwiig-lfs/scripts/swlBuild/build.swl/swl-build-api
+
+# PACKAGE NAME
+### ### ### ### ### ### ###
+# EDIT
 
 PKG_NAME=libcap-ng
 
-SWL_VER_FILE=/var/lib/swl/swl-version
-PKG_VER_FILE=./build.swl/pkg.versions
-if [[ ! -f $SWL_VER_FILE ]]; then echo "$SWL_VER_FILE does not exist."; exit; fi
-if [[ ! -f $PKG_VER_FILE ]]; then echo "$PKG_VER_FILE does not exist."; exit; fi
+### ### ### ### ### ### ###
 
-PKG_VER=$(grep $PKG_NAME $PKG_VER_FILE)
-if [[ -z $PKG_VER ]]; then echo "$PKG_FILE not found in $PKG_VER_FILE"; exit; fi
+
+PKG_VER=$(get_pkg_version $PKG_NAME)
+if [[ -z $PKG_VER ]]; then echo "$PKG_NAME not found in version file."; exit; fi
 PKG_VER=${PKG_VER#* }
 
-SWL_VER=$(cat $SWL_VER_FILE)
+SWL_VER=$(get_swl_version)
+if [[ -z $SWL_VER ]]; then echo "swl version not found."; exit; fi
 LFS_VER=$(echo "${SWL_VER:0:2}"."${SWL_VER:2:3}")
 
 PKG_FULL=${PKG_NAME}-${PKG_VER}
@@ -34,38 +38,46 @@ set -e
 pushd /sources
 
 # Download
+### ### ### ### ### ### ###
+# EDIT
+
 TAR_FILE=$PKG_FULL.tar.gz
 PKG_URL=https://people.redhat.com/sgrubb/libcap-ng/$TAR_FILE
-wget $PKG_URL
-tar -xf $TAR_FILE
+
+### ### ### ### ### ### ###
+
+download_extract_package $TAR_FILE $PKG_URL
 
 # Build
 pushd $PKG_FULL
 
-./configure --prefix=/usr
+# BUILD METHOD
+### ### ### ### ### ### ###
+# EDIT
 
-make
+./configure --prefix=/usr
+make -j$(nproc)
+
+#meson setup --prefix=/usr build
+#ninja -C build
+
 
 # Destdir install
 sudo DESTDIR=$DEST_DIR make install
+
+#sudo DESTDIR=$DEST_DIR ninja -C build install
+
+#
+### ### ### ### ### ### ###
 
 popd
 
 # Package
 FINAL_PKG=$MAKEPKG_NAME-$PKG_VER-$ARCH-$PKG_SWL.$PKG_EXT
-pushd $DEST_DIR
-sudo chown -R root:root ./*
-sudo makepkg -l y -c n /sources/$FINAL_PKG
-popd
+build_install_package $DEST_DIR $FINAL_PKG
 
 # Cleanup
-sudo rm -rf $DEST_DIR
 sudo rm -rf /sources/$PKG_FULL
-rm /sources/$TAR_FILE
-
-# Install package
-sudo installpkg --terse $FINAL_PKG
-sudo mv $FINAL_PKG /var/lib/swl/packages/
 
 popd
 
