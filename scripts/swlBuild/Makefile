@@ -82,7 +82,7 @@ firefox.blfs :
 
 
 lightdm.blfs : 
-	$(build-blfs) $(blfs_build_dir)/lighdm.blfs
+	$(build-blfs) $(blfs_build_dir)/lightdm.blfs
 
 
 xscreensaver.blfs : 
