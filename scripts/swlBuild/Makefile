@@ -53,6 +53,14 @@ swl-ice.blfs :
 
 
 ###################################################################
+# COMBO PACKAGE BUILDS
+###################################################################
+
+
+openvpn : openvpn.blfs openvpn.swl
+
+
+###################################################################
 # BLFS PACKAGE BUILDS
 ###################################################################
 
@@ -89,6 +97,10 @@ xscreensaver.blfs :
 	$(build-blfs) $(blfs_build_dir)/xscreensaver.blfs
 
 
+openvpn.blfs : 
+	$(build-blfs) $(blfs_build_dir)/openvpn.blfs
+
+
 ###################################################################
 # SWL BUILDS
 ###################################################################
@@ -100,4 +112,12 @@ pkgtools.swl :
 
 kernel-firmware.swl :
 	$(swl_build_dir)/kernel-firmware.swlBuild
+
+
+openvpn.swl : libcap-ng.swl
+	$(swl_build_dir)/openvpn.swlBuild
+
+
+libcap-ng.swl :
+	$(swl_build_dir)/libcap-ng.swlBuild
 

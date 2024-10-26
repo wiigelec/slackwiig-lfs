@@ -16,6 +16,7 @@ swl-base
   *xscreensaver
 
 ++swl-tools
+  *openvpn
 
 
 

@@ -1,2 +1,5 @@
 pkgtools 15.0
 kernel-firmware 20220124_eb8ea1b
+
+openvpn 2.6.12
+libcap-ng 0.8.5
