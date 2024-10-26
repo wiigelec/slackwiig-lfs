@@ -13,6 +13,7 @@ swl-base
   *xfce4-terminal
   *firefox
   *lightdm
+  *xscreensaver
 
 ++swl-tools
 

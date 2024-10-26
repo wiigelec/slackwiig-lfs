@@ -85,6 +85,10 @@ lightdm.blfs :
 	$(build-blfs) $(blfs_build_dir)/lighdm.blfs
 
 
+xscreensaver.blfs : 
+	$(build-blfs) $(blfs_build_dir)/xscreensaver.blfs
+
+
 ###################################################################
 # SWL BUILDS
 ###################################################################
