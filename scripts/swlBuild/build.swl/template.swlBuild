@@ -1,0 +1,77 @@
+#!/bin/bash
+#------------------------------------------------------------------#
+#
+#
+#
+#------------------------------------------------------------------#
+
+source /usr/src/slackwiig-lfs/scripts/swlBuild/build.swl/swl-build-api
+
+# PACKAGE NAME
+### ### ### ### ### ### ###
+# EDIT
+
+PKG_NAME=<package_name>
+
+### ### ### ### ### ### ###
+
+
+PKG_VER=get_pkg_version
+if [[ -z $PKG_VER ]]; then echo "$PKG_FILE not found in $PKG_VER_FILE"; exit; fi
+PKG_VER=${PKG_VER#* }
+
+SWL_VER=get_swl_version
+if [[ -z $SWL_VER ]]; then echo "swl version not found."; exit; fi
+LFS_VER=$(echo "${SWL_VER:0:2}"."${SWL_VER:2:3}")
+
+PKG_FULL=${PKG_NAME}-${PKG_VER}
+
+MAKEPKG_NAME=$PKG_NAME
+ARCH=amd64
+PKG_SWL=swl$SWL_VER
+PKG_EXT=txz
+
+DEST_DIR=/sources/destdir
+
+set -e
+
+pushd /sources
+
+# Download
+#
+### ### ### ### ### ### ###
+# EDIT
+
+TAR_FILE=$PKG_FULL.tar.gz
+PKG_URL=https://swupdate.openvpn.org/community/releases/$TAR_FILE
+
+### ### ### ### ### ### ###
+
+download_extract_package $TAR_FILE $PKG_URL
+
+# Build
+pushd $PKG_FULL
+
+#./configure --prefix=/usr --enable-systemd
+#make
+
+#meson setup --prefix=/usr build
+#ninja -C build
+
+
+# Destdir install
+#sudo DESTDIR=$DEST_DIR make install
+
+#sudo DESTDIR=$DEST_DIR ninja -C build install
+
+popd
+
+# Package
+FINAL_PKG=$MAKEPKG_NAME-$PKG_VER-$ARCH-$PKG_SWL.$PKG_EXT
+build_install_package $DEST_DIR $FINAL_PKG
+
+# Cleanup
+sudo rm -rf /sources/$PKG_FULL
+
+popd
+

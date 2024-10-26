@@ -1,0 +1,49 @@
+#!/bin/bash
+####################################################################
+#
+#
+#
+####################################################################
+
+#------------------------------------------------------------------#
+function get_pkg_version
+{
+	PKG_VER_FILE=./build.swl/pkg.versions
+	if [[ ! -f $PKG_VER_FILE ]]; then echo "$PKG_VER_FILE does not exist."; exit; fi
+	
+	grep "^$PKG_NAME " $PKG_VER_FILE
+}
+
+#------------------------------------------------------------------#
+function get_swl_version
+{
+	SWL_VER_FILE=/var/lib/swl/swl-version
+	if [[ ! -f $SWL_VER_FILE ]]; then echo "$SWL_VER_FILE does not exist."; exit; fi
+
+	cat $SWL_VER_FILE
+}
+
+#------------------------------------------------------------------#
+function download_extract_package
+{
+	TAR_FILE=$1
+	PKG_URL=$2
+	[[ -f $TAR_FILE ]] && rm $TAR_FILE
+	wget $PKG_URL
+	tar -xf $TAR_FILE
+	rm $TAR_FILE
+}
+
+#------------------------------------------------------------------#
+function build_install_package
+{
+	$DEST_DIR=$1 
+	$FINAL_PKG=$2
+	pushd $DEST_DIR
+	sudo chown -R root:root ./*
+	sudo makepkg -l y -c n /sources/$FINAL_PKG
+	sudo mv /sources/$FINAL_PKG /var/lib/swl/packages
+	sudo installpkg --terse /var/lib/swl/packages/$FINAL_PKG
+	popd
+	sudo rm -rf $DEST_DIR
+}

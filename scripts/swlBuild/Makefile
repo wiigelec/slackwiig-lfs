@@ -60,6 +60,9 @@ swl-ice.blfs :
 openvpn : openvpn.blfs openvpn.swl
 
 
+qemu-spice : qemu-spice.swl qemu-spice.blfs
+
+
 ###################################################################
 # BLFS PACKAGE BUILDS
 ###################################################################
@@ -120,4 +123,15 @@ openvpn.swl : libcap-ng.swl
 
 libcap-ng.swl :
 	$(swl_build_dir)/libcap-ng.swlBuild
+
+
+qemu-spice.swl : spice-protocol.swl spice.swl
+
+
+spice-protocol.swl :
+	$(swl_build_dir)/spice-protocol.swlBuild
+
+
+spice.swl :
+	$(swl_build_dir)/spice.swlBuild
 
