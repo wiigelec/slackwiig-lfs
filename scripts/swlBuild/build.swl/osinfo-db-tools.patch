@@ -1,0 +1,5 @@
+diff -r osinfo-db-tools-1.11.0/tools/osinfo-db-validate.c osinfo-db-tools-1.11.0.mod/tools/osinfo-db-validate.c
+176c176
+<     xmlSetStructuredErrorFunc(NULL, validate_structured_error_nop);
+---
+>     xmlSetStructuredErrorFunc(NULL, (void*)validate_structured_error_nop);

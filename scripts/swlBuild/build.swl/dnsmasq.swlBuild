@@ -11,7 +11,7 @@ source /usr/src/slackwiig-lfs/scripts/swlBuild/build.swl/swl-build-api
 ### ### ### ### ### ### ###
 # EDIT
 
-PKG_NAME=package_name
+PKG_NAME=dnsmasq
 
 ### ### ### ### ### ### ###
 
@@ -42,7 +42,7 @@ pushd /sources
 # EDIT
 
 TAR_FILE=$PKG_FULL.tar.xz
-PKG_URL=http://$TAR_FILE
+PKG_URL=https://thekelleys.org.uk/dnsmasq/$TAR_FILE
 
 ### ### ### ### ### ### ###
 
@@ -56,7 +56,8 @@ pushd $PKG_FULL
 # EDIT
 
 #./configure --prefix=/usr
-#make -j$(nproc)
+sed -i 's/\/usr\/local/\/usr/' Makefile
+make -j$(nproc)
 
 #meson setup --prefix=/usr build
 #ninja -C build
@@ -65,7 +66,8 @@ pushd $PKG_FULL
 
 
 # Destdir install
-#sudo DESTDIR=$DEST_DIR make install
+sed -i "s|DESTDIR.*=.*|DESTDIR = $DEST_DIR|" Makefile
+sudo DESTDIR=$DEST_DIR make install
 
 #sudo DESTDIR=$DEST_DIR ninja -C build install
 

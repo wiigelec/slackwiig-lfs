@@ -11,7 +11,7 @@ source /usr/src/slackwiig-lfs/scripts/swlBuild/build.swl/swl-build-api
 ### ### ### ### ### ### ###
 # EDIT
 
-PKG_NAME=package_name
+PKG_NAME=osinfo-db-tools
 
 ### ### ### ### ### ### ###
 
@@ -42,7 +42,7 @@ pushd /sources
 # EDIT
 
 TAR_FILE=$PKG_FULL.tar.xz
-PKG_URL=http://$TAR_FILE
+PKG_URL=https://releases.pagure.org/libosinfo/$TAR_FILE
 
 ### ### ### ### ### ### ###
 
@@ -58,8 +58,11 @@ pushd $PKG_FULL
 #./configure --prefix=/usr
 #make -j$(nproc)
 
-#meson setup --prefix=/usr build
-#ninja -C build
+# patch
+sed -i 's/xmlSetStructuredErrorFunc(NULL, validate_structured_error_nop);/xmlSetStructuredErrorFunc(NULL, (void\*)validate_structured_error_nop);/' ./tools/osinfo-db-validate.c
+
+meson setup --prefix=/usr build
+ninja -C build
 
 #python3 setup.py configure
 
@@ -67,7 +70,7 @@ pushd $PKG_FULL
 # Destdir install
 #sudo DESTDIR=$DEST_DIR make install
 
-#sudo DESTDIR=$DEST_DIR ninja -C build install
+sudo DESTDIR=$DEST_DIR ninja -C build install
 
 #sudo python3 setup.py install --root=$DEST_DIR
 

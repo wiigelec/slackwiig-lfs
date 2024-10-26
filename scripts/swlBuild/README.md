@@ -16,6 +16,7 @@ swl-base
 ++swl-tools
   *openvpn
   *qemu-spice
+  *virt-manager
 
 
 

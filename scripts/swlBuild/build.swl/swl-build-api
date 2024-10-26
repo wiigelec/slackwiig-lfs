@@ -27,6 +27,7 @@ function get_swl_version
 function download_extract_package
 {
 	[[ -f $TAR_FILE ]] && rm $TAR_FILE
+	[[ -d $PKG_FULL ]] && rm -rf $PKG_FULL
 	wget $PKG_URL
 	tar -xf $TAR_FILE
 	rm $TAR_FILE

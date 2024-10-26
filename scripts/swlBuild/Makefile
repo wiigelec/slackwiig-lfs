@@ -60,10 +60,13 @@ swl-ice.blfs :
 openvpn : openvpn.blfs libcap-ng.swl openvpn.swl
 
 
-qemu-spice : spice-protocol.swl spice.blfs orc.swl spice.swl qemu-spice.blfs
+qemu-spice : spice-protocol.swl spice.blfs orc.swl spice.swl usbredir.blfs \
+       usbredir.swl spice-gtk.swl qemu-spice.blfs
 
 
-virt-manager : 
+virt-manager : virt-manager.swl libvirt.blfs libvirt.swl libvirt-glib.swl \
+	osinfo-db-tools.blfs osinfo-db-tools.swl libosinfo.blfs libosinfo.swl \
+	libvirt-python.swl virt-manager.blfs dnsmasq.swl dmidecode.swl 
 
 
 ###################################################################
@@ -111,12 +114,32 @@ spice.blfs :
 	$(build-blfs) $(blfs_build_dir)/spice.blfs
 
 
+usbredir.blfs : 
+	$(build-blfs) $(blfs_build_dir)/usbredir.blfs
+
+
 qemu-spice.blfs : 
 	$(build-blfs) $(blfs_build_dir)/qemu-spice.blfs
 
 
 virt-manager.blfs : 
 	$(build-blfs) $(blfs_build_dir)/virt-manager.blfs
+
+
+libvirt.blfs : 
+	$(build-blfs) $(blfs_build_dir)/libvirt.blfs
+
+
+libosinfo.blfs : 
+	$(build-blfs) $(blfs_build_dir)/libosinfo.blfs
+
+
+virt-manager.blfs : 
+	$(build-blfs) $(blfs_build_dir)/virt-manager.blfs
+
+
+osinfo-db-tools.blfs : 
+	$(build-blfs) $(blfs_build_dir)/osinfo-db-tools.blfs
 
 
 ###################################################################
@@ -155,7 +178,43 @@ orc.swl :
 	$(swl_build_dir)/orc.swlBuild
 
 
+usbredir.swl :
+	$(swl_build_dir)/usbredir.swlBuild
+
+
 virt-manager.swl :
 	$(swl_build_dir)/virt-manager.swlBuild
+
+
+libvirt.swl :
+	$(swl_build_dir)/libvirt.swlBuild
+
+
+libvirt-glib.swl :
+	$(swl_build_dir)/libvirt-glib.swlBuild
+
+
+osinfo-db-tools.swl :
+	$(swl_build_dir)/osinfo-db-tools.swlBuild
+
+
+libosinfo.swl :
+	$(swl_build_dir)/libosinfo.swlBuild
+
+
+libvirt-python.swl :
+	$(swl_build_dir)/libvirt-python.swlBuild
+
+
+dnsmasq.swl :
+	$(swl_build_dir)/dnsmasq.swlBuild
+
+
+dmidecode.swl :
+	$(swl_build_dir)/dmidecode.swlBuild
+
+
+spice-gtk.swl :
+	$(swl_build_dir)/spice-gtk.swlBuild
 
 

@@ -11,7 +11,7 @@ source /usr/src/slackwiig-lfs/scripts/swlBuild/build.swl/swl-build-api
 ### ### ### ### ### ### ###
 # EDIT
 
-PKG_NAME=package_name
+PKG_NAME=libvirt-python
 
 ### ### ### ### ### ### ###
 
@@ -41,8 +41,8 @@ pushd /sources
 ### ### ### ### ### ### ###
 # EDIT
 
-TAR_FILE=$PKG_FULL.tar.xz
-PKG_URL=http://$TAR_FILE
+TAR_FILE=$PKG_FULL.tar.gz
+PKG_URL=https://download.libvirt.org/python/$TAR_FILE
 
 ### ### ### ### ### ### ###
 
@@ -69,7 +69,7 @@ pushd $PKG_FULL
 
 #sudo DESTDIR=$DEST_DIR ninja -C build install
 
-#sudo python3 setup.py install --root=$DEST_DIR
+sudo python3 setup.py install --root=$DEST_DIR
 
 #
 ### ### ### ### ### ### ###

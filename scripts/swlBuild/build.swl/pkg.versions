@@ -7,5 +7,14 @@ libcap-ng 0.8.5
 spice 0.15.2
 spice-protocol 0.14.3
 orc 0.4.40
+usbredir 0.14.0
+spice-gtk 0.41
 
 virt-manager 4.1.0
+libvirt 10.8.0
+libvirt-glib 5.0.0
+osinfo-db-tools 1.11.0
+libosinfo 1.11.0
+libvirt-python 10.8.0
+dnsmasq 2.90
+dmidecode 3.6
