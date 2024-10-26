@@ -60,7 +60,7 @@ swl-ice.blfs :
 openvpn : openvpn.blfs openvpn.swl
 
 
-qemu-spice : qemu-spice.swl qemu-spice.blfs
+qemu-spice : spice-protocol.swl spice.blfs orc.swl spice.swl qemu-spice.blfs
 
 
 ###################################################################
@@ -104,6 +104,14 @@ openvpn.blfs :
 	$(build-blfs) $(blfs_build_dir)/openvpn.blfs
 
 
+spice.blfs : 
+	$(build-blfs) $(blfs_build_dir)/spice.blfs
+
+
+qemu-spice.blfs : 
+	$(build-blfs) $(blfs_build_dir)/qemu-spice.blfs
+
+
 ###################################################################
 # SWL BUILDS
 ###################################################################
@@ -117,7 +125,7 @@ kernel-firmware.swl :
 	$(swl_build_dir)/kernel-firmware.swlBuild
 
 
-openvpn.swl : libcap-ng.swl
+openvpn.swl :
 	$(swl_build_dir)/openvpn.swlBuild
 
 
@@ -125,13 +133,18 @@ libcap-ng.swl :
 	$(swl_build_dir)/libcap-ng.swlBuild
 
 
-qemu-spice.swl : spice-protocol.swl spice.swl
+qemu-spice.swl : 
+
+
+spice.swl :
+	$(swl_build_dir)/spice.swlBuild
 
 
 spice-protocol.swl :
 	$(swl_build_dir)/spice-protocol.swlBuild
 
 
-spice.swl :
-	$(swl_build_dir)/spice.swlBuild
+orc.swl :
+	$(swl_build_dir)/orc.swlBuild
+
 

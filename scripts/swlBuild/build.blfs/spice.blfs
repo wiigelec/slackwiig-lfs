@@ -1,0 +1,7 @@
+pixman
+six
+pyparsing
+libjpeg
+gstreamer10
+gst10-plugins-base
+cyrus-sasl

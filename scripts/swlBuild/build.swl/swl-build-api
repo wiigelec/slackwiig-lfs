@@ -26,8 +26,6 @@ function get_swl_version
 #------------------------------------------------------------------#
 function download_extract_package
 {
-	TAR_FILE=$1
-	PKG_URL=$2
 	[[ -f $TAR_FILE ]] && rm $TAR_FILE
 	wget $PKG_URL
 	tar -xf $TAR_FILE
@@ -37,8 +35,6 @@ function download_extract_package
 #------------------------------------------------------------------#
 function build_install_package
 {
-	$DEST_DIR=$1 
-	$FINAL_PKG=$2
 	pushd $DEST_DIR
 	sudo chown -R root:root ./*
 	sudo makepkg -l y -c n /sources/$FINAL_PKG

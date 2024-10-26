@@ -3,3 +3,7 @@ kernel-firmware 20220124_eb8ea1b
 
 openvpn 2.6.12
 libcap-ng 0.8.5
+
+spice 0.15.2
+spice-protocol 0.14.3
+orc 0.4.40

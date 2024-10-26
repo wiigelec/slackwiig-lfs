@@ -11,7 +11,7 @@ source /usr/src/slackwiig-lfs/scripts/swlBuild/build.swl/swl-build-api
 ### ### ### ### ### ### ###
 # EDIT
 
-PKG_NAME=package_name
+PKG_NAME=spice
 
 ### ### ### ### ### ### ###
 
@@ -41,8 +41,8 @@ pushd /sources
 ### ### ### ### ### ### ###
 # EDIT
 
-TAR_FILE=$PKG_FULL.tar.gz
-PKG_URL=http://$TAR_FILE
+TAR_FILE=$PKG_FULL.tar.bz2
+PKG_URL=https://www.spice-space.org/download/releases/spice-server/$TAR_FILE
 
 ### ### ### ### ### ### ###
 
@@ -58,14 +58,14 @@ pushd $PKG_FULL
 #./configure --prefix=/usr --enable-systemd
 #make
 
-#meson setup --prefix=/usr build
-#ninja -C build
+meson setup --prefix=/usr build
+ninja -C build
 
 
 # Destdir install
 #sudo DESTDIR=$DEST_DIR make install
 
-#sudo DESTDIR=$DEST_DIR ninja -C build install
+sudo DESTDIR=$DEST_DIR ninja -C build install
 
 #
 ### ### ### ### ### ### ###
