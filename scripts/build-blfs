@@ -39,9 +39,9 @@ read -p "Continue? (Yes): " conf
 [[ $conf == "Yes" ]] || exit
 
 echo "Building list..."
-/usr/sbin/swl-manager list -c > $PKG_LIST.list
-sudo swl-manager list -d $PKG_LIST.list
-sudo swl-manager list -i $PKG_LIST.list
+/usr/sbin/swl-manager list -c > /sources/$PKG_LIST.list
+sudo swl-manager list -d /sources/$PKG_LIST.list
+sudo swl-manager list -i /sources/$PKG_LIST.list
 rm $PKG_LIST.list
 echo "Generating installed packages xml..."
 /usr/src/slackwiig-lfs/scripts/build-instpkgxml $SWL_VER > /var/lib/jhalfs/BLFS/instpkg.xml
