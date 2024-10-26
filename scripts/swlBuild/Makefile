@@ -81,6 +81,10 @@ firefox.blfs :
 	$(build-blfs) $(blfs_build_dir)/firefox.blfs
 
 
+lightdm.blfs : 
+	$(build-blfs) $(blfs_build_dir)/lighdm.blfs
+
+
 ###################################################################
 # SWL BUILDS
 ###################################################################
