@@ -19,3 +19,6 @@ libvirt-python 10.8.0
 dnsmasq 2.90
 dmidecode 3.6
 netcat 0.7.1
+
+ufw 0.36.2
+irssi 1.4.5
