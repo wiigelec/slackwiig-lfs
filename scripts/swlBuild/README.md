@@ -25,6 +25,7 @@ swl-base
 
 ++swl-de
   *qt6
+  *webkitgtk
 
 
 

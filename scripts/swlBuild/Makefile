@@ -76,6 +76,9 @@ swl-tools-misc : swl-tools-misc.blfs ufw.blfs ufw.swl irssi.swl
 qt6 : qt6.blfs
 
 
+webkitgtk : webkitgtk.blfs
+
+
 ###################################################################
 # BLFS PACKAGE BUILDS
 ###################################################################
@@ -159,6 +162,10 @@ ufw.blfs :
 
 qt6.blfs : 
 	$(build-blfs) $(blfs_build_dir)/qt6.blfs
+
+
+webkitgtk.blfs : 
+	$(build-blfs) $(blfs_build_dir)/webkitgtk.blfs
 
 
 ###################################################################
