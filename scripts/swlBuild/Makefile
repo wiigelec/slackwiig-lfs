@@ -73,6 +73,9 @@ virt-manager : virt-manager.blfs virt-manager.swl libvirt.blfs libvirt.swl \
 swl-tools-misc : swl-tools-misc.blfs ufw.blfs ufw.swl irssi.swl
 
 
+qt6 : qt6.blfs
+
+
 ###################################################################
 # BLFS PACKAGE BUILDS
 ###################################################################
@@ -152,6 +155,10 @@ swl-tools-misc.blfs :
 
 ufw.blfs : 
 	$(build-blfs) $(blfs_build_dir)/ufw.blfs
+
+
+qt6.blfs : 
+	$(build-blfs) $(blfs_build_dir)/qt6.blfs
 
 
 ###################################################################

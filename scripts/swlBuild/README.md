@@ -23,6 +23,9 @@ swl-base
         dmidecode.swl netcat.swl
    swl-tools-misc: swl-tools-misc.blfs ufw.swl irssi.swl
 
+++swl-de
+  *qt6
+
 
 
 *isolated build
