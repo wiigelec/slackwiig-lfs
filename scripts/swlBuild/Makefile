@@ -61,7 +61,7 @@ openvpn : openvpn.blfs libcap-ng.swl openvpn.swl
 
 
 qemu-spice : spice-protocol.swl spice.blfs orc.swl spice.swl usbredir.blfs \
-       usbredir.swl spice-gtk.swl qemu-spice.blfs
+       usbredir.swl spice-gtk.blfs spice-gtk.swl qemu-spice.blfs
 
 
 virt-manager : virt-manager.swl libvirt.blfs libvirt.swl libvirt-glib.swl \
@@ -116,6 +116,10 @@ spice.blfs :
 
 usbredir.blfs : 
 	$(build-blfs) $(blfs_build_dir)/usbredir.blfs
+
+
+spice-gtk.blfs : 
+	$(build-blfs) $(blfs_build_dir)/spice-gtk.blfs
 
 
 qemu-spice.blfs : 

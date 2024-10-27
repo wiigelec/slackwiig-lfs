@@ -4,7 +4,6 @@ It is recommended to run the meta builds in the following order:
 
 swl-build
 swl-base
-
 +swl-ice
   xorg-tools
   xorg
@@ -12,11 +11,7 @@ swl-base
   *nm-applet
   *xfce4-terminal
   *firefox
-
 ++swl-tools
-  *openvpn
-  *qemu-spice
-  *virt-manager
 
 
 
