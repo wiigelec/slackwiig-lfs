@@ -12,6 +12,9 @@ swl-base
   *xfce4-terminal
   *firefox
 ++swl-tools
+  *openvpn
+  *spice-qemu
+  *virt-manager
 
 
 
