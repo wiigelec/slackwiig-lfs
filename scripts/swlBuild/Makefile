@@ -168,6 +168,10 @@ webkitgtk.blfs :
 	$(build-blfs) $(blfs_build_dir)/webkitgtk.blfs
 
 
+gnome-desktop.blfs : 
+	$(build-blfs) $(blfs_build_dir)/gnome-desktop.blfs
+
+
 ###################################################################
 # SWL BUILDS
 ###################################################################
