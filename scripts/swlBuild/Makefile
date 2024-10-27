@@ -226,4 +226,3 @@ dmidecode.swl :
 netcat.swl :
 	$(swl_build_dir)/netcat.swlBuild
 
-

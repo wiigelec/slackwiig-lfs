@@ -18,3 +18,4 @@ libosinfo 1.11.0
 libvirt-python 10.8.0
 dnsmasq 2.90
 dmidecode 3.6
+netcat 0.7.1
