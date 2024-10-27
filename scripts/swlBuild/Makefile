@@ -70,6 +70,9 @@ virt-manager : virt-manager.blfs virt-manager.swl libvirt.blfs libvirt.swl \
 	dmidecode.swl netcat.swl
 
 
+swl-tools-misc : swl-tools-misc.blfs ufw.swl irssi.swl
+
+
 ###################################################################
 # BLFS PACKAGE BUILDS
 ###################################################################
@@ -145,6 +148,10 @@ virt-manager.blfs :
 
 osinfo-db-tools.blfs : 
 	$(build-blfs) $(blfs_build_dir)/osinfo-db-tools.blfs
+
+
+swl-tools-misc.blfs : 
+	$(build-blfs) $(blfs_build_dir)/swl-tools-misc.blfs
 
 
 ###################################################################
@@ -225,4 +232,12 @@ dmidecode.swl :
 
 netcat.swl :
 	$(swl_build_dir)/netcat.swlBuild
+
+
+ufw.swl :
+	$(swl_build_dir)/ufw.swlBuild
+
+
+irssi.swl :
+	$(swl_build_dir)/irssi.swlBuild
 

@@ -21,6 +21,7 @@ swl-base
         libvirt-glib.swl osinfo-db-tools.blfs osinfo-db-tools.swl libosinfo.blfs \
         libosinfo.swl libvirt-python.swl virt-manager.blfs dnsmasq.swl \
         dmidecode.swl netcat.swl
+   swl-tools-misc: swl-tools-misc.blfs ufw.swl irssi.swl
 
 
 
