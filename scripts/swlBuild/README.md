@@ -13,7 +13,7 @@ swl-base
   *firefox
 ++swl-tools
   *openvpn
-  *spice-qemu
+  *qemu-spice
   *virt-manager
 
 
