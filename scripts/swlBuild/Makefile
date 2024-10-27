@@ -66,7 +66,8 @@ qemu-spice : spice-protocol.swl spice.blfs orc.swl spice.swl usbredir.blfs \
 
 virt-manager : virt-manager.blfs virt-manager.swl libvirt.blfs libvirt.swl \
 	libvirt-glib.swl osinfo-db-tools.blfs osinfo-db-tools.swl libosinfo.blfs \
-	libosinfo.swl libvirt-python.swl virt-manager.blfs dnsmasq.swl dmidecode.swl 
+	libosinfo.swl libvirt-python.swl virt-manager.blfs dnsmasq.swl \
+	dmidecode.swl netcat.swl
 
 
 ###################################################################
@@ -186,6 +187,10 @@ usbredir.swl :
 	$(swl_build_dir)/usbredir.swlBuild
 
 
+spice-gtk.swl :
+	$(swl_build_dir)/spice-gtk.swlBuild
+
+
 virt-manager.swl :
 	$(swl_build_dir)/virt-manager.swlBuild
 
@@ -218,7 +223,7 @@ dmidecode.swl :
 	$(swl_build_dir)/dmidecode.swlBuild
 
 
-spice-gtk.swl :
-	$(swl_build_dir)/spice-gtk.swlBuild
+netcat.swl :
+	$(swl_build_dir)/netcat.swlBuild
 
 
