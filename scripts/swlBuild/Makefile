@@ -34,6 +34,11 @@ swl-ice : swl-ice.blfs
 swl-tools :
 
 
+gnome : gnome-desktop.blfs
+
+
+kde : kde-frameworks.blfs kde-plasma.blfs
+
 
 ###################################################################
 # BLFS META BUILDS
@@ -170,6 +175,14 @@ webkitgtk.blfs :
 
 gnome-desktop.blfs : 
 	$(build-blfs) $(blfs_build_dir)/gnome-desktop.blfs
+
+
+kde-frameworks.blfs : 
+	$(build-blfs) $(blfs_build_dir)/kde-frameworks.blfs
+
+
+kde-plasma.blfs : 
+	$(build-blfs) $(blfs_build_dir)/kde-plasma.blfs
 
 
 ###################################################################

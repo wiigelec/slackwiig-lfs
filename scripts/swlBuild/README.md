@@ -26,7 +26,8 @@ swl-base
 ++swl-de
   *qt6
   *webkitgtk
-  *gnome-desktop
+  *gnome : gnome-desktop.blfs
+  *kde : kde-frameworks.blfs kde-plasma.blfs
 
 
 
