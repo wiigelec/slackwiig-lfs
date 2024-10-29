@@ -33,3 +33,4 @@ ln -sfvr /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
 # init
 ldconfig
 glib-compile-schemas /usr/share/glib-2.0/schemas/
+gdk-pixbuf-query-loaders --update-cache
