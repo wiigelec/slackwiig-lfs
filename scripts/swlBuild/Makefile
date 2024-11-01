@@ -10,8 +10,6 @@
 build-blfs = /usr/src/slackwiig-lfs/scripts/build-blfs
 blfs_build_dir = /usr/src/slackwiig-lfs/scripts/swlBuild/build.blfs
 swl_build_dir = /usr/src/slackwiig-lfs/scripts/swlBuild/build.swl
-qt_init = /usr/src/slackwiig-lfs/scripts/init/qt-init
-kf_init = /usr/src/slackwiig-lfs/scripts/init/kf-init
 
 
 ### DEFAUT TARGET ###
@@ -78,6 +76,12 @@ virt-manager : virt-manager.blfs virt-manager.swl libvirt.blfs libvirt.swl \
 
 
 swl-tools-misc : swl-tools-misc.blfs ufw.blfs ufw.swl irssi.swl
+
+
+qt6 : qt6.blfs
+
+
+webkitgtk : webkitgtk.blfs
 
 
 ###################################################################
@@ -177,7 +181,7 @@ kde-frameworks.blfs :
 	$(build-blfs) $(blfs_build_dir)/kde-frameworks.blfs
 
 
-kde-plasma.blfs:
+kde-plasma.blfs : 
 	$(build-blfs) $(blfs_build_dir)/kde-plasma.blfs
 
 
@@ -267,4 +271,8 @@ ufw.swl :
 
 irssi.swl :
 	$(swl_build_dir)/irssi.swlBuild
+
+
+kio-extras.swl :
+	$(swl_build_dir)/kio-extras.swlBuild
 
