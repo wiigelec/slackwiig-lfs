@@ -80,23 +80,6 @@ virt-manager : virt-manager.blfs virt-manager.swl libvirt.blfs libvirt.swl \
 swl-tools-misc : swl-tools-misc.blfs ufw.blfs ufw.swl irssi.swl
 
 
-qt6 : 
-	$(build-blfs) $(blfs_build_dir)/qt6.blfs
-	$(qt-init)
-
-
-webkitgtk : webkitgtk.blfs
-
-
-kde-frameworks : qt6
-	$(build-blfs) $(blfs_build_dir)/kde-frameworks.blfs
-	$(kf-init)
-
-
-kde-plasma : kde-frameworks
-	$(build-blfs) $(blfs_build_dir)/kde-plasma.blfs
-
-
 ###################################################################
 # BLFS PACKAGE BUILDS
 ###################################################################
@@ -178,12 +161,24 @@ ufw.blfs :
 	$(build-blfs) $(blfs_build_dir)/ufw.blfs
 
 
+qt6.blfs : 
+	$(build-blfs) $(blfs_build_dir)/qt6.blfs
+
+
 webkitgtk.blfs : 
 	$(build-blfs) $(blfs_build_dir)/webkitgtk.blfs
 
 
 gnome-desktop.blfs : 
 	$(build-blfs) $(blfs_build_dir)/gnome-desktop.blfs
+
+
+kde-frameworks.blfs : 
+	$(build-blfs) $(blfs_build_dir)/kde-frameworks.blfs
+
+
+kde-plasma.blfs:
+	$(build-blfs) $(blfs_build_dir)/kde-plasma.blfs
 
 
 ###################################################################
