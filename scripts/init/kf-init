@@ -1,0 +1,25 @@
+#!/bin/bash
+
+####################################################################
+
+export KF6_PREFIX=/opt/kf6
+
+cat >> /etc/profile.d/qt6.sh << "EOF"
+# Begin Qt6 changes for KF6
+
+pathappend /usr/lib/plugins            QT_PLUGIN_PATH
+pathappend $QT6DIR/plugins             QT_PLUGIN_PATH
+pathappend $QT6DIR/qml                 QML2_IMPORT_PATH
+
+# End Qt6 changes for KF6
+EOF
+
+cat >> /etc/ld.so.conf << "EOF"
+# Begin KF6 addition
+
+/opt/kf6/lib
+
+# End KF6 addition
+EOF
+
+

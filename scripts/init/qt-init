@@ -3,9 +3,7 @@
 ####################################################################
 # QT5 COMPONENTS
 
-cat > /etc/sudoers.d/qt << "EOF"
-Defaults env_keep += QT5DIR
-EOF
+export QT5PREFIX=/opt/qt5
 
 cat >> /etc/ld.so.conf << EOF
 # Begin Qt addition
@@ -17,25 +15,11 @@ EOF
 
 ldconfig
 
-cat > /etc/profile.d/qt_5.sh << "EOF"
-# Begin /etc/profile.d/qt_5.sh
-
-QT5DIR=/opt/qt5
-
-pathappend $QT5DIR/bin           PATH
-pathappend $QT5DIR/lib/pkgconfig PKG_CONFIG_PATH
-
-export QT5DIR
-
-# End /etc/profile.d/qt_5.sh
-EOF
 
 ####################################################################
 # QT6
 
-cat > /etc/sudoers.d/qt << "EOF"
-Defaults env_keep += QT6DIR
-EOF
+export QT6PREFIX=/opt/qt6
 
 cat >> /etc/ld.so.conf << EOF
 # Begin Qt addition
@@ -47,15 +31,3 @@ EOF
 
 ldconfig
 
-cat > /etc/profile.d/qt6.sh << "EOF"
-# Begin /etc/profile.d/qt6.sh
-
-QT6DIR=/opt/qt6
-
-pathappend $QT6DIR/bin           PATH
-pathappend $QT6DIR/lib/pkgconfig PKG_CONFIG_PATH
-
-export QT6DIR
-
-# End /etc/profile.d/qt6.sh
-EOF
