@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# avahi
+groupadd -fg 84 avahi &&
+id -u avahi &>/dev/null || useradd -c "Avahi Daemon Owner" -d /run/avahi-daemon -u 84 \
+        -g avahi -s /bin/false avahi
+
+# cups
+id -u lp &>/dev/null || useradd -c "Print Service User" -d /var/spool/cups -g lp -s /bin/false -u 9 lp
+groupadd -g 19 lpadmin
+
+# colord
+groupadd -g 71 colord
+id -u colord &>/dev/null || useradd -c "Color Daemon Owner" -d /var/lib/colord -u 71 \
+        -g colord -s /bin/false colord
+
+# pipewire
+systemctl --global enable pipewire-pulse.socket
+systemctl --global disable pulseaudio
+sed '2i exit # nouse' -i /etc/xdg/Xwayland-session.d/00-pulseaudio-x11
+sed '$a Hidden=true'  -i /etc/xdg/autostart/pulseaudio.desktop
+install -vdm755 /etc/alsa/conf.d
+ln -sfvr /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
+
+# init
+glib-compile-schemas /usr/share/glib-2.0/schemas/
+gdk-pixbuf-query-loaders --update-cache
+
+cat >> /etc/ld.so.conf << "EOF"
+# Begin KF6 addition
+
+/opt/kf6/lib
+
+# End KF6 addition
+EOF
+
+ldconfig
