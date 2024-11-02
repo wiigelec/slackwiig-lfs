@@ -1,0 +1,60 @@
+diff -rU1 a/BLFS/gen-special.sh b/BLFS/gen-special.sh
+--- jhalfs.org/BLFS/gen-special.sh	2024-10-29 08:24:06.256380200 -0600
++++ jhalfs/BLFS/gen-special.sh	2024-10-29 08:52:58.705937800 -0600
+@@ -39,3 +39,3 @@
+ NV_LIST="postlfs-config-profile postlfs-config-random postlfs-config-vimrc \
+-initramfs xorg-env kde-pre-install-config kf5-intro \
++initramfs xorg-env kde-pre-install-config kf5-intro kf6-intro \
+ lxqt-pre-install lxqt-post-install ojdk-conf tex-path"
+@@ -69,2 +69,6 @@
+   fi
++  if [ $nv_id = kf6-intro ]; then
++    DUM_VER=$(grep kf6-version $BLFS_DIR/packages.ent | \
++              sed 's/[^"]*"\([^"]*\).*/\1/')
++  fi
+   cat >>$SPECIAL_FILE << EOF
+@@ -110,4 +114,4 @@
+ for file in $(ls ${BLFS_DIR}/x/installing/x7* | grep -v x7driver) \
+-	    ${BLFS_DIR}/kde/kf5/kf5-frameworks.xml                \
+-	    ${BLFS_DIR}/kde/plasma5/plasma-all.xml; do
++	    ${BLFS_DIR}/kde/kf*/kf*-frameworks.xml                \
++	    ${BLFS_DIR}/kde/plasma*/plasma-all.xml; do
+   id=$(grep xreflabel $file | sed 's@.*id="\([^"]*\).*@\1@')
+diff -rU1 a/BLFS/xsl/gen_config.xsl b/BLFS/xsl/gen_config.xsl
+--- jhalfs.org/BLFS/xsl/gen_config.xsl	2024-10-29 08:24:06.318952300 -0600
++++ jhalfs/BLFS/xsl/gen_config.xsl	2024-10-29 08:54:01.518339800 -0600
+@@ -314,3 +314,4 @@
+                         contains(../name,'plasma') or
+-                        contains(../name,'kf5')">
++                        contains(../name,'kf5') or
++                        contains(../name,'kf6')">
+           <xsl:text>y
+diff -rU1 a/BLFS/xsl/gen_pkg_list.xsl b/BLFS/xsl/gen_pkg_list.xsl
+--- jhalfs.org/BLFS/xsl/gen_pkg_list.xsl	2024-10-29 08:24:06.300074400 -0600
++++ jhalfs/BLFS/xsl/gen_pkg_list.xsl	2024-10-29 08:54:52.631762000 -0600
+@@ -363,3 +363,5 @@
+                         @linkend='kf5-frameworks' or
+-                        @linkend='plasma5-build'">
++                        @linkend='kf6-frameworks' or
++                        @linkend='plasma5-build' or
++                        @linkend='plasma-build'">
+           <xsl:call-template name="expand-deps">
+diff -rU1 a/BLFS/xsl/make_book.xsl b/BLFS/xsl/make_book.xsl
+--- jhalfs.org/BLFS/xsl/make_book.xsl	2024-10-29 08:24:06.293074000 -0600
++++ jhalfs/BLFS/xsl/make_book.xsl	2024-10-29 08:36:26.844503600 -0600
+@@ -122,2 +122,5 @@
+                 mode="plasma-post-install"/>
++              <xsl:apply-templates
++                select="//sect1[@id='plasma-build']"
++                mode="plasma-post-install"/>
+             </xsl:when>
+@@ -129,3 +132,3 @@
+                                  contains(@id,'frameworks') or
+-                                 contains(@id,'plasma5'))
++                                 contains(@id,'plasma'))
+                                  and .//userinput/literal[contains(string(),
+@@ -577,3 +580,3 @@
+                   <xsl:if test="contains(@id,'frameworks') or
+-                                contains(@id,'plasma5')">
++                                contains(@id,'plasma')">
+                     <xsl:text>/</xsl:text>
