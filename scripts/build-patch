@@ -1,6 +1,8 @@
 #!/bin/bash
 ####################################################################
 
+SWL_DIR=/usr/src/slackwiig-lfs
+
 if [[ -z $1 ]]; then echo "No package."; exit 1; fi
 PKG=$1
 
@@ -65,16 +67,49 @@ PKG_LIST=/tmp/$PKG.list
 /usr/sbin/swl-manager list -c > $PKG_LIST
 sudo swl-manager list -d $PKG_LIST
 sudo swl-manager list -i $PKG_LIST
-build-instpkgxml $SWL_VER
+$SWL_DIR/scripts/build-instpkgxml $SWL_VER > /var/lib/jhalfs/BLFS/instpkg.xml
 rm $PKG_LIST
-exit
 	
 ### BUILD NEW PACKAGE ###
 LFS_VER=trunk
 install-blfs trunk
 gen-blfs-scripts $PKG
-/usr/src/slackwiig-lfs/scripts/build-versions > pkg-versions-trunk.jhalfs
+$SWL_DIR/scripts/build-versions > pkg-versions-trunk.jhalfs
 sudo mv pkg-versions-trunk.jhalfs /var/lib/swl/
-/usr/src/slackwiig-lfs/scripts/blfs-convert trunk
+cp -r scripts scripts.org
+/usr/src/slackwiig-lfs/scripts/convert-blfs trunk
+
+# CLEANUP
+sudo rm /var/lib/swl/difflog/*
+sudo rm /var/lib/swl/pkglog/*
+sudo rm /var/lib/swl/packages/*
+
+set +e
+echo "--------------------------------------------------------------------"
+echo "Edit scripts and build:"
+loop=1
+while [ $loop == 1 ]
+do
+        echo
+        echo "Enter command or 'C' to continue."
+        read -p "> " command
+
+        case $command in
+                C) loop=0;;
+                *) $command
+        esac
+done
 popd
+
+### BUILD PACKAGES ###
+# log
+pushd /var/lib/swl/difflog
+sudo rm ../pkglog/*
+sudo $SWL_DIR/scripts/build-log
+popd
+# pkg
+pushd /var/lib/swl/pkglog
+sudo $SWL_DIR/scripts/build-pkg $SWL_VER
+popd
+
 

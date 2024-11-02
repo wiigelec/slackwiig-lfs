@@ -28,6 +28,7 @@ do
 
     version=${lookup#*  }
     version=${version% }
+    version=${version% [*}
     echo $version
 
     # diff logs
