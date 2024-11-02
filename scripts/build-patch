@@ -1,6 +1,9 @@
 #!/bin/bash
 ####################################################################
 
+if [[ -z $1 ]]; then echo "No package."; exit 1; fi
+PKG=$1
+
 SWL_VER_FILE=/var/lib/swl/swl-version
 if [[ ! -f $SWL_VER_FILE ]]; then echo "No $SWL_VER_FILE."; exit 1; fi 
 SWL_VER=$(cat $SWL_VER_FILE)
@@ -8,8 +11,6 @@ LFS_VER=$(echo "${SWL_VER:0:2}"."${SWL_VER:2:3}")
 
 function install-blfs
 {
-	LFS_VER=$1
-	
 	# CLONE JHALFS
 	pushd /sources
 	rm -rf jhalfs
@@ -17,15 +18,23 @@ function install-blfs
 	popd
 
 	pushd /sources/jhalfs
-	sed -i "s/COMMIT=\".*/COMMIT=\"$LFS_VER\"/"
-	echo "q yes" | make
+
+	echo "q y n" | make
+
+	sed -i "s/BOOK_LFS=y/# BOOK_LFS is not set/" configuration
+	sed -i "s/# BOOK_BLFS is not set/BOOK_BLFS=y/" configuration
+	echo "q y n" | make
+
+	sed -i "s/BLFS_SYSV=y/# BLFS_SYSV is not set/" configuration
+	sed -i "s/# BLFS_SYSD is not set/BLFS_SYSD=y/" configuration
+	sed -i "s/COMMIT=\".*/COMMIT=\"$LFS_VER\"/" configuration
+	echo "q y yes" | make
+
 	popd
 }
 
 function gen-blfs-scripts
 {
-	PKG=$1
-
 	pushd $HOME/blfs_root
 	echo "q y" | make
 	echo "CONFIG_$PKG=y" >> configuration
@@ -48,18 +57,20 @@ function make-scripts
 ### INSTALL CURRENT PACKAGE ###
 rm /var/lib/jhalfs/BLFS/instpkg.xml
 install-blfs $LFS_VER
-gen-blfs-scripts $PKG
-make-scripts
+gen-blfs-scripts
+#make-scripts
 
 pushd $HOME/blfs_root
 PKG_LIST=/tmp/$PKG.list
-/usr/sbin/swl-manager list -c > /tmp/$PKG_LIST
+/usr/sbin/swl-manager list -c > $PKG_LIST
 sudo swl-manager list -d $PKG_LIST
 sudo swl-manager list -i $PKG_LIST
 build-instpkgxml $SWL_VER
 rm $PKG_LIST
+exit
 	
 ### BUILD NEW PACKAGE ###
+LFS_VER=trunk
 install-blfs trunk
 gen-blfs-scripts $PKG
 /usr/src/slackwiig-lfs/scripts/build-versions > pkg-versions-trunk.jhalfs
