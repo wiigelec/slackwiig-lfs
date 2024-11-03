@@ -20,6 +20,8 @@ cp -a /etc/group ./etc
 cp -a /etc/shadow ./etc
 cp -a /etc/gshadow ./etc
 
+cp -a /etc/ld.so.conf ./etc
+
 cp -a /etc/fstab ./etc
 
 cp -a /lib64/* ./lib64

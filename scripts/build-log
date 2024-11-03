@@ -35,7 +35,7 @@ do
     sed -i '/^\/var\/lib\/systemd\/coredump\//d' $log.tmp
     sed -i '/^\/opt\/kf5\/share\/icons\/hicolor\//d' $log.tmp
     sed -i '/^\/tmp/d' $log.tmp
-    sed -i '/^\/etc\/ld\.so\.cache/d' $log.tmp
+    sed -i '/^\/etc\/ld\.so\.*/d' $log.tmp
     sed -i '/^\/install\/.*/d' $log.tmp
     sed -i '/^\/var\/cache/d' $log.tmp
     sed -i '/^\/var\/lib\/pkgtools/d' $log.tmp
