@@ -1,14 +1,16 @@
 #!/bin/bash
 
-grep bool Config.in  \
-	| sed 's/.*\sbool\s//' \
-	| sed 's/"//' \
-	| sed 's/"//' \
-	| sed 's/ /  /' \
-	| sed 's/.*\sfor.*//' \
-	| sed 's/.*\sDHCP.*//' \
-	| sed 's/.*\swith.*//' \
-	| sort
+grep -A1 CONFIG_ Config.in | sed '/bool/!d' | sed 's/.*bool.*\"\(.*\)\"*./\1/'
+
+#grep bool Config.in  \
+#	| sed 's/.*\sbool\s//' \
+#	| sed 's/"//' \
+#	| sed 's/"//' \
+#	| sed 's/ /  /' \
+#	| sed 's/.*\sfor.*//' \
+#	| sed 's/.*\sDHCP.*//' \
+#	| sed 's/.*\swith.*//' \
+#	| sort
 
 
 
